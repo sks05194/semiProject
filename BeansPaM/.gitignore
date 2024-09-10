@@ -1,0 +1,72 @@
+# Java 컴파일된 파일
+*.class
+
+# 패키지 파일
+*.war
+*.ear
+
+# 빌드 디렉토리
+/target/
+/bin/
+/out/
+/build/
+
+# IDE 설정 파일 (Eclipse, IntelliJ IDEA, NetBeans 등)
+### Eclipse ###
+.metadata
+.classpath
+.project
+.settings/
+
+### IntelliJ IDEA ###
+.idea/
+*.iml
+*.iws
+
+### NetBeans ###
+/nbproject/private/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+# Maven 관련 파일 및 디렉토리
+/logs/
+*.log  # 중복 제거
+!gitkeep
+mvnw
+mvnw.cmd
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+
+# Gradle 관련 파일 및 디렉토리
+.gradle
+
+# 기타 불필요한 파일
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*.bak
+*.tmp
+*.orig
+*.rej
+
+# Logs
+*.log  # 중복 제거
+
+# 임시 파일 디렉토리
+/tmp/
+/temp/
+
+# 환경 변수 파일
+.env
+
+# 웹 애플리케이션 관련
+/WebContent/WEB-INF/classes/
+
+# JAR 파일 포함 규칙
+!WebContent/WEB-INF/lib/*.jar

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- ==================== 예시 ====================
+<Context>
+	<Resource
+		name="jdbc/jsptest"
+		auth="container"
+		type="javax.sql.DataSource"
+		driverClassName="oracle.jdbc.driver.OracleDriver"
+		url="jdbc:oracle:thin:@localhost:1521:XE"
+		username="TEST"
+		password="1111"
+		factory="org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory"
+		maxActive="100"
+		masIdle="100"
+	/>
+</Context>
+-->
