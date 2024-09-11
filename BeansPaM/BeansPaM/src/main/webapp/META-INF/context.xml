@@ -7,7 +7,7 @@
 		type="javax.sql.DataSource"
 		driverClassName="oracle.jdbc.driver.OracleDriver"
 		url="jdbc:oracle:thin:@localhost:1521:XE"
-		username="BeansPaMDB"
+		username="BeansPaM"
 		password="1111"
 		factory="org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory"
 		maxActive="100"
