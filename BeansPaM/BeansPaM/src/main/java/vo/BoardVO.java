@@ -22,6 +22,7 @@ public class BoardVO {
 	Date b_date = null;			// 글 작성일
 	int b_views = 0;			// 조회수
 	String b_content = null;	// 내용
+	// String b_filepath = null;	// 파일 경로: 추후 사용 가능성 있음
 	
 	public String getB_class() { return b_class; }
 	public void setB_class(String b_class) { this.b_class = b_class; }
@@ -46,4 +47,7 @@ public class BoardVO {
 	
 	public String getB_content() { return b_content; }
 	public void setB_content(String b_content) { this.b_content = b_content; }
+	
+	// public String getB_filepath() { return b_filepath; }
+	// public void setB_filepath(String b_filepath) { this.b_filepath = b_filepath; }
 }
