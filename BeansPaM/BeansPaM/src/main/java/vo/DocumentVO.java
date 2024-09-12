@@ -29,7 +29,7 @@ public class DocumentVO {
 
 	public String getD_class() { return d_class; }
 	public void setD_class(String d_class) { this.d_class = d_class; }
-
+	
 	public String getM_no() { return m_no; }
 	public void setM_no(String m_no) { this.m_no = m_no; }
 
