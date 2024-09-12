@@ -2,10 +2,10 @@
  * 최초 생성일: 2024-09-11
  * @author 강동준
  * 
- * 마지막 수정일: 2024-09-11
+ * 마지막 수정일: 2024-09-12
  * @author 강동준
  * 
- * 주요 수정 내용: 문서 생성
+ * 주요 수정 내용: l_no -> w_no
  */
 
 package vo;
@@ -17,7 +17,7 @@ public class StockVO {
 	String s_no = null;	// 재고번호
 	Date s_day = null;	// 수입일자
 	String p_no = null;	// 제품번호
-	String l_no = null;	// 지역코드
+	String w_no = null;	// 창고번호
 	int s_amount = 0;	// 재고량(kg)
 	
 	public String getS_no() { return s_no; }
@@ -29,8 +29,8 @@ public class StockVO {
 	public String getP_no() { return p_no; }
 	public void setP_no(String p_no) { this.p_no = p_no; }
 	
-	public String getL_no() { return l_no; }
-	public void setL_no(String l_no) { this.l_no = l_no; }
+	public String getW_no() { return w_no; }
+	public void setW_no(String w_no) { this.w_no = w_no; }
 	
 	public int getS_amount() { return s_amount; }
 	public void setS_amount(int s_amount) { this.s_amount = s_amount; }

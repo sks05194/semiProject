@@ -2,10 +2,10 @@
  * 최초 생성일: 2024-09-11
  * @author 강동준
  * 
- * 마지막 수정일: 2024-09-11
+ * 마지막 수정일: 2024-09-12
  * @author 강동준
  * 
- * 주요 수정 내용: 문서 생성
+ * 주요 수정 내용: email 추가에 따른 멤버변수, getter, setter 선언
  */
 
 package vo;
@@ -14,16 +14,17 @@ import java.sql.Date;
 
 /* 사원 정보를 담는 VO 클래스 입니다. */
 public class MemberVO {
-	String m_no = null;
-	String m_id = null;
-	String m_pw = null;
-	String m_name = null;
-	Date m_day = null;
-	String m_position = null;
-	String m_phone = null;
-	int m_leave = 0;
-	int m_salary = 0;
-	String m_dept = null;
+	String m_no = null;			// 사번
+	String m_id = null;			// 아이디
+	String m_pw = null;			// 비밀번호
+	String m_name = null;		// 이름
+	Date m_day = null;			// 입사일자
+	String m_position = null;	// 직급
+	String m_phone = null;		// 전화번호
+	String m_email = null;		// 이메일
+	int m_leave = 0;			// 남은 연차(휴가) 일수
+	int m_salary = 0;			// 급여: 월급, 원화
+	String m_dept = null;		// 부서명
 
 	public String getM_no() { return m_no; }
 	public void setM_no(String m_no) { this.m_no = m_no; }
@@ -46,6 +47,9 @@ public class MemberVO {
 	public String getM_phone() { return m_phone; }
 	public void setM_phone(String m_phone) { this.m_phone = m_phone; }
 
+	public String getM_email() { return m_email; }
+	public void setM_email(String m_email) { this.m_email = m_email; }
+	
 	public int getM_leave() { return m_leave; }
 	public void setM_leave(int m_leave) { this.m_leave = m_leave; }
 
