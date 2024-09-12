@@ -1,0 +1,285 @@
+*{
+    margin: 0 auto;
+}
+header{
+    
+    position: relative;
+    float: left;
+    height: 100vh;
+    width: 200px;
+    background-color: rgb(41, 15, 5);
+    z-index: 100;
+    text-align: center;
+    
+
+}
+.mark{
+    position: relative;
+    top: 100px;
+    left: 20px;
+}
+.content {
+    transform: translateY(100px);
+}
+.content a{
+    text-decoration: none;
+    color: wheat;
+}
+.mark:hover span{
+    background-color: orangered;
+    border: none;
+}
+.mark:hover span:nth-child(1){
+    background-color: orangered;
+    border: none;
+}
+.mark:hover span:nth-child(2){
+    background-color: orangered;
+    border: none;
+}
+.mark:hover span:nth-child(3){
+    background-color: orangered;
+    border: none;
+}
+.mark span{
+    position: absolute;
+    border: solid 1px wheat;
+    width: 120px;
+    height: 95px;
+    left: 15px;
+    top:-20px;
+    border-radius: 50px 30px 40px 30px;
+    animation: animation linear infinite 7.5s;
+    
+}
+.mark:hover span{
+    border: none;
+    background-color: orangered;
+    transition: 0.5s;
+    opacity: 0.3;
+}
+.mark:hover span{
+    border: none;
+    background-color: orangered;
+    opacity: 0.3s;
+}
+.mark:hover span:hover{
+    border: none;
+    background-color: orangered;
+    opacity: 0.3s;
+}
+.mark span:nth-child(1){
+  
+   animation: animation linear infinite 6s;
+    animation-direction: reverse;
+    opacity: 0.8;
+
+}
+.mark span:nth-child(2){
+  
+    animation: animation linear infinite 6.1s;
+    opacity: 0.6;
+
+}
+.mark span:nth-child(3){
+    animation: animation linear infinite 6.2s;
+    opacity: 0.3;
+}
+
+
+
+.selector {
+    border-radius: 0px 10px 0px 0px;
+    width: 100px;
+    height: 1000vh;
+    margin-left: 200px;
+    margin-right: 0 ;
+   background-color: rgb(16, 6, 6);
+   transform: translateY(-426px);
+    height: 1000vh;
+    
+    text-align: center;
+
+}
+.selector a{
+    height: 30px;
+     display: block;
+     position: relative;
+     top: 400px;
+     text-decoration: none;
+     color: wheat;
+     font-size: 23px;
+     margin-top: 30px;
+ }
+ .selector i {
+     color: white;
+     font-size: 30px;
+ }
+.menubar{
+    position: relative;
+    top:40px;
+    color:rgb(244, 228, 209);
+    top:200px;
+}
+.menubar li{
+    margin-top: 10px;
+    list-style: none;
+    transform: translateX(-20px);
+    font-size: 25px;
+    cursor: pointer;
+    
+}
+.menubar i{
+    position: absolute;
+    top:-30px;
+    font-size: 20px;
+   
+}
+.menubar h3{
+    font-size:15px;
+    color: rgb(211, 59, 4);
+ 
+}
+
+.menubar p{
+    transform: translateY(-10px);
+    font-size: 20px;
+    font-weight: 800;
+}
+.menubar h3{
+    color: white;
+    transform: translateY(-10px);
+    font-size: 30px;
+    
+}
+@keyframes animation {
+    0%{
+        transform: rotate(0deg);
+    }
+
+    100%{
+        transform: rotate(360deg);
+    }
+}
+.menubar a{
+    transform: translateY(100px);
+    left: 50px;
+    font-size: 15px;
+    color: rgb(244, 228, 209);
+    text-decoration: none;
+    margin-top: 12px;
+    display: block;
+    font-weight: 400;
+    transition: 0.3s;
+   
+ 
+}
+.menubar a:hover, .menubar.active{
+    color: brown;
+    background-color: wheat;
+}
+.btn li:hover,
+.btn li.active{
+    background-color: rgb(165, 81, 42);
+}
+#d1,#d2,#d3,#d4,#d5{
+    display: none;
+}
+#d1.active,#d2.active,#d3.active,#d4.active,#d5.active{
+    display: block;
+}
+
+
+
+.title{
+    width: 100%;
+    height: 80px;
+    position: relative;
+    background-color: rgb(244, 228, 209);
+    text-align: center;
+    padding-top: 15px;
+}
+
+.title > h1{
+    font-size: 45px;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+.search-container {
+    margin: 70px 0 20px;
+    float: right;
+}
+
+.search-container select,
+.search-container input {
+    padding: 10px;
+    font-size: 16px;
+    margin-right: 5px;
+}
+
+.search-container button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: rgb(41, 15, 5);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background: #fff;
+    table-layout: fixed;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    text-align: center;
+}
+
+th {
+    background-color: rgb(41, 15, 5);
+    color: #fff;
+}
+
+.no-results {
+    text-align: center;
+    padding: 20px;
+}
+
+.pagination {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.pagination button {
+    padding: 10px;
+    font-size: 16px;
+    background-color: white;
+    color: rgb(41, 15, 5);
+    border: none;
+    cursor: pointer;
+    margin: 0 2px;
+}
+
+.pagination button.active {
+    background-color: rgb(41, 15, 5); 
+    color: #fff;
+}
+
+.pagination span {
+    padding: 10px;
+    font-size: 16px;
+}

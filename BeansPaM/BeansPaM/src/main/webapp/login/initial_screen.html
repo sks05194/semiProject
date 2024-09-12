@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Itari trip</title>
+    <link rel="stylesheet" href="/BeansPaM/css/first_screen.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+
+</head>
+<body>
+    <div class="landScape">
+        <div class="video-frame">
+            <video autoPlay loop muted playInline src="/BeansPaM/img/2849945-uhd_3840_2160_24fps.mp4" autoplay muted
+                poster="./sources/2849945-uhd_3840_2160_24fps.mp4">
+            </video>
+        </div>
+        <div class="logo">
+            <img src="../xJAPN.IMG/PaperAirplan.png" alt="">
+        </div>
+    </div>
+
+    <div class="heading">
+        <h1>BeansPaM&CoffeeJava</h1>
+
+
+
+        <a href="/BeansPaM/login/login_menu.jsp" class="btn1">LOGIN</a>
+        <a href="#none" class="btn2">INFORM</a>
+    </div>
+    <div class="logo2">
+
+        <img src="..//xJAPN.IMg/cff2a67492c0a193f3568de2410d268c-removebg-preview.png" alt="">
+        <p>click!</p>
+    </div>
+
+
+    <script>
+        $('.menubox').click(function () {
+            $(this).toggleClass('active');
+            $('.ground').fadeToggle() // fast, slow, 1000초 단위로 나오는것도 있음. 
+        })
+    </script>
+
+
+
+</body>
+</html>

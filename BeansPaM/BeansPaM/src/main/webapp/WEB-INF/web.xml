@@ -2,16 +2,14 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
 	<display-name>BeansPaM</display-name>
 
-	<!-- ==================== 예시 ====================
 	<servlet>
-		<servlet-name>controller</servlet-name>
-		<servlet-class>controller.FrontController</servlet-class>
+		<servlet-name>loginController</servlet-name>
+		<servlet-class>controller.LoginController</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>controller</servlet-name>
-		<url-pattern>*</url-pattern>
+		<servlet-name>loginController</servlet-name>
+		<url-pattern>*.l</url-pattern>
 	</servlet-mapping>
-	-->
 
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
