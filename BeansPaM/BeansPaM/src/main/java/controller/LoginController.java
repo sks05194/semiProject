@@ -2,10 +2,10 @@
  * 최초 생성일: 2024-09-11
  * @author 강동준
  * 
- * 마지막 수정일: 2024-09-12
- * @author 임성현
+ * 마지막 수정일: 2024-09-13
+ * @author 강동준
  * 
- * 주요 수정 내용: 로그인 메뉴에 사용하기 위해 doProcess 메소드 수정
+ * 주요 수정 내용: if 
  */
 
 package controller;
@@ -31,21 +31,20 @@ public class LoginController extends HttpServlet {
 		ActionForward forward = null;
 		Action action = null;
 
-//임성현
-//================================================================================================================================
-		if (command.equals("/login.l")) {
+		if (command.equals("")) {
+			
+		} else if (command.equals("/login.l")) {
 			action = new LoginAction();
 
 			// 페이지 이동을 위한 임시 코드(3줄) 시험 끝나고 삭제할것.
 			forward = new ActionForward();
 			forward.setRedirect(true);
-			forward.setPath("/BeansPaM/pof/stock/index.html");
+			forward.setPath("/BeansPaM/stock/container1.html");
 			try {
 //				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-//================================================================================================================================
 		} else {
 
 		}
