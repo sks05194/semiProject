@@ -1,0 +1,305 @@
+/* 표 스타일 */
+*{
+    margin: auto 0;
+}
+nav{
+    position: relative;
+    float: left;
+    height: 100vh;
+    width: 200px;
+    background-color: rgb(41, 15, 5);
+    z-index: 100;
+    text-align: center;
+}
+.mark{
+    position: relative;
+    top: 100px;
+    left: 20px;
+}
+.content {
+    transform: translateY(100px);
+}
+.content a{
+    text-decoration: none;
+    color: wheat;
+}
+.mark:hover span{
+    background-color: orangered;
+    border: none;
+}
+.mark:hover span:nth-child(1){
+    background-color: orangered;
+    border: none;
+}
+.mark:hover span:nth-child(2){
+    background-color: orangered;
+    border: none;
+}
+.mark:hover span:nth-child(3){
+    background-color: orangered;
+    border: none;
+}
+.mark span{
+    position: absolute;
+    border: solid 1px wheat;
+    width: 120px;
+    height: 95px;
+    left: 15px;
+    top:-20px;
+    border-radius: 50px 30px 40px 30px;
+    animation: animation linear infinite 7.5s;
+    
+}
+.mark:hover span{
+    border: none;
+    background-color: orangered;
+    transition: 0.5s;
+    opacity: 0.3;
+}
+.mark:hover span{
+    border: none;
+    background-color: orangered;
+    opacity: 0.3s;
+}
+.mark:hover span:hover{
+    border: none;
+    background-color: orangered;
+    opacity: 0.3s;
+}
+.mark span:nth-child(1){
+  
+   animation: animation linear infinite 6s;
+    animation-direction: reverse;
+    opacity: 0.8;
+
+}
+.mark span:nth-child(2){
+  
+    animation: animation linear infinite 6.1s;
+    opacity: 0.6;
+
+}
+.mark span:nth-child(3){
+    animation: animation linear infinite 6.2s;
+    opacity: 0.3;
+}
+table {
+    background-color:white;
+    width: 70%;
+    border-collapse: collapse; 
+    border: none;
+    margin-top: 5%; 
+    position: absolute;
+    left: 25%;
+    top:10%;
+    margin-top: 0;
+    /* display: none; */
+}
+
+/* 표 헤더(th) 스타일 */
+th {border-bottom:solid ;
+    background-color: (244, 228, 209);
+    padding: 10px; 
+    text-align: center; 
+    background-color: rgb(41, 15, 5);
+    color: rgb(244, 228, 209);
+}
+
+/* 표 데이터 셀(td) 스타일 */
+.mytable{
+    position: relative;
+    top:30px;
+}
+td {
+   
+    padding: 10px;
+    text-align: center; 
+    color: rgb(41, 15, 5); 
+    font-size: 22px;
+}
+tr{
+    border-bottom: solid 1px;
+    border-color: rgb(165, 81, 42);
+}
+.chart{
+  
+    background-color: rgb(244, 228, 209);
+    height: 200px;
+    text-align: center;
+   
+}
+.cha1{
+    position: relative;
+  
+    top:150px;
+    height: 50px;
+    text-align: center;
+}
+
+.cha1 h1{
+  width: 50%;
+    transform: translateY(30px);
+   
+ 
+}
+.map{
+  
+    height: 30px;
+    position: relative;
+   
+    top:120px;
+    text-align: center;
+    width: 100%;
+}
+.map label{
+    width: 22px;
+    height: 22px;
+    top:1px;
+    background-color: rgb(41, 15, 5);
+   
+    border-radius: 10px 0px 0px 10px;
+    border: solid 1px;
+   position: absolute;
+   transform: translateX(-20px);
+}
+label i {
+    color: wheat;
+}
+.map input{
+    
+    height: 20px;
+    border-radius:0px 20px 20px 0px;
+    border: none;
+    width: 500px;
+}
+.map input:focus{
+    background-color: rgb(165, 81, 42);
+}
+.chart input:focus{
+    border: solid 1px;
+    color: rgb(211, 59, 4);
+    background-color: rgb(211, 59, 4);
+    outline: color(211, 59, 4);   
+}
+.pagination{
+   position: relative;
+    transform: translateY(600px);
+   text-align: center;
+ 
+   
+}
+.pagination button{
+    font-size: 15px;
+    border: none;
+    border-radius: 20px;
+    width: 50px;
+    height: 20px;
+    background-color: rgb(41, 15, 5);
+    color: rgb(244, 228, 209);
+    transition: 0.3s;
+}
+.pagination button:hover{
+    background-color: rgb(244, 228, 209);
+    color: rgb(16, 6, 6);
+}
+.menubar{
+    position: relative;
+    top:40px;
+    color:rgb(244, 228, 209);
+    top:200px;
+}
+.menubar li{
+    margin-top: 10px;
+    list-style: none;
+    transform: translateX(-20px);
+    font-size: 25px;
+    cursor: pointer;
+    
+}
+.menubar i{
+    position: absolute;
+    top:-30px;
+    font-size: 20px;
+   
+}
+.menubar h3{
+    font-size:15px;
+    color: rgb(211, 59, 4);
+ 
+}
+.selector {
+    border-radius: 0px 10px 0px 0px;
+    width: 100px;
+    height: 1000vh;
+    margin-left: 200px;
+    margin-right: 0 ;
+   background-color: rgb(16, 6, 6);
+   transform: translateY(-426px);
+    text-align: center;
+
+}
+.selector a{
+    height: 30px;
+     display: block;
+     position: relative;
+     top: 400px;
+     text-decoration: none;
+     color: wheat;
+     font-size: 23px;
+     margin-top: 30px;
+ }
+ .selector i {
+     color: white;
+     font-size: 30px;
+ }
+.menubar p{
+    transform: translateY(-10px);
+    font-size: 20px;
+    font-weight: 800;
+}
+.menubar h3{
+    color: white;
+    transform: translateY(-10px);
+    font-size: 30px;
+    
+}
+@keyframes animation {
+    0%{
+        transform: rotate(0deg);
+    }
+
+    100%{
+        transform: rotate(360deg);
+    }
+}
+.divider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.divider svg {
+    position: relative;
+    display: block;
+    width: calc(126% + 1.3px);
+    height: 82px;
+    transform: rotateY(180deg);
+}
+
+.divider .shape-fill {
+    fill: #eabd9b;
+}
+.menubar a:hover, .menubar.active{
+    color: brown;
+    background-color: wheat;
+}
+
+#d1,#d2,#d3,#d4,#d5{
+    display: none;
+}
+#d1.active,#d2.active,#d3.active,#d4.active,#d5.active{
+    display: block;
+}

@@ -223,7 +223,7 @@ header{
 .mya {
    transition: 0.5s;
 }
-.menuBar{
+.menubar{
     position: relative;
     
     color: wheat;
@@ -231,17 +231,17 @@ header{
     display: block;
 }
 
-.menuBar h2{
+.menubar h2{
     font-size:15px;
     color: rgb(211, 59, 4);
  
 }
-.menuBar p{
+.menubar p{
     transform: translateY(-5px);
     transition: 0.3s;
 
 }
-.menuBar h3{
+.menubar h3{
     color: white;
     transform: translateY(-5px);
     
@@ -321,7 +321,7 @@ mark:hover span:nth-child(3){
     animation: animation linear infinite 7.5s;
     
 }
-.menuBar i{
+.menubar i{
     transform: translateX(10);
     font-size: 25px;
 }

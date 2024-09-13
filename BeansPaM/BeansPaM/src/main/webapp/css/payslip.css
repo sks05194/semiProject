@@ -5,7 +5,7 @@ header{
     
     position: relative;
     float: left;
-    height: 1000vh;
+    height: 100vh;
     width: 200px;
     background-color: rgb(41, 15, 5);
     z-index: 100;
@@ -134,9 +134,9 @@ header{
     margin-left: 200px;
     margin-right: 0 ;
    background-color: rgb(16, 6, 6);
-   transform: translateY(-500px);
+   transform: translateY(-426px);
     text-align: center;
-  
+
 }
 .selector a{
     height: 30px;
@@ -154,7 +154,7 @@ header{
  }
 .menubar{
     position: relative;
-   
+    top:40px;
     color:rgb(244, 228, 209);
     top:200px;
 }
@@ -221,11 +221,9 @@ header{
 }
 #d1,#d2,#d3,#d4,#d5{
     display: none;
-  
 }
 #d1.active,#d2.active,#d3.active,#d4.active,#d5.active{
     display: block;
-    
 }
 
 
@@ -250,8 +248,11 @@ header{
 }
 
 .search-container button {
-    padding: 10px 20px;
-    font-size: 16px;
+    width: 200px;
+    height: 40px;
+    border-radius: 10px;
+    
+    font-size: 26px;
     background-color: rgb(41, 15, 5);
     color: #fff;
     border: none;
@@ -304,7 +305,6 @@ th {
 
 .pagination button.active {
     background-color: rgb(41, 15, 5); 
-    margin-bottom: -100px;
     color: #fff;
 }
 

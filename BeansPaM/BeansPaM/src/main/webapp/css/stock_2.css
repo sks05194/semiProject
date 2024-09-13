@@ -1,0 +1,468 @@
+*{
+    margin: 0 auto;
+}
+header{
+    
+    position: relative;
+    float: left;
+    height: 100vh;
+    width: 200px;
+    background-color: rgb(41, 15, 5);
+    z-index: 100;
+    text-align: center;
+}
+.mark{
+    position: relative;
+    top: 100px;
+    left: 20px;
+}
+.content {
+    transform: translateY(10px);
+}
+.content a{
+    text-decoration: none;
+    color: wheat;
+}
+.mark:hover span{
+    background-color: orangered;
+    border: none;
+}
+.mark:hover span:nth-child(1){
+    background-color: orangered;
+    border: none;
+}
+.mark:hover span:nth-child(2){
+    background-color: orangered;
+    border: none;
+}
+.mark:hover span:nth-child(3){
+    background-color: orangered;
+    border: none;
+}
+.mark span{
+    position: absolute;
+    border: solid 1px wheat;
+    width: 120px;
+    height: 95px;
+    left: 15px;
+    top:-20px;
+    border-radius: 50px 30px 40px 30px;
+    animation: animation linear infinite 7.5s;
+    
+}
+.menu1{
+ 
+    position: relative;
+    top:100px;
+    font-size: 25px;
+    color: rgb(244, 228, 209);
+}
+.menu1 h3{
+    color: white;
+}
+
+.selector {
+   
+    width: 120px;
+    height: 100vh;
+    margin-left: 200px;
+    margin-right: 0 ;
+   background-color: rgb(16, 6, 6);
+   transform: translateY(-426px);
+    height: 100vh;
+    
+    text-align: center;
+
+}
+.selector a{
+    height: 10px;
+     display: block;
+     position: relative;
+     top: 400px;
+     text-decoration: none;
+     color: wheat;
+     font-size: 23px;
+     margin-top: 30px;
+    
+     
+ }
+ .selector i {
+
+    transform: translateY(-5px);
+     color: white;
+     font-size: 30px;
+ }
+.menubar{
+    position: relative;
+    top:40px;
+    color:rgb(244, 228, 209);
+    top:200px;
+}
+.menubar li{
+   height: 50px;
+    list-style: none;
+    transform: translateX(-20px);
+    font-size: 25px;
+    cursor: pointer;
+    padding: 10px;
+    
+}
+.menubar i{
+    position: absolute;
+    font-size: 20px;
+   
+}
+.menubar h3{
+    font-size:15px;
+    color: rgb(211, 59, 4);
+ 
+}
+
+.menubar p{
+    transform: translateY(-10px);
+    font-size: 20px;
+    font-weight: 800;
+}
+.menubar h3{
+    color: white;
+    transform: translateY(-10px);
+    font-size: 30px;
+    
+}
+
+
+.metabar{
+    position:relative;
+ 
+    width: 50px;
+    height: 50px;
+    top:5px;
+   z-index: 50;
+    cursor: pointer;
+    left: 5px;
+}
+.metabar span{
+    position: absolute;
+    border: solid 2px ;
+    color: wheat;
+    width: 49px;
+    border-radius: 10px;
+}
+.metabar span:nth-child(1){
+    position: absolute;
+    border: solid 2px ;
+    color: wheat;
+    width: 47px;
+    transform: translateY(15px);
+    
+}
+.metabar span:nth-child(2){
+    position: absolute;
+    border: solid 2px ;
+    color: wheat;
+    width: 47px;
+    transform: translateY(30px);
+    
+}
+.metabar span:nth-child(3){
+    position: absolute;
+    border: solid 2px ;
+    background-color: wheat;
+     width: 47px;
+    transform: translateY(45px);
+    
+}
+.metabar:active span:nth-child(1){
+    transform: rotate(45deg);
+    color: #ea9a5d;
+}
+.metabar:active span:nth-child(2){
+    opacity: 0;
+    
+}
+.metabar:active span:nth-child(3){
+    
+    transform: rotate(-45deg);
+   color: #ea9a5d;
+}
+
+.home{
+    background-color: rgb(41, 15, 5);
+    position: relative;
+    float: left;
+    height: 100vh;
+    width: 200px;
+     z-index: 100;
+    text-align: center;
+    position: fixed;
+    
+ 
+}
+.mya {
+   transition: 0.5s;
+}
+.menubar{
+    position: relative;
+    
+    color: wheat;
+    top:100px;
+    display: block;
+}
+
+.menubar h2{
+    font-size:15px;
+    color: rgb(211, 59, 4);
+ 
+}
+.menubar p{
+    transform: translateY(-5px);
+    transition: 0.3s;
+
+}
+.menubar h3{
+    color: white;
+    transform: translateY(-5px);
+    
+}
+
+.mya a{
+    left: 50px;
+    font-size: 15px;
+    color: wheat;
+    text-decoration: none;
+    margin-top: 12px;
+    display: block;
+    font-weight: 400;
+    
+   
+    display: block;
+   
+    width: 200px;
+ 
+}
+.menuBar a:hover{
+    color: orangered;
+    background-color: black;
+    opacity: 1;
+    opacity: 1;
+    width: 120px;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+.mark{
+    position: relative;
+    top:90px;
+    width: 100px;
+    height: 100px;
+    transition: 0.3s;
+    left: -30px;
+}
+.content{
+    border: solid 1px color wheat;
+    position: relative;
+    top:10px;
+    left: 20px;
+}
+.content a{
+    position: absolute;
+    transform: translateY(-10px);
+    text-decoration: none;
+    color: wheat;
+    left: 30px;
+    font-size: 15px;
+    z-index: 10px;
+}
+mark:hover span{
+    background-color: orangered;
+    border: none;
+}
+mark:hover span:nth-child(1){
+    background-color: orangered;
+    border: none;
+}
+mark:hover span:nth-child(2){
+    background-color: orangered;
+    border: none;
+}
+mark:hover span:nth-child(3){
+    background-color: orangered;
+    border: none;
+}
+.mark span{
+    position: absolute;
+    border: solid 1px wheat;
+    width: 120px;
+    height: 95px;
+    left: 15px;
+    top:-20px;
+    border-radius: 50px 30px 40px 30px;
+    animation: animation linear infinite 7.5s;
+    
+}
+.menubar i{
+    transform: translateX(10);
+    font-size: 25px;
+}
+.mark:hover span{
+    border: none;
+    background-color: orangered;
+    transition: 0.5s;
+    opacity: 0.3;
+}
+.mark:hover span{
+    border: none;
+    background-color: orangered;
+    opacity: 0.3s;
+}
+.mark:hover span:hover{
+    border: none;
+    background-color: orangered;
+    opacity: 0.3s;
+}
+.mark span:nth-child(1){
+  
+   animation: animation linear infinite 6s;
+    animation-direction: reverse;
+    opacity: 0.8;
+
+}
+.mark span:nth-child(2){
+  
+    animation: animation linear infinite 6.1s;
+    opacity: 0.6;
+
+}
+.mark span:nth-child(3){
+    animation: animation linear infinite 6.2s;
+    opacity: 0.3;
+}
+.divider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.divider svg {
+    position: relative;
+    display: block;
+    width: calc(126% + 1.3px);
+    height: 82px;
+    transform: rotateY(180deg);
+}
+
+.divider .shape-fill {
+    fill: #eabd9b;
+}
+.title{
+   
+    text-align: center;
+    
+    width: 100%;
+    height: 230px;
+    
+    background-color: rgb(244, 228, 209);
+}
+.t1{
+    position: relative;
+    width: 100%;
+    height: 20px;
+    text-align: center;
+    top:140px;
+    left: -400px;
+}
+.t1 h1{
+    color:rgb(41, 15, 5);
+    font-weight: 900;
+    font-size: 40px;
+    width: 200px;
+}
+.stock-container{
+ 
+    height: 700px;
+    position: relative;
+    top:-20px;
+    text-align: center;
+  background-color: rgb(244, 228, 209);
+}
+.map{
+    
+ 
+ width: 1000px;
+ height: 600px;
+ box-sizing: border-box;
+ border-radius: 10px;
+}
+.m1{
+    position: relative;
+ 
+    float: left;
+    width: 50%;
+    height: 500px;
+   
+
+}
+.m1 img{
+    width: 100%;
+    height: 590px;
+    
+}
+.explain{
+    border-radius: 20px;
+    height: 590px;
+    float: right;
+    width: 49%;
+    background-color: rgb(41, 15, 5);
+}
+@keyframes animation {
+    0%{
+        transform: rotate(0deg);
+    }
+
+    100%{
+        transform: rotate(360deg);
+    }
+}
+.explain h1{
+    transform: translateY(40px);
+    font-size: 30px;
+    color: rgb(244, 228, 209);
+}
+table{
+    transform: translateY(50px);
+    border-collapse: collapse;
+}
+tr{
+    border-bottom: solid 1px;
+    font-size: 18px;
+}
+th{
+    width: 500px;
+ 
+    background-color:rgb(42, 16, 16);
+color: white;
+height: 10px;
+opacity: 0.8;
+}
+td{
+    height: 80px;
+    background-color: rgb(244, 228, 209);
+    color: rgb(42, 16, 16);
+    font-size: 25px;
+    width: 100px;
+}
+
+.btn li:hover,
+.btn li.active{
+    background-color: rgb(165, 81, 42);
+}
+#d1,#d2,#d3,#d4,#d5{
+    display: none;
+}
+#d1.active,#d2.active,#d3.active,#d4.active,#d5.active{
+    display: block;
+    margin-top: -100px;
+}
+

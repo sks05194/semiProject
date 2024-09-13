@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,10 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 //import action.Action;
 import vo.ActionForward;
 
-/**
- * Servlet implementation class FMSController
- */
-@WebServlet("*.fms")
 public class FMSController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -30,11 +25,13 @@ public class FMSController extends HttpServlet {
 		if (command.equals("/container1.fms")) {
 			forward = new ActionForward();
 			forward.setRedirect(false);
-			forward.setPath("/BeansPaM/stock/container1.html");
+			forward.setPath("/stock/stock.html");
 		} else if (command.equals("/inform.fms")) {
 			forward = new ActionForward();
 			forward.setRedirect(false);
-			forward.setPath("/BeansPaM/stock/emp_inform.html");
+			forward.setPath("/emp/emp_inform.html");
+		} else {
+
 		}
 
 		if (forward != null) {

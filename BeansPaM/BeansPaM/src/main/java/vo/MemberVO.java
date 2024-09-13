@@ -2,10 +2,10 @@
  * 최초 생성일: 2024-09-11
  * @author 강동준
  * 
- * 마지막 수정일: 2024-09-12
+ * 마지막 수정일: 2024-09-13
  * @author 강동준
  * 
- * 주요 수정 내용: email 추가에 따른 멤버변수, getter, setter 선언
+ * 주요 수정 내용: m_no가 number 자료형으로 바뀜에 따라 
  */
 
 package vo;
@@ -14,7 +14,7 @@ import java.sql.Date;
 
 /* 사원 정보를 담는 VO 클래스 입니다. */
 public class MemberVO {
-	String m_no = null;			// 사번
+	int m_no = 0;				// 사번
 	String m_id = null;			// 아이디
 	String m_pw = null;			// 비밀번호
 	String m_name = null;		// 이름
@@ -26,8 +26,8 @@ public class MemberVO {
 	int m_salary = 0;			// 급여: 월급, 원화
 	String m_dept = null;		// 부서명
 
-	public String getM_no() { return m_no; }
-	public void setM_no(String m_no) { this.m_no = m_no; }
+	public int getM_no() { return m_no; }
+	public void setM_no(int m_no) { this.m_no = m_no; }
 
 	public String getM_id() { return m_id; }
 	public void setM_id(String m_id) { this.m_id = m_id; }

@@ -20,7 +20,6 @@ import action.*;
 import vo.ActionForward;
 
 public class LoginController extends HttpServlet {
-	
 	private static final long serialVersionUID = 1L;
        
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -29,15 +28,15 @@ public class LoginController extends HttpServlet {
 		String contextPath = request.getContextPath();
 		String command = RequestURI.substring(contextPath.length());
 		ActionForward forward = null;
-		Action action = null;
+//		Action action = null;
 
 		if (command.equals("/login.l")) {
-			action = new LoginAction();
+//			action = new LoginAction();
 
 			// 페이지 이동을 위한 임시 코드(3줄) 시험 끝나고 삭제할것.
 			forward = new ActionForward();
 			forward.setRedirect(true);
-			forward.setPath("/container1.fms");
+			forward.setPath(contextPath + "/container1.fms");
 			try {
 //				forward = action.execute(request, response);
 			} catch (Exception e) {

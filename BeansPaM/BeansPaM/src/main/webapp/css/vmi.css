@@ -1,0 +1,164 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+header {
+    position: fixed;
+    left: 0;
+    height: 100vh;
+    width: 200px;
+    background-color: rgb(41, 15, 5);
+    z-index: 100;
+    text-align: center;
+}
+
+.menuBar {
+    position: relative;
+    top: 20px;
+    color: wheat;
+}
+
+.logo {
+    width: 150px;
+    margin: 0 auto 20px;
+    display: block;
+}
+
+.menuBar a {
+    display: block;
+    color: wheat;
+    text-decoration: none;
+    margin-top: 12px;
+    font-weight: 400;
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+.menuBar a:hover {
+    color: orangered;
+    background-color: black;
+    width: 120px;
+    border-radius: 5px;
+}
+
+.content {
+    margin-left: 220px;
+    padding: 20px;
+}
+
+.material-section {
+    margin-top: 80px;
+    margin-bottom: 40px;
+}
+
+/* 타이틀 및 컨트롤 섹션 정렬 */
+.header-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+/* 스케줄러와 버튼을 같은 줄에 정렬 */
+.controls {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin: 0 auto;
+    align-items: center;
+}
+
+.scheduler {
+    display: flex;
+    align-items: center;
+}
+
+.scheduler label {
+    margin-right: 10px;
+    font-size: 14px;
+    color: #333;
+}
+
+.scheduler input {
+    padding: 5px;
+    margin: 0 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* 작성하기, 수정하기, 삭제하기 버튼 스타일 */
+.action-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.action-button {
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.action-button:hover {
+    background-color: #0056b3;
+}
+
+.status-table {
+    width: 80%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    background-color: white;
+    border: 1px solid #ddd;
+}
+
+.status-table th, .status-table td {
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #ddd;
+    font-size: 12px;
+}
+
+.status-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+.status-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* 편집 가능 상태에서 셀 스타일 */
+.editable {
+    cursor: text;
+}
+
+.status-table tr:hover .editable {
+    border: 1px solid #ccc;
+}
+
+/* 삭제 모드에서 행 스타일 */
+.deletable-row {
+    cursor: pointer;
+}
+
+.deletable-row:hover {
+    border: 2px solid orangered;
+    cursor: pointer;
+}
