@@ -1,0 +1,208 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: #290f05;
+}
+
+/* 좌측 메뉴탭 */
+.logo {
+    width: 150px;
+    margin: 0 auto 20px;
+    display: block;
+}
+
+.menuBar a {
+    font-size: 15px;
+    color: wheat;
+    text-decoration: none;
+    margin-top: 12px;
+    display: block;
+    font-weight: 400;
+    transition: 0.3s;
+    gap: 8px;
+}
+
+.menuBar a:hover {
+    color: rgb(41, 15, 5);
+    background-color: wheat;
+    width: 120px;
+    border-radius: 5px;
+}
+
+header {
+    position: fixed;
+    float: left;
+    height: 100vh;
+    width: 200px;
+    background-color: rgb(41, 15, 5);
+    z-index: 100;
+    text-align: center;
+}
+
+/* Notice_write 스타일 시작 */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+header {
+    position: fixed;
+    height: 100vh;
+    width: 200px;
+    background-color: rgb(41, 15, 5);
+    z-index: 100;
+    text-align: center;
+    top: 0;
+    left: 0;
+}
+
+.menuBar {
+    padding-top: 20px;
+}
+
+.menuBar a {
+    font-size: 15px;
+    color: wheat;
+    text-decoration: none;
+    margin-top: 12px;
+    display: block;
+    font-weight: 400;
+    transition: 0.3s;
+}
+
+.menuBar a:hover {
+    color: rgb(41, 15, 5);
+    background-color: wheat;
+    width: 120px;
+    border-radius: 5px;
+    margin: 0 auto;
+}
+
+
+/* 공지사항 상세페이지 창 */
+.container {
+    color: rgb(41, 15, 5);
+    /* max-width: 700px; */
+    width: 800px;
+    height: 600px;
+    margin-left: 220px; /* 사이드바 너비를 고려한 여백 */
+    margin-top: 50px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 25px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group3 {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+}
+
+input[type="file"], input[type="text"], textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+textarea {
+    width: 100%;
+    height: 300px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    resize: none;
+    overflow: auto;
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+button {
+    margin: 0;
+    padding: 8px 15px;
+    background-color: #cfaa9c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    flex-shrink: 0; /* 버튼이 크기 조정으로 인해 줄바꿈되지 않도록 */
+}
+
+button:hover {
+    background-color: lightgray;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+label[for="file-upload"] { /* 추후 삭제될 수 있음(file upload) */
+    margin-bottom: 9px;
+    padding: 8px 12px;
+    background-color: #cfaa9c;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+label[for="file-upload"]:hover {
+    background-color: lightgray;
+}
+
+/* 내용과 첨부 버튼을 한 줄에 정렬 */
+.content-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+span#title {
+    border: 1px solid black;
+    padding: 5px;
+    display: inline-block;
+}
+
+
+
+/* 반응형 미디어 쿼리 */
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+        margin-left: 200px; /* 사이드바의 크기를 고려하여 여백 조정 */
+    }
+}
+

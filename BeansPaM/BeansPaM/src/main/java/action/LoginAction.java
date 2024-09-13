@@ -33,7 +33,7 @@ public class LoginAction implements Action {
 			check = "check"; // 아이디, 비밀번호가 DB와 일치하지 않을 때를 위한 String 변수 초기화
 			session.setAttribute("checkLogin", check); // Session에 로그인 메뉴로 보낼 속성 값(check) 설정
 			response.sendRedirect("/BeansPaM/login/login_menu.jsp"); // 리다이렉트를 통해 로그인 메뉴로 돌아온다.
-			check = "null"; // check 값 null로 다시 초기화
+			check = null; // check 값 null로 다시 초기화
 		} else { // boolean 값이 true일때 (아이디와 비밀번호가 DB와 일치함)
 			String check2 = (String) session.getAttribute("userid"); // Session 값 검사하기를 위한 String 변수 선언
 			if (check2 != null) { // Session에 userid 값이 있다면
@@ -42,7 +42,7 @@ public class LoginAction implements Action {
 			session.setAttribute("userid", memberVO.getM_id()); // 사용자 정보를 위한 세션 생성
 			forward = new ActionForward(); // 리다이렉트를 통해 서블릿으로 돌아갈 forward 객체 생성
 			forward.setRedirect(true); // true면 서블릿에서 리다이렉트를 if문을 통해 허락한다.
-			forward.setPath("/BeansPaM/pof/stock/index.html"); // index_scren 페이지로 이동한다.
+			forward.setPath("/container1.fms"); // index_scren 페이지로 이동한다.
 		}
 		
 		return forward;

@@ -2,10 +2,10 @@
  * 최초 생성일: 2024-09-11
  * @author 강동준
  * 
- * 마지막 수정일: 2024-09-11
+ * 마지막 수정일: 2024-09-13
  * @author 강동준
  * 
- * 주요 수정 내용: 문서 생성
+ * 주요 수정 내용: Connection 객체를 싱글턴으로 변경
  */
 
 package database;
@@ -19,28 +19,33 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 public class JdbcUtil {
+	private static Connection conn = null;
+	
+	private JdbcUtil() { }
+	
 	public static Connection getConnection() {
-		Connection conn = null;
-
-		try {
-			Context initCtx = new InitialContext();
-			DataSource ds = (DataSource) initCtx.lookup("java:comp/env/jdbc/BeansPaMDB");
-
-			conn = ds.getConnection();
-			conn.setAutoCommit(false);
-		} catch (Exception e) {
-			e.printStackTrace();
+		if (conn == null) {
+			try {
+				Context initCtx = new InitialContext();
+				DataSource ds = (DataSource) initCtx.lookup("java:comp/env/jdbc/BeansPaMDB");
+				
+				conn = ds.getConnection();
+				conn.setAutoCommit(false);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 
 		return conn;
 	}
 
-	public static void close(Connection conn) {
+	public static void connClose(Connection conn) {
 		if (conn == null)
 			return;
 
 		try {
 			conn.close();
+			conn = null;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -1,0 +1,252 @@
+* {
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: rgb(255, 255, 255);
+}
+
+header {
+    position: fixed;
+    float: left;
+    height: 100vh;
+    width: 200px;
+    background-color: rgb(41, 15, 5);
+    z-index: 100;
+    text-align: center;
+}
+
+.menuBar {
+    position: relative;
+    top: 20px;
+    color: wheat;
+}
+
+/* 로고 스타일 */
+.logo {
+    width: 150px;
+    margin: 0 auto 20px;
+    display: block;
+}
+
+.menuBar h2 {
+    font-size: 15px;
+    color: rgb(211, 59, 4);
+}
+
+.menuBar p {
+    transform: translateY(85px);
+}
+
+.menuBar h3 {
+    color: white;
+    transform: translateY(80px);
+}
+
+.menuBar a {
+    transform: translateY(100px);
+    left: 50px;
+    font-size: 15px;
+    color: wheat;
+    text-decoration: none;
+    margin-top: 12px;
+    display: block;
+    font-weight: 400;
+    transition: 0.3s;
+    gap: 8px;
+}
+
+.menuBar a:hover {
+    color: rgb(41, 15, 5);
+    background-color: wheat;
+    width: 120px;
+    border-radius: 5px;
+}
+
+.content {
+    margin-left: 220px;
+    padding: 20px;
+}
+
+.board {
+    width: 80%;
+    margin: 20px auto;
+    background-color: rgb(255, 255, 255);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.board h2 {
+    color: rgb(41, 15, 5);
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 36pt;
+}
+/* 테이블 행에 커서를 올리면 배경색이 변하도록 설정 */
+table tr {
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+/* 마우스가 테이블 행 위에 있을 때 배경색 변경 */
+table tr:hover {
+    background-color: #f0f0f0;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+td{
+    border-top: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
+}
+th, td {
+    padding: 10px;
+    font-size: 12px;
+    text-align: center;
+    color: rgb(41, 15, 5);
+}
+
+th {
+    font-size: 14px;
+    
+    background-color: rgba(241, 235, 229, 0.902);
+}
+
+/* 페이지 버튼 */
+/* .pagination {
+    text-align: center;
+}
+
+.pagination a {
+    color: rgb(41, 15, 5);
+    text-decoration: none;
+    margin: 0 5px;
+    padding: 5px 10px;
+    background-color: rgba(241, 235, 229, 0.902);
+    border-radius: 5px;
+}
+
+.pagination a:hover {
+    background-color: lightgray;
+} */
+
+.board {
+    position: relative; /* 버튼의 절대 위치 배치를 위한 상대 위치 기준 */
+    width: 80%;
+    margin: 20px auto;
+    background-color: rgb(255, 255, 255);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.actions-container {
+    display: flex;
+    flex-wrap: wrap; 
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 25px;
+}
+
+/* 검색창 스타일 */
+.search-container {
+    display: flex;
+    align-items: center;
+    flex-grow: 0.3;
+    margin-bottom: 10px;
+}
+
+.search-container input[type="search"] {
+    padding: 8px;
+    margin: 6px 10px 0px 3px;
+    margin-right: 10px;
+    width: 60%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.search-container button {
+    padding: 8px 12px;
+    margin-top: 5px;
+    margin-left: -10px;
+    background-color: rgba(241, 235, 229, 0.902);
+    color: #290f05;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.search-container button:hover {
+    background-color: lightgray;
+}
+/* 페이지네이션 스타일 */
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 5px; 
+}
+
+.pagination a {
+    color: #290f05;
+    padding: 6px 12px;
+    margin: 5px;
+    font-size: 14px;
+    background-color: rgba(241, 235, 229, 0.902);
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.pagination a:hover {
+    background-color: lightgray;
+} 
+
+/* 버튼 컨테이너 스타일 */
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-grow: 1;
+    flex-wrap: wrap;
+}
+
+.button-container button {
+    margin-left: 0px;
+    margin-right: 10px;
+    margin-bottom: 5px;
+    padding: 8px 12px;
+    background-color: rgba(241, 235, 229, 0.902);
+    color: #290f05;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.button-container button:hover {
+    background-color: lightgray;
+}
+/* 반응형 미디어 쿼리 */
+@media (max-width: 768px) {
+    .actions-container {
+        flex-direction: column; /* 작은 화면에서는 요소들이 세로로 배치 */
+        align-items: flex-start; /* 작은 화면에서 왼쪽 정렬 */
+    }
+
+    .search-container,
+    .button-container {
+        width: 80%; /* 작은 화면에서는 각 요소가 전체 너비를 차지 */
+    }
+
+    .button-container {
+        justify-content: flex-start; /* 작은 화면에서 버튼들도 왼쪽 정렬 */
+    }
+
+    .pagination {
+        justify-content: flex-start; /* 페이지네이션도 왼쪽 정렬 */
+    }
+}
