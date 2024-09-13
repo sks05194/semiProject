@@ -1,74 +1,75 @@
 <!DOCTYPE html>
 <html lang="kr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/BeansPaM/css/emp_inform.css">
     <script src="/BeansPaM/js/jquery.js"></script>
-    <script src = "/BeansPaM/js/fontawsome.js"></script>
+    <script src="/BeansPaM/js/fontawsome.js"></script>
 </head>
+
 <body>
     <header>
-        <div class = "Home">
-            <div class = "mark">
-                
+        <div class="Home">
+            <div class="mark">
+
                 <span></span>
                 <span></span>
                 <span></span>
-            </div>  
-            <div class ="content">
-            <a href="" >CoffeePaM<br>&CoffeeJAVA</a>
+            </div>
+            <div class="content">
+                <a href="">CoffeePaM<br>&amp;CoffeeJAVA</a>
+            </div>
         </div>
-            
-        <div class = "menubar"> 
+
+        <div class="menubar">
             <i class="fa-solid fa-user"></i>
-                <h3>손동진</h3>
-                <p>new Person</p>
-                <ul>
+            <h3>손동진</h3>
+            <p>new Person</p>
+            <ul>
                 <li data-alt="d1">MyPage</li>
                 <li data-alt="d2">시설현황</li>
                 <li data-alt="d3">전자결재</li>
                 <li data-alt="d4">사원정보</li>
-                
             </ul>
         </div>
+
         <div class="box">
-            <div class ="selector" id = "d1">
-                <a href="">  <i class="fa-solid fa-user"></i></a>
-                <a href="" id = "d1_a">연차</a>
-                <a href="">  <i class="fa-solid fa-user"></i></a>
-                <a href="" id = "d1_b">근태</a>
-                <a href="">  <i class="fa-solid fa-money-bill"></i></a>
-                <a href="" id = "d1_c">급여</a>
+            <div class="selector" id="d1">
+                <a href=""> <i class="fa-solid fa-user"></i></a>
+                <a href="" id="d1_a">연차</a>
+                <a href=""> <i class="fa-solid fa-user"></i></a>
+                <a href="" id="d1_b">근태</a>
+                <a href=""> <i class="fa-solid fa-money-bill"></i></a>
+                <a href="" id="d1_c">급여</a>
             </div>
-          
-            <div class = "selector" id = "d2">
-                <a href="/BeansPaM/stock/container1.html"><i class="fa-solid fa-industry"></i></a>
-                <a href="/BeansPaM/stock/container1.html" id = "d2_a" >1번 창고</a>
-            
+
+            <div class="selector" id="d2">
+                <a href="/container1.fms"><i class="fa-solid fa-industry"></i></a>
+                <a href="/container1.fms" id="d2_a">1번 창고</a>
+
                 <a href=""><i class="fa-solid fa-industry"></i></a>
-                <a href="" id = "d2_b">2번 창고</a>
-                 </div>
-            <div class ="selector" id = "d3">
-                <a href=""><i class="fa-brands fa-elementor"></i></a>
-                <a href="" id = "d3_a">전자문서</a>
-                <a href=""><i class="fa-solid fa-file"></i></a>
-                <a href="" id = "d3_b">결재</a>
+                <a href="" id="d2_b">2번 창고</a>
             </div>
-            <div class ="selector" id = "d4">
-                <a href="/BeansPaM/emp/emp_inform.html"><i class="fa-solid fa-file"></i></a>
-                <a href="/BeansPaM/emp/emp_inform.html">사원검색</a>
+            <div class="selector" id="d3">
+                <a href=""><i class="fa-brands fa-elementor"></i></a>
+                <a href="" id="d3_a">전자문서</a>
+                <a href=""><i class="fa-solid fa-file"></i></a>
+                <a href="" id="d3_b">결재</a>
+            </div>
+            <div class="selector" id="d4">
+                <a href="/inform.fms"><i class="fa-solid fa-file"></i></a>
+                <a href="/inform.fms">사원검색</a>
                 <a href=""><i class="fa-solid fa-file"></i></a>
                 <a href="">사원 목록</a>
-          
             </div>
-    
         </div>
-
     </header>
+
     <main>
-        <div class = "title">
+        <div class="title">
             <h1>사원 검색</h1>
         </div>
         <div class="container">
@@ -86,7 +87,14 @@
             </div>
             <table id="employeeTable">
                 <thead>
-                    <tr><th>사번</th><th>이름</th><th>부서명</th><th>직급</th><th>이메일</th><th>내선번호</th></tr>
+                    <tr>
+                        <th>사번</th>
+                        <th>이름</th>
+                        <th>부서명</th>
+                        <th>직급</th>
+                        <th>이메일</th>
+                        <th>내선번호</th>
+                    </tr>
                 </thead>
                 <tbody></tbody>
             </table>
@@ -97,30 +105,30 @@
         </div>
     </main>
     <script>
-        $('.btn li').click(function(){
-    $(this).addClass('active')
-    $(this).siblings().removeClass('active');
-   var result =  $(this).attr('data-alt');
-   $('.tabs div').removeClass('active');
-   $('#' + result).addClass('active');
-   
-    
-});
-$('.menubar li').click(function(){
-    $(this).addClass('active'); // backgroundcolor색깔 하고 커서 포인터 잡히고 color 색 잡히는거 
-    $(this).siblings().removeClass('active');
-    // 형제요소에 있는 곳은 active 클래스 빼버리기 
+        $('.btn li').click(function () {
+            $(this).addClass('active')
+            $(this).siblings().removeClass('active');
+            var result = $(this).attr('data-alt');
+            $('.tabs div').removeClass('active');
+            $('#' + result).addClass('active');
 
-    var result = $(this).attr('data-alt'); // menuBar에 속성 집어 넣기 
-    $('.box div').removeClass('active'); // 박스요소안에 있는 div들은 먼저 제거한 상태 
-    $('#' + result).addClass('active');
 
-});
+        });
+        $('.menubar li').click(function () {
+            $(this).addClass('active'); // backgroundcolor색깔 하고 커서 포인터 잡히고 color 색 잡히는거 
+            $(this).siblings().removeClass('active');
+            // 형제요소에 있는 곳은 active 클래스 빼버리기 
 
-$('.map1 button').click(function(){
-    $("#asian").toggle();
-    
-});
+            var result = $(this).attr('data-alt'); // menuBar에 속성 집어 넣기 
+            $('.box div').removeClass('active'); // 박스요소안에 있는 div들은 먼저 제거한 상태 
+            $('#' + result).addClass('active');
+
+        });
+
+        $('.map1 button').click(function () {
+            $("#asian").toggle();
+
+        });
         //임시데이터, db연결시 삭제할거
         const originalEmployees = [
             { employee: '33334444', name: '강동준', department: '기획부', position: '사원', email: 's@coffee.com', tel: '02-3333-4444' },
