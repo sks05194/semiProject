@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>emp_son</title>
+	<link rel="stylesheet" href="/BeansPaM/css/ee.css">
+	<script src="/BeansPaM/js/fontawsome.js"></script>
+	<script src="/BeansPaM/js/jquery.js"></script>
+</head>
+<body>
+	<header>
+
+	</header>
+
+	<div class="divider">
+		<svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+			<path
+				d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"
+				opacity=".25" class="shape-fill"></path>
+			<path
+				d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z"
+				opacity=".5" class="shape-fill"></path>
+			<path
+				d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"
+				class="shape-fill"></path>
+		</svg>
+	</div>
+	<div class="chart"></div>
+	<main>
+		<div class="title">
+			<div class="logo">
+
+			</div>
+		</div>
+		<div class="container">
+			<h1>사원 검색</h1>
+			<div class="search-container">
+				<select id="searchField">
+					<option value="employee">사번</option>
+					<option value="name">이름</option>
+					<option value="department">부서명</option>
+					<option value="position">직급</option>
+					<option value="email">이메일</option>
+					<option value="tel">내선번호</option>
+				</select>
+				<input type="text" id="searchInput">
+				<button onclick="filterTable()">검색</button>
+			</div>
+			<table id="employeeTable">
+				<thead>
+					<tr>
+						<th>사번</th>
+						<th>이름</th>
+						<th>부서명</th>
+						<th>직급</th>
+						<th>이메일</th>
+						<th>내선번호</th>
+					</tr>
+				</thead>
+				<tbody></tbody>
+			</table>
+			<div id="noResults" class="no-results" style="display:none;">
+				검색 결과가 없습니다.
+			</div>
+			<div id="pagination" class="pagination"></div>
+		</div>
+	</main>
+	<script>
+		const originalEmployees = [
+			{ employee: '33334444', name: '강동준', department: '기획부', position: '사원', email: 's@coffee.com', tel: '02-3333-4444' },
+			{ employee: '44443333', name: '강동준', department: '관리부', position: '대리', email: 't@coffee.com', tel: '02-4444-3333' },
+			{ employee: '11111111', name: '민기홍', department: '영업부', position: '부장', email: 'a@coffee.com', tel: '02-1111-1111' },
+			{ employee: '22222222', name: '김둘리', department: '기획부', position: '사원', email: 'b@coffee.com', tel: '02-2222-2222' },
+			{ employee: '33333333', name: '김또치', department: '기획부', position: '과장', email: 'c@coffee.com', tel: '02-3333-3333' },
+			{ employee: '44444444', name: '김영희', department: '관리부', position: '대리', email: 'd@coffee.com', tel: '02-4444-4444' },
+			{ employee: '55555555', name: '김철수', department: '관리부', position: '인턴', email: 'e@coffee.com', tel: '02-5555-5555' },
+			{ employee: '66666666', name: '김희동', department: '기획부', position: '사원', email: 'f@coffee.com', tel: '02-6666-6666' },
+			{ employee: '55556666', name: '나미리', department: '관리부', position: '인턴', email: 'u@coffee.com', tel: '02-5555-6666' },
+			{ employee: '90909090', name: '매앵구', department: '관리부', position: '대리', email: 'p@coffee.com', tel: '02-9090-9090' },
+			{ employee: '99999999', name: '박길동', department: '기획부', position: '사원', email: 'g@coffee.com', tel: '02-9999-9999' },
+			{ employee: '12121212', name: '박희동', department: '영업부', position: '인턴', email: 'h@coffee.com', tel: '02-1212-1212' },
+			{ employee: '78787878', name: '송상훈', department: '영업부', position: '차장', email: 'n@coffee.com', tel: '02-7878-7878' },
+			{ employee: '11221122', name: '김보라', department: '관리부', position: '대리', email: 'k@coffee.com', tel: '02-1122-1122' },
+			{ employee: '33443344', name: '신짱아', department: '기획부', position: '사원', email: 'l@coffee.com', tel: '02-3344-3344' },
+			{ employee: '55665566', name: '신형만', department: '관리부', position: '대리', email: 'm@coffee.com', tel: '02-5566-5566' },
+			{ employee: '34343434', name: '이길동', department: '기획부', position: '과장', email: 'i@coffee.com', tel: '02-3434-3434' },
+			{ employee: '99009900', name: '이훈이', department: '관리부', position: '부장', email: 'q@coffee.com', tel: '02-9900-9900' },
+			{ employee: '56565656', name: '이희동', department: '기획부', position: '차장', email: 'j@coffee.com', tel: '02-5656-5656' },
+			{ employee: '77778888', name: '차은주', department: '기획부', position: '사원', email: 'w@coffee.com', tel: '02-7777-8888' },
+			{ employee: '66665555', name: '채성아', department: '관리부', position: '인턴', email: 'v@coffee.com', tel: '02-6666-5555' },
+			{ employee: '88887777', name: '치이타', department: '관리부', position: '대리', email: 'x@coffee.com', tel: '02-8888-7777' },
+			{ employee: '11112222', name: '한수지', department: '영업부', position: '사원', email: 'q@coffee.com', tel: '02-1111-2222' },
+			{ employee: '22221111', name: '한유리', department: '관리부', position: '대리', email: 'r@coffee.com', tel: '02-2222-1111' },
+			{ employee: '77887788', name: '흰둥이', department: '영업부', position: '인턴', email: 'o@coffee.com', tel: '02-7788-7788' }
+		];
+
+		let filteredEmployees = [...originalEmployees];
+		let currentPage = 1;
+		const rowsPerPage = 10;
+
+		function displayTable(page) {
+			const tableBody = document.querySelector('#employeeTable tbody');
+			const pagination = document.getElementById('pagination');
+			tableBody.innerHTML = '';
+			pagination.innerHTML = '';
+
+			const start = (page - 1) * rowsPerPage;
+			const end = start + rowsPerPage;
+			const paginatedItems = filteredEmployees.slice(start, end);
+
+			paginatedItems.forEach(employee => {
+				const row = document.createElement('tr');
+				row.innerHTML = `
+					<td>${employee.employee}</td>
+					<td>${employee.name}</td>
+					<td>${employee.department}</td>
+					<td>${employee.position}</td>
+					<td>${employee.email}</td>
+					<td>${employee.tel}</td>
+				`;
+				tableBody.appendChild(row);
+			});
+
+			const totalPages = Math.ceil(filteredEmployees.length / rowsPerPage);
+
+			for (let i = 1; i <= totalPages; i++) {
+				const button = document.createElement('button');
+				button.innerText = i;
+				button.className = i === page ? 'active' : '';
+				button.addEventListener('click', () => {
+					currentPage = i;
+					displayTable(i);
+				});
+				pagination.appendChild(button);
+				pagination.appendChild(document.createTextNode(' '));
+			}
+		}
+
+		function filterTable() {
+			const searchField = document.getElementById('searchField').value;
+			const searchInput = document.getElementById('searchInput').value.toLowerCase();
+			filteredEmployees = originalEmployees.filter(employee => {
+				return employee[searchField].toLowerCase().includes(searchInput);
+			});
+			currentPage = 1;
+			displayTable(currentPage);
+			document.getElementById('noResults').style.display = filteredEmployees.length === 0 ? 'block' : 'none';
+		}
+
+		displayTable(currentPage);
+	</script>
+
+	<script src="/BeansPaM/js/fms_menu.js"></script>
+</body>
+</html>

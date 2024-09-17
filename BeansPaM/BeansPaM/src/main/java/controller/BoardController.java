@@ -1,8 +1,8 @@
 /**
- * 최초 생성일: 2024-09-11
+ * 최초 생성일: 2024-09-18
  * @author 강동준
  * 
- * 수정일: 2024-09-11
+ * 수정일: 2024-09-18
  * @author 강동준
  * 
  * 주요 수정 내용: 문서 생성
@@ -18,12 +18,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-//import action.Action;
 import vo.ActionForward;
 
-public class FMSController extends HttpServlet {
+public class BoardController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+       
 	private void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		String RequestURI = request.getRequestURI();
@@ -32,16 +31,19 @@ public class FMSController extends HttpServlet {
 		ActionForward forward = null;
 //		Action action = null;
 
-		if (command.equals("/container1.fms")) {
+		// 공지사항
+		if (command.equals("/notice.b")) {
 			forward = new ActionForward();
-			forward.setRedirect(false);
-			forward.setPath("/stock/stock.html");
-		} else if (command.equals("/inform.fms")) {
+			forward.setPath("/notice/notice.html");
+		}
+//		else if (command.equals("/notice_detail.b")) {
+//			// Do Something...
+//		}
+		
+		// Q&A
+		else if (command.equals("/qna.b")) {
 			forward = new ActionForward();
-			forward.setRedirect(false);
-			forward.setPath("/emp/emp_inform.html");
-		} else {
-
+			forward.setPath("/qna/qna.html");
 		}
 
 		if (forward != null) {
@@ -53,12 +55,14 @@ public class FMSController extends HttpServlet {
 			}
 		}
 	}
-       
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 		doProcess(request, response);
 	}
-
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doProcess(request, response);
 	}
+
 }

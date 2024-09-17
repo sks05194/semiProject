@@ -1,0 +1,73 @@
+<div class="title">
+    <div class="box" id="d1">
+        <a href=""><i class="fa-solid fa-calendar-days"></i></a>
+        <a href="">연차</a>
+        <a href="/BeansPaM/paied/paied.html"><i class="fa-solid fa-money-bill-1-wave"></i></a>
+        <a href="/BeansPaM/paied/paied.html">급여</a>
+        <a href=""><i class="fa-solid fa-person-running"></i></a>
+        <a href="">근태</a>
+    </div>
+    <div class="box" id="d2">
+        <a href=""><i class="fa-solid fa-industry"></i></a>
+        <a href="">재고량</a>
+        <a href=""><i class="fa-solid fa-industry"></i></a>
+        <a href="">1번창고</a>
+        <a href=""><i class="fa-solid fa-industry"></i></a>
+        <a href="">2번창고</a>
+        <a href=""><i class="fa-solid fa-industry"></i></a>
+        <a href="">자재 관리 현황</a>
+    </div>
+    <div class="box" id="d3">
+        <a href=""><i class="fa-solid fa-file-pen"></i></a>
+        <a href="">전자문서</a>
+        <a href=""><i class="fa-solid fa-file-import"></i></a>
+        <a href="">결재상신</a>
+    </div>
+    <div class="box" id="d4">
+        <a href=""><i class="fa-solid fa-magnifying-glass"></i></a>
+        <a href="">사원검색</a>
+        <a href=""><i class="fa-solid fa-folder-tree"></i></a>
+        <a href="">사원목록</a>
+    </div>
+</div>
+<div class="map">
+
+    <input type="checkbox" id="ham">
+
+    <label for="ham">
+        <span></span>
+        <span></span>
+        <span></span>
+    </label>
+
+    <div class=intro>
+        <div class="int">
+            <img src="/BeansPaM/img/full_logo_brown.png" alt="">
+            <i class="fa-solid fa-user"></i>
+            <h1>손동진</h1>
+            <p>부서:관리부</p>
+            <p>직책:사원</p>
+        </div>
+
+        <ul>
+            <li data-alt="d1">MyPage</li>
+            <li data-alt="d2">시설현황</li>
+            <li data-alt="d3">전자결재</li>
+            <li data-alt="d4">사원정보</li>
+            <li>close</li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    $('.intro li').click(function () {
+        $(this).addClass('active');
+        $(this).siblings().removeClass('active');
+        var result = $(this).attr('data-alt');
+        $('.title div').removeClass('active');
+        $('#' + result).addClass('active');
+    });
+    $('#ham').click(function () {
+        $('.title div').removeClass('active');
+    });
+</script>

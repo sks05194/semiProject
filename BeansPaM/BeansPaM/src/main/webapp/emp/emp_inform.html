@@ -1,80 +1,208 @@
 <!DOCTYPE html>
-<html lang="kr">
-
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CoffeePaM</title>
-    <link rel="stylesheet" href="/BeansPaM/css/emp_inform.css">
-    <script src="/BeansPaM/js/jquery.js"></script>
-    <script src="/BeansPaM/js/fontawsome.js"></script>
+    <title>emp_han</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        header {
+            position: fixed;
+            height: 100vh;
+            width: 200px;
+            background-color: rgb(41, 15, 5);
+            z-index: 100;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .menuBar {
+            position: relative;
+            top: 100px;
+            width: 100%;
+            color: wheat;
+            margin-top: 100px;
+        }
+
+        .menuBar h3 {
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .menuBar a {
+            display: block;
+            font-size: 15px;
+            color: wheat;
+            text-decoration: none;
+            margin-top: 12px;
+            transition: 0.3s;
+        }
+
+        .menuBar a:hover {
+            color: orangered;
+            background-color: black;
+            border-radius: 5px;
+        }
+
+        .logo {
+            width: 150px;
+            margin: 30px auto 20px;
+        }
+
+        .title {
+            width: 100%;
+            height: 80px;
+            position: relative;
+            background-color: rgb(244, 228, 209);
+            text-align: center;
+        }
+
+        .title h1 {
+            font-size: 45px;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            max-width: 1200px;
+        }
+
+        .search-container {
+            margin: 20px 0;
+            float: right;
+        }
+
+        .search-container select, .search-container input {
+            padding: 10px;
+            font-size: 16px;
+            margin-right: 5px;
+        }
+
+        .search-container button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: rgb(41, 15, 5);
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: #fff;
+            table-layout: fixed;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th,
+        td {
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background-color: rgb(41, 15, 5);
+            color: #fff;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .pagination {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 10px 0;
+        }
+
+        .pagination button {
+            padding: 10px;
+            font-size: 16px;
+            background-color: white;
+            color: rgb(41, 15, 5);
+            border: none;
+            cursor: pointer;
+            margin: 0 2px;
+        }
+
+        .pagination button.active {
+            background-color: rgb(41, 15, 5);
+            color: #fff;
+        }
+
+        .pagination span {
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                width: 100%;
+                height: auto;
+                position: static;
+            }
+
+            .menuBar {
+                top: 0;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .logo {
+                margin: 10px auto;
+            }
+
+            .title, .container {
+                margin-left: 0;
+                padding: 10px;
+            }
+
+            .search-container {
+                float: none;
+                text-align: center;
+            }
+
+            table {
+                font-size: 14px;
+                overflow-x: auto;
+                display: block;
+            }
+        }
+    </style>
 </head>
 
 <body>
     <header>
-
-        <div class="mark">
-
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <div class="content">
-            <a href="">CoffeePaM<br>&CoffeeJAVA</a>
-        </div>
-
-        <div class="menubar">
-            <i class="fa-solid fa-user"></i>
+        <!-- <img src="/BeansPaM/img/full_logo.png" class="logo">
+        <div class="menuBar">
             <h3>손동진</h3>
             <p>new Person</p>
-            <ul>
-                <li data-alt="d1">MyPage</li>
-                <li data-alt="d2">시설현황</li>
-                <li data-alt="d3">전자결재</li>
-                <li data-alt="d4">사원정보</li>
-                <li id="close">close</li>
-
-
-            </ul>
-        </div>
-        <div class="box">
-            <div class="selector" id="d1">
-                <a href=""> <i class="fa-solid fa-user"></i></a>
-                <a href="" id="d1_a">연차</a>
-                <a href=""> <i class="fa-solid fa-user"></i></a>
-                <a href="" id="d1_b">근태</a>
-                <a href=""> <i class="fa-solid fa-money-bill"></i></a>
-                <a href="" id="d1_c">급여</a>
-            </div>
-
-            <div class="selector" id="d2">
-                <a href="container1.fms"><i class="fa-solid fa-industry"></i></a>
-                <a href="container1.fms" id="d2_a">1번 창고</a>
-
-                <a href=""><i class="fa-solid fa-industry"></i></a>
-                <a href="" id="d2_b">2번 창고</a>
-            </div>
-            <div class="selector" id="d3">
-                <a href=""><i class="fa-brands fa-elementor"></i></a>
-                <a href="" id="d3_a">전자문서</a>
-                <a href=""><i class="fa-solid fa-file"></i></a>
-                <a href="" id="d3_b">결재</a>
-            </div>
-            <div class="selector" id="d4">
-                <a href="inform.fms"><i class="fa-solid fa-file"></i></a>
-                <a href="inform.fms">사원검색</a>
-                <a href=""><i class="fa-solid fa-file"></i></a>
-                <a href="">사원 목록</a>
-            </div>
-        </div>
+            <i class="fa-solid fa-user"></i>
+            <a href="" id="a">연차 현황</a>
+            <a href="">급여 확인</a>
+            <a href="">근태 현황</a>
+            <a href="">MyPage</a>
+            <a href="">Home</a>
+        </div> -->
     </header>
     <main>
         <div class="title">
-            <div class="logo">
-            </div>
-            <div class="t1">
-                <h1>사원 검색</h1>
-            </div>
+            <h1>사원 검색</h1>
         </div>
         <div class="container">
             <div class="search-container">
@@ -107,51 +235,13 @@
             </div>
             <div id="pagination" class="pagination"></div>
         </div>
-        <div class="divider">
-            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
-                preserveAspectRatio="none">
-                <path
-                    d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"
-                    opacity=".25" class="shape-fill"></path>
-                <path
-                    d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z"
-                    opacity=".5" class="shape-fill"></path>
-                <path
-                    d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"
-                    class="shape-fill"></path>
-            </svg>
-        </div>
     </main>
     <script>
-        $('.btn li').click(function () {
-            $(this).addClass('active')
-            $(this).siblings().removeClass('active');
-            var result = $(this).attr('data-alt');
-            $('.tabs div').removeClass('active');
-            $('#' + result).addClass('active');
-
-
-        });
-        $('.menubar li').click(function () {
-            $(this).addClass('active'); // backgroundcolor색깔 하고 커서 포인터 잡히고 color 색 잡히는거 
-            $(this).siblings().removeClass('active');
-            // 형제요소에 있는 곳은 active 클래스 빼버리기 
-
-            var result = $(this).attr('data-alt'); // menuBar에 속성 집어 넣기 
-            $('.box div').removeClass('active'); // 박스요소안에 있는 div들은 먼저 제거한 상태 
-            $('#' + result).addClass('active');
-
-        });
-
-        $('.map1 button').click(function () {
-            $("#asian").toggle();
-
-        });
         //임시데이터, db연결시 삭제할거
         const originalEmployees = [
-            { employee: '33334444', name: '강동준', department: '기획부', position: '사원', email: 's@coffee.com', tel: '02-3333-4444' },
-            { employee: '44443333', name: '강동준', department: '관리부', position: '대리', email: 't@coffee.com', tel: '02-4444-3333' },
-            { employee: '11111111', name: '민기홍', department: '영업부', position: '부장', email: 'a@coffee.com', tel: '02-1111-1111' },
+            { employee: '33334444', name: '강말자', department: '기획부', position: '사원', email: 's@coffee.com', tel: '02-3333-4444' },
+            { employee: '44443333', name: '권지옹', department: '관리부', position: '대리', email: 't@coffee.com', tel: '02-4444-3333' },
+            { employee: '11111111', name: '김길동', department: '영업부', position: '부장', email: 'a@coffee.com', tel: '02-1111-1111' },
             { employee: '22222222', name: '김둘리', department: '기획부', position: '사원', email: 'b@coffee.com', tel: '02-2222-2222' },
             { employee: '33333333', name: '김또치', department: '기획부', position: '과장', email: 'c@coffee.com', tel: '02-3333-3333' },
             { employee: '44444444', name: '김영희', department: '관리부', position: '대리', email: 'd@coffee.com', tel: '02-4444-4444' },
@@ -161,8 +251,8 @@
             { employee: '90909090', name: '매앵구', department: '관리부', position: '대리', email: 'p@coffee.com', tel: '02-9090-9090' },
             { employee: '99999999', name: '박길동', department: '기획부', position: '사원', email: 'g@coffee.com', tel: '02-9999-9999' },
             { employee: '12121212', name: '박희동', department: '영업부', position: '인턴', email: 'h@coffee.com', tel: '02-1212-1212' },
-            { employee: '78787878', name: '송상훈', department: '영업부', position: '차장', email: 'n@coffee.com', tel: '02-7878-7878' },
-            { employee: '11221122', name: '김보라', department: '관리부', position: '대리', email: 'k@coffee.com', tel: '02-1122-1122' },
+            { employee: '78787878', name: '봉미선', department: '영업부', position: '차장', email: 'n@coffee.com', tel: '02-7878-7878' },
+            { employee: '11221122', name: '신짱구', department: '관리부', position: '대리', email: 'k@coffee.com', tel: '02-1122-1122' },
             { employee: '33443344', name: '신짱아', department: '기획부', position: '사원', email: 'l@coffee.com', tel: '02-3344-3344' },
             { employee: '55665566', name: '신형만', department: '관리부', position: '대리', email: 'm@coffee.com', tel: '02-5566-5566' },
             { employee: '34343434', name: '이길동', department: '기획부', position: '과장', email: 'i@coffee.com', tel: '02-3434-3434' },
@@ -231,6 +321,8 @@
 
         displayTable(currentPage);
     </script>
+    
+    <script src="/BeansPaM/js/fms_menu.js"></script>
 </body>
 
 </html>

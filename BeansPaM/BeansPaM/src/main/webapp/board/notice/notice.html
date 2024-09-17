@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="kr">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/BeansPaM/css/Notice.css">
+    <link rel="stylesheet" href="/BeansPaM/css/notice.css">
     <title>공지사항 초기화면</title>
     <style>
     </style>
@@ -29,13 +29,7 @@
 </head>
 <body>
     <header>
-        <div class="menuBar">
-            <!-- 로고 이미지 추가 -->
-            <img src="/BeansPaM/img/full_logo.png" alt="Beans Pam Logo" class="logo">
-            <a href="/BeansPaM/">home</a>
-            <a href="./Notice.html">공지사항</a>
-            <a href="#">Q&amp;A</a>
-        </div>
+        
     </header>
     <main class="content">
         <div class="board">
@@ -51,7 +45,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr onclick="location.href='./Notice_detail.html'">
+                    <tr onclick="location.href='./notice_detail.html'">
                         <td>❗ 중요</td>
                         <td>시스템 점검 예정</td>
                         <td>admin</td>
@@ -144,12 +138,14 @@
                 </div>
 
                 <!-- 버튼 컨테이너 -->
-                <div class="button-container" onclick="location.href='./Notice_write.html'">
+                <div class="button-container" onclick="location.href='./notice_write.html'">
                     <button>글쓰기</button>
                 </div>
             </div>
 
         </div>
     </main>
+    
+    <script src="/BeansPaM/js/board_menu.js"></script>
 </body>
 </html>

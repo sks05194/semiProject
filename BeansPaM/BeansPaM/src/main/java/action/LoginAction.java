@@ -2,10 +2,10 @@
  * 최초 생성일: 2024-09-12
  * @author 임성현
  * 
- * 마지막 수정일: 2024-09-12
- * @author 강동준
+ * 마지막 수정일: 2024-09-15
+ * @author 임성현
  * 
- * 주요 수정 내용: 일부 경로명 수정
+ * 주요 수정 내용: 전반적인 수정 및 주석 작업
  */
 package action;
 
@@ -13,38 +13,40 @@ import javax.servlet.http.*;
 import svc.LoginService;
 import vo.*;
 
+// 로그인을 위한 Action 객체
 public class LoginAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String check = null; // 아이디, 비밀번호가 DB와 일치하지 않을 때에 사용하기 위한 String 변수 초기화
-		ActionForward forward = null; // 리다이렉트를 위한 forward 객체 초기화
-		MemberVO memberVO = null; // 입력한 아이디와 비밀번호를 저장할 VO 객체 초기화
-		HttpSession session = request.getSession(); // 아이디 값을 저장할 Session 객체 생성
+		ActionForward forward = null;
+		MemberVO memberVO = null;
+		HttpSession session = request.getSession();
 
-		memberVO = new MemberVO(); // 입력한 아이디와 비밀번호를 저장할 VO 객체 생성
-		memberVO.setM_id(request.getParameter("inputId")); // 입력한 아이디 값 memberVO 객체에 저장
-		memberVO.setM_pw(request.getParameter("inputPw")); // 입력한 비밀번호 값 memberVO 객체에 저장
+		memberVO = new MemberVO(); // 입력한 아이디와 비밀번호를 VO 객체에 저장한다
+		memberVO.setM_id(request.getParameter("inputId").toLowerCase()); // 아이디는 접근성을 향상하기 위해 다 소문자로 변환한다.
+		memberVO.setM_pw(request.getParameter("inputPw"));
 
-		LoginService loginService = new LoginService(); // DB에서 아이디, 비밀번호가 일치하는지를 받아올 SVC 객체 생성
+		LoginService loginService = new LoginService(); // VO 객체에서 전송할 SVC 객체를 만든다	
+
+		boolean loginCheck = loginService.loginAction(memberVO); // 0: 로그인 실패, 1이상: 로그인 성공 및 사원 번호 반환
 		
-		boolean loginCheck = loginService.checkAction(memberVO); // SVC객체에서 boolean 값을 받는다. true면 아이디와 비밀번호가 DB와 같다는 의미이다.
-		
-		if (!loginCheck) { // boolean 값이 false일때 (아이디와 비밀번호가 DB와 일치하지 않음)
-			check = "check"; // 아이디, 비밀번호가 DB와 일치하지 않을 때를 위한 String 변수 초기화
-			session.setAttribute("checkLogin", check); // Session에 로그인 메뉴로 보낼 속성 값(check) 설정
-			response.sendRedirect("/BeansPaM/login/login_menu.jsp"); // 리다이렉트를 통해 로그인 메뉴로 돌아온다.
-			check = null; // check 값 null로 다시 초기화
-		} else { // boolean 값이 true일때 (아이디와 비밀번호가 DB와 일치함)
-			String check2 = (String) session.getAttribute("userid"); // Session 값 검사하기를 위한 String 변수 선언
-			if (check2 != null) { // Session에 userid 값이 있다면
-				session.removeAttribute("userid"); // Session에 있는 userid 값을 삭제한다
-			}
-			session.setAttribute("userid", memberVO.getM_id()); // 사용자 정보를 위한 세션 생성
-			forward = new ActionForward(); // 리다이렉트를 통해 서블릿으로 돌아갈 forward 객체 생성
-			forward.setRedirect(true); // true면 서블릿에서 리다이렉트를 if문을 통해 허락한다.
-			forward.setPath("/container1.fms"); // index_scren 페이지로 이동한다.
+		if(!loginCheck) { // 0: 로그인 실패
+			// 로그인 실패를 출력하기 위해서 세션에 임의의 값을 저장한다
+			session.setAttribute("failedLogin", "failedLogin"); 
+			
+			forward = new ActionForward();
+			forward.setPath("/loginMenu.l"); 
+		} else { // 1 이상: 로그인 성공 및 사원 번호 반환
+			// 세션에 값이 저장되어있을 경우를 대비한 세션 초기화
+			session.removeAttribute("mId"); 
+			session.removeAttribute("mNo");
+			// 세션에 사원번호와 아이디의 값을 저장한다
+			session.setAttribute("mId", memberVO.getM_id());
+			session.setAttribute("mNo", loginCheck);
+			
+			forward = new ActionForward();  
+			forward.setPath("/afterLoginScreen.l"); 
 		}
-		
+
 		return forward;
 	}
 }

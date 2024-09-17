@@ -119,7 +119,8 @@
         .p1 {
             display: none;
             color: red;
-            margin-left: 80px;
+            margin-left: 40px;
+            font-size: 18px;
         }
         
 		.p2 {
@@ -127,39 +128,42 @@
 			margin: 0px auto;
 			margin-left: 45%;
 			color: #945121;
+			font-size: bolder;
 		}
 	</style>
 	<script>
 		window.onload = function() {
-
+			<%-- 로고 클릭시 처음 화면으로 이동하는 코드 --%>
 			document.querySelector(".img1").addEventListener("click", function() {
-				window.location = "/BeansPaM/login/initial_screen.html";
-			});	
-		    
-			<% 
-			    String checkLogin = (String) request.getAttribute("checkLogin");
-			    boolean checkboolean = "check".equals(checkLogin);
-			    
-			    if (checkboolean) { %>
-			       document.querySelector(".p1").style.display = "block";
-			<% } %>		
+				window.location = "firstPage.l";
+			});
 
+			<%-- 로그인이 실패하면 작동할 코드 --%>
+			<% 
+			    String failedLogin = (String) session.getAttribute("failedLogin");
+			    
+			    if (failedLogin != null) { %>
+			       document.querySelector(".p1").style.display = "block";
+			       document.querySelector(".ipt1").style.borderColor = "red";
+			       document.querySelector(".ipt2").style.borderColor = "red";
+			<%     session.removeAttribute("failedLogin");
+			 } %>		
 		}
 	</script>
 </head>
 
 <body>
    <div class="div1">
-      <form class="form1" action="/BeansPaM/login.l" method="post">
+      <form class="form1" action="login.l" method="post">
 	     <img class="img1" src="/BeansPaM/img/logo.png" alt="logo" title="logo">
 	     <input class="ipt1" id="inputId" name="inputId" type="text" placeholder="아이디를 입력하세요">
 	     <input class="ipt2" id="inputPw" name="inputPw" type="password" placeholder="비밀번호를 입력하세요">  
 	     <button id="btnLogin" name="btnLogin" type="submit">로그인</button>  
 	     <div class="div2">
-		   <a class="a1" href="/BeansPaM/login/register_menu.html"><ins>사용자 신청</ins></a>
-		   <a class="a2" href="/BeansPaM/login/find_id_pw_menu.html"><ins>아이디/비밀번호 찾기</ins></a>
+		   <a class="a1" href="registerMenu.l"><ins>사용자 신청</ins></a>
+		   <a class="a2" href="findIdPwMenu.l"><ins>아이디/비밀번호 찾기</ins></a>
 	     </div>
-	     <p class="p1">아이디나 비밀번호가 올바르지 않습니다.</p>	
+	     <p class="p1">아이디와 비밀번호를 정확히 입력해 주세요.</p>	
       </form>
    </div>
    <p class="p2">Copyright &copy; Beans PaM All Rights Reserved.</p>

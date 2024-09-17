@@ -11,6 +11,7 @@
 package database;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
@@ -57,6 +58,17 @@ public class JdbcUtil {
 
 		try {
 			st.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void close(PreparedStatement ps) {
+		if (ps == null)
+			return;
+
+		try {
+			ps.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

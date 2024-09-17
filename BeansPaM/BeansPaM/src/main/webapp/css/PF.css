@@ -1,6 +1,8 @@
-
+*{
+    margin: 0 auto;
+}
 .video-frame {
-    content: '';
+   
     /*배경화면 오른쪽에서 주기 위해 -넣고, 살짝 흐리게 transparent*/
     background: linear-gradient(-130deg, rgb(82, 26, 2), transparent);
     position: absolute;
@@ -40,12 +42,13 @@
 
 .heading h1{
     font-size: 350px;
-    bottom: 850px;
+    bottom: 950px;
     
     color:rgb(225, 222, 222);
-    font-weight: 300%;
+    font-weight: 300;
     position: absolute;
-    left: 800px;
+    text-align: center;
+    transform: translateX(800px);
     
 }
 

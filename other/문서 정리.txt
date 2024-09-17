@@ -1,0 +1,42 @@
+admin - admin: 관리자
+
+board - board: 게시판
+
+css: css 파일들을 모아둔 폴더
+
+emp - ee: 동진님이 만든 문서
+    - emp_inform: 지수님이 만든 문서
+    => 둘 다 동일한 문서이나 다른 부분이 존재하여 일단 그대로 둠
+
+erp - vmi: 자재 관리 현황 ERP 시스템
+
+img: 이미지(로고 등)와 영상 등의 리소스 파일들을 모아둔 폴더
+
+js: js 파일들을 모아둔 폴더
+
+login
+    - findIdPwMenu: 아이디, 비밀번호 찾기
+    - loginMenu: 로그인창
+    - registerMenu: 사용자 신청
+
+menu - fms_menu: 로그인 후 좌측에 존재하는 메뉴창
+
+META-INF: 최대한 건들지 마세요. 만약 건드려야 할 상황이면 일단 물어보세요.
+
+notice
+    - Notice: 공지사항 초기화면
+    - Notice_write: 공지사항 작성
+    - Notice_detail: 공지사항 상세화면
+
+paied - paied: 급여명세서
+
+stock
+    - stock: 창고
+    - stock_1: 창고1
+    - stock_2: 창고2
+
+WEB-INF
+    - lib: 라이브러리 파일들이 있는 폴더입니다.
+    - web.xml: servlet 규칙을 추가할 경우 건드려주세요.
+
+workspace - workday: 근무표

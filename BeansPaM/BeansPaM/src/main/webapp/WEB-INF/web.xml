@@ -19,6 +19,15 @@
 		<servlet-name>fmsController</servlet-name>
 		<url-pattern>*.fms</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>boardController</servlet-name>
+		<servlet-class>controller.BoardController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>boardController</servlet-name>
+		<url-pattern>*.b</url-pattern>
+	</servlet-mapping>
 
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
