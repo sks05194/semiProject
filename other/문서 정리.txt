@@ -1,44 +1,54 @@
-http://localhost:8090/BeansPaM
+서버 구동 이후 주소창: http://localhost:8090/BeansPaM
 
-admin - admin: 관리자
+admin - admin.html: 관리자
 
-board - board: 게시판
+board
+    - notice
+        - notice.html: 공지사항 초기화면(목록)
+        - notice_write.html: 공지사항 작성화면
+        - notice_detail.html: 공지사항 상세화면
+    - qna
+        - qna.html: Q&A 초기화면(목록)
+        - qna_look.html: Q&A 상세화면
+        - qna_write.html: Q&A 작성화면
 
-css: css 파일들을 모아둔 폴더
+css: css 파일들은 같은 폴더 내에 있으면 경로를 잡기 불편해서 따로 모아두었습니다.
 
-emp - ee: 동진님이 만든 문서
-    - emp_inform: 지수님이 만든 문서
-    => 둘 다 동일한 문서이나 다른 부분이 존재하여 일단 그대로 둠
+emp 
+    - ee.html: 동진님이 만든 문서
+    - emp_inform.html: 지수님이 만든 문서
+    => 둘 다 동일한 문서이나 다른 부분이 존재하여 일단 그대로 두었습니다.
 
-erp - vmi: 자재 관리 현황 ERP 시스템
+erp - vmi.html: 자재 관리 현황 ERP 시스템
 
 img: 이미지(로고 등)와 영상 등의 리소스 파일들을 모아둔 폴더
 
 js: js 파일들을 모아둔 폴더
 
 login
-    - findIdPwMenu: 아이디, 비밀번호 찾기
-    - loginMenu: 로그인창
-    - registerMenu: 사용자 신청
+    - findIdPwMenu.jsp: 아이디, 비밀번호 찾기
+    - loginMenu.jsp: 로그인창
+    - registerMenu.jsp: 사용자 신청
 
-menu - fms_menu: 로그인 후 좌측에 존재하는 메뉴창
+menu
+    - board_menu.html: 게시판의 좌측에 위치하는 메뉴창(qna에서 제대로 작동 안 함)
+    - fms_footer.html: 로그인 후 아래에 존재하는 메뉴창
+    - fms_menu.html: 로그인 후 좌측에 존재하는 메뉴창
 
 META-INF: 최대한 건들지 마세요. 만약 건드려야 할 상황이면 일단 물어보세요.
 
-notice
-    - Notice: 공지사항 초기화면
-    - Notice_write: 공지사항 작성
-    - Notice_detail: 공지사항 상세화면
-
-paied - paied: 급여명세서
+mypage
+    - paied - paied.html: 급여명세서
+    - workspace - workday.html: 근무표
+    - mypage.html: 마이페이지
 
 stock
-    - stock: 창고
-    - stock_1: 창고1
-    - stock_2: 창고2
+    - stock.html: 창고
+    - stock_1.html: 창고1
+    - stock_2.html: 창고2
 
 WEB-INF
     - lib: 라이브러리 파일들이 있는 폴더입니다.
     - web.xml: servlet 규칙을 추가할 경우 건드려주세요.
 
-workspace - workday: 근무표
+index.html: 초기화면
