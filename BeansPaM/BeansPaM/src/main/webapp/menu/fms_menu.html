@@ -2,20 +2,18 @@
     <div class="box" id="d1">
         <a href=""><i class="fa-solid fa-calendar-days"></i></a>
         <a href="">연차</a>
-        <a href="/BeansPaM/paied/paied.html"><i class="fa-solid fa-money-bill-1-wave"></i></a>
-        <a href="/BeansPaM/paied/paied.html">급여</a>
+        <a href="fms/paied"><i class="fa-solid fa-money-bill-1-wave"></i></a>
+        <a href="fms/paied">급여</a>
         <a href=""><i class="fa-solid fa-person-running"></i></a>
         <a href="">근태</a>
     </div>
     <div class="box" id="d2">
-        <a href=""><i class="fa-solid fa-industry"></i></a>
-        <a href="">재고량</a>
-        <a href=""><i class="fa-solid fa-industry"></i></a>
-        <a href="">1번창고</a>
-        <a href=""><i class="fa-solid fa-industry"></i></a>
-        <a href="">2번창고</a>
-        <a href=""><i class="fa-solid fa-industry"></i></a>
-        <a href="">자재 관리 현황</a>
+        <a href="fms/stock"><i class="fa-solid fa-industry"></i></a>
+        <a href="fms/stock">재고량</a>
+        <a href="fms/stock1"><i class="fa-solid fa-industry"></i></a>
+        <a href="fms/stock1">1번창고</a>
+        <a href="fms/stock2"><i class="fa-solid fa-industry"></i></a>
+        <a href="fms/stock2">2번창고</a>
     </div>
     <div class="box" id="d3">
         <a href=""><i class="fa-solid fa-file-pen"></i></a>
@@ -24,8 +22,8 @@
         <a href="">결재상신</a>
     </div>
     <div class="box" id="d4">
-        <a href=""><i class="fa-solid fa-magnifying-glass"></i></a>
-        <a href="">사원검색</a>
+        <a href="fms/inform"><i class="fa-solid fa-magnifying-glass"></i></a>
+        <a href="fms/inform">사원검색</a>
         <a href=""><i class="fa-solid fa-folder-tree"></i></a>
         <a href="">사원목록</a>
     </div>
@@ -67,6 +65,7 @@
         $('.title div').removeClass('active');
         $('#' + result).addClass('active');
     });
+
     $('#ham').click(function () {
         $('.title div').removeClass('active');
     });

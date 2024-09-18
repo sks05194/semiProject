@@ -4,7 +4,7 @@ link.rel = 'stylesheet';
 link.href = '/BeansPaM/css/fms_menu.css';
 document.head.appendChild(link);
 
-// 메뉴 추가
+// header 메뉴 추가
 fetch('/BeansPaM/menu/fms_menu.html')
     .then(response => {
         if (!response.ok) {
@@ -16,5 +16,20 @@ fetch('/BeansPaM/menu/fms_menu.html')
         document.getElementsByTagName('header')[0].innerHTML = data;
     })
     .catch(error => {
-        console.error('menu.html을 불러오는 중에 문제가 발생했습니다:', error);
+        console.error('fms_menu.html을 불러오는 중에 문제가 발생했습니다:', error);
+    });
+
+// footer 메뉴 추가
+fetch('/BeansPaM/menu/fms_footer.html')
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('네트워크 응답에 문제가 있습니다.');
+        }
+        return response.text();
+    })
+    .then(data => {
+        document.getElementsByTagName('footer')[0].innerHTML = data;
+    })
+    .catch(error => {
+        console.error('fms_footer.html을 불러오는 중에 문제가 발생했습니다:', error);
     });

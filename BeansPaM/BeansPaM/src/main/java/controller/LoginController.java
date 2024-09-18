@@ -7,10 +7,11 @@
  * 
  * 주요 수정 내용: 전반적인 수정 및 주석 작업
  * 
- * 마지막 수정일: 2024-09-17
+ * 마지막 수정일: 2024-09-18
  * @author 강동준
  * 
- * 주요 수정 내용: 임시 추가 서블릿 if문과 일부 쓸모없는 조건 제거
+ * 주요 수정 내용: 임시 추가 서블릿 if문 제거 및 BoardController로 이동,
+ * /afterLoginScreen.l 경로 및 리다이렉트 여부 변경
  */
 
 package controller;
@@ -33,8 +34,6 @@ public class LoginController extends HttpServlet {
 		String RequestURI = request.getRequestURI();
 		String contextPath = request.getContextPath();
 		String command = RequestURI.substring(contextPath.length());
-		System.out.println(command);
-
 		ActionForward forward = null;
 		Action action = null;
 
@@ -60,7 +59,8 @@ public class LoginController extends HttpServlet {
 
 		else if (command.equals("/afterLoginScreen.l")) {
 			forward = new ActionForward();
-			forward.setPath("/afterLoginPage.html");
+			forward.setRedirect(true);
+			forward.setPath(contextPath + "/fms/mypage");
 		}
 
 		else if (command.equals("/login.l")) {

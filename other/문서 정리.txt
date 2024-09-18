@@ -1,3 +1,5 @@
+http://localhost:8090/BeansPaM
+
 admin - admin: 관리자
 
 board - board: 게시판

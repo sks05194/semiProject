@@ -346,3 +346,115 @@ td {
     color: #eabd9b;
     background-color: rgb(10, 6, 3);
 }
+.menu{
+    position: relative;
+    bottom: 0;
+    position: fixed;
+    border: solid 1px;
+    width: 100%;
+    height: 100px;
+    text-align: center;
+    z-index: 1000;
+    background-color: rgb(10, 4, 1);
+  
+}
+.menu button{
+    transform: translateY(5px);
+    border: none;
+    color: wheat;
+    background-color: rgb(10, 4, 1);
+    background-color: none;
+    margin: 10px;
+    font-size: 30px;
+    background-color: rgb(41, 15, 5);
+    border-radius: 20px;
+    padding: 10px;
+    transition: 0.3s;
+}
+.menu button:hover{
+    background-color: rgb(244, 228, 209);
+    color: rgb(10, 6, 3);
+}
+.log2{
+    position: relative;
+    transform: translateX(-400px);
+    top:10px;
+    transition: 0.5s;
+}
+.menu p{
+    position: absolute;
+}
+.menu span{
+    position: absolute;
+    cursor: pointer;
+    transition: 0.5s;
+    width: 70px;
+    height: 70px;
+    top:20px;
+  
+    
+    border-radius: 70px 50px 70px 40px
+}
+.menu span:nth-child(1){
+   
+
+    top:10px;
+    animation: rol linear 3s infinite reverse;
+    transform: rotate(-10deg) ;
+    border-radius: 70px 50px 70px 40px;
+    background-color: rgb(235, 92, 40);
+    opacity: 2;
+
+}
+
+.menu span:nth-child(2){
+  
+
+    top:10px;
+    animation: rol linear 5s infinite;
+   background-color: rgb(235, 92, 40);
+   opacity: 0.8;
+    border-radius: 70px 50px 70px 40px
+
+}
+.menu span:nth-child(3){
+   
+
+    top:10px;
+    animation: rol linear 5s infinite;
+   
+    border-radius: 70px 50px 70px 40px;
+    background-color: rgb(235, 92, 40);
+    opacity: 0.5;
+
+}
+.log3 a{
+    position: absolute;
+    text-decoration: none;
+    font-size: 12px;
+    font-family:400;
+    top:32px;
+    font-weight: 1000;
+    color: rgb(0, 0, 0);
+    transform: translateX(6px);
+}
+@keyframes rol {
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+.log2:hover  span:nth-child(1){
+    opacity: 2;
+    background-color: rgb(244, 228, 209);
+}
+.log2:hover  span:nth-child(2){
+    opacity: 0.8;
+    background-color: rgb(244, 228, 209);
+}
+.log2:hover  span:nth-child(3){
+    opacity: 0.5;
+    background-color: rgb(244, 228, 209);
+}

@@ -1,81 +1,21 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="kr">
 
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>admin - 관리자 메뉴</title>
+	<title>admin</title>
 
-	<link rel="stylesheet" href="/BeansPaM/css/admin.css/">
+	<link rel="stylesheet" href="/BeansPaM/css/admin.css">
 	<script src="/BeansPaM/js/fontawsome.js"></script>
 	<script src="/BeansPaM/js/jquery.js"></script>
 </head>
 
 <body>
 	<header>
-		<div class="title">
-			<div class="box" id="d1">
-				<a href=""><i class="fa-solid fa-calendar-days"></i></a>
-				<a href="">연차</a>
-				<a href="/BeansPaM/fms/fms.html"><i class="fa-solid fa-money-bill-1-wave"></i></a>
-				<a href="/BeansPaM/fms/fms.html">급여</a>
-				<a href="/BeansPaM/mypage/workday.html"><i class="fa-solid fa-person-running"></i></a>
-				<a href="/BeansPaM/mypage/workday.html">근태</a>
-
-			</div>
-			<div class="box" id="d2">
-				<a href="/BeansPaM/stock/inde.html"><i class="fa-solid fa-industry"></i></a>
-				<a href="/BeansPaM/stock/inde.html">1번창고</a>
-				<a href=""><i class="fa-solid fa-industry"></i></a>
-				<a href="">2번창고</a>
-
-			</div>
-			<div class="box" id="d3">
-				<a href=""><i class="fa-solid fa-file-pen"></i></a>
-				<a href="">전자문서</a>
-				<a href=""><i class="fa-solid fa-file-import"></i></a>
-				<a href="">결재상신</a>
-
-			</div>
-			<div class="box" id="d4">
-				<a href=""><i class="fa-solid fa-magnifying-glass"></i></a>
-				<a href="">사원검색</a>
-				<a href=""><i class="fa-solid fa-folder-tree"></i></a>
-				<a href="">사원목록</a>
-
-			</div>
-		</div>
-
-
-		<div class="map">
-
-			<input type="checkbox" id="ham">
-			<label for="ham">
-				<span></span>
-				<span></span>
-				<span></span>
-			</label>
-			<div class="intro">
-				<img src="/BeansPaM/img/full_logo.png" alt="">
-				<i class="fa-solid fa-user"></i>
-				<div class="int">
-					<h1>손동진</h1>
-					<p>부서:관리부</p>
-					<p>직책:사원</p>
-				</div>
-
-				<ul>
-					<li data-alt="d1">MyPage</li>
-					<li data-alt="d2">시설현황</li>
-					<li data-alt="d3">전자결재</li>
-					<li data-alt="d4">사원정보</li>
-					<li>close</li>
-
-				</ul>
-			</div>
-
 
 	</header>
+
 	<div class="divider">
 		<svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
 			<path
@@ -152,21 +92,11 @@
 
 	</main>
 
+	<footer>
+		
+	</footer>
 
 	<script>
-		$('.intro li').click(function () {
-			$(this).addClass('active')
-			$(this).siblings().removeClass('active');
-			var result = $(this).attr('data-alt');
-			$('.title div').removeClass('active');
-			$('#' + result).addClass('active');
-
-
-		});
-		$('#ham').click(function () {
-			$('.title div').removeClass('active');
-
-		});
 		const originalEmployees = [
 			{ empnum: '33334444', id: '강동준', name: '기획부', date: '사원', tel: 's@coffee.com', break: '02-3333-4444', open: '열람' },
 
@@ -178,7 +108,7 @@
 		]
 	</script>
 
-
+	<script src="/BeansPaM/js/fms_menu.js"></script>
 </body>
 
 </html>

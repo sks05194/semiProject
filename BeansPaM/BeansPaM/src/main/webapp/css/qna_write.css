@@ -17,6 +17,12 @@ label[for = "ham"]{
     height: 50px;
     transform: translateX(30%);
 }
+
+.intro img{
+    width: 100px;
+    height: 100px;
+    transform: translateY(100px);
+}
 label[for = "ham"]>span{
     position: absolute;
     height: 3px;
@@ -65,15 +71,10 @@ input[id = "ham"]:checked + label[for = "ham"]>span:nth-child(3){
 input[id = "ham"]:checked + label[for = "ham"]+.intro{
     left: 0;
 }
-.intro img {
-    width: 90px;
-    height: 90px;
-    transform: translateY(90px);
-}
 .intro{
     transition: 0.2s;
     overflow: hidden;
-   
+    
     height: 100vh; 
     width: 0px;
     font-size: 10px;
@@ -81,42 +82,44 @@ input[id = "ham"]:checked + label[for = "ham"]+.intro{
     background-color: rgb(41, 15, 5);
     color: wheat;
 }
-.intro i {
-    transform: translateY(145px);
-    font-size: 25px;
+.intro i{
+    transform: translateY(200px);
+    font-size: 30px;
+    color: rgb(0, 0, 0);
+    border: solid 1px wheat;
     width: 50px;
     height: 30px;
     border-radius: 10px;
     background-color: rgb(244, 228, 209);
-    color: black;
 }
 .intro p {
-    transform: translateY(150px);
+    transform: translateY(230px);
     font-size: 12px;
     font-weight: 900;
     color: white;
 }
 .intro h1{
-    transform: translateY(150px);
+    transform: translateY(220px);
     color: white;
-    
 }
 .intro ul{
     transform: translateY(200px);
 }
 .intro li{
     font-size: 20px;
-    transform: translateX(-30%);
+    transform: translateX(-30%) translateY(50px);
     cursor: pointer;
     list-style: none;
     margin-top: 20px;
-    border-radius: 10px;
     transition: 0.3s;
+    border-radius: 10px;
 }
 .intro li:hover {
     color: white;
     background-color: #eabd9b;
 }
+
+
 input[id ="ham"]:checked ~ .intro{
     width: 120px;
 }
@@ -124,39 +127,23 @@ header{
     position: relative;
     float: left;
     width: 19%;
-    height: 100%;
+    height: 100vh;
  
     z-index: 100;
     
     
 }
-main{
-    position: relative;
-    float: right;
-  
-    width: 80%;
-    height: 100%;
-  
- 
-}
-.title{
-    z-index: 2;
+.logo{
     position: absolute;
-    height: inherit;
-}
-.chart{
+    width: 100px;
+    height: 100px;
     
-   
-    width: 100%;
-    height: 200px;
-   
-    background-color: rgb(244, 228, 209);
+    border: solid 1px;
 }
-
 .box{
    
  
-    height: 400px;
+    height: 100vh;
     text-align: center;
    
     border: solid 1px;
@@ -171,55 +158,42 @@ main{
 
     
 }
-.search-container select,
-.search-container input {
-    padding: 10px;
-    font-size: 16px;
-  
-   
+.title{
+    z-index: 2;
+    position: absolute;
+    height: inherit;
 }
-.container{
+.box i:hover{
+    animation: ro linear 3s infinite;
     
 }
-
-.search-container button {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: rgb(41, 15, 5);
-    color: #fff;
-    border: none;
-    cursor: pointer;
+.box a:hover{
+    color: #eabd9b;
+  
+}
+@keyframes ro{
+    0%{
+        rotate: 0deg;
+    }
+    100%{
+        rotate: 45deg;
+    }
 }
 .box a{
     transform: translateY(400px);
-   
+   transition: 0.3s;
    display: block;
    margin-top: 10px;
    text-decoration: none;
    color: white;
-   transition: 0.3s;
-}
-.box i:hover {
-    animation: ro linear 1s infinite;
-    color: #eabd9b;
-}
-.box a:hover{
-    color: rgb(136, 52, 19);
-  
-}
-main h1{
-    transform: translateY(-100px);
-}
-
-@keyframes ro{
-    0%{
-        rotate: 45deg;
-    }
-    100%{
-       rotate: 45deg;
-    }
 }
 .active{
+    display: block;
+}
+.int img.active{
+    display: none;
+}
+.int img.active{
     display: block;
 }
 /*attr*/
@@ -231,9 +205,100 @@ main h1{
     display: block;
     
 }
-/*헤더 부분 완료*/
 
-/*물결 부분*/
+.content {
+    margin-left: 220px;
+    padding: 20px;
+}
+
+.board-write {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.board-write h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.write-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.write-table th, .write-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.write-table th {
+    background-color: #f2f2f2;
+    width: 150px;
+    font-weight: bold;
+    text-align: center; /* 중앙 정렬 */
+}
+
+.center-align {
+    text-align: center; /* 제목, 내용 텍스트 중앙 정렬 */
+}
+
+.input-title {
+    width: 98%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.input-content {
+    width: 98%;
+    height: 250px;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    resize: none;
+}
+
+.radio-section {
+    margin-bottom: 20px;
+}
+
+.radio-section label {
+    margin-right: 20px;
+    font-size: 14px;
+}
+
+.button-section {
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-submit, .btn-exit {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-submit:hover {
+    background-color: #45a049;
+}
+
+.btn-exit {
+    background-color: #f44336;
+}
+
+.btn-exit:hover {
+    background-color: #d32f2f;
+}
 .divider {
     position: absolute;
     top: 0;
@@ -255,56 +320,16 @@ main h1{
 .divider .shape-fill {
     fill: #eabd9b;
 }
-/*메인 부분*/
-table {
-    top:-40px;
-    background-color:white;
-    width: 80%;
-    border-collapse: collapse; 
-    border: none;
- 
-    position: absolute;
-  
+.chart{
     
-    /* display: none; */
+   
+    width: 100%;
+    height: 150px;
+   
+    background-color: rgb(244, 228, 209);
 }
-
-/* 표 헤더(th) 스타일 */
-th {border-bottom:solid ;
-    background-color: (244, 228, 209);
-    padding: 10px; 
-    text-align: center; 
-    color:white;
-    background-color: rgb(33, 16, 9);
-}
-
-/* 표 데이터 셀(td) 스타일 */
-td {
-    border-bottom:2px solid ;
-    padding: 10px;
-    text-align: center; 
-    color: rgb(41, 15, 5); 
-}
-.pagination{
-    position: absolute;
-    
- }
- .pagination{
-    
-    width: 70%;
-    top:500px;
-    left: 70px;
-    text-align: center;
-    position: absolute;
- }
- .pagination button{
-    background-color: rgb(16, 6, 6);
-    border: none;
-    color: #eabd9b;
-    font-size: 20px;
-    border-radius: 10px;
- }
- .menu{
+/*하단 메뉴바 */
+.menu{
     position: relative;
     bottom: 0;
     position: fixed;

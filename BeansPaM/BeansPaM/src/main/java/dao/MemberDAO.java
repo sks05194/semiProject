@@ -8,7 +8,8 @@
  * 주요 수정 내용: 전반적인 수정 및 주석 작업
  * 
  * ps. 함수 이름 변경 함부러 안 했으면 좋겠어요.
- * 그리고 2가지고 나뉘는건 int형 말고 boolean형으로 하셨으면 좋곘다고 했습니다. -강동준
+ * 그리고 2가지고 나뉘는건 int형 말고 boolean형으로 하셨으면 좋겠다고 했습니다.\
+ * 일단 sql과 if문 내부 수정하였습니다. -강동준
  */
 
 package dao;
@@ -34,7 +35,7 @@ public class MemberDAO {
 
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		String sql = "SELECT m_id FROM member WHERE m_id = ? AND m_pw = ?"; // DB에서의 아이디, 비밀번호 값들과 입력된 값들을 비교해주는 SQL 쿼리문
+		String sql = "SELECT * FROM member WHERE m_id = ? AND m_pw = ?"; // DB에서의 아이디, 비밀번호 값들과 입력된 값들을 비교해주는 SQL 쿼리문
 
 		try {
 			ps = con.prepareStatement(sql);
@@ -44,7 +45,7 @@ public class MemberDAO {
 
 			// ResultSet(rs)이 공간을 가지면(rs.next()메소드가 true면) DB에서의 아이디, 비밀번호 값과 입력한 값들이 일치하는 의미이다, 즉 로그인에 성공함 
 			if (rs.next()) {
-				return rs.getInt("M_NO") > 0; // 사원번호를 반환한다. (사원번호는 최소한 1이상의 값을 갖는다.)
+				return (int) rs.getInt("M_NO") > 0; // 사원번호를 반환한다. (사원번호는 최소한 1이상의 값을 갖는다.)
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
