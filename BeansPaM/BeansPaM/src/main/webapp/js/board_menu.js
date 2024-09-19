@@ -5,8 +5,8 @@ link.href = '/BeansPaM/css/board_menu.css';
 document.head.appendChild(link);
 
 // 메뉴 추가
-fetch('/BeansPaM/menu/board_menu.html')
-    .then(response => {
+fetch('/BeansPaM/pages/board_menu.html')
+    .then(response => {	
         if (!response.ok) {
             throw new Error('네트워크 응답에 문제가 있습니다.');
         }

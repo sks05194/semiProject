@@ -2,10 +2,10 @@
  * 최초 생성일: 2024-09-11
  * @author 강동준
  * 
- * 마지막 수정일: 2024-09-13
+ * 마지막 수정일: 2024-09-19
  * @author 강동준
  * 
- * 주요 수정 내용: Connection 객체를 싱글턴으로 변경
+ * 주요 수정 내용: connClose 메소드 매개변수 삭제
  */
 
 package database;
@@ -40,7 +40,7 @@ public class JdbcUtil {
 		return conn;
 	}
 
-	public static void connClose(Connection conn) {
+	public static void connClose() {
 		if (conn == null)
 			return;
 

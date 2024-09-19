@@ -26,15 +26,6 @@ INSERT INTO member VALUES (
     'fdsa@beanspam.com'
 );
 
-commit;
-
-ALTER TABLE member MODIFY m_position 
-CHECK (m_position IN ('인턴', '사원', '대리', '과장', '차장', '부장', '팀장', '전무', '이사'));
-
-ALTER TABLE member DROP CONSTRAINT SYS_C007194;
-
-commit;
-
 INSERT INTO member (m_no, m_name, m_dept, m_position, m_email, m_phone) 
 VALUES (seq_m_no.nextval, '강말자', '기획부', '사원', 's@coffee.com', '02-3333-4444');
 

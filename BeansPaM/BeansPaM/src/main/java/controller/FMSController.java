@@ -2,10 +2,10 @@
  * 최초 생성일: 2024-09-11
  * @author 강동준
  * 
- * 수정일: 2024-09-18
+ * 수정일: 2024-09-19
  * @author 강동준
  * 
- * 주요 수정 내용: 조건 변경 및 추가
+ * 주요 수정 내용: 조건 변경 및 추가, 페이지 문서 경로 이동에 따른 이동 경로 수정
  */
 
 package controller;
@@ -33,22 +33,46 @@ public class FMSController extends HttpServlet {
 		ActionForward forward = null;
 //		Action action = null;
 
+		// 관리자
+		if (pathInfo.equals("/admin")) {
+			forward = new ActionForward("/pages/admin.html");
+		}
+		
 		// 마이페이지
-		if (pathInfo.equals("/mypage")) {
-			forward = new ActionForward("/mypage/mypage.html");
+		else if (pathInfo.equals("/mypage")) {
+			forward = new ActionForward("/pages/mypage.html");
 		}
 		// 급여
 		else if (pathInfo.equals("/paied")) {
-			forward = new ActionForward("/mypage/paied/paied.html");
+			forward = new ActionForward("/pages/paied.html");
 		}
+		// 근태
+		else if (pathInfo.equals("/workday")) {
+			forward = new ActionForward("/pages/workday.html");
+		}
+		
 		// 자재 현황
 		else if (pathInfo.equals("/stock")) {
-			forward = new ActionForward("/stock/stock.html");
+			forward = new ActionForward("/pages/stock.html");
 		}
+		else if (pathInfo.equals("/stock1")) {
+			forward = new ActionForward("/pages/stock1.html");
+		}
+		else if (pathInfo.equals("/stock2")) {
+			forward = new ActionForward("/pages/stock2.html");
+		}
+		
+		
+		// 결재 상신
+		else if (pathInfo.equals("/report")) {
+			forward = new ActionForward("/pages/report.jsp");
+		}
+		
+		
+		
 		// 사원 검색
 		else if (pathInfo.equals("/inform")) {
-//			forward = new ActionForward("/emp/emp_inform.html");
-			forward = new ActionForward("/emp/ee.html");
+			forward = new ActionForward("/pages/ee.html");
 		}
 		
 		// 이하 페이지 에러

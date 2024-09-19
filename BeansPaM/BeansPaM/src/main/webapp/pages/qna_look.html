@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="kr">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>게시판 상세 페이지</title>
+	<link rel="stylesheet" href="/BeansPaM/css/qna_look.css">
+	<script src="/BeansPaM/js/fontawesome.js"></script>
+	<script src="/BeansPaM/js/jquery.js"></script>
+</head>
+
+<body>
+	<header>
+
+	</header>
+	<div class="divider">
+		<svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+			<path
+				d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"
+				opacity=".25" class="shape-fill"></path>
+			<path
+				d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z"
+				opacity=".5" class="shape-fill"></path>
+			<path
+				d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"
+				class="shape-fill"></path>
+		</svg>
+	</div>
+	<div class="chart"></div>
+	<main class="content">
+		<div class="board-detail">
+			<h2>게시글 상세 페이지</h2>
+
+			<!-- 게시글 상세 테이블 -->
+			<table class="detail-table">
+				<tr>
+					<th>구분</th>
+					<td>보안</td>
+				</tr>
+				<tr>
+					<th>제목</th>
+					<td>추석 명절 선물 후보 정해졌나요?</td>
+				</tr>
+				<tr>
+					<th>작성자</th>
+					<td>송상훈</td>
+				</tr>
+				<tr>
+					<th>내용</th>
+					<td class="content">추석 명절 선물 후보 정해졌나요?</td>
+				</tr>
+				<tr>
+					<th>작성일</th>
+					<td>2024-09-11</td>
+				</tr>
+				<tr>
+					<th>조회수</th>
+					<td>1,947</td>
+				</tr>
+			</table>
+
+			<!-- 댓글 영역 -->
+			<div class="comment-section">
+				<h3>댓글</h3>
+				<!-- 기존 댓글 리스트 -->
+				<div id="comment-list"></div>
+
+				<!-- 댓글 작성 영역 -->
+				<h3>댓글 작성</h3>
+				<textarea id="comment-input" placeholder="댓글을 입력하세요..."></textarea>
+				<div class="button-container">
+					<button class="comment-submit" onclick="addComment()">댓글 등록</button>
+					<button class="edit-btn">수정</button>
+					<button class="delete-btn">삭제</button>
+					<button class="exit-btn">나가기</button>
+				</div>
+			</div>
+		</div>
+	</main>
+
+	<footer>
+
+	</footer>
+
+	<script>
+		function addComment() {
+			const commentInput = document.getElementById('comment-input');
+			const commentText = commentInput.value.trim(); // 새로운 문자열 반환
+			//comment input , 값 
+
+			if (commentText !== '') { //commment가 값이 비었을때 
+				const commentDiv = document.createElement('div'); // div 요소 생성
+				//commentDiv = div list를 추가함. 
+				commentDiv.classList.add('comment'); // 
+
+				const headerDiv = document.createElement('div');
+				headerDiv.classList.add('comment-header');
+				//기존 부모요소에 추가 
+
+				const author = document.createElement('strong');
+				author.textContent = '관리자';
+
+				//Date 객체 생성 
+				const now = new Date();
+				//date 상수는 span요로 만듦 
+				const date = document.createElement('span');
+				date.classList.add('comment-date'); // 기존에 부모 요소에 클래스 추가 
+				date.textContent = `${now.getFullYear()}/${String(now.getMonth() + 1).padStart(2, '0')}/${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;
+
+				// 삭제 버튼 css x
+				const deleteBtn = document.createElement('span');
+				deleteBtn.classList.add('delete-comment');
+				deleteBtn.innerHTML = '&#10006';
+				deleteBtn.style.color = "red";
+				deleteBtn.style.cursor = "pointer";
+
+
+				// 클릭을 했을때 뜨는 팝업창
+				deleteBtn.onclick = function () {
+					deleteComment(deleteBtn);
+					alert("글이 삭제 되었습니다.");
+					deleteBtn.style.color = "wheet";
+					deleteBtn.style.cursor.codePointAt;
+
+				};
+
+
+				headerDiv.appendChild(author);
+				headerDiv.appendChild(date);
+				headerDiv.appendChild(deleteBtn);
+
+				const bodyDiv = document.createElement('div');
+				bodyDiv.classList.add('comment-body');
+				bodyDiv.textContent = commentText;
+
+				commentDiv.appendChild(headerDiv);
+				commentDiv.appendChild(bodyDiv);
+
+				document.getElementById('comment-list').appendChild(commentDiv);
+
+				commentInput.value = '';
+			} else {
+				alert('댓글을 입력하세요.');
+			}
+		}
+
+		function deleteComment(element) {
+			element.parentElement.parentElement.remove();
+		}
+	</script>
+
+	<script src="/BeansPaM/js/board_menu.js"></script>
+</body>
+
+</html>

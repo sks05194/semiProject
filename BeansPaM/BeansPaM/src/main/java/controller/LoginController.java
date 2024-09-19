@@ -7,11 +7,10 @@
  * 
  * 주요 수정 내용: 전반적인 수정 및 주석 작업
  * 
- * 마지막 수정일: 2024-09-18
+ * 마지막 수정일: 2024-09-19
  * @author 강동준
  * 
- * 주요 수정 내용: 임시 추가 서블릿 if문 제거 및 BoardController로 이동,
- * /afterLoginScreen.l 경로 및 리다이렉트 여부 변경
+ * 주요 수정 내용: 페이지 문서 경로 이동에 따른 이동 경로 수정
  */
 
 package controller;
@@ -44,17 +43,17 @@ public class LoginController extends HttpServlet {
 
 		else if (command.equals("/loginMenu.l")) {
 			forward = new ActionForward();
-			forward.setPath("/login/loginMenu.jsp");
+			forward.setPath("/pages/loginMenu.jsp");
 		}
 
 		else if (command.equals("/registerMenu.l")) {
 			forward = new ActionForward();
-			forward.setPath("/login/registerMenu.jsp");
+			forward.setPath("/pages/registerMenu.jsp");
 		}
 
 		else if (command.equals("/findIdPwMenu.l")) {
 			forward = new ActionForward();
-			forward.setPath("/login/findIdPwMenu.jsp");
+			forward.setPath("/pages/findIdPwMenu.jsp");
 		}
 
 		else if (command.equals("/afterLoginScreen.l")) {
