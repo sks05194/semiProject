@@ -167,7 +167,6 @@ main{
 .int img{
     width: 80px;
     height: 80px;
-    position: absolute;
     left: 15px;
     top:70px;
 

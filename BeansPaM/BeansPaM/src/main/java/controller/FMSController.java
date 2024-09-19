@@ -2,10 +2,15 @@
  * 최초 생성일: 2024-09-11
  * @author 강동준
  * 
- * 수정일: 2024-09-19
+ * 최종 수정일: 2024-09-19
  * @author 강동준
  * 
  * 주요 수정 내용: 조건 변경 및 추가, 페이지 문서 경로 이동에 따른 이동 경로 수정
+ * 
+ * 수정일: 2024-09-20
+ * @author 강동준
+ * 
+ * 주요 수정 내용: 실수 수정
  */
 
 package controller;
@@ -56,23 +61,23 @@ public class FMSController extends HttpServlet {
 			forward = new ActionForward("/pages/stock.html");
 		}
 		else if (pathInfo.equals("/stock1")) {
-			forward = new ActionForward("/pages/stock1.html");
+			forward = new ActionForward("/pages/stock_1.html");
 		}
 		else if (pathInfo.equals("/stock2")) {
-			forward = new ActionForward("/pages/stock2.html");
+			forward = new ActionForward("/pages/stock_2.html");
 		}
 		
 		
 		// 결재 상신
 		else if (pathInfo.equals("/report")) {
-			forward = new ActionForward("/pages/report.jsp");
+			forward = new ActionForward("/pages/report.html");
 		}
 		
 		
 		
 		// 사원 검색
 		else if (pathInfo.equals("/inform")) {
-			forward = new ActionForward("/pages/ee.html");
+			forward = new ActionForward("/pages/search_emp.html");
 		}
 		
 		// 이하 페이지 에러
