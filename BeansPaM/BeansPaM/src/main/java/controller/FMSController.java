@@ -5,12 +5,7 @@
  * 최종 수정일: 2024-09-19
  * @author 강동준
  * 
- * 주요 수정 내용: 조건 변경 및 추가, 페이지 문서 경로 이동에 따른 이동 경로 수정
- * 
- * 수정일: 2024-09-20
- * @author 강동준
- * 
- * 주요 수정 내용: 실수 수정
+ * 주요 수정 내용: 쿠키 조건 추가
  */
 
 package controller;
@@ -19,9 +14,11 @@ import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+//import javax.servlet.http.HttpSession;
 
 //import action.Action;
 import vo.ActionForward;
@@ -37,7 +34,25 @@ public class FMSController extends HttpServlet {
 		String pathInfo = request.getPathInfo();
 		ActionForward forward = null;
 //		Action action = null;
+//		HttpSession session = request.getSession();
+		
+		Cookie mem_info_cookie = null;
+		
+		for (Cookie c : request.getCookies()) {
+			if (c.getName().equals("mem_info")) {
+				mem_info_cookie = c;
+				break;
+			}
+		}
 
+		if (mem_info_cookie == null) {
+			System.out.println("쿠키 없음");
+			response.sendRedirect("/BeansPaM");
+		} else {
+			System.out.println(mem_info_cookie);
+		}
+		
+		
 		// 관리자
 		if (pathInfo.equals("/admin")) {
 			forward = new ActionForward("/pages/admin.html");

@@ -165,5 +165,4 @@ public class MemberDAO {
 		}
 		return memberVO; // M_ID, M_PW 반환
 	}
-	
 }
