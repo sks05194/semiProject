@@ -2,15 +2,12 @@
  * 최초 생성일: 2024-09-11
  * @author 강동준
  * 
- * 수정일: 2024-09-15
+ * 마지막 수정일: 2024-09-19
  * @author 임성현
  * 
- * 주요 수정 내용: 전반적인 수정 및 주석 작업
- * 
- * 마지막 수정일: 2024-09-19
- * @author 강동준
- * 
- * 주요 수정 내용: 페이지 문서 경로 이동에 따른 이동 경로 수정
+ * 주요 수정 내용: 1. 경로명 firstPage.l > index.l 로 수정
+ *             2. 정렬을 위해서 로그인 관련 jsp 파일 앞에 login_ 로 변경 및 서블릿 경로 수정
+ *             3. import에서 javax.servlet.http.*; 로 단축 수정 
  */
 
 package controller;
@@ -18,12 +15,11 @@ package controller;
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 import action.*;
 import vo.ActionForward;
 
+/* 로그인 관련 서블릿 */
 public class LoginController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
@@ -36,30 +32,29 @@ public class LoginController extends HttpServlet {
 		ActionForward forward = null;
 		Action action = null;
 
-		if (command.equals("/firstPage.l")) {
+		if (command.equals("/index.l")) {
 			forward = new ActionForward();
 			forward.setPath("/index.html");
 		}
 
 		else if (command.equals("/loginMenu.l")) {
 			forward = new ActionForward();
-			forward.setPath("/pages/loginMenu.jsp");
+			forward.setPath("/pages/login_loginMenu.jsp");
 		}
 
 		else if (command.equals("/registerMenu.l")) {
 			forward = new ActionForward();
-			forward.setPath("/pages/registerMenu.jsp");
+			forward.setPath("/pages/login_registerMenu.jsp");
 		}
 
 		else if (command.equals("/findIdPwMenu.l")) {
 			forward = new ActionForward();
-			forward.setPath("/pages/findIdPwMenu.jsp");
+			forward.setPath("/pages/login_findIdPwMenu.jsp");
 		}
 
-		else if (command.equals("/afterLoginScreen.l")) {
+		else if (command.equals("/myPage.l")) {
 			forward = new ActionForward();
-			forward.setRedirect(true);
-			forward.setPath(contextPath + "/fms/mypage");
+			forward.setPath("/pages/mypage.html");
 		}
 
 		else if (command.equals("/login.l")) {
@@ -108,4 +103,5 @@ public class LoginController extends HttpServlet {
 			throws ServletException, IOException {
 		doProcess(request, response);
 	}
+	
 }

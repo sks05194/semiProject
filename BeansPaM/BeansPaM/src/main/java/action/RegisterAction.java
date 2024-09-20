@@ -2,47 +2,51 @@
  * 최초 생성일: 2024-09-12
  * @author 임성현
  * 
- * 마지막 수정일: 2024-09-15
+ * 마지막 수정일: 2024-09-19
  * @author 임성현
  * 
- * 주요 수정 내용: 전반적인 수정 및 주석 작업
+ * 주요 수정 내용: 1. 주석 작업
+ *             2. registerCheck 변수 선언
  */
 package action;
 
 import javax.servlet.http.*;
-import svc.RegisterService;
+import svc.LoginService;
 import vo.*;
 
-// 사용자 신청을 위한 Action 객체
+/* 사용자 신청을 위한 Action 클래스 */
 public class RegisterAction implements Action {
 	
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ActionForward forward = null; 
-		MemberVO memberVO = null; 
+		MemberVO memberVO = null;
+		int registerCheck = 0;
 		HttpSession session = request.getSession(); 
 		
-		// 사원번호는 Int 자료형이기에 형변환 하는 작업
+		// 사원번호 String 자료형으로 형변환
 		String registerNoStr = request.getParameter("registerNo");
 		int registerNo = Integer.parseInt(registerNoStr);
 		
-		// 입력한 정보들을 VO 객체에 저장한다
+		// 입력한 사원번호, 아이디, 비밀번호를 memberVO 객체에 저장
 		memberVO = new MemberVO(); 
 		memberVO.setM_no(registerNo);
-		memberVO.setM_id(request.getParameter("registerId").toLowerCase()); // 아이디는 접근성을 향상하기 위해 다 소문자로 변환한다.
+		memberVO.setM_id(request.getParameter("registerId").toLowerCase());
 		memberVO.setM_pw(request.getParameter("registerPw")); 
 		
-		RegisterService registerService = new RegisterService(); // VO 객체에서 전송할 SVC 객체를 만든다	 	
-		int registerCheck = registerService.registerAction(memberVO); // 0: 사용자 신청 실패, 1: 사용자 신청 성공, 2: 잘못된 사원 번호 입력, 3: 이미 아이디를 생성함, 4: 아이디 중복
+		// SQL 쿼리문을 반환 받을 SVC 객체 생성
+		LoginService loginService = new LoginService();
+		registerCheck = loginService.registerAction(memberVO); 
 				
+		// 사용자 신청 성공 여부 판단하는 조건문
 		if(registerCheck >= 0) {
 			forward = new ActionForward();
-			forward.setPath("/registerMenu.l");
+			forward.setRedirect(true);
 			switch(registerCheck) {
-				case 1 : forward.setPath("/loginMenu.l"); break; // 1: 사용자 신청 성공    
-			    case 2 : session.setAttribute("invalidNo", "invalidNo"); break; // 2: 잘못된 사원 번호 입력
-			    case 3 : session.setAttribute("idExists", "idExists"); break; // 3: 이미 아이디를 생성함
-			    case 4 : session.setAttribute("duplicateId", "duplicateId"); break; // 4: 아이디 중복
-			    default : session.setAttribute("registerFailure", "registerFailure"); break; // 0: 사용자 신청 실패
+				case 1 : forward.setRedirect(false); forward.setPath("/loginMenu.l"); break; // 1: 사용자 신청 성공    
+			    case 2 : forward.setPath("registerMenu.l?invalidNo=invalidNo"); break; // 2: 잘못된 사원 번호 입력 
+			    case 3 : forward.setPath("registerMenu.l?idExists=idExists"); break; // 3: 이미 아이디를 생성함 
+			    case 4 : forward.setPath("registerMenu.l?duplicateId=duplicateId"); break; // 4: 아이디 중복 
+			    default : forward.setPath("registerMenu.l?registerFailure=registerFailure"); break; // 0: 사용자 신청 실패 
 			}
 		}	
 		return forward;

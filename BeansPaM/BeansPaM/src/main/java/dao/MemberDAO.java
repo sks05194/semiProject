@@ -2,14 +2,11 @@
  * 최초 생성일: 2024-09-11
  * @author 강동준
  * 
- * 마지막 수정일: 2024-09-15
+ * 마지막 수정일: 2024-09-19
  * @author 임성현
  * 
- * 주요 수정 내용: 전반적인 수정 및 주석 작업
- * 
- * ps. 함수 이름 변경 함부러 안 했으면 좋겠어요.
- * 그리고 2가지고 나뉘는건 int형 말고 boolean형으로 하셨으면 좋겠다고 했습니다.\
- * 일단 sql과 if문 내부 수정하였습니다. -강동준
+ * 주요 수정 내용: 1. Login 메소드 수정 작업
+ *             2. 주석 작업       
  */
 
 package dao;
@@ -19,7 +16,7 @@ import database.JdbcUtil;
 import vo.MemberVO;
 import static database.JdbcUtil.*;
 
-/* 사원 테이블에 대한 메서드가 선언된 클래스 */
+/* 사원 테이블에 대한 메서드가 선언된 DAO 클래스 */
 public class MemberDAO {
 	/* 연결객체 변수 초기화 */
 	Connection con = null;
@@ -30,12 +27,12 @@ public class MemberDAO {
 	}
 
 	/* 로그인을 위한 메소드 */
-	public boolean Login(MemberVO memberVO) {
+	public MemberVO Login(MemberVO memberVO) {
 		setConnection();
 
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		String sql = "SELECT * FROM member WHERE m_id = ? AND m_pw = ?"; // DB에서의 아이디, 비밀번호 값들과 입력된 값들을 비교해주는 SQL 쿼리문
+		String sql = "SELECT * FROM MEMBER WHERE M_ID = ? AND M_PW = ?"; // DB에서의 아이디, 비밀번호 값들과 입력된 값들을 비교해주는 SQL 쿼리문
 
 		try {
 			ps = con.prepareStatement(sql);
@@ -43,9 +40,20 @@ public class MemberDAO {
 			ps.setString(2, memberVO.getM_pw());
 			rs = ps.executeQuery();
 
-			// ResultSet(rs)이 공간을 가지면(rs.next()메소드가 true면) DB에서의 아이디, 비밀번호 값과 입력한 값들이 일치하는 의미이다, 즉 로그인에 성공함 
+			// 아이디와 비밀번호가 맞으면 MEMBER 테이블 정보를 비밀번호를 제외하고 VO 객체에 저장한다.
 			if (rs.next()) {
-				return (int) rs.getInt("M_NO") > 0; // 사원번호를 반환한다. (사원번호는 최소한 1이상의 값을 갖는다.)
+				memberVO.setM_no(rs.getInt("M_NO"));
+				memberVO.setM_id(rs.getString("M_ID"));
+				memberVO.setM_name(rs.getString("M_NAME"));
+				memberVO.setM_day(rs.getDate("M_DAY"));
+				memberVO.setM_position(rs.getString("M_POSITION"));
+				memberVO.setM_phone(rs.getString("M_PHONE"));
+				memberVO.setM_leave(rs.getInt("M_LEAVE"));
+				memberVO.setM_salary(rs.getInt("M_SALARY"));
+				memberVO.setM_dept(rs.getString("M_DEPT"));
+				memberVO.setM_email(rs.getString("M_EMAIL"));
+			} else {
+				memberVO.setM_id("false"); // 아이디와 비밀번호가 맞지 않으면 id에 임시로 false 값 저장
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -53,7 +61,7 @@ public class MemberDAO {
 			close(rs);
 			close(ps);
 		}
-		return false;
+		return memberVO;
 	}
 	
 	/* 사용자 신청을 위한 메소드 */
@@ -68,7 +76,7 @@ public class MemberDAO {
 		
 		String sql1 = "SELECT M_ID, M_NO FROM MEMBER WHERE M_NO = ?"; // 등록 여부를 확인 하기 위한 SQL 쿼리문
 		String sql2 = "SELECT M_ID FROM MEMBER"; // ID 중복 확인을 위한 SQL 쿼리문
-		String sql3 = "UPDATE MEMBER SET M_ID = ?, M_PW = ? WHERE M_NO = ?"; // 사용자 신청을 위한 SQL 쿼리문
+		String sql3 = "UPDATE MEMBER SET M_ID = ?, M_PW = ?, M_DAY = SYSDATE, M_LEAVE = 0, M_SALARY = 0 WHERE M_NO = ?"; // 사용자 신청을 위한 SQL 쿼리문
 				
 		try {		
 			ps1 = con.prepareStatement(sql1);
@@ -107,11 +115,11 @@ public class MemberDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			if(rs2 != null) close(rs2);
-			if(ps2 != null) close(ps2);
-			if(st != null) close(st);
-			if(rs1 != null) close(rs1);
-			if(ps1 != null) close(ps1);
+			close(rs2);
+			close(ps2);
+			close(st);
+			close(rs1);
+			close(ps1);
 		}
 		return registerCount; // 0: 사용자 신청 실패, 1: 사용자 신청 성공 
 	}
@@ -150,11 +158,12 @@ public class MemberDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			if(rs2 != null) close(rs2);
-			if(ps2 != null) close(ps2);
-			if(rs1 != null) close(rs1);
-			if(ps1 != null) close(ps2);
+			close(rs2);
+			close(ps2);
+			close(rs1);
+			close(ps2);
 		}
 		return memberVO; // M_ID, M_PW 반환
 	}
+	
 }
