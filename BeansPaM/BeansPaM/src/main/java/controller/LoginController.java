@@ -13,10 +13,18 @@
 package controller;
 
 import java.io.IOException;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.http.*;
-import action.*;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import action.Action;
+import action.FindIdPwAction;
+import action.LoginAction;
+import action.RegisterAction;
+import svc.LoginService;
 import vo.ActionForward;
 
 /* 로그인 관련 서블릿 */
@@ -24,7 +32,8 @@ public class LoginController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
-	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doProcess(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		String RequestURI = request.getRequestURI();
 		String contextPath = request.getContextPath();
@@ -37,11 +46,18 @@ public class LoginController extends HttpServlet {
 			forward.setPath("/index.html");
 		}
 
+		/**
+		 * @author 임성현
+		 * 
+		 * @author 강동준
+		 * 
+		 *         자동 로그인 기능 추가
+		 */
 		else if (command.equals("/loginMenu.l")) {
-			action = new AutoLoginAction();
-			
+			LoginService svc = new LoginService();
+
 			try {
-				forward = action.execute(request, response);
+				forward = svc.AutoLoginAction(request);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -89,6 +105,22 @@ public class LoginController extends HttpServlet {
 			}
 		}
 
+		/**
+		 * @author 강동준
+		 * @since 09.21
+		 */
+		else if (command.equals("/logout.l")) {
+			LoginService svc = new LoginService();
+
+			try {
+				svc.LogoutAction(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+			forward = new ActionForward(true, "./");
+		}
+
 		if (forward != null) {
 			if (forward.isRedirect()) {
 				response.sendRedirect(forward.getPath());
@@ -108,5 +140,5 @@ public class LoginController extends HttpServlet {
 			throws ServletException, IOException {
 		doProcess(request, response);
 	}
-	
+
 }

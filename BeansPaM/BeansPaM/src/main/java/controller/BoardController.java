@@ -22,7 +22,7 @@ import vo.ActionForward;
 
 public class BoardController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+	
 	private void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		String RequestURI = request.getRequestURI();
@@ -30,7 +30,7 @@ public class BoardController extends HttpServlet {
 		String command = RequestURI.substring(contextPath.length());
 		String[] pathInfo = request.getPathInfo().split("/");
 		ActionForward forward = null;
-		
+
 		// 추후 테스트 후 제거
 		System.out.println(command);
 		System.out.println(String.join("/", pathInfo));
@@ -73,11 +73,11 @@ public class BoardController extends HttpServlet {
 			}
 		}
 	}
-	
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doProcess(request, response);
 	}
-	
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doProcess(request, response);
 	}

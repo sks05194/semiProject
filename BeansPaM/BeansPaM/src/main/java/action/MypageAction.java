@@ -18,6 +18,9 @@ import vo.MemberVO;
 import dao.MemberDAO;
 
 public class MypageAction implements Action {
+	/**
+	 * @author 민기홍
+	 */
     @Override
     public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
         MemberVO memberVO = null;

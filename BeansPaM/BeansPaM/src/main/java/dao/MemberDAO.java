@@ -26,7 +26,10 @@ public class MemberDAO {
 		con = JdbcUtil.getConnection();
 	}
 
-	/* 로그인을 위한 메소드 */
+	/**
+	 *  로그인을 위한 메소드
+	 *  @author 임성현
+	 */
 	public MemberVO Login(MemberVO memberVO) {
 		setConnection();
 
@@ -64,7 +67,10 @@ public class MemberDAO {
 		return memberVO;
 	}
 	
-	/* 사용자 신청을 위한 메소드 */
+	/**
+	 * 사용자 신청을 위한 메소드
+	 * @author 임성현
+	 */
 	public int memberRegister(MemberVO memberVO) {
 		int registerCount = 0; // 0: 사용자 신청 실패, 1: 사용자 신청 성공, 2: 잘못된 사원 번호 입력, 3: 이미 아이디를 생성함, 4: 아이디 중복
 		
@@ -124,7 +130,10 @@ public class MemberDAO {
 		return registerCount; // 0: 사용자 신청 실패, 1: 사용자 신청 성공 
 	}
 
-	/* 아이디 비밀번호를 찾기 위한 메소드 */
+	/**
+	 * 아이디 비밀번호를 찾기 위한 메소드
+	 * @author 임성현
+	 */
 	public MemberVO findIdPw(MemberVO memberVO) {
 		PreparedStatement ps1 = null;
 		PreparedStatement ps2 = null;
@@ -169,7 +178,6 @@ public class MemberDAO {
 	/**
 	 * 사번으로 사용자 정보를 조회하는 메소드
 	 * @author 민기홍
-	 * @since 09.20
 	 * */
     public MemberVO getMemberByNo(int m_no) {
         PreparedStatement ps = null;

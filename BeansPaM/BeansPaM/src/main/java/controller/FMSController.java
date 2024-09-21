@@ -8,8 +8,6 @@
  * 주요 수정 내용: 실수 수정
  */
 
-
-
 package controller;
 
 import java.io.IOException;
@@ -31,19 +29,14 @@ public class FMSController extends HttpServlet {
 
 	private void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		String RequestURI = request.getRequestURI();
-		String contextPath = request.getContextPath();
-		String command = RequestURI.substring(contextPath.length());
 		String pathInfo = request.getPathInfo();
 		ActionForward forward = null;
 		Action action = null;
-//		HttpSession session = request.getSession();
 		
-		System.out.println(command);
-		
+		Cookie[] cookies = request.getCookies();
 		Cookie mem_info_cookie = null;
 		
-		for (Cookie c : request.getCookies()) {
+		for (Cookie c : cookies) {
 			if (c.getName().equals("mem_info")) {
 				mem_info_cookie = c;
 				break;
@@ -51,10 +44,7 @@ public class FMSController extends HttpServlet {
 		}
 
 		if (mem_info_cookie == null) {
-			System.out.println("쿠키 없음");
 			response.sendRedirect("/BeansPaM");
-		} else {
-			System.out.println("쿠키: " + mem_info_cookie.getValue());
 		}
 		
 		

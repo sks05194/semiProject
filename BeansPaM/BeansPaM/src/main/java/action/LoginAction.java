@@ -16,6 +16,10 @@ import vo.*;
 /* 로그인을 위한 Action 클래스 */
 public class LoginAction implements Action {
 	
+	/**
+	 * @author 임성현
+	 * @author 강동준
+	 */
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ActionForward forward = null;

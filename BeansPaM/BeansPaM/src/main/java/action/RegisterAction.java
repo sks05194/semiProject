@@ -16,12 +16,13 @@ import vo.*;
 
 /* 사용자 신청을 위한 Action 클래스 */
 public class RegisterAction implements Action {
-	
+	/**
+	 * @author 임성현
+	 */
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ActionForward forward = null; 
 		MemberVO memberVO = null;
 		int registerCheck = 0;
-		HttpSession session = request.getSession(); 
 		
 		// 사원번호 String 자료형으로 형변환
 		String registerNoStr = request.getParameter("registerNo");
