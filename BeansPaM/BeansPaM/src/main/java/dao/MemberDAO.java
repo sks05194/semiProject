@@ -2,8 +2,8 @@
  * 최초 생성일: 2024-09-11
  * @author 강동준
  * 
- * 마지막 수정일: 2024-09-19
- * @author 임성현
+ * 마지막 수정일: 2024-09-20
+ * @author 민기홍
  * 
  * 주요 수정 내용: 1. Login 메소드 수정 작업
  *             2. 주석 작업       
@@ -165,4 +165,45 @@ public class MemberDAO {
 		}
 		return memberVO; // M_ID, M_PW 반환
 	}
+
+	/**
+	 * 사번으로 사용자 정보를 조회하는 메소드
+	 * @author 민기홍
+	 * @since 09.20
+	 * */
+    public MemberVO getMemberByNo(int m_no) {
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        MemberVO member = null;
+
+        try {
+            con = getConnection();
+            String sql = "SELECT * FROM MEMBER WHERE M_NO = ?";
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, m_no);
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                member = new MemberVO();
+                member.setM_no(rs.getInt("M_NO"));
+                member.setM_id(rs.getString("M_ID"));
+                member.setM_name(rs.getString("M_NAME"));
+                member.setM_day(rs.getDate("M_DAY"));
+                member.setM_position(rs.getString("M_POSITION"));
+                member.setM_phone(rs.getString("M_PHONE"));
+                member.setM_leave(rs.getInt("M_LEAVE"));
+                member.setM_salary(rs.getInt("M_SALARY"));
+                member.setM_dept(rs.getString("M_DEPT"));
+                member.setM_email(rs.getString("M_EMAIL"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            close(rs);
+            close(ps);
+       }
+
+        return member;
+    }
 }
+	

@@ -2,10 +2,10 @@
  * 최초 생성일: 2024-09-12
  * @author 임성현
  * 
- * 마지막 수정일: 2024-09-20
+ * 마지막 수정일: 2024-09-21
  * @author 강동준
  * 
- * 주요 수정 내용: 쿠키명 변경
+ * 주요 수정 내용: 쿠키 유효기간 변경
  */
 package action;
 
@@ -36,6 +36,7 @@ public class LoginAction implements Action {
 		if (!"false".equals(memberInfo.getM_id())) {
 			Cookie cookie = new Cookie("mem_info", memberInfo.getM_no() + "+" + memberInfo.getM_name());
 			cookie.setPath("/BeansPaM");
+			cookie.setMaxAge(60 * 30); // 30분
 			response.addCookie(cookie);
 
 			forward = new ActionForward(true, "fms/mypage");

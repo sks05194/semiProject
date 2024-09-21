@@ -2,11 +2,13 @@
  * 최초 생성일: 2024-09-11
  * @author 강동준
  * 
- * 최종 수정일: 2024-09-19
- * @author 강동준
+ * 최종 수정일: 2024-09-20
+ * @author 민기홍
  * 
- * 주요 수정 내용: 쿠키 조건 추가
+ * 주요 수정 내용: 실수 수정
  */
+
+
 
 package controller;
 
@@ -20,7 +22,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 //import javax.servlet.http.HttpSession;
 
-//import action.Action;
+import action.Action;
+import action.MypageAction;
 import vo.ActionForward;
 
 public class FMSController extends HttpServlet {
@@ -28,13 +31,15 @@ public class FMSController extends HttpServlet {
 
 	private void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-//		String RequestURI = request.getRequestURI();
-//		String contextPath = request.getContextPath();
-//		String command = RequestURI.substring(contextPath.length());
+		String RequestURI = request.getRequestURI();
+		String contextPath = request.getContextPath();
+		String command = RequestURI.substring(contextPath.length());
 		String pathInfo = request.getPathInfo();
 		ActionForward forward = null;
-//		Action action = null;
+		Action action = null;
 //		HttpSession session = request.getSession();
+		
+		System.out.println(command);
 		
 		Cookie mem_info_cookie = null;
 		
@@ -49,7 +54,7 @@ public class FMSController extends HttpServlet {
 			System.out.println("쿠키 없음");
 			response.sendRedirect("/BeansPaM");
 		} else {
-			System.out.println(mem_info_cookie);
+			System.out.println("쿠키: " + mem_info_cookie.getValue());
 		}
 		
 		
@@ -58,10 +63,17 @@ public class FMSController extends HttpServlet {
 			forward = new ActionForward("/pages/admin.html");
 		}
 		
-		// 마이페이지
+		// 마이페이지 - 민기홍
 		else if (pathInfo.equals("/mypage")) {
-			forward = new ActionForward("/pages/mypage.html");
+			action = new MypageAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+//			forward = new ActionForward("/pages/mypage.jsp");
 		}
+		
 		// 급여
 		else if (pathInfo.equals("/paied")) {
 			forward = new ActionForward("/pages/paied.html");

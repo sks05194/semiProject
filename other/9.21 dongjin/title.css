@@ -1,0 +1,186 @@
+*{
+    margin: auto 0;
+}
+header{
+ 
+}
+.title{
+  
+    height: 100px;
+    background-color: rgb(238, 233, 233);
+    text-align: center;
+    position: relative;
+
+}
+.title .logo img{
+        float: left;
+        width: 100px;
+        height: 100%;
+    
+        z-index: 2;
+}
+.menu-button{
+}
+.login{
+  transform: translateX(-20px);
+}
+.login button{
+
+    border: none;
+    font-size: 16px;
+    background-color: white;
+    color: rgb(148, 53, 27);
+    font-weight: 700;
+    float: right;
+    margin-left: 10px;
+    transition: 0.3s;
+    border-radius: 10px;
+}
+button:hover{
+    background-color: rgb(148, 53, 27);
+    color: wheat;
+}
+.login{
+
+}
+.menu-box{
+    transform: translateY(70px);
+  
+    position: absolute;
+    width: 100%;
+    height: 0px;
+}
+.menu-box a{
+    text-decoration: none;
+    color: rgb(148, 53, 27);
+    cursor: pointer;
+    font-weight: 900;
+   
+    margin-left: 55px;
+    transition: 0.3s;
+    border-radius: 10px;
+    font-size: 20px;
+    
+}
+
+/* .sub-menu{
+    border: solid 1px;
+    position: relative;
+  
+    text-align: center;
+}
+ */
+
+.t1{
+ 
+    transform: translateX(450px);
+    border: solid 1px;
+    width: 100px;
+}
+.t1 a{
+    transform: translateX(00px);
+    width: 100px;
+    display: block;
+    border: solid 1px;
+}
+
+
+.menu_box{
+
+    position: relative;
+   
+    
+    width: 100%;
+    text-align: center;
+    top:-10px;
+    height: 40px;
+    background-color: rgb(238, 233, 233);
+}
+.menu_box a{
+    font-weight: 900;
+    color: rgb(148, 53, 27);
+text-decoration: none;
+font-size: 25px;
+margin-left: 26px;
+}
+.guide{
+    transform: translateY(-2px);
+height: 70px;
+list-style: none;
+display: none;
+background-color: rgb(224, 215, 215);
+}
+ul{
+    font-weight: 900;
+    font-size: 15px;
+    list-style: none;
+    display: inline-block;
+    cursor: pointer;
+    margin-left: 10px;
+    transform: translateX(10px);
+}
+li:hover{
+    background-color: gray
+}
+.menu_box:hover .guide{
+    background-color: rgb(224, 215, 215);
+    display: block;
+}
+
+.guide ul li a{
+    color: black;
+   
+}
+input[id="ch"]{
+display: none;
+}
+
+.sub-box{
+    float: left;
+    transform: translateY(300px);
+    cursor: pointer;
+    height: 50px;
+    width: 30px;
+    position: relative;
+}
+label[for = "ch"]{
+    position: absolute;
+  
+}
+label span{
+    transition: 0.3s;
+    background-color: black;
+    
+    width: 30px;
+  
+    height: 3px;
+}
+label span:nth-child(1){
+    background-color: black;
+    position: absolute;
+    width: 30px;
+ 
+    height: 3px;
+}
+label span:nth-child(2){
+   
+    background-color: black;
+    position: absolute;
+    top:5px;
+    width: 30px;
+  
+    height: 3px;
+}
+label span:hover{
+    background-color: rgb(148, 53, 27);
+}
+input[id = "ch"]:checked + label[for = "ch"] span:nth-child(1){
+    transform: rotate(45deg);
+    background-color: rgb(148, 53, 27);
+    top:4px;
+}
+
+input[id = "ch"]:checked + label[for = "ch"] span:nth-child(2){
+    transform: rotate(-45deg);
+    background-color: rgb(148, 53, 27);
+}

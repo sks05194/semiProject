@@ -38,8 +38,13 @@ public class LoginController extends HttpServlet {
 		}
 
 		else if (command.equals("/loginMenu.l")) {
-			forward = new ActionForward();
-			forward.setPath("/pages/login_loginMenu.jsp");
+			action = new AutoLoginAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 
 		else if (command.equals("/registerMenu.l")) {
