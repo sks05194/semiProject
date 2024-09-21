@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 
@@ -10,7 +9,9 @@
 	<script src="/BeansPaM/js/jquery.js"></script>
 	<style>
 		* {
-			margin: 0px auto;
+			box-sizing: border-box;
+			margin: 0px;
+			padding: 0px;
 		}
 
 		input { 
@@ -18,47 +19,43 @@
 			margin: 0px auto;
 			width: 400px;
 			height: 50px;
-			border: 1px solid rgb(41, 15, 5);
 			padding-left: 10px;
 			outline: none;
 			font-size: 16px;
-			border-radius: 10px;
+			border-top: 0px;
+			border-left: 0px;
+			border-right: 0px;
+			border-bottom: 2px solid #945121;
 		}
 
 	    input::placeholder {
 			font-weight: bold;
-			color: #af886c;
+			color: #945121;
 			font-size: 16px;
 		}
 
-	    input:focus {
-			border: 1px solid rgb(41, 15, 5);
-		}
-
 		.ipt1 {
-			width: 450px;
+			width: 400px;
 			margin: 0px auto;
-			margin-left: -50px;
 			margin-bottom: 20px;
 		}
 
 		.ipt2 {
-			width: 450px;
+			width: 400px;
 			margin: 0px auto;
-			margin-left: -50px;
 			margin-bottom: 20px;
 		}
 
 		.ipt3 {
-			width: 450px;
+			width: 400px;
 			margin: 0px auto;
 			margin-bottom: 20px;
-			margin-left: -50px;
 		}
 
 		.div1 {
 			display: flex;
 			background-color: white;
+			max-width: 100%;
 		}
 		
 		.div2 {
@@ -67,6 +64,7 @@
 		
 		.div3 {
 		    position: relative;
+			margin-bottom: 40px;
 		}
 
 		button {
@@ -74,7 +72,7 @@
 			margin: 0px auto;
 			width: 400px;
 			height: 50px;
-			border-radius: 50px;
+			border-radius: 5px;
 			border: 0px;
 			outline: none;
 			background-color: #945121;
@@ -90,29 +88,28 @@
 		.btn1 {
 			display: inline-block;
 			margin: 0px auto;
-			margin-left: -50px;
 			margin-bottom: -100px;
 			margin-top: 30px;
-			width: 470px;
+			margin-left: 7px;
+			width: 400px;
 			font-size: 16px;
 		}
 
 		.form1 {
+			width: 480px;
 			border: 0px;
-			border-radius: 10px;
+			border-radius: 5px;
+			border: 2px solid #945121;
 			margin: 0px auto;
 			margin-top: 200px;
-			padding: 75px 20px 75px 75px;
-			background-color: rgb(41, 15, 5);
+			padding: 30px;
 		}
 
 		.img1 {
 			display: inline-block;
  			width: 190px; 
 			margin: 0px auto;
-			margin-right: 55px;
 			margin-bottom: 5px;
-			margin-top: -45px;
 		}
 
 		.img1:hover {
@@ -124,27 +121,24 @@
 			display: none;
 			margin: 0px auto;
 			margin-top: -20px;
-			margin-left: -50px;
 			color: red;
-			font-size: 16px;
+			font-size: 18px;
 		}
 
 		.p2 {
 			display: none;
 			margin: 0px auto;
 			margin-top: -20px;
-			margin-left: -50px;
 			color: red;
-			font-size: 16px;
+			font-size: 18px;
 		}
 
 		.p3 {
 			display: none;
 			margin: 0px auto;
 			margin-top: -20px;
-			margin-left: -50px;
 			color: red;
-			font-size: 16px;
+			font-size: 18px;
 		}
 
 		
@@ -152,8 +146,7 @@
 			position: absolute;
 			display: none;
 			color: red;
-			font-size: 18px;
- 			left: -50px; 
+			font-size: 18px; 
  			top: 30px; 
 		}
 
@@ -162,7 +155,6 @@
 			display: none;
 			color: red;
 			font-size: 18px;
- 			left: -50px; 
  			top: 30px; 
 		}
 
@@ -171,7 +163,6 @@
 			display: none;
 			color: red;
 			font-size: 18px;
- 			left: -50px; 
  			top: 30px; 
 		}		
 
@@ -180,22 +171,14 @@
 			display: none;
 			color: red;
 			font-size: 18px;
- 			left: -50px; 
  			top: 30px; 
-		}		
-				
-		.p8 {
-			position: relative;
-			margin: 0px auto;
-			margin-left: 46%;
-			color: #945121;
-		}
+		}	
 	</style>
 	<script>
 		window.onload = function() {
-		    <%-- 로고 클릭시 처음 화면으로 이동하는 코드 --%>
+		    <%-- 로고 클릭시 로그인 화면으로 이동하는 코드 --%>
 			document.querySelector(".img1").addEventListener("click", function() {
-				window.location = "index.l";
+				window.location = "loginMenu.l";
 			});	
 
 			<%-- 유효성 검사가 실행되는 조건 코드 --%>
@@ -308,12 +291,13 @@
 				    document.querySelector('.ipt3').style.borderColor = "#af886c";
 			    }
 		    }
+
       <%-- 사용자 신청이 실패할 경우 작동할 코드 --%>
 	  <%
 	     String registerFailure = request.getParameter("registerFailure");                                                                  
 	     String invalidNo = request.getParameter("invalidNo");                                                                  
 	     String idExists = request.getParameter("idExists");                                                                  
-	     String duplicateId = request.getParameter("duplicateId");                                                                  
+	     String duplicateId = request.getParameter("duplicateId");
 	     
 	     if (registerFailure != null) { %>
 	    	 document.querySelector(".p4").style.display = "block";
@@ -334,8 +318,11 @@
 	     if (duplicateId != null) { %>
 	    	 document.querySelector(".p7").style.display = "block";
 	    	 document.querySelector('.ipt2').style.borderColor = "red";
-	  <%  	 
-	     } %> history.replaceState({}, null, location.pathname);
+	  <%  }  %>
+	  
+		<%-- 주소창의 QueryString으로 처리된 문자열 제거하기 --%>
+		<%-- 참고사이트: https://lahuman.github.io/javascript-remove-url-parameter/ --%>
+         history.replaceState({}, null, location.pathname);
 	    }
 	</script>
 </head>
@@ -357,11 +344,10 @@
 		    <p class="p4">사용자 신청에 실패했습니다.</p> 
 		    <p class="p5">올바르지 않은 사원번호를 입력했습니다.</p>
 		    <p class="p6">이미 등록된 사용자입니다.</p>
-		    <p class="p7">사용중인 아이디입니다. 다른 아이디를 입력해 주세요.</p>
+		    <p class="p7">중복 아이디입니다. 다른 아이디를 입력해 주세요.</p>
 		 </div>
       </form>
-   </div>
-   <p class="p8">Copyright &copy; Beans PaM All Rights Reserved.</p>	
+   </div>	
 </body>
 
 </html>

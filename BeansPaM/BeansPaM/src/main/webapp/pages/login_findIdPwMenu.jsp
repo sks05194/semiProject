@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>  
 <!DOCTYPE html>
 <html>
 
@@ -9,7 +8,9 @@
 	<title>아이디/비밀번호 찾기 화면</title>
 	<style>
 		* {
-			margin: 0px auto;
+			box-sizing: border-box;
+			margin: 0px;
+			padding: 0px;
 		}
 
 		input { 
@@ -17,21 +18,19 @@
 			margin: 0px auto;
 			width: 400px;
 			height: 50px;
-			border: 1px solid rgb(41, 15, 5);
+			border-top: 0px;
+			border-right: 0px;
+			border-left: 0px;
+			border-bottom: 2px solid #945121;
 			padding-left: 10px;
 			outline: none;
 			font-size: 16px;
-			border-radius: 10px;
 		}
 
 	    input::placeholder {
-			font-weight: bold;
-			color: #af886c;
+			font-weight: bolder;
+			color: #945121;
 			font-size: 16px;
-		}
-
-	    input:focus {
-			border: 1px solid rgb(41, 15, 5);
 		}
 
 		.ipt1 {
@@ -58,7 +57,7 @@
 			margin: 0px auto;
 			width: 400px;
 			height: 50px;
-			border-radius: 50px;
+			border-radius: 5px;
 			border: 0px;
 			outline: none;
 			background-color: #945121;
@@ -73,12 +72,11 @@
 		}
 
 		.form1 {
-			border: 0px;
-			border-radius: 10px;
+			border: 2px solid #945121;
+			border-radius: 5px;
 			margin: 0px auto;
 			margin-top: 200px;
 			padding: 30px;
-			background-color: rgb(41, 15, 5);
 		}
 
 		.img1 {
@@ -97,6 +95,7 @@
 			margin-top: 30px;
 			color: #945121;
 			font-size: 18px;
+			font-weight: bolder;
 		}
 
 		.p2 {
@@ -107,6 +106,7 @@
 			margin-top: 30px;
 			color: #945121;
 			font-size: 18px;
+			font-weight: bolder;
 		}
 		
 		.p3 {
@@ -118,19 +118,12 @@
 			color: red;
 			font-size: 18px;
 		}
-
-		.p4 {
-			position: relative;
-			margin: 0px auto;
-			margin-left: 45%;
-			color: #945121;
-		}
 	</style>
 	<script>
 		window.onload = function() {
-			<%-- 로고 클릭시 처음 화면으로 이동하는 코드 --%>
+			<%-- 로고 클릭시 로그인 화면으로 이동하는 코드 --%>
 			document.querySelector(".img1").addEventListener("click", function() {
-				window.location = "index.l";
+				window.location = "/BeansPaM/loginMenu.l";
 			});
 			
 			<%-- 아이디와 비밀번호를 가져오는 코드 --%>
@@ -155,6 +148,8 @@
 		    <%	
 		    }
 		    %>
+			<%-- 주소창의 QueryString으로 처리된 문자열 제거하기 --%>
+			<%-- 참고사이트: https://lahuman.github.io/javascript-remove-url-parameter/ --%>
 		    history.replaceState({}, null, location.pathname);
 		}
 	</script>
@@ -162,9 +157,9 @@
 
 <body>
    <div class="div1">
-      <form class="form1" method="get" action="findIdPw.l">
+      <form class="form1" method="get" action="/BeansPaM/findIdPw.l">
          <div class="div2">
-	        <img class="img1" src="/BeansPaM/img/logo.png" alt="logo" title="logo">
+	        <img class="img1" src="/BeansPaM/img/logo.png" alt="logo.png" title="logo">
 	     </div>
 	     <input class="ipt1" id="findIdPw" name="findIdPw" type="text" placeholder="사원번호나 아이디를 입력하세요"> 
 	     <button type="submit">아이디/비밀번호 찾기</button>
@@ -172,8 +167,7 @@
 		 <p class="p2">비밀번호 : <%= findPw%></p> 
 		 <p class="p3">올바르지 않은 사원번호나 아이디를 입력했습니다.</p> 
       </form>
-   </div>
-   <p class="p4">Copyright &copy; Beans PaM All Rights Reserved.</p>	
+   </div>	
 </body>
 
 </html>

@@ -15,7 +15,7 @@ import vo.*;
 
 /* 로그인을 위한 Action 클래스 */
 public class LoginAction implements Action {
-	
+
 	/**
 	 * @author 임성현
 	 * @author 강동준
@@ -28,14 +28,14 @@ public class LoginAction implements Action {
 //		HttpSession session = request.getSession();
 
 		// 입력한 아이디, 비밀번호를 memberVO 객체에 저장
-		memberVO = new MemberVO(); 
+		memberVO = new MemberVO();
 		memberVO.setM_id(request.getParameter("inputId").toLowerCase());
 		memberVO.setM_pw(request.getParameter("inputPw"));
-		
+
 		// SQL 쿼리문을 반환 받을 SVC 객체 생성
 		LoginService loginService = new LoginService();
-		memberInfo = loginService.loginAction(memberVO);		
-		
+		memberInfo = loginService.loginAction(memberVO);
+
 		// 로그인 성공
 		if (!"false".equals(memberInfo.getM_id())) {
 			Cookie cookie = new Cookie("mem_info", memberInfo.getM_no() + "+" + memberInfo.getM_name());
@@ -46,12 +46,12 @@ public class LoginAction implements Action {
 			forward = new ActionForward(true, "fms/mypage");
 			return forward;
 		}
-		
+
 		// 로그인 실패
 		forward = new ActionForward();
-		forward.setRedirect(true); 
-		forward.setPath("loginMenu.l?failedLogin=failedLogin");                                                     
-		return forward;	
+		forward.setRedirect(true);
+		forward.setPath("loginMenu.l?failedLogin=failedLogin");
+		return forward;
 	}
-	
+
 }

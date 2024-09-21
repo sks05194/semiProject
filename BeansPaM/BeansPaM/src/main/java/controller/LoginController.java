@@ -13,27 +13,18 @@
 package controller;
 
 import java.io.IOException;
-
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import action.Action;
-import action.FindIdPwAction;
-import action.LoginAction;
-import action.RegisterAction;
+import javax.servlet.*;
+import javax.servlet.http.*;
+import action.*;
 import svc.LoginService;
 import vo.ActionForward;
 
-/* 로그인 관련 서블릿 */
+/* 로그인 관련 서블릿 클래스 */
 public class LoginController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
-	protected void doProcess(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		String RequestURI = request.getRequestURI();
 		String contextPath = request.getContextPath();
@@ -42,8 +33,7 @@ public class LoginController extends HttpServlet {
 		Action action = null;
 
 		if (command.equals("/index.l")) {
-			forward = new ActionForward();
-			forward.setPath("/index.html");
+			forward = new ActionForward("/index.html");
 		}
 
 		/**
@@ -64,18 +54,15 @@ public class LoginController extends HttpServlet {
 		}
 
 		else if (command.equals("/registerMenu.l")) {
-			forward = new ActionForward();
-			forward.setPath("/pages/login_registerMenu.jsp");
+			forward = new ActionForward("/pages/login_registerMenu.jsp");
 		}
 
 		else if (command.equals("/findIdPwMenu.l")) {
-			forward = new ActionForward();
-			forward.setPath("/pages/login_findIdPwMenu.jsp");
+			forward = new ActionForward("/pages/login_findIdPwMenu.jsp");
 		}
 
 		else if (command.equals("/myPage.l")) {
-			forward = new ActionForward();
-			forward.setPath("/pages/mypage.html");
+			forward = new ActionForward("/pages/mypage.html");
 		}
 
 		else if (command.equals("/login.l")) {

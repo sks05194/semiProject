@@ -1,26 +1,23 @@
 /**
- * 최초 생성일: 2024-09-20
- * @author 강동준
+ * 최초 생성일: 2024-09-19
+ * @author 설보라
  * 
- * 마지막 수정일: 2024-09-20
- * @author 강동준
+ * 마지막 수정일: 2024-09-21
+ * @author 설보라
  * 
- * 주요 수정 내용: VO 생성 및 멤버변수, getter, setter 선언
- */
-
+ * 주요 수정 내용: DB 컬럼 수정으로 재생성 */
 package vo;
 
-import java.sql.Date;
-
 public class NoticeVO {
-	int n_no = 0;				// 글번호
-	String n_title = null;		// 제목
-	int m_no = 0;				// 작성자(member 테이블 외래키)
-	Date n_cdate = null;		// 글 작성일
-	Date n_rdate = null;		// 글 수정일
-	int n_views = 0;			// 조회수
-	String n_content = null;	// 내용
-	String n_filepath = null;	// 파일 경로
+	private int n_no = 0;
+	private String n_title = null;
+	private String n_content = null;
+	private int n_views = 0;
+	private String n_delete_yn = null;
+	private String n_c_date = null;
+	private String n_r_date = null;
+	private String n_c_writer = null;
+	private String n_r_writer = null;
 
 	public int getN_no() { return n_no; }
 	public void setN_no(int n_no) { this.n_no = n_no; }
@@ -28,21 +25,24 @@ public class NoticeVO {
 	public String getN_title() { return n_title; }
 	public void setN_title(String n_title) { this.n_title = n_title; }
 
-	public int getM_no() { return m_no; }
-	public void setM_no(int m_no) { this.m_no = m_no; }
-
-	public Date getN_cdate() { return n_cdate; }
-	public void setN_cdate(Date n_cdate) { this.n_cdate = n_cdate; }
-
-	public Date getN_rdate() { return n_rdate; }
-	public void setN_rdate(Date n_rdate) { this.n_rdate = n_rdate; }
-
-	public int getN_views() { return n_views; }
-	public void setN_views(int n_views) { this.n_views = n_views; }
-
 	public String getN_content() { return n_content; }
 	public void setN_content(String n_content) { this.n_content = n_content; }
 
-	public String getN_filepath() { return n_filepath; }
-	public void setN_filepath(String n_filepath) { this.n_filepath = n_filepath; }
+	public int getN_views() { return n_views; }
+	public void setN_views(int n_views) { this.n_views = n_views; }
+	
+	public String getN_delete_yn() { return n_delete_yn; }
+	public void setN_delete_yn(String n_delete_yn) { this.n_delete_yn = n_delete_yn; }
+
+	public String getN_c_date() { return n_c_date; }
+	public void setN_c_date(String n_c_date) { this.n_c_date = n_c_date; }
+
+	public String getN_r_date() { return n_r_date; }
+	public void setN_r_date(String n_r_date) { this.n_r_date = n_r_date; }
+
+	public String getN_c_writer() { return n_c_writer; }
+	public void setN_c_writer(String n_c_writer) { this.n_c_writer = n_c_writer; }
+
+	public String getN_r_writer() { return n_r_writer; }
+	public void setN_r_writer(String n_r_writer) { this.n_r_writer = n_r_writer; }
 }

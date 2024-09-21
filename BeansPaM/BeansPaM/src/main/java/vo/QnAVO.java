@@ -13,13 +13,13 @@ package vo;
 import java.sql.Date;
 
 public class QnAVO {
-	int q_no = 0;				// 글번호
-	String q_title = null;		// 제목
-	String q_writer = null;		// 작성자
-	String q_right = null;		// 읽기 권한
-	Date q_date = null;			// 글 작성일
-	int q_views = 0;			// 조회수
-	String q_content = null;	// 내용
+	private int q_no = 0;				// 글번호
+	private String q_title = null;		// 제목
+	private String q_writer = null;		// 작성자
+	private String q_right = null;		// 읽기 권한
+	private Date q_date = null;			// 글 작성일
+	private int q_views = 0;			// 조회수
+	private String q_content = null;	// 내용
 	
 	public int getQ_no() { return q_no; }
 	public void setQ_no(int q_no) { this.q_no = q_no; }

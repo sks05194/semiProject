@@ -14,11 +14,11 @@ import java.sql.Date;
 
 /* 재고 정보를 담는 VO 클래스 입니다. */
 public class StockVO {
-	String s_no = null;	// 재고번호
-	Date s_day = null;	// 수입일자
-	String p_no = null;	// 제품번호
-	String w_no = null;	// 창고번호
-	int s_amount = 0;	// 재고량(kg)
+	private String s_no = null;	// 재고번호
+	private Date s_day = null;	// 수입일자
+	private String p_no = null;	// 제품번호
+	private String w_no = null;	// 창고번호
+	private int s_amount = 0;	// 재고량(kg)
 	
 	public String getS_no() { return s_no; }
 	public void setS_no(String s_no) { this.s_no = s_no; }

@@ -22,11 +22,11 @@ package vo;
 
 /* 창고 데이터를 담는 VO 클래스 */
 public class WarehouseVO {
-	int w_no = 0;			// 창고 번호
-	String w_loc = null;	// 창고 위치
-	int m_no = 0;			// 사번: 창고 담당자
-	int w_temp = 0;			// 온도
-	int w_humi = 0;			// 습도
+	private int w_no = 0;			// 창고 번호
+	private String w_loc = null;	// 창고 위치
+	private int m_no = 0;			// 사번: 창고 담당자
+	private int w_temp = 0;			// 온도
+	private int w_humi = 0;			// 습도
 	
 	public int getW_no() { return w_no; }
 	public void setW_no(int w_no) { this.w_no = w_no; }

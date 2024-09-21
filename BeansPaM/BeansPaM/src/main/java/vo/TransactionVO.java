@@ -13,13 +13,13 @@ package vo;
 import java.sql.Date;
 
 public class TransactionVO {
-	int t_no = 0;			// 거래 번호
-	String t_inout = null;	// 분류: 수입/수출
-	Date t_date = null;		// 거래 일자
-	int s_no = 0;			// 재고 번호: 거래된 항목
-	int t_value = 0;		// 수량
-	String t_corr = null;	// 거래처
-	int m_no = 0;			// 사번: 거래 담당자
+	private int t_no = 0;			// 거래 번호
+	private String t_inout = null;	// 분류: 수입/수출
+	private Date t_date = null;		// 거래 일자
+	private int s_no = 0;			// 재고 번호: 거래된 항목
+	private int t_value = 0;		// 수량
+	private String t_corr = null;	// 거래처
+	private int m_no = 0;			// 사번: 거래 담당자
 	
 	public int getT_no() { return t_no; }
 	public void setT_no(int t_no) { this.t_no = t_no; }

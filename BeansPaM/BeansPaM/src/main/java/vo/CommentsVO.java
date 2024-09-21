@@ -13,10 +13,10 @@ package vo;
 import java.sql.Date;
 
 public class CommentsVO {
-	int q_no = 0;				// 글 번호
-	String c_writer = null;		// 댓글 작성자
-	Date c_date = null;			// 댓글 작성 시간
-	String c_content = null;	// 댓글 내용
+	private int q_no = 0;				// 글 번호
+	private String c_writer = null;		// 댓글 작성자
+	private Date c_date = null;			// 댓글 작성 시간
+	private String c_content = null;	// 댓글 내용
 
 	public int getQ_no() { return q_no; }
 	public void setQ_no(int q_no) { this.q_no = q_no; }

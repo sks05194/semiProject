@@ -14,11 +14,11 @@ import java.sql.Date;
 
 /* 근태 내역을 담는 VO 클래스입니다. */
 public class AttendanceVO {
-	int m_no = 0;
-	Date a_workdate = null;
-	Date a_checkin = null;
-	Date a_checkout = null;
-	String a_issue = null;
+	private int m_no = 0;
+	private Date a_workdate = null;
+	private Date a_checkin = null;
+	private Date a_checkout = null;
+	private String a_issue = null;
 	
 	public int getM_no() { return m_no; }
 	public void setM_no(int m_no) { this.m_no = m_no; }

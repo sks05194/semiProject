@@ -102,18 +102,18 @@ CONSTRAINT fk_transaction_sno FOREIGN KEY (s_incom) REFERENCES stock(s_incom)
 );
 
 --board 테이블 sql
-create table board(
-b_class	varchar2(15) check(b_class in('qna','notice')),
-b_no number(8),
-b_title varchar2(90),	
-b_writer varchar2(20),
-b_right varchar2(12) check(b_right in('security','normal')),
-b_date date,
-b_views number(8),
-b_content varchar2(4000),
-b_filepath varchar2(100),
-constraint pk_board PRIMARY KEY (b_class, b_no)
-);
+-- create table board(
+-- b_class	varchar2(15) check(b_class in('qna','notice')),
+-- b_no number(8),
+-- b_title varchar2(90),	
+-- b_writer varchar2(20),
+-- b_right varchar2(12) check(b_right in('security','normal')),
+-- b_date date,
+-- b_views number(8),
+-- b_content varchar2(4000),
+-- b_filepath varchar2(100),
+-- constraint pk_board PRIMARY KEY (b_class, b_no)
+-- );
 
 --comments 테이블 sql
 CREATE table comments(
@@ -124,6 +124,20 @@ c_date date,
 c_content varchar2(1500),
 CONSTRAINT fk_comment FOREIGN key(b_class,b_no) REFERENCES board(b_class,b_no)
 );
+
+--notice 테이블 sql(설보라)
+create table notice(
+n_no number(8),
+n_title varchar2(90) not null,
+n_content varchar2(4000),	
+n_views number(8) default 0,
+n_delete_yn char(2) default 'N' -- 삭제여부
+n_c_date	date default sysdate,  -- 작성일
+n_r_date	date default sysdate,    -- 수정일
+n_c_writer varchar2(10) not null, -- 작성자
+n_r_writer varchar2(10)not null, -- 수정자
+);
+
 
 --시퀀스들
 --m_no 시퀀스

@@ -14,9 +14,9 @@ import java.sql.Date;
 
 /* 급여 내역을 담는 VO 클래스입니다. */
 public class salaryVO {
-	int m_no = 0;			// 사번
-	Date sal_date = null;	// 지급일
-	int sal_salary = 0;		// 급여액
+	private int m_no = 0;			// 사번
+	private Date sal_date = null;	// 지급일
+	private int sal_salary = 0;		// 급여액
 
 	public int getM_no() { return m_no; }
 	public void setM_no(int m_no) { this.m_no = m_no; }

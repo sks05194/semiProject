@@ -14,17 +14,17 @@ import java.sql.Date;
 
 /* 사원 정보를 담는 VO 클래스 입니다. */
 public class MemberVO {
-	int m_no = 0;				// 사번
-	String m_id = null;			// 아이디
-	String m_pw = null;			// 비밀번호
-	String m_name = null;		// 이름
-	Date m_day = null;			// 입사일자
-	String m_position = null;	// 직급
-	String m_phone = null;		// 전화번호
-	String m_email = null;		// 이메일
-	int m_leave = 0;			// 남은 연차(휴가) 일수
-	int m_salary = 0;			// 급여: 월급, 원화
-	String m_dept = null;		// 부서명
+	private int m_no = 0;				// 사번
+	private String m_id = null;			// 아이디
+	private String m_pw = null;			// 비밀번호
+	private String m_name = null;		// 이름
+	private Date m_day = null;			// 입사일자
+	private String m_position = null;	// 직급
+	private String m_phone = null;		// 전화번호
+	private String m_email = null;		// 이메일
+	private int m_leave = 0;			// 남은 연차(휴가) 일수
+	private int m_salary = 0;			// 급여: 월급, 원화
+	private String m_dept = null;		// 부서명
 
 	public int getM_no() { return m_no; }
 	public void setM_no(int m_no) { this.m_no = m_no; }

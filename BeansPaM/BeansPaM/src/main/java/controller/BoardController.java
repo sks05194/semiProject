@@ -2,10 +2,10 @@
  * 최초 생성일: 2024-09-18
  * @author 강동준
  * 
- * 수정일: 2024-09-19
- * @author 강동준
+ * 수정일: 2024-09-21
+ * @author 설보라
  * 
- * 주요 수정 내용: 페이지 문서 경로 이동에 따른 이동 경로 수정
+ * 주요 수정 내용: 각 페이지 연결 경로 수정
  */
 
 package controller;
@@ -18,11 +18,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import action.Action;
+import action.NoticeDetailAction;
+import action.NoticeListAction;
+import action.NoticeWriteAction;
 import vo.ActionForward;
 
 public class BoardController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
+
 	private void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		String RequestURI = request.getRequestURI();
@@ -30,7 +34,9 @@ public class BoardController extends HttpServlet {
 		String command = RequestURI.substring(contextPath.length());
 		String[] pathInfo = request.getPathInfo().split("/");
 		ActionForward forward = null;
-
+		
+		Action action = null;
+		
 		// 추후 테스트 후 제거
 		System.out.println(command);
 		System.out.println(String.join("/", pathInfo));
@@ -38,13 +44,40 @@ public class BoardController extends HttpServlet {
 		switch (pathInfo[1]) {
 		case "notice":
 			if (pathInfo.length == 2) {
-				forward = new ActionForward("/pages/notice.html");
+//				forward = new ActionForward("/pages/notice_list.jsp");
+				action = new NoticeListAction();
+				try {
+					forward = action.execute(request, response);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				
 			} else if (pathInfo[2].equals("write")) {
-				forward = new ActionForward("/pages/notice_write.html");
+				forward = new ActionForward("/pages/notice_write.jsp");
+				
+			} else if (pathInfo[2].equals("register")) {	
+				
+				action = new NoticeWriteAction();
+				try {
+					forward = action.execute(request, response);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				
+				
+			} else if (pathInfo[2].equals("detail")) {	
+				
+				action = new NoticeDetailAction();
+				try {
+					forward = action.execute(request, response);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				
 			} else if (pathInfo[2].matches("\\d+")) {
 				// 임시적으로 링크로 이동하게 만듭니다.
 				// TODO 추후 pathInfo[2](=글번호)로 글을 불러올 수 있는 메소드를 만들어주세요.
-				forward = new ActionForward("/pages/notice_detail.html");
+				forward = new ActionForward("/pages/notice_detail.jsp");
 			}
 			break;
 		case "qna":
