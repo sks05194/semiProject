@@ -4,8 +4,11 @@
  * 
  * 수정일: 2024-09-21
  * @author 설보라
- * 
  * 주요 수정 내용: 각 페이지 연결 경로 수정
+ * 
+ * 수정일: 2024-09-22
+ * @author 송상훈
+ * 주요 수정 내용: QNA 관련 if문 수정
  */
 
 package controller;
@@ -18,6 +21,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.QnaDAO;
 import action.Action;
 import action.NoticeDetailAction;
 import action.NoticeListAction;
@@ -34,6 +38,7 @@ public class BoardController extends HttpServlet {
 		String command = RequestURI.substring(contextPath.length());
 		String[] pathInfo = request.getPathInfo().split("/");
 		ActionForward forward = null;
+		QnaDAO qnaDAO = new QnaDAO(); // QnaDAO 인스턴스 생성
 		
 		Action action = null;
 		
@@ -82,17 +87,25 @@ public class BoardController extends HttpServlet {
 			break;
 		case "qna":
 			if (pathInfo.length == 2) {
-				forward = new ActionForward("/pages/qna.html");
+				// Q&A 리스트 페이지로 이동
+				forward = new ActionForward(false, "/pages/qna.jsp");
 			} else if (pathInfo[2].equals("write")) {
-				forward = new ActionForward("/pages/qna_write.html");
-			} else if (pathInfo[2].matches("\\d+")) {
-				// 임시적으로 링크로 이동하게 만듭니다.
-				// TODO 추후 pathInfo[2](=글번호)로 글을 불러올 수 있는 메소드를 만들어주세요.
-				forward = new ActionForward("/pages/qna_look.html");
+				// 글 작성 페이지로 이동
+				forward = new ActionForward(false, "/pages/qna_write.jsp");
+			} else if (pathInfo[2].equals("submit")) {
+				// 글 등록 처리
+				String title = request.getParameter("title");
+				String writer = request.getParameter("writer");
+				String content = request.getParameter("content");
+				String category = request.getParameter("category");
+
+				qnaDAO.insertQna(title, writer, content, category);
+
+				// 글 등록 후 Q&A 리스트로 리다이렉트
+				forward = new ActionForward(true, "/b/qna");
 			}
 			break;
 		default:
-			System.out.println("page error");
 			response.sendError(HttpServletResponse.SC_NOT_FOUND);
 			break;
 		}

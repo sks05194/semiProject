@@ -1,18 +1,18 @@
 /**
- * 최초 생성일: 2024-09-20
- * @author 강동준
+ * 최초 생성일: 2024-09-22
+ * @author 송상훈
  * 
- * 마지막 수정일: 2024-09-20
- * @author 강동준
+ * 마지막 수정일: 2024-09-22
+ * @author 송상훈
  * 
  * 주요 수정 내용: VO 생성 및 멤버변수, getter, setter 선언
  */
 
 package vo;
 
-import java.sql.Date;
+import java.util.Date;
 
-public class QnAVO {
+public class QnaVO {
 	private int q_no = 0;				// 글번호
 	private String q_title = null;		// 제목
 	private String q_writer = null;		// 작성자
