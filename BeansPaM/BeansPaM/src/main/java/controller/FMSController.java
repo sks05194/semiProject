@@ -2,10 +2,13 @@
  * 최초 생성일: 2024-09-11
  * @author 강동준
  * 
- * 최종 수정일: 2024-09-20
+ * 기여자
  * @author 민기홍
  * 
- * 주요 수정 내용: 실수 수정
+ * 최종 수정일: 2024-09-24
+ * @author 한지수
+ * 
+ * 주요 수정 내용: /inform 경로 수정
  */
 package controller;
 
@@ -64,6 +67,13 @@ public class FMSController extends HttpServlet {
 		
 		else if (pathInfo.equals("/admin_detail")) {
 			action = new AdminDetailAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		
 		/** 사원 삭제 @author 강동준 */
@@ -116,15 +126,14 @@ public class FMSController extends HttpServlet {
 		
 		
 		
-		// 사원 검색
+		/** 사원 검색 @author 한지수 */
 		else if (pathInfo.equals("/inform")) {
-			forward = new ActionForward("/pages/search_emp.html");
+			forward = new ActionForward("/pages/search_emp.jsp");
 		}
 		
 		// 이하 페이지 에러
 		else {
-			System.out.println("page error");
-			System.out.println(pathInfo);
+			System.out.println("page error. pathInfo = " + pathInfo);
 			response.sendError(HttpServletResponse.SC_NOT_FOUND);
 		}
 

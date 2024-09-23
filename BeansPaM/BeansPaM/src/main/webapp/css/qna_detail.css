@@ -1,0 +1,61 @@
+/* 공통 스타일 */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.qna-container {
+    max-width: 800px;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.qna-detail p {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.qna-detail strong {
+    color: #555;
+}
+
+.qna-content {
+    margin-top: 20px;
+    background-color: #f4f4f4;
+    padding: 15px;
+    border-radius: 5px;
+    line-height: 1.6;
+}
+
+/* 버튼 섹션 스타일 */
+.button-section {
+    display: flex;
+    justify-content: flex-end; /* 나가기 버튼을 오른쪽에 배치 */
+    margin-top: 20px;
+}
+
+.btn-exit {
+    padding: 10px 20px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-exit:hover {
+    background-color: #d32f2f;
+}

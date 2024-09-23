@@ -38,12 +38,6 @@
                     </tr>
                 </table>
 
-                <!-- 카테고리 선택 라디오 버튼 -->
-                <div class="radio-section">
-                    <label><input type="radio" name="category" value="일반" required> 일반</label>
-                    <label><input type="radio" name="category" value="보안" required> 보안</label>
-                </div>
-
                 <!-- 제출 및 나가기 버튼 -->
                 <div class="button-section">
                     <button type="submit" class="btn-submit">게시글 등록</button>

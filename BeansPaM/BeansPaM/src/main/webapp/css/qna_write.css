@@ -1,209 +1,47 @@
-*{
-    margin: 0 auto;
-}
-.map{
-    border: solid 1px;
-   float: left;
-   left: 0;
-}
-input[id= "ham"]{
-    display: none;
-}
-label[for = "ham"]{
-    position: absolute;
-    top:20px;
-    z-index: 10;
-    width: 50px;
-    height: 50px;
-    transform: translateX(30%);
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    padding: 20px;
+    margin: 0;
 }
 
-.intro img{
-    width: 100px;
-    height: 100px;
-    transform: translateY(100px);
-}
-label[for = "ham"]>span{
-    position: absolute;
-    height: 3px;
-    border-radius: 2px;
-    background-color: rgb(16, 6, 6);
-    width: 50px;
-    top:15px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-label[for = "ham"]>span:nth-child(1){
-    position: absolute;
-   
-    width: 50px;
-    top:15px;
-    cursor: pointer;
-}
-label[for = "ham"]>span:nth-child(2){
-    position: absolute;
-  
-    width: 50px;
-    top:30px;
-}
-label[for = "ham"]>span:nth-child(3){
-    position: absolute;
-    
-    width: 50px;
-    top:45px;
-}
-input[id = "ham"]:checked + label[for = "ham"]>span:nth-child(1){
-    background-color: brown;
-    top:10px;
-    transform: translateX(-10%) rotate(45deg);
-
-}
-input[id = "ham"]:checked + label[for = "ham"]>span:nth-child(2){
-    opacity: 0;
-
-}
-input[id = "ham"]:checked + label[for = "ham"]>span:nth-child(3){
-    background-color: brown;
-    top:10px;
-    transform: translateX(-10%) rotate(-45deg);
-
-}
-input[id = "ham"]:checked + label[for = "ham"]+.intro{
+header {
+    position: fixed;
+    top: 0;
     left: 0;
-}
-.intro{
-    transition: 0.2s;
-    overflow: hidden;
-    
-    height: 100vh; 
-    width: 0px;
-    font-size: 10px;
-    text-align: center;
+    height: 100vh;
+    width: 200px;
     background-color: rgb(41, 15, 5);
+    text-align: center;
+}
+
+.menuBar {
+    position: relative;
+    top: 20px;
     color: wheat;
 }
-.intro i{
-    transform: translateY(200px);
-    font-size: 30px;
-    color: rgb(0, 0, 0);
-    border: solid 1px wheat;
-    width: 50px;
-    height: 30px;
-    border-radius: 10px;
-    background-color: rgb(244, 228, 209);
+
+.logo {
+    width: 150px;
+    margin: 0 auto 20px;
+    display: block;
 }
-.intro p {
-    transform: translateY(230px);
-    font-size: 12px;
-    font-weight: 900;
-    color: white;
-}
-.intro h1{
-    transform: translateY(220px);
-    color: white;
-}
-.intro ul{
-    transform: translateY(200px);
-}
-.intro li{
-    font-size: 20px;
-    transform: translateX(-30%) translateY(50px);
-    cursor: pointer;
-    list-style: none;
-    margin-top: 20px;
+
+.menuBar a {
+    display: block;
+    color: wheat;
+    text-decoration: none;
+    margin-top: 12px;
+    font-weight: 400;
+    font-size: 15px;
     transition: 0.3s;
-    border-radius: 10px;
-}
-.intro li:hover {
-    color: white;
-    background-color: #eabd9b;
 }
 
-
-input[id ="ham"]:checked ~ .intro{
+.menuBar a:hover {
+    color: orangered;
+    background-color: black;
     width: 120px;
-}
-header{
-    position: relative;
-    float: left;
-    width: 19%;
-    height: 100vh;
- 
-    z-index: 100;
-    
-    
-}
-.logo{
-    position: absolute;
-    width: 100px;
-    height: 100px;
-    
-    border: solid 1px;
-}
-.box{
-   
- 
-    height: 100vh;
-    text-align: center;
-   
-    border: solid 1px;
-    box-sizing: border-box;
-    width: 100px;
-    height: inherit;
-    
-   position: absolute;
-    transform: translateX(120px);    
-    border-radius: 0px 20px 20px 0px;
-    background-color: rgb(10, 6, 3);
-
-    
-}
-.title{
-    z-index: 2;
-    position: absolute;
-    height: inherit;
-}
-.box i:hover{
-    animation: ro linear 3s infinite;
-    
-}
-.box a:hover{
-    color: #eabd9b;
-  
-}
-@keyframes ro{
-    0%{
-        rotate: 0deg;
-    }
-    100%{
-        rotate: 45deg;
-    }
-}
-.box a{
-    transform: translateY(400px);
-   transition: 0.3s;
-   display: block;
-   margin-top: 10px;
-   text-decoration: none;
-   color: white;
-}
-.active{
-    display: block;
-}
-.int img.active{
-    display: none;
-}
-.int img.active{
-    display: block;
-}
-/*attr*/
-#d1,#d2,#d3,#d4,#d5{
-    display: none;
-  
-}
-#d1.active,#d2.active,#d3.active,#d4.active,#d5.active{
-    display: block;
-    
+    border-radius: 5px;
 }
 
 .content {
@@ -241,11 +79,11 @@ header{
     background-color: #f2f2f2;
     width: 150px;
     font-weight: bold;
-    text-align: center; /* Ï§ëÏïô Ï†ïÎ†¨ */
+    text-align: center; /* ¡ﬂæ” ¡§∑ƒ */
 }
 
 .center-align {
-    text-align: center; /* Ï†úÎ™©, ÎÇ¥Ïö© ÌÖçÏä§Ìä∏ Ï§ëÏïô Ï†ïÎ†¨ */
+    text-align: center; /* ¡¶∏Ò, ≥ªøÎ ≈ÿΩ∫∆Æ ¡ﬂæ” ¡§∑ƒ */
 }
 
 .input-title {
@@ -298,146 +136,4 @@ header{
 
 .btn-exit:hover {
     background-color: #d32f2f;
-}
-.divider {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    overflow: hidden;
-    line-height: 0;
-   
-}
-
-.divider svg {
-    position: relative;
-    display: block;
-    width: calc(126% + 1.3px);
-    height: 82px;
-    transform: rotateY(180deg);
-}
-
-.divider .shape-fill {
-    fill: #eabd9b;
-}
-.chart{
-    
-   
-    width: 100%;
-    height: 150px;
-   
-    background-color: rgb(244, 228, 209);
-}
-/*ÌïòÎã® Î©îÎâ¥Î∞î */
-.menu{
-    position: relative;
-    bottom: 0;
-    position: fixed;
-    border: solid 1px;
-    width: 100%;
-    height: 100px;
-    text-align: center;
-    z-index: 1000;
-    background-color: rgb(10, 4, 1);
-  
-}
-.menu button{
-    transform: translateY(5px);
-    border: none;
-    color: wheat;
-    background-color: rgb(10, 4, 1);
-    background-color: none;
-    margin: 10px;
-    font-size: 30px;
-    background-color: rgb(41, 15, 5);
-    border-radius: 20px;
-    padding: 10px;
-    transition: 0.3s;
-}
-.menu button:hover{
-    background-color: rgb(244, 228, 209);
-    color: rgb(10, 6, 3);
-}
-.log2{
-    position: relative;
-    transform: translateX(-400px);
-    top:10px;
-    transition: 0.5s;
-}
-.menu p{
-    position: absolute;
-}
-.menu span{
-    position: absolute;
-    cursor: pointer;
-    transition: 0.5s;
-    width: 70px;
-    height: 70px;
-    top:20px;
-  
-    
-    border-radius: 70px 50px 70px 40px
-}
-.menu span:nth-child(1){
-   
-
-    top:10px;
-    animation: rol linear 3s infinite reverse;
-    transform: rotate(-10deg) ;
-    border-radius: 70px 50px 70px 40px;
-    background-color: rgb(235, 92, 40);
-    opacity: 2;
-
-}
-
-.menu span:nth-child(2){
-  
-
-    top:10px;
-    animation: rol linear 5s infinite;
-   background-color: rgb(235, 92, 40);
-   opacity: 0.8;
-    border-radius: 70px 50px 70px 40px
-
-}
-.menu span:nth-child(3){
-   
-
-    top:10px;
-    animation: rol linear 5s infinite;
-   
-    border-radius: 70px 50px 70px 40px;
-    background-color: rgb(235, 92, 40);
-    opacity: 0.5;
-
-}
-.log3 a{
-    position: absolute;
-    text-decoration: none;
-    font-size: 12px;
-    font-family:400;
-    top:32px;
-    font-weight: 1000;
-    color: rgb(0, 0, 0);
-    transform: translateX(6px);
-}
-@keyframes rol {
-    0%{
-        transform: rotate(0deg);
-    }
-    100%{
-        transform: rotate(360deg);
-    }
-}
-.log2:hover  span:nth-child(1){
-    opacity: 2;
-    background-color: rgb(244, 228, 209);
-}
-.log2:hover  span:nth-child(2){
-    opacity: 0.8;
-    background-color: rgb(244, 228, 209);
-}
-.log2:hover  span:nth-child(3){
-    opacity: 0.5;
-    background-color: rgb(244, 228, 209);
 }

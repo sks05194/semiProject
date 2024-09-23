@@ -2,10 +2,10 @@
  * 최초 생성일: 2024-09-20
  * @author 설보라
  * 
- * 수정일: 2024-09-21
+ * 수정일: 2024-09-24
  * @author 설보라
  * 
- * 주요 수정 내용: 공지사항 목록 보기 및 상세페이지 연결
+ * 주요 수정 내용: noticeUpdateAction, noticeDeleteAction 메소드 생성
  */
 
 package svc;
@@ -28,11 +28,6 @@ public class NoticeService {
 		return noticeList; 
 	}
 	
-//	public NoticeVO noticeListAction(NoticeVO noticeVO) throws Exception {
-//		NoticeDAO noticeDAO = new NoticeDAO();
-//		return NoticeDAO.Login(noticeVO); // Notice 테이블 관련 데이터 반환
-//	}
-	
 	/* 공지사항 등록 */
 	public int noticeWriteAction(NoticeVO noticeVO) throws Exception{	
 		NoticeDAO noticeDAO = new NoticeDAO();
@@ -49,12 +44,20 @@ public class NoticeService {
 	}
 	
 	/* 공지사항 수정 */
-//	public NoticeVO noticeUpdateAction(NoticeVO noticeVO) throws Exception{		
-//		NoticeDAO2 noticeDAO = new NoticeDAO2(); 
-//		noticeDAO.setConnection(); 	
-//		noticeVO = NoticeDAO2.findIdPw(noticeVO); // M_ID, M_PW 반환	 
-//		return noticeVO;
-//	}
+	public int noticeUpdateAction(NoticeVO noticeVO) throws Exception{	
+		NoticeDAO noticeDAO = new NoticeDAO();
+		int updateCount = noticeDAO.noticeUpdate(noticeVO); 
+		
+		return updateCount;
+	}
+	
+	/* 공지사항 수정 */
+	public int noticeDeleteAction(NoticeVO noticeVO) {
+		NoticeDAO noticeDAO = new NoticeDAO();
+		int deleteCount = noticeDAO.noticeDelete(noticeVO); 
+		
+		return deleteCount;
+	}
 	
 	
 	

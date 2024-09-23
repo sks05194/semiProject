@@ -8,6 +8,13 @@
     <link rel="stylesheet" href="/BeansPaM/css/notice_write.css">
     <script src="/BeansPaM/js/jquery.js"></script>
     <title>공지사항 작성</title>
+    <script>
+	    function goDelete(n_no) {
+	        if (confirm("정말 삭제하시겠습니까?")) {
+	            location.href = "/BeansPaM/b/notice/delete?n_no=" + n_no;
+	        }
+	    }
+    </script>
 </head>
 <body>
     <header>

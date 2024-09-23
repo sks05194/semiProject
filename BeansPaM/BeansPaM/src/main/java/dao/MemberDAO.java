@@ -27,6 +27,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import action.AdminAction;
+import action.AdminDetailAction;
 import vo.MemberVO;
 
 /* 사원 테이블에 대한 메서드가 선언된 DAO 클래스 */
@@ -222,14 +223,14 @@ public class MemberDAO {
      * @author 강동준
      * @see AdminAction
      */
-    public ArrayList<MemberVO> getAllMembersListVerAdmin() {
+    public ArrayList<MemberVO> getAllMembersListVerAdmin(String sql) {
     	ArrayList<MemberVO> list = new ArrayList<MemberVO>();
     	Statement st = null;
     	ResultSet rs = null;
     	
     	try {
 			st = getConnection().createStatement();
-			rs = st.executeQuery("SELECT * FROM member");
+			rs = st.executeQuery(sql);
 			
 			while (rs.next()) {
 				MemberVO vo = new MemberVO();
@@ -238,6 +239,7 @@ public class MemberDAO {
 				vo.setM_name(rs.getString("m_name"));
 				vo.setM_day(rs.getDate("m_day"));
 				vo.setM_phone(rs.getString("m_phone"));
+				vo.setM_dept(rs.getString("m_dept"));
 				vo.setM_leave(rs.getInt("m_leave"));
 				list.add(vo);
 			}
@@ -248,7 +250,7 @@ public class MemberDAO {
 			close(st);
 		}
     	
-		return list ;
+		return list;
     }
     
     /**
@@ -277,7 +279,7 @@ public class MemberDAO {
     /**
      * 사원 한 명의 모든 정보를 가져오는 메소드 - 관리자
      * @author 강동준
-     * @see 어디선가
+     * @see AdminDetailAction
      */
     public MemberVO getAllDataForNo(int m_no) {
     	MemberVO vo = null;
@@ -286,6 +288,7 @@ public class MemberDAO {
     	
     	try {
 			ps = getConnection().prepareStatement("SELECT * FROM member WHERE m_no = ?");
+			ps.setInt(1, m_no);
 			rs = ps.executeQuery();
 			
 			if (rs.next()) {
@@ -311,4 +314,44 @@ public class MemberDAO {
     	
     	return vo;
     }
+
+    /**
+     * 페이지 수를 반환해주는 함수
+     * @author 강동준
+     * @see AdminAction
+     */
+	public int getPageCount(String sql) {
+		int count = 0;
+    	Statement st = null;
+    	ResultSet rs = null;
+    	
+    	try {
+			st = getConnection().createStatement();
+			rs = st.executeQuery(sql);
+			
+			if (rs.next()) {
+				count = rs.getInt("c");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(st);
+		}
+    	
+    	if (count > 0) {
+    		count = (count - 1) / 10 + 1;			
+		}
+    	
+		return count;
+	}
 }
+
+
+
+
+
+
+
+
+

@@ -1,85 +1,47 @@
 * {
 	box-sizing: border-box;
-    margin: 0px;
-	padding: 0px;
 }
 
-.title {
-    height: 100px;
-    background-color: white;
-    text-align: center;
-    position: relative;
+body {
+	margin: 0;
+	padding: 0;
 }
 
-.title .logo img {
-    position: relative;
-    float: left;
-    width: 140px;
-    height: 139px;
-    z-index: 2;
-    left: 30px;
-}
-
-button:hover {
-    background-color: rgb(148, 53, 27);
-    color: wheat;
-}
-
-.menu-box {
-    transform: translateY(70px);
-    position: absolute;
-	background-color: white;
-}
-
-.menu-box a {
-    text-decoration: none;
-    color: rgb(148, 53, 27);
-    cursor: pointer;
-    font-weight: 900;
-    margin-left: 55px;
-    transition: 0.3s;
-    border-radius: 10px;
-    font-size: 20px;
-}
-
-.t1 {
-    transform: translateX(450px);
-    border: solid 1px;
-    width: 100px;
-}
-
-.t1 a {
-    transform: translateX(00px);
-    width: 100px;
-    display: block;
-    border: solid 1px;
-}
-
-.menu_box {
-	position: relative;
-    width: 100%;
-    text-align: center;
-    height: 40px;
-    background-color: white;
+.nav {
+	display: flex;
 	border-bottom: 1px solid rgb(148, 53, 27);
+	padding: 10px;
+	align-items: flex-end;
 }
 
-.menu_box a {
-    font-weight: 900;
-    color: rgb(148, 53, 27);
-    text-decoration: none;
-    font-size: 25px;
-    margin-left: 26px;
+.nav img {
+	width: 150px;
+	vertical-align: bottom;
+	margin-right: 100px;
 }
 
-.a1 {
-	display: inline-block;
-	position: absolute;
-	transform: translateX(-750px) translateY(-10px);
+.nav a {
+	text-decoration: none;
+	font-size: 25px;
+	font-weight: bold;
+	color: rgb(148, 53, 27);
+	margin: 10px;
 }
 
-.a2 {
-	display: inline-block;
-	position: absolute;
-	transform: translateX(600px) translateY(-10px);
+.nav a:last-child {
+	margin-left: auto;
+	margin-right: 100px;
+}
+
+@media screen and (max-width: 546px) {
+	#idx_logoImg {
+		width: 80px;
+		margin-right: 10px;
+	}
+	#idx_menu2 {
+		margin-right: 0;
+	}
+	a {
+		font-size: 20px;
+	}
 }

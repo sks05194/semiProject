@@ -11,66 +11,7 @@
     <script src="/BeansPaM/js/jquery.js"></script>
     <title>공지사항 초기화면</title>
     <script>
-//      	   const itemsPerPage = 10;
-//         let currentPage = 1; 
-//         let totalPages = 1;
-
-//         function searchTable() {
-//             var input = document.getElementById("searchInput").value.toLowerCase();
-//             var table = document.querySelector("table tbody"); 
-//             var rows = table.getElementsByTagName("tr"); 
-
-//             for (var i = 0; i < rows.length; i++) {
-//                 var rowText = rows[i].innerText.toLowerCase(); 
-//                 if (rowText.includes(input)) {
-//                     rows[i].style.display = ""; 
-//                 } else {
-//                     rows[i].style.display = "none"; 
-//                 }
-//             }
-//         }
-
-        // 공지사항 목록을 localStorage에서 가져와서 테이블에 표시하는 함수
-        function loadNotices() {
-//             const noticeTableBody = document.querySelector('table tbody');
-//             noticeTableBody.innerHTML = ''; 
-
-//             const notices = JSON.parse(localStorage.getItem('notices')) || [];
-
-//             totalPages = Math.ceil(notices.length / itemsPerPage);
-
-//             const start = (currentPage - 1) * itemsPerPage;
-//             const end = start + itemsPerPage;
-
-//             const noticesToDisplay = notices.slice(start, end);
-
-//             noticesToDisplay.forEach((notice, index) => {
-//                 const newRow = document.createElement('tr');
-//                 const noticeIndex = start + index + 1; // 번호를 1부터 최신순으로
-//                 newRow.innerHTML = `
-//                     <td>${notices.length - noticeIndex + 1}</td>
-//                     <td>${notice.title}</td>
-//                     <td>${notice.author}</td>
-//                     <td>${notice.date}</td>
-//                     <td>${notice.views}</td>
-//                 `;
-                
-//                 newRow.onclick = function() {
-//                     // 조회수 증가
-//                     notices[notices.length - noticeIndex].views += 1;
-//                     localStorage.setItem('notices', JSON.stringify(notices));
-
-//                     // 상세 페이지로 이동
-//                     window.location.href = './notice_detail.jsp?index=' + (notices.length - noticeIndex);
-//                 };
-
-//                 noticeTableBody.appendChild(newRow);
-//             });
-
-//             updatePagination();
-        }
-
-              // 페이지 로드 시 공지사항 데이터를 불러와 표시
+//      	 
         window.onload = function() {
             loadNotices();
         };
@@ -131,7 +72,6 @@
 	                    <button>글쓰기</button>
 	                </div>
                 </c:if>
-<%--                 <p>Login Name: ${loginName}</p> --%>
             </div>
         </div>
     </main>
