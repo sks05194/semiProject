@@ -7,7 +7,6 @@
  * 
  * 주요 수정 내용: 실수 수정
  */
-
 package controller;
 
 import java.io.IOException;
@@ -21,6 +20,9 @@ import javax.servlet.http.HttpServletResponse;
 //import javax.servlet.http.HttpSession;
 
 import action.Action;
+import action.AdminAction;
+import action.AdminDelAction;
+import action.AdminDetailAction;
 import action.MypageAction;
 import vo.ActionForward;
 
@@ -32,28 +34,50 @@ public class FMSController extends HttpServlet {
 		String pathInfo = request.getPathInfo();
 		ActionForward forward = null;
 		Action action = null;
-		
+
 		Cookie[] cookies = request.getCookies();
 		Cookie mem_info_cookie = null;
-		
-		for (Cookie c : cookies) {
-			if (c.getName().equals("mem_info")) {
-				mem_info_cookie = c;
-				break;
+
+		if (cookies != null)
+			for (Cookie c : cookies) {
+				if (c.getName().equals("mem_info")) {
+					mem_info_cookie = c;
+					break;
+				}
 			}
-		}
 
 		if (mem_info_cookie == null) {
 			response.sendRedirect("/BeansPaM");
+			return;
 		}
-		
-		
-		// 관리자
+
+		/** 관리자 @author 강동준 */
 		if (pathInfo.equals("/admin")) {
-			forward = new ActionForward("/pages/admin.html");
+			action = new AdminAction();
+
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 		
-		// 마이페이지 - 민기홍
+		else if (pathInfo.equals("/admin_detail")) {
+			action = new AdminDetailAction();
+		}
+		
+		/** 사원 삭제 @author 강동준 */
+		else if (pathInfo.equals("/admin_del")) {
+			action = new AdminDelAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+
+		/** 마이페이지 @author 민기홍 */
 		else if (pathInfo.equals("/mypage")) {
 			action = new MypageAction();
 			try {
@@ -63,7 +87,7 @@ public class FMSController extends HttpServlet {
 			}
 //			forward = new ActionForward("/pages/mypage.jsp");
 		}
-		
+
 		// 급여
 		else if (pathInfo.equals("/paied")) {
 			forward = new ActionForward("/pages/paied.html");
@@ -72,7 +96,7 @@ public class FMSController extends HttpServlet {
 		else if (pathInfo.equals("/workday")) {
 			forward = new ActionForward("/pages/workday.html");
 		}
-		
+
 		// 자재 현황
 		else if (pathInfo.equals("/stock")) {
 			forward = new ActionForward("/pages/stock.html");
@@ -100,6 +124,7 @@ public class FMSController extends HttpServlet {
 		// 이하 페이지 에러
 		else {
 			System.out.println("page error");
+			System.out.println(pathInfo);
 			response.sendError(HttpServletResponse.SC_NOT_FOUND);
 		}
 

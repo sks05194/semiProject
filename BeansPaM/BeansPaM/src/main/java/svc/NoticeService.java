@@ -36,7 +36,6 @@ public class NoticeService {
 	/* 공지사항 등록 */
 	public int noticeWriteAction(NoticeVO noticeVO) throws Exception{	
 		NoticeDAO noticeDAO = new NoticeDAO();
-		noticeDAO.setConnection(); 
 		int registerCount = noticeDAO.noticeRegister(noticeVO); 
 		
 		return registerCount;

@@ -12,10 +12,10 @@
 <body>
     <header>
         <div class="menuBar">
-            <img src="/BeansPaM/img/full_logo.png" alt="Beans Pam Logo" class="logo">
+            <img src="/BeansPaM/img/logo.png" alt="Beans Pam Logo" class="logo">
             <a href="/BeansPaM/">home</a>
             <a href="/BeansPaM/notice.jsp">공지사항</a>
-            <a href="#">Q&A</a>
+            <a href="#">Q&amp;A</a>
         </div>
     </header>
     <div class="container">

@@ -18,7 +18,7 @@ public class LoginAction implements Action {
 
 	/**
 	 * @author 임성현
-	 * @author 강동준
+	 * @author 강동준: 캐시 설정
 	 */
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -40,7 +40,7 @@ public class LoginAction implements Action {
 		if (!"false".equals(memberInfo.getM_id())) {
 			Cookie cookie = new Cookie("mem_info", memberInfo.getM_no() + "+" + memberInfo.getM_name());
 			cookie.setPath("/BeansPaM");
-			cookie.setMaxAge(60 * 30); // 30분
+			cookie.setMaxAge(60 * 60 * 9); // 9시간
 			response.addCookie(cookie);
 
 			forward = new ActionForward(true, "fms/mypage");

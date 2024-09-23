@@ -39,9 +39,7 @@ public class LoginController extends HttpServlet {
 		/**
 		 * @author 임성현
 		 * 
-		 * @author 강동준
-		 * 
-		 *         자동 로그인 기능 추가
+		 * @author 강동준: 자동 로그인 기능 추가
 		 */
 		else if (command.equals("/loginMenu.l")) {
 			LoginService svc = new LoginService();
@@ -94,7 +92,6 @@ public class LoginController extends HttpServlet {
 
 		/**
 		 * @author 강동준
-		 * @since 09.21
 		 */
 		else if (command.equals("/logout.l")) {
 			LoginService svc = new LoginService();

@@ -11,7 +11,6 @@ package action;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import svc.NoticeService;
 import vo.ActionForward;
@@ -19,12 +18,14 @@ import vo.NoticeVO;
 
 /* 공지사항 등록을 위한 Action 클래스 */
 public class NoticeWriteAction implements Action {
-	
+	/**
+	 * @author 설보라
+	 */
+	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ActionForward forward = null; 
 		NoticeVO noticeVO = null;
 		int registerCheck = 0;
-		HttpSession session = request.getSession(); 
 		
 		// 입력한 제목, 내용 noticeVO 객체에 저장
 		noticeVO = new NoticeVO(); 

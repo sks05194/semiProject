@@ -47,6 +47,9 @@ public class BoardController extends HttpServlet {
 		System.out.println(String.join("/", pathInfo));
 
 		switch (pathInfo[1]) {
+		/**
+		 * @author 설보라
+		 */
 		case "notice":
 			if (pathInfo.length == 2) {
 //				forward = new ActionForward("/pages/notice_list.jsp");
@@ -85,6 +88,9 @@ public class BoardController extends HttpServlet {
 				forward = new ActionForward("/pages/notice_detail.jsp");
 			}
 			break;
+		/**
+		 * @author 송상순
+		 */
 		case "qna":
 			if (pathInfo.length == 2) {
 				// Q&A 리스트 페이지로 이동

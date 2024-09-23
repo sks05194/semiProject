@@ -1,12 +1,13 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%-- <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> --%>
 <!DOCTYPE html>
 <html lang="ko">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/BeansPaM/css/notice.css">
+    <link rel="stylesheet" href="/BeansPaM/css/notice_list.css">
     <script src="/BeansPaM/js/jquery.js"></script>
     <title>공지사항 초기화면</title>
     <script>
@@ -84,10 +85,10 @@
     <header>
         <div class="menuBar">
             <!-- 로고 이미지 추가 -->
-            <img src="/BeansPaM/img/full_logo.png" alt="Beans Pam Logo" class="logo">
+            <img src="/BeansPaM/img/logo.png" alt="Beans Pam Logo" class="logo">
             <a href="/BeansPaM/">home</a>
             <a href="/BeansPaM/notice_list.jsp">공지사항</a>
-            <a href="#">Q&A</a>
+            <a href="#">Q&amp;A</a>
         </div>
     </header>
 
@@ -125,14 +126,14 @@
                 </div>
                 <div class="pagination">
                 </div>
-                <c:if test="${loginId == 'admin'}">
+				<c:if test='${loginName == "관리자"}'>	
 	                <div class="button-container" onclick="location.href='/BeansPaM/b/notice/write'">
 	                    <button>글쓰기</button>
 	                </div>
                 </c:if>
+<%--                 <p>Login Name: ${loginName}</p> --%>
             </div>
         </div>
     </main>
 </body>
-
 </html>

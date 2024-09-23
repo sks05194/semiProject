@@ -16,7 +16,7 @@
 		input { 
 			display: block;
 			margin: 0px auto;
-			width: 400px;
+			width: 430px;
 			height: 50px;
 			border-top: 0px;
 			border-right: 0px;
@@ -55,7 +55,7 @@
 		button {
 			display: block;
 			margin: 0px auto;
-			width: 400px;
+			width: 430px;
 			height: 50px;
 			border-radius: 5px;
 			border: 0px;
@@ -77,6 +77,7 @@
 			margin: 0px auto;
 			margin-top: 200px;
 			padding: 30px;
+		    width: 500px;
 		}
 
 		.img1 {
@@ -113,7 +114,6 @@
  			display: none; 
 			position: relative;
 			margin: 0px auto;
-			margin-left: 1%;
 			margin-top: 30px;
 			color: red;
 			font-size: 18px;

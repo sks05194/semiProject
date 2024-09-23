@@ -14,7 +14,6 @@ package dao;
 import static database.JdbcUtil.close;
 import static database.JdbcUtil.commit;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -27,17 +26,8 @@ import vo.NoticeVO;
 
 /* 공지사항 테이블에 대한 메서드가 선언된 DAO 클래스 */
 public class NoticeDAO {
-	/* 연결객체 변수 초기화 */
-	Connection con = null;
-
-	/* 연결객체 생성 메소드 */
-	public void setConnection() {
-		con = JdbcUtil.getConnection();
-	}
-	
 	/* 공지사항 리스트 조회를 위한 메소드 */
 	public ArrayList<Map<String, Object>> noticeList() {
-		setConnection();
 		PreparedStatement ps1 = null;
 		ResultSet rs1 = null;
 		
@@ -49,7 +39,7 @@ public class NoticeDAO {
 			   sql1 += " AND N_DELETE_YN = 'N'";
 			   sql1 += " ORDER BY N_C_DATE DESC";
 		try {
-			ps1 = con.prepareStatement(sql1);
+			ps1 = JdbcUtil.getConnection().prepareStatement(sql1);
 			rs1 = ps1.executeQuery();
 			
 			while(rs1.next()) {
@@ -76,7 +66,6 @@ public class NoticeDAO {
 	
 	/* 공지사항 등록을 위한 메소드 */
 	public int noticeRegister(NoticeVO noticeVO) {
-		setConnection();
 		int registerCount = 0; //
 		
 		PreparedStatement ps1 = null;
@@ -96,7 +85,7 @@ public class NoticeDAO {
 			   sql1 += ")";
 			   
 		try {		
-			ps1 = con.prepareStatement(sql1);
+			ps1 = JdbcUtil.getConnection().prepareStatement(sql1);
 			ps1.setString(1, noticeVO.getN_title()); 
 			ps1.setString(2, noticeVO.getN_content()); 
 			
@@ -104,7 +93,7 @@ public class NoticeDAO {
 			
 			// registerCount가 1이면 공지사항 등록 성공해 DB에 값이 업데이트 셩공
 			if(registerCount == 1) { // 1: 공지사항 등록 성공 
-				commit(con);
+				commit(JdbcUtil.getConnection());
 			} 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -118,7 +107,6 @@ public class NoticeDAO {
 
 	/* 공지사항 상세내용 조회를 위한 메소드 */
 	public NoticeVO noticeDetail(NoticeVO noticeVO) {
-		setConnection();
 		PreparedStatement ps1 = null;
 		PreparedStatement ps2 = null;
 		ResultSet rs1 = null;
@@ -138,7 +126,7 @@ public class NoticeDAO {
 			   sql2 += "WHERE 1=1";
 			   sql2 += "AND N_NO = ?";
 		try {
-			ps1 = con.prepareStatement(sql1);
+			ps1 = JdbcUtil.getConnection().prepareStatement(sql1);
 			ps1.setInt(1, noticeVO.getN_no());
 			rs1 = ps1.executeQuery();
 			
@@ -148,11 +136,11 @@ public class NoticeDAO {
 				noticeVO.setN_no(rs1.getInt("N_NO"));
 			}
 			
-			ps2 = con.prepareStatement(sql2);
+			ps2 = JdbcUtil.getConnection().prepareStatement(sql2);
 			ps2.setInt(1, noticeVO.getN_no());
 			ps2.setInt(2, noticeVO.getN_no());
 			ps2.executeUpdate();
-			con.commit();
+			JdbcUtil.getConnection().commit();
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

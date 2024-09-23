@@ -35,31 +35,31 @@
 		}
 
 		.ipt1 {
-			width: 400px;
+			width: 480px;
 			margin: 0px auto;
-			margin-bottom: 20px;
+			margin-bottom: 30px;
 		}
 
 		.ipt2 {
-			width: 400px;
+			width: 480px;
 			margin: 0px auto;
-			margin-bottom: 20px;
+			margin-bottom: 30px;
 		}
 
 		.ipt3 {
-			width: 400px;
+			width: 480px;
 			margin: 0px auto;
-			margin-bottom: 20px;
+			margin-bottom: 30px;
 		}
 
 		.div1 {
 			display: flex;
 			background-color: white;
-			max-width: 100%;
 		}
 		
 		.div2 {
 		    text-align: center;
+		    margin-bottom: 20px;
 		}
 		
 		.div3 {
@@ -69,16 +69,12 @@
 
 		button {
 			display: block;
-			margin: 0px auto;
-			width: 400px;
 			height: 50px;
 			border-radius: 5px;
 			border: 0px;
 			outline: none;
 			background-color: #945121;
 			color: white;
-			font-weight: bold;
-			font-size: 14px;
 		}
 
 		button:hover {
@@ -91,12 +87,13 @@
 			margin-bottom: -100px;
 			margin-top: 30px;
 			margin-left: 7px;
-			width: 400px;
+			width: 480px;
 			font-size: 16px;
+			font-weight: bold;
 		}
 
 		.form1 {
-			width: 480px;
+			width: 550px;
 			border: 0px;
 			border-radius: 5px;
 			border: 2px solid #945121;
@@ -122,7 +119,7 @@
 			margin: 0px auto;
 			margin-top: -20px;
 			color: red;
-			font-size: 18px;
+			font-size: 16px;
 		}
 
 		.p2 {
@@ -130,7 +127,7 @@
 			margin: 0px auto;
 			margin-top: -20px;
 			color: red;
-			font-size: 18px;
+			font-size: 16px;
 		}
 
 		.p3 {
@@ -138,7 +135,7 @@
 			margin: 0px auto;
 			margin-top: -20px;
 			color: red;
-			font-size: 18px;
+			font-size: 16px;
 		}
 
 		
@@ -148,6 +145,7 @@
 			color: red;
 			font-size: 18px; 
  			top: 30px; 
+ 			margin-left: 10px;
 		}
 
 		.p5 {
@@ -156,6 +154,7 @@
 			color: red;
 			font-size: 18px;
  			top: 30px; 
+ 			margin-left: 10px;
 		}
 
 		.p6 {
@@ -164,6 +163,7 @@
 			color: red;
 			font-size: 18px;
  			top: 30px; 
+ 			margin-left: 10px;
 		}		
 
 		.p7 {
@@ -172,6 +172,7 @@
 			color: red;
 			font-size: 18px;
  			top: 30px; 
+ 			margin-left: 10px;
 		}	
 	</style>
 	<script>

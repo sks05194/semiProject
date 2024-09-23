@@ -19,17 +19,19 @@ import javax.servlet.http.HttpSession;
 
 import svc.NoticeService;
 import vo.ActionForward;
-import vo.NoticeVO;
 
 /* 공지사항 Action 클래스 */
 public class NoticeListAction implements Action {
-	
+	/**
+	 * @author 설보라
+	 */
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ActionForward forward = null;
 		HttpSession session = request.getSession();
 		ArrayList<Map<String, Object>> noticeList = new ArrayList<>();
 		
+		String loginName = "";
 		String loginId = "";
 		
 		Cookie[] cookies = request.getCookies(); // 모든 쿠키 가져오기
@@ -39,8 +41,8 @@ public class NoticeListAction implements Action {
                 String name = cookie.getName();   // 쿠키 이름 가져오기
                 //String value = cookie.getValue(); // 쿠키 값 가져오기
                 
-                if("mId".equals(name)) {
-                	loginId = cookie.getValue();
+                if("mem_info".equals(name)) {
+                	loginName = cookie.getValue().split("\\+")[1];
                 }
             }
         }
@@ -51,8 +53,10 @@ public class NoticeListAction implements Action {
 		// NoticeInfo = loginService.loginAction(NoticeVO);	
 		
 		// 리스트를 request 객체에 담음
-        request.setAttribute("noticeList", noticeList);
         request.setAttribute("loginId", loginId);
+        request.setAttribute("noticeList", noticeList);
+        request.setAttribute("loginName", loginName);
+        
 
         // ActionForward 객체 생성, JSP로 포워딩
         forward = new ActionForward();

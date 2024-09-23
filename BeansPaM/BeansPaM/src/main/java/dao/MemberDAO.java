@@ -1,44 +1,47 @@
 /**
+ * 기여자
+ * @author 강동준
+ * @author 임성현
+ * @author 민기홍
+ * 
  * 최초 생성일: 2024-09-11
  * @author 강동준
  * 
- * 마지막 수정일: 2024-09-20
- * @author 민기홍
+ * 마지막 수정일: 2024-09-23
+ * @author 강동준
  * 
- * 주요 수정 내용: 1. Login 메소드 수정 작업
- *             2. 주석 작업       
+ * 주요 수정 내용: getAllMembersList 메소드 추가   
  */
 
 package dao;
 
-import java.sql.*;
-import database.JdbcUtil;
+import static database.JdbcUtil.close;
+import static database.JdbcUtil.commit;
+import static database.JdbcUtil.getConnection;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+
+import action.AdminAction;
 import vo.MemberVO;
-import static database.JdbcUtil.*;
 
 /* 사원 테이블에 대한 메서드가 선언된 DAO 클래스 */
 public class MemberDAO {
-	/* 연결객체 변수 초기화 */
-	Connection con = null;
-
-	/* 연결객체 생성 메소드 */
-	public void setConnection() {
-		con = JdbcUtil.getConnection();
-	}
-
 	/**
 	 *  로그인을 위한 메소드
 	 *  @author 임성현
 	 */
 	public MemberVO Login(MemberVO memberVO) {
-		setConnection();
-
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		String sql = "SELECT * FROM MEMBER WHERE M_ID = ? AND M_PW = ?"; // DB에서의 아이디, 비밀번호 값들과 입력된 값들을 비교해주는 SQL 쿼리문
 
 		try {
-			ps = con.prepareStatement(sql);
+			ps = getConnection().prepareStatement(sql);
 			ps.setString(1, memberVO.getM_id());
 			ps.setString(2, memberVO.getM_pw());
 			rs = ps.executeQuery();
@@ -74,6 +77,7 @@ public class MemberDAO {
 	public int memberRegister(MemberVO memberVO) {
 		int registerCount = 0; // 0: 사용자 신청 실패, 1: 사용자 신청 성공, 2: 잘못된 사원 번호 입력, 3: 이미 아이디를 생성함, 4: 아이디 중복
 		
+		Connection con = getConnection();
 		PreparedStatement ps1 = null;
 		PreparedStatement ps2 = null;
 		Statement st = null;
@@ -144,7 +148,7 @@ public class MemberDAO {
 		String sql2 = "SELECT M_ID, M_PW FROM MEMBER WHERE M_ID = ?"; // 아이디를 입력 했을때의 쿼리문
 		
 		try {
-			ps1 = con.prepareStatement(sql1);
+			ps1 = getConnection().prepareStatement(sql1);
 			ps1.setInt(1, memberVO.getM_no());
 			rs1 = ps1.executeQuery();
 			
@@ -154,7 +158,7 @@ public class MemberDAO {
 				memberVO.setM_pw(rs1.getString("M_PW"));
 			}
 			
-			ps2 = con.prepareStatement(sql2);
+			ps2 = getConnection().prepareStatement(sql2);
 			ps2.setString(1, memberVO.getM_id());
 			rs2 = ps2.executeQuery();
 			
@@ -185,9 +189,8 @@ public class MemberDAO {
         MemberVO member = null;
 
         try {
-            con = getConnection();
             String sql = "SELECT * FROM MEMBER WHERE M_NO = ?";
-            ps = con.prepareStatement(sql);
+            ps = getConnection().prepareStatement(sql);
             ps.setInt(1, m_no);
             rs = ps.executeQuery();
 
@@ -213,5 +216,99 @@ public class MemberDAO {
 
         return member;
     }
+    
+    /**
+     * 모든 사원을 불러오는 메소드 - 관리자
+     * @author 강동준
+     * @see AdminAction
+     */
+    public ArrayList<MemberVO> getAllMembersListVerAdmin() {
+    	ArrayList<MemberVO> list = new ArrayList<MemberVO>();
+    	Statement st = null;
+    	ResultSet rs = null;
+    	
+    	try {
+			st = getConnection().createStatement();
+			rs = st.executeQuery("SELECT * FROM member");
+			
+			while (rs.next()) {
+				MemberVO vo = new MemberVO();
+				vo.setM_no(rs.getInt("m_no"));
+				vo.setM_id(rs.getString("m_id"));
+				vo.setM_name(rs.getString("m_name"));
+				vo.setM_day(rs.getDate("m_day"));
+				vo.setM_phone(rs.getString("m_phone"));
+				vo.setM_leave(rs.getInt("m_leave"));
+				list.add(vo);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(st);
+		}
+    	
+		return list ;
+    }
+    
+    /**
+     * 사원 정보를 사번으로 삭제하는 메소드 - 관리자
+     * @author 강동준
+     * @see admin.jsp
+     */
+    public void deleteEmpForNo(int m_no) {
+    	PreparedStatement ps = null;
+    	
+    	try {
+			ps = getConnection().prepareStatement("DELETE FROM member WHERE m_no = ?");
+			ps.setInt(1, m_no);
+			int result = ps.executeUpdate();
+			
+			if (result > 0) {
+				commit(getConnection());
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(ps);
+		}
+    }
+    
+    /**
+     * 사원 한 명의 모든 정보를 가져오는 메소드 - 관리자
+     * @author 강동준
+     * @see 어디선가
+     */
+    public MemberVO getAllDataForNo(int m_no) {
+    	MemberVO vo = null;
+    	PreparedStatement ps = null;
+    	ResultSet rs = null;
+    	
+    	try {
+			ps = getConnection().prepareStatement("SELECT * FROM member WHERE m_no = ?");
+			rs = ps.executeQuery();
+			
+			if (rs.next()) {
+				vo = new MemberVO();
+				vo.setM_no(m_no);
+				vo.setM_id(rs.getString("m_id"));
+				vo.setM_pw(rs.getString("m_pw"));
+				vo.setM_name(rs.getString("m_name"));
+				vo.setM_day(rs.getDate("m_day"));
+				vo.setM_position(rs.getString("m_position"));
+				vo.setM_phone(rs.getString("m_phone"));
+				vo.setM_email(rs.getString("m_email"));
+				vo.setM_leave(rs.getInt("m_leave"));
+				vo.setM_salary(rs.getInt("m_salary"));
+				vo.setM_dept(rs.getString("m_dept"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(ps);
+		}
+    	
+    	return vo;
+    }
 }
-	

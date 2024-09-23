@@ -36,7 +36,6 @@ public class LoginService {
 	 */
 	public int registerAction(MemberVO memberVO) throws Exception{	
 		MemberDAO memberDAO = new MemberDAO();
-		memberDAO.setConnection(); 
 		int registerCount = memberDAO.memberRegister(memberVO); // 0: 사용자 신청 실패, 1: 사용자 신청 성공, 2: 잘못된 사원 번호 입력, 3: 이미 아이디를 생성함, 4: 아이디 중복	
 		return registerCount; 
 	}
@@ -47,7 +46,6 @@ public class LoginService {
 	 */
 	public MemberVO findIdPwAction(MemberVO memberVO) throws Exception{		
 		MemberDAO memberDAO = new MemberDAO(); 
-		memberDAO.setConnection(); 	
 		memberVO = memberDAO.findIdPw(memberVO); // M_ID, M_PW 반환	 
 		return memberVO;
 	}

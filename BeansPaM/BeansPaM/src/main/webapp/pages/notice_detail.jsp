@@ -19,10 +19,10 @@
 <body>
     <header>
         <div class="menuBar">
-            <img src="/BeansPaM/img/full_logo.png" alt="Beans Pam Logo" class="logo">
+            <img src="/BeansPaM/img/logo.png" alt="Beans Pam Logo" class="logo">
             <a href="/BeansPaM/">home</a>
             <a href="./notice_list.jsp">공지사항</a>
-            <a href="#">Q&A</a>
+            <a href="#">Q&amp;A</a>
         </div>
     </header>
 
@@ -47,9 +47,9 @@
             <div class="button-group">
                 <button type="button" class="exit-button" onclick="location.href='/BeansPaM/b/notice'">나가기</button>
                 <div class="action-buttons">
-                    <c:if test="${loginId == 'admin'}">
+                    <c:if test='${loginName == "관리자"}'>
 						 <button type="button" id="deleteButton" onclick="deleteNotice(${n_no})">삭제</button>
-                    	 <button type="button" id="editButton" onclick="enableEdit()">수정</button>
+                    	 <button type="button" id="editButton" onclick="modeifyNotice()">수정</button>
                     	 <button type="submit" id="saveButton" style="display: none;">저장</button>
 					</c:if>
                 </div>
