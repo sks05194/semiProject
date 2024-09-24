@@ -43,7 +43,8 @@ public class LoginAction implements Action {
 			cookie.setMaxAge(60 * 60 * 9); // 9시간
 			response.addCookie(cookie);
 
-			forward = new ActionForward(true, "fms");
+			System.out.println(request.getContextPath());
+			forward = new ActionForward(true, request.getContextPath());
 			return forward;
 		}
 

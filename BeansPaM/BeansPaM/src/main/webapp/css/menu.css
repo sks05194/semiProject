@@ -1,0 +1,252 @@
+/* 기본 스타일 초기화 */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* 공통된 스타일 */
+body {
+    background-color: #ffffff;
+    color: #333333;
+    font-family: Arial, sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+/* 헤더 스타일 */
+header {
+    display: flex;
+    flex-direction: column;
+}
+
+/* 유저 정보 스타일 */
+.user-info {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #ffffff;
+    font-size: 18px;
+    font-weight: 600;
+    color: #333333;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.user-info a {
+    margin-left: 20px;
+    color: #333333;
+    transition: color 0.3s;
+}
+
+.user-info a:hover {
+    color: #007bff;
+}
+
+/* 내비게이션 스타일 */
+.main-nav {
+    background-color: #ffffff;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column; /* 메뉴와 서브 메뉴를 수직으로 배치 */
+    border-bottom: 1px solid #e5e5e5;
+    position: relative;
+}
+
+/* 로고와 메뉴 컨테이너 */
+.nav-left {
+    display: flex;
+    align-items: center;
+}
+
+/* 로고 스타일 */
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 150px;
+}
+
+/* 메뉴 토글 버튼 (모바일) */
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+    font-size: 24px;
+    color: #333333;
+    margin-left: auto;
+}
+
+/* 메인 메뉴 스타일 */
+.main-menu {
+    display: flex;
+    align-items: center;
+    margin-left: 40px;
+}
+
+.main-menu > li {
+    position: relative;
+    margin-left: 30px;
+}
+
+.main-menu > li:first-child {
+    margin-left: 0;
+}
+
+.main-menu a,
+.menu-title {
+    color: #333333;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 15px 10px;
+    transition: color 0.3s;
+}
+
+.main-menu a:hover,
+.menu-title:hover {
+    color: #007bff;
+}
+
+.menu-title {
+    cursor: pointer;
+}
+
+/* 서브 메뉴 스타일 */
+.sub-menus {
+    display: none;
+    flex-direction: row;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.9); /* 반투명 배경 */
+    border-top: 1px solid #e5e5e5;
+    position: absolute;
+    top: 100%;
+    left: 0;
+}
+
+.sub-menus .sub-menu {
+    flex: 1;
+    margin: 0 10px;
+}
+
+.sub-menu {
+    display: flex;
+    flex-direction: column;
+}
+
+.sub-menu li {
+    width: 100%;
+}
+
+.sub-menu li a {
+    display: block;
+    padding: 10px 15px;
+    color: #333333;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.sub-menu li a:hover {
+    background-color: #f8f9fa;
+}
+
+/* 데스크톱에서 모든 서브 메뉴 표시 */
+@media (min-width: 768px) {
+    /* 수정된 선택자 */
+    .main-nav:hover .sub-menus {
+        display: flex;
+    }
+}
+
+/* 모바일 메뉴 스타일 */
+@media (max-width: 767px) {
+    header {
+        flex-direction: column;
+    }
+
+    .main-nav {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px 20px;
+    }
+
+    .nav-left {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .main-menu {
+        flex-direction: column;
+        width: 100%;
+        display: none;
+        margin-left: 0;
+    }
+
+    .main-menu.open {
+        display: flex;
+    }
+
+    .main-menu > li {
+        width: 100%;
+        margin: 0;
+    }
+
+    .main-menu a,
+    .menu-title {
+        width: 100%;
+        padding: 15px 20px;
+    }
+
+    .sub-menus {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #f8f9fa;
+        position: static;
+    }
+
+    .sub-menus .sub-menu {
+        margin: 0;
+    }
+
+    .sub-menu li a {
+        padding: 10px 40px;
+    }
+
+    .has-submenu.open + .sub-menus {
+        display: flex;
+    }
+
+    /* 유저 정보 위치 조정 */
+    .user-info {
+        margin-top: 10px;
+    }
+}
+
+/* 호버 효과 */
+.main-menu > li > a:hover,
+.main-menu > li > .menu-title:hover,
+.sub-menu li a:hover,
+.user-info a:hover {
+    color: #007bff;
+}
+
+/* 접근성 향상: 포커스 스타일 추가 */
+.main-menu a:focus,
+.menu-title:focus,
+.sub-menu li a:focus {
+    outline: 2px solid #007bff;
+}

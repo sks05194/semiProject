@@ -2,10 +2,10 @@
  * 최초 생성일: 2024-09-20
  * @author 설보라
  * 
- * 수정일: 2024-09-24
+ * 수정일: 2024-09-25
  * @author 설보라
  * 
- * 주요 수정 내용: noticeUpdateAction, noticeDeleteAction 메소드 생성
+ * 주요 수정 내용: searchNotices 메소드 생성
  */
 
 package svc;
@@ -24,6 +24,7 @@ public class NoticeService {
 		NoticeDAO noticeDAO = new NoticeDAO();
 		ArrayList<Map<String, Object>> noticeList = new ArrayList<>();
 		noticeList = noticeDAO.noticeList();
+//		System.out.println("SVC noticeList" + noticeList);
 
 		return noticeList; 
 	}
@@ -39,7 +40,6 @@ public class NoticeService {
 	/* 공지사항 상세 */
 	public NoticeVO noticeDetailAction(NoticeVO noticeVO) throws Exception {
 		NoticeDAO noticeDAO = new NoticeDAO();
-		
 		return noticeDAO.noticeDetail(noticeVO); 
 	}
 	
@@ -51,14 +51,17 @@ public class NoticeService {
 		return updateCount;
 	}
 	
-	/* 공지사항 수정 */
+	/* 공지사항 삭제 */
 	public int noticeDeleteAction(NoticeVO noticeVO) {
 		NoticeDAO noticeDAO = new NoticeDAO();
 		int deleteCount = noticeDAO.noticeDelete(noticeVO); 
 		
 		return deleteCount;
 	}
-	
-	
-	
+
+    // 공지사항 검색
+    public ArrayList<Map<String, Object>> searchNotices(String keyword) throws Exception {
+        NoticeDAO noticeDAO = new NoticeDAO();
+        return noticeDAO.searchNotice(keyword);  // 리턴 타입이 ArrayList<Map<String, Object>>이어야 함
+    }
 }

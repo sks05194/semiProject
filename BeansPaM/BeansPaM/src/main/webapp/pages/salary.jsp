@@ -1,9 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="vo.SalaryVO" %>
 <%@ page import="java.util.List" %>
-<%@ page import="java.text.SimpleDateFormat" %>
-<%@ page import="java.util.Date" %>
 <!DOCTYPE html>
 <html lang="kr">
 
@@ -12,14 +9,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>salary</title>
     <link rel="stylesheet" href="/BeansPaM/css/workday.css">
-    <script src="/BeansPaM/js/fontawsome.js"></script>
-    <script src="/BeansPaM/js/jquery.js"></script>
 </head>
 
 <body>
 <% 
+	@SuppressWarnings("unchecked")
     List<SalaryVO> salaryList = (List<SalaryVO>) request.getAttribute("salaryList");
+
+    // 페이지 당 항목 수 설정
+    int pageSize = 8;
+    int totalRecords = salaryList != null ? salaryList.size() : 0;
+    int totalPages = (int) Math.ceil((double) totalRecords / pageSize);
+
+    // 현재 페이지 번호 가져오기 (최소값 1, 최대값 totalPages로 제한)
+    int currentPage = request.getParameter("page") != null ? Integer.parseInt(request.getParameter("page")) : 1;
+    if (currentPage < 1) currentPage = 1;
+    if (currentPage > totalPages) currentPage = totalPages;
+
+    // 표시할 데이터의 시작 인덱스와 끝 인덱스 계산
+    int startRecord = (currentPage - 1) * pageSize;
+    int endRecord = Math.min(startRecord + pageSize, totalRecords);
 %>
+
     <div class="chart"></div>
     <main>
         <h1>급여표</h1>
@@ -34,8 +45,8 @@
 
             <!-- 급여 데이터 출력 -->
             <% 
-            if (salaryList != null && salaryList.size() > 0) {
-                for (int i = 0; i < salaryList.size(); i++) {
+            if (salaryList != null && totalRecords > 0) {
+                for (int i = startRecord; i < endRecord; i++) {
                     SalaryVO salary = salaryList.get(i);
             %>
             <tr>
@@ -56,26 +67,29 @@
             %>
 
         </table>
-		<!-- 페이지 전환 버튼 -->
-		<div class="buttons">
-			<button onclick="changePage('prev')">이전</button>
-			<button onclick="changePage(1)">1</button>
-			<button onclick="changePage(2)">2</button>
-			<button onclick="changePage(3)">3</button>
-			<button onclick="changePage(4)">4</button>
-			<button onclick="changePage(5)">5</button>
-			<button onclick="changePage(6)">6</button>
-			<button onclick="changePage(7)">7</button>
-			<button onclick="changePage(8)">8</button>
-			<button onclick="changePage(9)">9</button>
-			<button onclick="changePage(10)">10</button>
-			<button onclick="changePage('next')">다음</button>
-		</div>
-	</main>
 
-	<footer> </footer>
+        <!-- 페이지 전환 버튼 -->
+        <div class="pagination">
+            <!-- 이전 페이지 버튼 -->
+            <% if (currentPage > 1) { %>
+                <a href="?page=<%= currentPage - 1 %>">이전</a>
+            <% } %>
 
-	<script src="/BeansPaM/js/fms_menu.js"></script>
+            <!-- 페이지 번호 링크 -->
+            <% for (int i = 1; i <= totalPages; i++) { %>
+                <a href="?page=<%= i %>" <%= i == currentPage ? "class='active'" : "" %>><%= i %></a>
+            <% } %>
+
+            <!-- 다음 페이지 버튼 -->
+            <% if (currentPage < totalPages) { %>
+                <a href="?page=<%= currentPage + 1 %>">다음</a>
+            <% } %>
+        </div>
+    </main>
+
+<!--     <footer></footer> -->
+
+<!--     <script src="/BeansPaM/js/fms_menu.js"></script> -->
 </body>
 
 </html>

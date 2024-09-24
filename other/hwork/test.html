@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        
+        * {
+            box-sizing: border-box;
+            user-select: none;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            display: flex;
+            border-bottom: 1px solid #ddd;
+            padding: 10px;
+            align-items: flex-end;
+        }
+
+        .logoImg {
+            width: 50px;
+            vertical-align: bottom;
+            margin-right : 20px;
+        }
+
+        a {
+            text-decoration: none;
+            cursor: pointer;
+            margin : 10px;
+        }
+
+        #mainImg {width: 100%;}
+        #webHeader {position: relative;}
+
+        /*웹 사이즈 스타일(시작)*/
+        @media screen and (min-width: 1160px) {
+            #webHeader {display: block;}
+            #mobileHeader {display : none;}
+            #webHeader .navbar .logoImg {margin-right: 60px;}
+
+            /*웹 메인메뉴들 */
+            #webHeader div[id^=webMenu] {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+
+                /*웹 메인메뉴 간격 조절*/
+                margin-right : 60px;
+            }
+
+             /*웹 메인메뉴 중 맨 끝 메뉴(오른쪽으로 배치) */
+            #webHeader div[id^=webMenu]:last-child{margin-left:auto; margin-right: 0;}
+
+            /*웹 서브메뉴들*/
+            #webHeader .sub_webMenu {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                position: absolute;
+                top: 115px;
+            }
+            /*웹 서브메뉴들*/
+            #webHeader .sub_webMenu a {color : #fff;}
+            /*웹 서브메뉴의 Background Block*/
+            #webHeader #webMenuBack{
+                position: absolute;
+                top : 111px;
+                width: 100%; 
+                height: 100px; 
+                background-color: rgba(0,0,0,0.5);
+            }
+        }
+        /*웹 사이즈 스타일(종료)*/
+
+        /*모바일 사이트 스타일(시작)*/
+        @media screen and (max-width: 1160px) {
+            #webHeader {display: none;}
+            #mobileHeader {display : block; position: relative;}
+            #mobileHeader .navbar a:last-child {margin-left:auto;}
+            #mobileHeader #subMenu.subClose {display: none;}
+            #mobileHeader #subMenu.subOpen {display: flex;}
+            #mobileHeader #subMenu{
+                display: flex;
+                position: absolute;
+                width: 100%;
+                justify-content: flex-end;
+                flex-direction: column;
+                background-color: rgba(0,0,0,0.5);
+            }
+            #mobileHeader .navbar span {margin-left: auto;} 
+            #mobileHeader #subMenu a{text-align: right; color: #fff;}
+            #mobileHeader #a1_sub, #mobileHeader #a2_sub, #mobileHeader #a3_sub{
+                display: flex;
+                justify-content: flex-end;
+                flex-direction: column;
+                background-color: rgba(0,0,0,0.7);
+            }
+            #mobileHeader #a1_sub.aClose, #mobileHeader #a2_sub.aClose, #mobileHeader #a3_sub.aClose {display: none;}
+            #mobileHeader #a1_sub.aOpen, #mobileHeader #a2_sub.aOpen, #mobileHeader #a3_sub.aOpen {display: flex;}
+        }
+        /*모바일 사이트 스타일(종료)*/
+    </style>
+    <script>
+        var st_width = 1160; //미디어쿼리 사이즈 조정 시 변경할 것
+
+        //웹 화면의 서브메뉴화면 지정 함수
+        function webSubMenu(val){
+            let webSubMenuInit = document.querySelectorAll(".webSubClose");
+            webSubMenuInit.forEach(function(obj){
+                if(val == 'init') {
+                    obj.style.display = 'none';
+                }else if(val == 'mobile') {
+                    obj.style.display = 'none';
+                }else {
+                    /*
+                    window.getComputedStyle(obj).display 
+                    => 현재 해당 엘리먼트의 display속성 상태 값 가져오기
+                    style속성은 inline으로 설정한 값만 설정하거나 가져올 수 있기 때문에
+                    내부스타일시트, 외부스타일시트의 값은 인식할 수 없다.
+                    */
+                    if(window.getComputedStyle(obj).display == 'none'){
+                        obj.style.display = 'flex';
+                    }else{
+                        obj.style.display = 'none';
+                    }
+                }
+            });
+        }
+        window.onload = function(){
+            //처음 시작할 때 웹화면의 서브 메뉴 숨기기
+            webSubMenu('init');
+
+            //웹 메인 메뉴들 가져오기
+            let a_webMenus =  document.querySelectorAll(".a_webMenu");
+            a_webMenus.forEach(function(obj){
+                obj.addEventListener("click", function(e){
+                    webSubMenu('sub');
+                });
+            });
+
+
+            //모바일의 햄버거 버튼에 클릭 이벤트 생성하기
+            document.querySelector("#mobileHeader .navbar span").onclick = function(e){
+               //모바일의 서브메뉴바가 가지고 있는 클래스값 가지고 오기
+               let classNm = document.querySelector("#subMenu").getAttribute("class");
+               
+               if(classNm=='subClose'){
+                   document.querySelector("#subMenu").setAttribute("class", "subOpen");
+                }else{
+                   document.querySelector("#subMenu").setAttribute("class", "subClose");
+               }
+            };
+            
+            //모바일의 메뉴들의 서브 메뉴들 모두 가져오기
+            let mobileAncTags = document.querySelectorAll("#mobileHeader #subMenu > a");
+
+            //가져온 서브 메뉴들에 click이벤트 추가 해주기
+            mobileAncTags.forEach(function(obj){
+                obj.addEventListener("click", function(e){
+                    //서브 메뉴의 아이디들을 가져오기 : #a1_sub, #a2_sub, #a3_sub
+                    let id = "#"+this.getAttribute("id")+"_sub";
+                    
+                    //가져온 아이디가 가지고 있는 class값 가져오기
+                    let classNm = document.querySelector(id).getAttribute("class");
+                    if(classNm=='aClose'){
+                        document.querySelector(id).setAttribute("class", "aOpen");
+                    }else{
+                        document.querySelector(id).setAttribute("class", "aClose");
+                    }
+                });
+            });
+
+            //브라우저의 사이즈가 변경될 때 마다 실행되는 함수
+            window.addEventListener("resize", function(e){
+                //브라우저 너비 구하기
+                let browserWidth = e.target.innerWidth;
+
+                //브라우저 너비가 st_width값 이상인 경우
+                console.log('st_width: ', st_width);
+                if(browserWidth >= st_width){
+                    document.querySelector("#subMenu").setAttribute("class", "subClose");
+                    document.querySelector("#a1_sub").setAttribute("class", "aClose");
+                    document.querySelector("#a2_sub").setAttribute("class", "aClose");
+                    document.querySelector("#a3_sub").setAttribute("class", "aClose");
+                }
+
+                if(browserWidth == st_width-1){
+                    webSubMenu('mobile');
+                }
+            });
+        };
+    </script>
+</head>
+
+<body>
+    <header id="webHeader">
+        <div id="webMenuBack" class="webSubClose"></div>
+        <nav class="navbar">
+            <img src="img/pic_bulbon.gif" class="logoImg" alt="로고 이미지" title="로고 이미지">
+            <div id="webMenu1">
+                <a id="webMenu1_a" class="a_webMenu">메뉴메뉴1</a>
+                <div class="sub_webMenu webSubClose">
+                    <a>서브메뉴1</a>
+                    <a>서브메뉴2</a>
+                </div>
+            </div>
+            <div id="webMenu2">
+                <a id="webMenu2_a" class="a_webMenu">메뉴메뉴2</a>
+                <div class="sub_webMenu webSubClose">
+                    <a>서브메뉴1</a>
+                    <a>서브메뉴2</a>
+                </div>
+            </div>
+            <div id="webMenu3">
+                <a id="webMenu3_a" class="a_webMenu">메뉴메뉴3</a>
+                <div class="sub_webMenu webSubClose">
+                    <a>서브메뉴1</a>
+                    <a>서브메뉴2</a>
+                </div>
+            </div>
+            <div id="webMenu4">
+                <a id="webMenu4_a" class="a_webMenu">메뉴메뉴4</a>
+                <div class="sub_webMenu webSubClose">
+                    <a>서브메뉴1</a>
+                    <a>서브메뉴2</a>
+                </div>
+            </div>
+            <div id="webMenu5">
+                <a id="webMenu5_a" class="a_webMenu">메뉴메뉴5</a>
+                <div class="sub_webMenu webSubClose">
+                    <a>서브메뉴1</a>
+                    <a>서브메뉴2</a>
+                </div>
+            </div>
+            <div id="webMenu6">
+                <a id="webMenu6_a" class="a_webMenu">메뉴메뉴6</a>
+                <div class="sub_webMenu webSubClose">
+                    <a>서브메뉴1</a>
+                    <a>서브메뉴2</a>
+                </div>
+            </div>
+            <div id="webMenuLast">
+                <a id="webMenuLast_a">마지막메뉴</a>
+            </div>
+        </nav>
+    </header>
+
+    <header id="mobileHeader">
+        <nav class="navbar">
+            <img src="img/pic_bulbon.gif" class="logoImg" alt="로고 이미지" title="로고 이미지">
+            <span><i class='fa fa-bars' style='font-size:48px;'></i></span>
+        </nav>
+        <div id="subMenu" class="subClose">
+            <a id="a1">메뉴1</a>
+            <div id="a1_sub" class="aClose">
+                <a>서브1-1</a>
+                <a>서브1-2</a>
+            </div>
+            <a id="a2">메뉴2</a>
+            <div id="a2_sub" class="aClose">
+                <a>서브2-1</a>
+                <a>서브2-2</a>
+            </div>
+            <a id="a3">메뉴3</a>
+            <div id="a3_sub" class="aClose">
+                <a>서브3-1</a>
+                <a>서브3-2</a>
+            </div>
+        </div>
+    </header>
+    <div> 
+        <img src="img/coffeehouse2.jpg" id="mainImg">
+    </div>
+</body>
+
+</html>

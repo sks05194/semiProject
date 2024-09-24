@@ -2,16 +2,15 @@
  * 최초 생성일: 2024-09-22
  * @author 설보라
  * 
- * 마지막 수정일: 2024-09-24
+ * 마지막 수정일: 2024-09-25
  * @author 설보라
  * 
- * 주요 수정 내용: 1. noticeUpdate, noticeUpdate 메소드 생성
+ * 주요 수정 내용: searchNotice 메소드 생성
  */
 
 package dao;
 
-import static database.JdbcUtil.close;
-import static database.JdbcUtil.commit;
+import static database.JdbcUtil.*;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -92,7 +91,7 @@ public class NoticeDAO {
 			
 			// registerCount가 1이면 공지사항 등록 성공해 DB에 값이 업데이트 셩공
 			if(registerCount == 1) { // 1: 공지사항 등록 성공 
-				commit(JdbcUtil.getConnection());
+				commit();
 			} 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -109,7 +108,6 @@ public class NoticeDAO {
 		PreparedStatement ps1 = null;
 		PreparedStatement ps2 = null;
 		ResultSet rs1 = null;
-//		ResultSet rs2 = null;
 		
 		//공지사항 상세내용 조회
 		String sql1 = "SELECT ROWNUM AS NO, N_NO, N_TITLE, N_CONTENT, N_VIEWS, TO_CHAR(N_R_DATE,'YYYY/MM/DD')";
@@ -139,8 +137,9 @@ public class NoticeDAO {
 			ps2.setInt(1, noticeVO.getN_no());
 			ps2.setInt(2, noticeVO.getN_no());
 			ps2.executeUpdate();
-			JdbcUtil.getConnection().commit();
+			commit();
 		} catch (Exception e) {
+			rollback();
 			e.printStackTrace();
 		} finally {
 			close(ps2);
@@ -169,7 +168,7 @@ public class NoticeDAO {
 			
 			// updateCount가 1이면 공지사항 수정 후 등록 성공해 DB에 값이 업데이트 셩공
 			if(updateCount == 1) { // 1: 공지사항 수정 후 등록 성공 
-				commit(JdbcUtil.getConnection());
+				commit();
 			} 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -196,7 +195,7 @@ public class NoticeDAO {
 			
 			// deleteCount가 1이면 공지사항 삭제 성공! (DB의 N_DELETE_YN이 N => Y로 업데이트 셩공)
 			if(deleteCount == 1) { // 1: 공지사항 삭제 완료
-				commit(JdbcUtil.getConnection());
+				commit();
 			} 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -205,4 +204,42 @@ public class NoticeDAO {
 		}
 		return deleteCount;
 	}
+	
+	
+	/* 공지사항 검색 */
+    public ArrayList<Map<String, Object>> searchNotice(String keyword) throws Exception {
+        PreparedStatement ps1 = null;
+        ResultSet rs1 = null;
+        ArrayList<Map<String, Object>> list = new ArrayList<>();
+
+        String sql = "SELECT * FROM ( " 
+                + " SELECT ROWNUM AS NO, N_NO, N_TITLE, N_VIEWS, TO_CHAR(N_R_DATE,'YYYY/MM/DD')"
+                + " AS N_R_DATE " 
+                + " FROM NOTICE "
+                + " WHERE N_TITLE LIKE ?" 
+                + " ORDER BY N_C_DATE DESC" 
+                + " )ORDER BY NO DESC";
+        
+        try {
+            ps1 = JdbcUtil.getConnection().prepareStatement(sql);
+            ps1.setString(1, "%" + keyword + "%");
+            rs1 = ps1.executeQuery();
+
+            
+            while (rs1.next()) {
+                Map<String, Object> noticeMap = new HashMap<>();
+                noticeMap.put("no", rs1.getString("NO"));
+                noticeMap.put("n_no", rs1.getInt("N_NO"));
+                noticeMap.put("n_title", rs1.getString("N_TITLE"));
+                noticeMap.put("n_views", rs1.getInt("N_VIEWS"));
+                noticeMap.put("n_r_date", rs1.getString("N_R_DATE"));
+                list.add(noticeMap);
+            }
+        } finally {
+            close(ps1);
+            close(rs1);
+        }
+        return list;
+    }
+
 }

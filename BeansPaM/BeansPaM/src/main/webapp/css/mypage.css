@@ -12,8 +12,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    font-size:14px;
-    font-weight:bolder;
+    
     flex-direction: column;
 }
 

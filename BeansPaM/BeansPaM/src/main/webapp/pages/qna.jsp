@@ -54,8 +54,42 @@
                     %>
                 </tbody>
             </table>
-            
-             <!-- 버튼을 포함할 전체 컨테이너 -->
+
+            <!-- 페이지네이션 -->
+            <div class="pagination">
+                <% 
+                    int currentPage = (int) request.getAttribute("currentPage");
+                    int maxPage = (int) request.getAttribute("maxPage");
+                    int startPage = (int) request.getAttribute("startPage");
+                    int endPage = (int) request.getAttribute("endPage");
+
+                    if (startPage > 1) {
+                %>
+                    <a href="?page=<%= startPage - 1 %>">&laquo; 이전</a>
+                <% 
+                    }
+
+                    for (int i = startPage; i <= endPage; i++) {
+                        if (i == currentPage) {
+                %>
+                    <a href="?page=<%= i %>" class="active"><%= i %></a>
+                <% 
+                        } else {
+                %>
+                    <a href="?page=<%= i %>"><%= i %></a>
+                <% 
+                        }
+                    }
+
+                    if (endPage < maxPage) {
+                %>
+                    <a href="?page=<%= endPage + 1 %>">다음 &raquo;</a>
+                <% 
+                    }
+                %>
+            </div>
+
+            <!-- 버튼을 포함할 전체 컨테이너 -->
             <div class="button-wrapper">
                 <!-- 검색 컨테이너 -->
                 <div class="search-container">
@@ -70,18 +104,39 @@
                     </form>
                 </div>
 
-                <!-- 페이지네이션 -->
-                <div class="pagination">
-                    <a href="#">1</a>
-                </div>
-
                 <!-- 글쓰기 관련 버튼 -->
                 <div class="button-container">
                     <button onclick="location.href='<%=request.getContextPath()%>/pages/qna_write.jsp'">작성하기</button>
                 </div>
             </div>
-            
+
         </div>
     </main>
+
+    <!-- JavaScript로 게시글 클릭 시 색상 변경 및 상태 저장 -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const links = document.querySelectorAll("td:nth-child(2) a");
+
+            links.forEach(link => {
+                link.addEventListener("click", function () {
+                    // 게시글 클릭하면 'read' 클래스를 추가하여 회색으로 변경
+                    this.classList.add("read");
+
+                    // 클릭한 게시글 ID를 localStorage에 저장하여 새로고침 후에도 회색 유지
+                    const postId = this.getAttribute("href");
+                    localStorage.setItem(postId, "read");
+                });
+
+                // 페이지 로드 시 localStorage에서 읽음 상태 확인
+                const postId = link.getAttribute("href");
+                if (localStorage.getItem(postId) === "read") {
+                    link.classList.add("read");
+                }
+            });
+        });
+    </script>
+
 </body>
+
 </html>

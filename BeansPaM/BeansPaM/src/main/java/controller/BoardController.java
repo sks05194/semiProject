@@ -14,6 +14,7 @@
 package controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -46,9 +47,6 @@ public class BoardController extends HttpServlet {
 
 		Action action = null;
 
-		// 추후 테스트 후 제거
-		System.out.println(command);
-		System.out.println(String.join("/", pathInfo));
 
 		switch (pathInfo[1]) {
 		/**
@@ -115,9 +113,40 @@ public class BoardController extends HttpServlet {
 		 */
 		case "qna":
 			if (pathInfo.length == 2) {
-				// Q&A 리스트 페이지로 이동 및 게시글 불러오기
-				List<QnaVO> qnaList = qnaDAO.getQnaList(); // 게시글 목록 가져오기
-				request.setAttribute("qnaList", qnaList); // request에 게시글 목록 저장
+				// 페이지 파라미터와 한 페이지당 보여줄 게시글 수
+				int page = 1;
+				int limit = 10;
+
+				if (request.getParameter("page") != null) {
+					page = Integer.parseInt(request.getParameter("page"));
+				}
+
+				// 게시글 목록 가져오기
+				List<QnaVO> qnaList = qnaDAO.getQnaList(page, limit);
+
+				// 전체 게시글 수 가져오기
+				int totalQnaCount = qnaDAO.getTotalQnaCount();
+
+				// 총 페이지 수 계산
+				int maxPage = (int) ((double) totalQnaCount / limit + 0.95); // 올림 처리
+
+				// 현재 페이지에 보여줄 첫 페이지 수 (1, 11, 21 등...)
+				int startPage = (((int) ((double) page / 10 + 0.9)) - 1) * 10 + 1;
+
+				// 현재 페이지에 보여줄 마지막 페이지 수 (10, 20, 30 등...)
+				int endPage = startPage + 10 - 1;
+
+				if (endPage > maxPage) endPage = maxPage;
+
+				// 페이지 관련 정보 저장
+				request.setAttribute("currentPage", page);
+				request.setAttribute("maxPage", maxPage);
+				request.setAttribute("startPage", startPage);
+				request.setAttribute("endPage", endPage);
+				request.setAttribute("qnaList", qnaList);
+				request.setAttribute("totalQnaCount", totalQnaCount);
+
+				// 페이지 포워딩
 				forward = new ActionForward("/pages/qna.jsp");
 
 			} else if (pathInfo[2].equals("write")) {
@@ -152,9 +181,20 @@ public class BoardController extends HttpServlet {
 					request.setAttribute("qna", qna); // request에 게시글 정보 저장
 					forward = new ActionForward("/pages/qna_detail.jsp"); // 상세보기 페이지로 이동 (forward 방식)
 				} else {
-					// 게시글을 찾지 못한 경우 에러 처리
 					forward = new ActionForward("/pages/error.jsp");
 				}
+			} else if (pathInfo[2].equals("delete")) {
+				// 게시글 삭제 처리
+				String q_no = request.getParameter("q_no");
+
+				// DAO에서 게시글 삭제 처리
+				qnaDAO.deleteQna(Integer.parseInt(q_no));
+
+				// 자바스크립트를 이용해 삭제 후 알림창 띄우고 리스트 페이지로 이동
+				response.setContentType("text/html; charset=UTF-8");
+				PrintWriter out = response.getWriter();
+				out.println("<script>alert('삭제가 되었습니다.'); location.href='" + request.getContextPath() + "/b/qna';</script>");
+				out.flush();
 			}
 			break;
 

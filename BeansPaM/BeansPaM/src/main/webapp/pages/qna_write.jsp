@@ -23,6 +23,7 @@
 
             <!-- 작성된 데이터를 b/qna/submit으로 전송할 form -->
             <form action="<%=request.getContextPath()%>/b/qna/submit" method="post">
+
                 <table class="write-table">
                     <tr>
                         <th class="center-align">제목</th>
@@ -62,7 +63,7 @@
         }
     </script>
 
-    <script src="/BeansPaM/js/board_menu.js"></script>
+
 </body>
 
 </html>

@@ -27,43 +27,49 @@ public class NoticeListAction implements Action {
 	 */
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		ActionForward forward = null;
+		ActionForward forward = new ActionForward();
 		HttpSession session = request.getSession();
 		ArrayList<Map<String, Object>> noticeList = new ArrayList<>();
 		
 		String loginName = "";
 		String loginId = "";
 		
-		Cookie[] cookies = request.getCookies(); // 모든 쿠키 가져오기
+		// 쿠키에서 로그인 정보를 가져오기
+		Cookie[] cookies = request.getCookies();
+		if (cookies != null) {
+			for (Cookie cookie : cookies) {
+				String name = cookie.getName();
+				if("mem_info".equals(name)) {
+					loginName = cookie.getValue().split("\\+")[1];
+				}
+			}
+		}
 
-        if (cookies != null) {
-            for (Cookie cookie : cookies) {
-                String name = cookie.getName();   // 쿠키 이름 가져오기
-                //String value = cookie.getValue(); // 쿠키 값 가져오기
-                
-                if("mem_info".equals(name)) {
-                	loginName = cookie.getValue().split("\\+")[1];
-                }
-            }
-        }
+		// 검색어를 받아온다.
+		String keyword = request.getParameter("keyword");
 		
 		// SQL 쿼리문을 반환 받을 SVC 객체 생성
 		NoticeService noticeService = new NoticeService();
-		noticeList = noticeService.noticeListAction();
-		// NoticeInfo = loginService.loginAction(NoticeVO);	
 		
-		// 리스트를 request 객체에 담음
-        request.setAttribute("loginId", loginId);
-        request.setAttribute("noticeList", noticeList);
-        request.setAttribute("loginName", loginName);
-        
+		// 검색어가 있을 경우 검색, 없을 경우 전체 목록 조회
+		if (keyword != null && !keyword.trim().isEmpty()) {
+			// 검색어가 있을 때 공지사항 검색
+			noticeList = noticeService.searchNotices(keyword);
+		} else {
+			// 검색어가 없을 때 전체 공지사항 조회
+			noticeList = noticeService.noticeListAction();
+		}
+		
+		// 결과를 request 객체에 담음
+		request.setAttribute("loginId", loginId);
+		request.setAttribute("noticeList", noticeList);
+		request.setAttribute("loginName", loginName);
+		request.setAttribute("keyword", keyword);  // 검색어 유지
+		
+		// ActionForward 객체 생성, JSP로 포워딩
+		forward.setPath("/pages/notice_list.jsp");
+		forward.setRedirect(false); // 포워딩 방식으로 이동 (Redirect는 false)
 
-        // ActionForward 객체 생성, JSP로 포워딩
-        forward = new ActionForward();
-        forward.setPath("/pages/notice_list.jsp");
-        forward.setRedirect(false); // 포워딩 방식으로 이동 (Redirect는 false)
-		
-		return forward;	
+		return forward;
 	}
-	
 }

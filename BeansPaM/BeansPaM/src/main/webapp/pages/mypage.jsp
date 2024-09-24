@@ -9,8 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>마이페이지</title>
     <link rel="stylesheet" href="/BeansPaM/css/mypage.css">
-    <script src="/BeansPaM/js/jquery.js"></script>
-    <script src="/BeansPaM/js/fontawsome.js"></script>
+    <script src="https://kit.fontawesome.com/b19de6d406.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     
 </head>
 
@@ -25,11 +25,14 @@
             <img src="" alt="프로필 이미지">
             <p><%= mvo.getM_name() %></p> <!-- 이름 표시 -->
         </div>
-
+	
+	
         <!-- 테이블 데이터 -->
         <div class="mytable">
             <table>
                 <tr><td>소속</td><td><%=mvo.getM_dept()%></td></tr>
+                <tr><td>아이디</td><td><%=mvo.getM_id()%></td></tr>
+                <tr><td>이메일</td><td><%=mvo.getM_email()%></td></tr>
                 <tr><td>사번</td><td><%=mvo.getM_no()%></td></tr>
                 <tr><td>입사일자</td><td><%=mvo.getM_day()%></td></tr>
                 <tr><td>전화 번호</td><td><%=mvo.getM_phone()%></td></tr>
@@ -51,10 +54,10 @@
             <span class="close">&times;</span>
             <h2>회원정보 수정</h2>
             <form action="/BeansPaM/updateMember" method="post">
+                <label for="dept">이메일:</label>
+                <input type="text" id="dept" name="dept" value="<%= mvo.getM_email()%>"><br><br>
                 <label for="phone">전화 번호:</label>
-                <input type="text" id="phone" name="phone" value="<%= mvo.getM_phone() %>"><br><br>
-                <label for="dept">소속:</label>
-                <input type="text" id="dept" name="dept" value="<%= mvo.getM_dept() %>"><br><br>
+        		        <input type="text" id="phone" name="phone" value="<%= mvo.getM_phone() %>"><br><br>
                 <button type="submit">수정 완료</button>
             </form>
         </div>
@@ -119,6 +122,9 @@
             });
         });
     </script>
+    <footer>
+    </footer>
+	
 </body>
 
 </html>

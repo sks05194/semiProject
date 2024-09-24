@@ -95,7 +95,7 @@ public class JdbcUtil {
 		}
 	}
 
-	public static void commit(Connection conn) {
+	public static void commit() {
 		if (conn == null)
 			return;
 
@@ -106,7 +106,7 @@ public class JdbcUtil {
 		}
 	}
 
-	public static void rollback(Connection conn) {
+	public static void rollback() {
 		if (conn == null)
 			return;
 

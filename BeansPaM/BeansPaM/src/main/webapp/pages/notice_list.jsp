@@ -1,37 +1,20 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%-- <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> --%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="vo.NoticeVO"%>
+<%@page import="dao.NoticeDAO"%>
+<%-- <%!NoticeDAO dao = new NoticeDAO(); %> --%>
+
 <!DOCTYPE html>
 <html lang="ko">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/BeansPaM/css/notice_list.css">
     <script src="/BeansPaM/js/jquery.js"></script>
     <title>공지사항 초기화면</title>
-    <script>
-//      	 
-        window.onload = function() {
-            loadNotices();
-        };
-        
-        function goDetail(n_no){
-        	location.href="/BeansPaM/b/notice/detail?n_no=" + n_no;
-        }
-    </script>
 </head>
-
 <body>
-    <header>
-        <div class="menuBar">
-            <!-- 로고 이미지 추가 -->
-            <img src="/BeansPaM/img/logo.png" alt="Beans Pam Logo" class="logo">
-            <a href="/BeansPaM/">home</a>
-            <a href="/BeansPaM/notice_list.jsp">공지사항</a>
-            <a href="#">Q&amp;A</a>
-        </div>
-    </header>
 
     <main class="content">
         <div class="board">
@@ -62,8 +45,12 @@
             <div class="actions-container">
                 <!-- 검색창 -->
                 <div class="search-container">
-                    <input type="search" id="searchInput" placeholder="검색할 내용 입력">
-                    <button onclick="searchTable()">검색</button>
+               		<form method="get" action="/BeansPaM/b/notice">
+						<div class="search">
+							<input type="text" name="keyword" id="keyword" placeholder="검색할 내용 입력" value="${param.keyword}">
+						</div>
+					<input type="submit" value="검색">
+					</form>
                 </div>
                 <div class="pagination">
                 </div>
@@ -75,5 +62,14 @@
             </div>
         </div>
     </main>
+    <script>
+//         window.onload = function() {
+//             loadNotices();
+//         };
+        
+        function goDetail(n_no){
+        	location.href="/BeansPaM/b/notice/detail?n_no=" + n_no;
+        }
+    </script>
 </body>
 </html>

@@ -15,9 +15,7 @@
 
 package dao;
 
-import static database.JdbcUtil.close;
-import static database.JdbcUtil.commit;
-import static database.JdbcUtil.getConnection;
+import static database.JdbcUtil.*;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -121,9 +119,10 @@ public class MemberDAO {
 			
 			// registerCount가 1이면 사용자 신청에 성공해 DB에 값이 업데이트 되었단 의미임
 			if(registerCount == 1) { // 1: 사용자 신청 성공 
-				commit(con);
+				commit();
 			} 
 		} catch (Exception e) {
+			rollback();
 			e.printStackTrace();
 		} finally {
 			close(rs2);
@@ -268,9 +267,10 @@ public class MemberDAO {
 			int result = ps.executeUpdate();
 			
 			if (result > 0) {
-				commit(getConnection());
+				commit();
 			}
 		} catch (SQLException e) {
+			rollback();
 			e.printStackTrace();
 		} finally {
 			close(ps);
@@ -347,12 +347,3 @@ public class MemberDAO {
 		return count;
 	}
 }
-
-
-
-
-
-
-
-
-
