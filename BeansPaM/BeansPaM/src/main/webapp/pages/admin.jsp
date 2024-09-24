@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page import="java.util.ArrayList"%>
+<%@page import="java.lang.Math"%>
 <%@page import="vo.MemberVO"%>
 <%@page import="dao.MemberDAO"%>
 <%!MemberDAO dao = new MemberDAO(); %>
@@ -11,7 +12,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>admin</title>
+	<title>관리자</title>
 
 	<link rel="stylesheet" href="/BeansPaM/css/admin.css">
 	<script src="/BeansPaM/js/fontawsome.js"></script>
@@ -19,41 +20,43 @@
 </head>
 
 <body>
-	<div class="chart">
+	<main>
 		<h1>관리자 메뉴</h1>
 
-		<div class="nav">
-			<h3>BeansPaM</h3>
-			<img src="/BeansPaM/img/logo.png" alt="">
-		</div>
-	</div>
-
-	<main>
-		<form method="get">
+		<div class="form-and-button">
 			<div class="search">
-				<select name="target" id="target">
-					<option value="m_no" selected>사번</option>
-					<option value="m_id">아이디</option>
-					<option value="m_name">이름</option>
-					<option value="m_dept">부서</option>
-				</select>
-				<input type="text" name="keyword" id="keyword">
+				<form method="get">
+					<select name="target" id="target">
+						<option value="m_no" selected>사번</option>
+						<option value="m_id">아이디</option>
+						<option value="m_name">이름</option>
+						<option value="m_dept">부서</option>
+					</select>
+					<input type="text" name="keyword" id="keyword">
+					<input type="submit" value="검색">
+				</form>
 			</div>
-			<input type="submit" value="검색">
-		</form>
-		
+	
+		    <div class="employee-register">
+		        <a href="admin_regist">
+		            <button id="register">등록</button>
+		        </a>
+		    </div>
+	    </div>
+
 		<table id="employeeTable">
 			<tr>
 				<th>사번</th>
 				<th>아이디</th>
 				<th>이름</th>
 				<th>입사일자</th>
+				<th>직책</th>
 				<th>전화번호</th>
 				<th>부서</th>
 				<th>연차</th>
 				<th>열람</th>
 			</tr>
-			
+
 			<c:if test="${not empty members and members.size() ne 0}">
 				<c:forEach var="i" begin="0" end="${members.size() - 1}" step="1">
 					<tr>
@@ -61,6 +64,7 @@
 						<td>${members[i].m_id}</td>
 						<td>${members[i].m_name}</td>
 						<td>${members[i].m_day.toString()}</td>
+						<td>${members[i].m_position}</td>
 						<td>${members[i].m_phone}</td>
 						<td>${members[i].m_dept}</td>
 						<td>${members[i].m_leave}일</td>
@@ -71,23 +75,59 @@
 					</tr>
 				</c:forEach>
 			</c:if>
-			
 		</table>
+
+		<div id="pageButtons">
+		    <!-- 검색 조건 가져오기 -->
+		    <%
+		        String target = request.getParameter("target") != null ? request.getParameter("target") : "";
+		        String keyword = request.getParameter("keyword") != null ? request.getParameter("keyword") : "";
+		    %>
+		
+		    <c:if test="${not empty members and members.size() ne 0}">
+		        <!-- 이전 페이지 버튼 -->
+		        <c:if test="${minPageCount > 5}">
+		            <button onclick="goToPage(${minPageCount - 1})">
+		                <c:out value="<"/>
+		            </button>
+		        </c:if>
+		
+		        <!-- 페이징 번호 버튼 -->
+		        <c:forEach var="i" begin="${minPageCount}" end="${maxPageCount}" step="1">
+		            <button onclick="goToPage(${i})">
+		                <c:out value="${i}"/>
+		            </button>
+		        </c:forEach>
+		
+		        <!-- 다음 페이지 버튼 -->
+		        <c:if test="${maxPageCount % 5 == 0}">
+		            <button onclick="goToPage(${maxPageCount + 1})">
+		                <c:out value=">"/>
+		            </button>
+		        </c:if>
+		    </c:if>
+		</div>
 	</main>
-
-	<script>
-		const originalEmployees = [
-			{ empnum: '33334444', id: '강동준', name: '기획부', date: '사원', tel: 's@coffee.com', break: '02-3333-4444', open: '열람' },
-
-			{ empnum: '33334444', id: '강동준', name: '기획부', date: '사원', tel: 's@coffee.com', break: '02-3333-4444', open: '열람' },
-
-			{ empnum: '33334444', id: '강동준', name: '기획부', date: '사원', tel: 's@coffee.com', break: '02-3333-4444', open: '미열람' },
-
-			{ empnum: '33334444', id: '강동준', name: '기획부', date: '사원', tel: 's@coffee.com', break: '02-3333-4444', open: '열람' }
-		];
+	
+	<script type="text/javascript">
+	    function goToPage(page) {
+	        var target = '<%= target %>';
+	        var keyword = '<%= keyword %>';
+	        var url = 'admin?';
+	
+	        if (target !== '') {
+	            url += '&target=' + encodeURIComponent(target);
+	        }
+	
+	        if (keyword !== '') {
+	            url += '&keyword=' + encodeURIComponent(keyword) + '&';
+	        }
+	        
+	        url += 'p=' + page;
+	
+	        window.location.href = url;
+	    }
 	</script>
-
-	<script src="/BeansPaM/js/fms_menu.js"></script>
 </body>
 
 </html>

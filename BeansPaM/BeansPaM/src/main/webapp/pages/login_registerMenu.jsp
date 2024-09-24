@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>사용자 신청 화면</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
 	<script src="/BeansPaM/js/jquery.js"></script>
 	<style>
 		* {
@@ -50,6 +51,7 @@
 			width: 480px;
 			margin: 0px auto;
 			margin-bottom: 30px;
+			padding-right: 50px;
 		}
 
 		.div1 {
@@ -85,7 +87,7 @@
 			display: inline-block;
 			margin: 0px auto;
 			margin-bottom: -100px;
-			margin-top: 30px;
+			margin-top: 55px;
 			margin-left: 7px;
 			width: 480px;
 			font-size: 16px;
@@ -133,7 +135,7 @@
 		.p3 {
 			display: none;
 			margin: 0px auto;
-			margin-top: -20px;
+			margin-top: 20px;
 			color: red;
 			font-size: 16px;
 		}
@@ -173,6 +175,18 @@
 			font-size: 18px;
  			top: 30px; 
  			margin-left: 10px;
+		}
+		
+		.eyes {
+		    visibility: hidden;
+			position: relative;
+			margin: 0px auto;
+			margin-left: 92%;
+			margin-top: -14.5%;
+			height: 30px;
+			font-size: 22px;
+			cursor: pointer;
+			color: #945121;
 		}	
 	</style>
 	<script>
@@ -292,6 +306,33 @@
 				    document.querySelector('.ipt3').style.borderColor = "#af886c";
 			    }
 		    }
+		    
+			<%-- 비밀번호를 입력할 때에만 눈 아이콘 표시하는 코드--%>
+			$('.ipt3').on('input', function () {
+				if ($(this).val()) {
+				   $('.eyes').css({
+					   visibility: 'visible'
+				   });			
+				} else {
+				   $('.eyes').css({
+					   visibility: 'hidden'
+				   });
+				}
+			});
+			
+			<%-- 숨긴 비밀번호를 표시하는 눈 아이콘 코드 --%>
+			$('.eyes').on('click', function () {
+				const passwordInput = $(this).siblings('#registerPw');
+				const isActive = passwordInput.attr('type') === 'text';
+
+				if (isActive) {
+					$(this).find('.fa-eye-slash').removeClass('fa-eye-slash').addClass('fa-eye');
+					passwordInput.attr('type', 'password');
+				} else {
+					$(this).find('.fa-eye').removeClass('fa-eye').addClass('fa-eye-slash');
+					passwordInput.attr('type', 'text');
+				}
+			});
 
       <%-- 사용자 신청이 실패할 경우 작동할 코드 --%>
 	  <%
@@ -338,7 +379,10 @@
 		 <p class="p1" id="errorNo">· 사원번호: 1~4자리의 숫자만 입력 가능합니다.</p>
 		 <input class="ipt2" id="registerId" name="registerId" type="text" placeholder="아이디를 입력하세요"> 
 		 <p class="p2" id="errorId">· 아이디: 5~20자리의 대소영문자,숫자만 입력 가능합니다.</p>
-	     <input class="ipt3" id="registerPw" name="registerPw" type="text" placeholder="비밀번호를 입력하세요">
+	     <input class="ipt3" id="registerPw" name="registerPw" type="password" placeholder="비밀번호를 입력하세요">
+		 <div class="eyes">
+		    <i class="fa fa-eye"></i>
+		 </div>
 		 <p class="p3" id="errorPw">· 비밀번호: 5~20자리의 대소영문자,특수문자만 입력 가능합니다.</p>
 	     <button class="btn1" id="btnLogin" name="btnLogin" type="submit">사용자 신청</button>
 	     <div class="div3"> 

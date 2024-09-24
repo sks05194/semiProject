@@ -43,7 +43,7 @@ public class LoginAction implements Action {
 			cookie.setMaxAge(60 * 60 * 9); // 9시간
 			response.addCookie(cookie);
 
-			forward = new ActionForward(true, "fms/mypage");
+			forward = new ActionForward(true, "fms");
 			return forward;
 		}
 
@@ -53,5 +53,4 @@ public class LoginAction implements Action {
 		forward.setPath("loginMenu.l?failedLogin=failedLogin");
 		return forward;
 	}
-
 }

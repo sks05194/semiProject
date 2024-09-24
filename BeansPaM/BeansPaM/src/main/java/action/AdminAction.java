@@ -46,14 +46,15 @@ public class AdminAction implements Action {
 		if (pageCount < 0)
 			return new ActionForward("/pages/admin.jsp");
 
-		int pageNum = request.getParameter("p") != null ? Integer.parseInt(request.getParameter("p")) : 1;
+		int pageNum = request.getParameter("p") != null &&	Integer.parseInt(request.getParameter("p")) > 0 ? Integer.parseInt(request.getParameter("p")) : 1;
 		sql += " ORDER BY m_no desc) a WHERE ROWNUM <= " + (pageNum * record);
 		sql += ") WHERE rnum > " + ((pageNum - 1) * record);
 
 		list = dao.getAllMembersListVerAdmin(sql);
 
 		request.setAttribute("members", list);
-		request.setAttribute("memListCount", pageCount);
+		request.setAttribute("maxPageCount", Math.min(pageCount, ((pageNum - 1) / 5 + 1) * 5));
+		request.setAttribute("minPageCount", (((int) request.getAttribute("maxPageCount") - 1) / 5 * 5 + 1));
 
 		return new ActionForward("/pages/admin.jsp");
 	}

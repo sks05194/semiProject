@@ -238,6 +238,7 @@ public class MemberDAO {
 				vo.setM_id(rs.getString("m_id"));
 				vo.setM_name(rs.getString("m_name"));
 				vo.setM_day(rs.getDate("m_day"));
+				vo.setM_position(rs.getString("m_position"));
 				vo.setM_phone(rs.getString("m_phone"));
 				vo.setM_dept(rs.getString("m_dept"));
 				vo.setM_leave(rs.getInt("m_leave"));

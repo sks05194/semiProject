@@ -13,7 +13,7 @@ package vo;
 import java.sql.Date;
 
 /* 급여 내역을 담는 VO 클래스입니다. */
-public class salaryVO {
+public class SalaryVO {
 	private int m_no = 0;			// 사번
 	private Date sal_date = null;	// 지급일
 	private int sal_salary = 0;		// 급여액

@@ -9,15 +9,16 @@ body {
 
 .nav {
 	display: flex;
+	height: 218px;
 	border-bottom: 1px solid rgb(148, 53, 27);
-	padding: 10px;
+	padding: 20px 20px;
 	align-items: flex-end;
 }
 
 .nav img {
 	width: 150px;
-	vertical-align: bottom;
 	margin-right: 100px;
+	margin-bottom: 4px;
 }
 
 .nav a {
@@ -25,23 +26,9 @@ body {
 	font-size: 25px;
 	font-weight: bold;
 	color: rgb(148, 53, 27);
-	margin: 10px;
 }
 
 .nav a:last-child {
 	margin-left: auto;
 	margin-right: 100px;
-}
-
-@media screen and (max-width: 546px) {
-	#idx_logoImg {
-		width: 80px;
-		margin-right: 10px;
-	}
-	#idx_menu2 {
-		margin-right: 0;
-	}
-	a {
-		font-size: 20px;
-	}
 }

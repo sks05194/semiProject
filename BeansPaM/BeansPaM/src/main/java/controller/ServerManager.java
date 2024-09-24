@@ -27,7 +27,7 @@ public class ServerManager implements ServletContextListener {
 		
 		JdbcUtil.connecting();
 		
-		String url = "http://localhost:8090/BeansPaM";
+		String url = "http://localhost:8090/BeansPaM/fms/admin";
 		String edgePath = "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe";
 //		String chromePath = "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe";
 		

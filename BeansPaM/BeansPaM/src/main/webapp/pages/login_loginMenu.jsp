@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 
 <head>
 	<meta charset="UTF-8">
@@ -85,7 +85,7 @@
 
 		.form1 {
 			border: 2px solid #945121;
-			border-radius: 10px;
+			border-radius: 5px;
 			margin: 0px auto;
 			margin-top: 200px;
 			padding: 30px;

@@ -53,6 +53,8 @@ public class FMSController extends HttpServlet {
 			response.sendRedirect("/BeansPaM");
 			return;
 		}
+		
+		String[] cookie = mem_info_cookie.getValue().split("\\+");
 
 		/** 관리자 @author 강동준 */
 		if (pathInfo.equals("/admin")) {
@@ -65,15 +67,20 @@ public class FMSController extends HttpServlet {
 			}
 		}
 		
+		/** 사원 정보 상세보기 @author 강동준 */
 		else if (pathInfo.equals("/admin_detail")) {
 			action = new AdminDetailAction();
 			
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+		}
+		
+		/** 사원 추가 @author 강동준 */
+		else if (pathInfo.equals("/admin_regist")) {
+			forward = new ActionForward("/pages/admin_regist.jsp");
 		}
 		
 		/** 사원 삭제 @author 강동준 */
