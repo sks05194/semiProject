@@ -65,6 +65,7 @@
             <button>뒤로가기</button>
         </a>
     </div>
+	<script src="/BeansPaM/js/menu.js"></script>
 </main>
 
 </body>

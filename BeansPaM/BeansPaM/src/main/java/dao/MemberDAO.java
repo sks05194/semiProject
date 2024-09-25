@@ -26,6 +26,7 @@ import java.util.ArrayList;
 
 import action.AdminAction;
 import action.AdminDetailAction;
+import action.MemberRegistAction;
 import vo.MemberVO;
 
 /* 사원 테이블에 대한 메서드가 선언된 DAO 클래스 */
@@ -251,6 +252,37 @@ public class MemberDAO {
 		}
     	
 		return list;
+    }
+    
+    /**
+     * 사원 데이터를 생성하는 메소드 - 관리자
+     * @author 강동준
+     * @see MemberRegistAction
+     */
+    public boolean InsertEmp(MemberVO vo) {
+    	PreparedStatement ps = null;
+    	
+    	try {
+			ps = getConnection().prepareStatement("INSERT INTO member (m_no, m_name, m_position, m_phone, m_dept, m_email) "
+					+ "VALUES (seq_m_no.nextval, ?, ?, ?, ?, ?)");
+			ps.setString(1, vo.getM_name());
+			ps.setString(2, vo.getM_position());
+			ps.setString(3, vo.getM_phone());
+			ps.setString(4, vo.getM_dept());
+			ps.setString(5, vo.getM_email());
+			
+			if (ps.executeUpdate() > 0) {
+				commit();
+				return true;
+			}
+		} catch (SQLException e) {
+			rollback();
+			e.printStackTrace();
+		} finally {
+			close(ps);
+		}
+    	
+    	return false;
     }
     
     /**

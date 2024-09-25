@@ -28,14 +28,13 @@ public class ServerManager implements ServletContextListener {
 		JdbcUtil.connecting();
 		
 		String url = "http://localhost:8090/BeansPaM";
-		String edgePath = "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe";
-//		String chromePath = "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe";
+		String browserPath = "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe"; // Edge에서 열기
+//		String browserPath = "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"; // 크롬에서 열기
 		
 		try {
 			// if (Desktop.isDesktopSupported())
 			//	Desktop.getDesktop().browse(new URI(url)); // 기본 브라우저에서 그냥 열기
-			new ProcessBuilder(edgePath, "--new-window", url).start(); // Edge에서 열기
-//			new ProcessBuilder(chromePath, "--new-window", url).start(); // 크롬에서 열기
+			new ProcessBuilder(browserPath, "--new-window", url).start(); // 새 창에서 열기
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

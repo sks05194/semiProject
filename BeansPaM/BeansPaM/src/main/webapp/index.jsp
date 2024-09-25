@@ -10,9 +10,11 @@
 <body>
     <main>
         <section id="hero">
-            <h1>Welcome to BeansPaM</h1>
-            <p>Discover the finest coffee beans from around the world.</p>
-            <a href="" class="btn-primary">Shop Now</a>
+        	<div>
+	            <h1>Welcome to BeansPaM</h1>
+	            <p>Discover the finest coffee beans from around the world.</p>
+	            <a href="" class="btn-primary">Shop Now</a>
+        	</div>
         </section>
 
         <section id="about">

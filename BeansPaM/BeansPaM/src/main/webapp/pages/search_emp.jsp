@@ -147,6 +147,7 @@
             %>
         </div>
     </div>
+    <script src="/BeansPaM/js/menu.js"></script>
 </body>
 
 </html>

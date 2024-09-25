@@ -128,6 +128,7 @@
 	        window.location.href = url;
 	    }
 	</script>
+	
 	<script src="/BeansPaM/js/menu.js"></script>
 </body>
 

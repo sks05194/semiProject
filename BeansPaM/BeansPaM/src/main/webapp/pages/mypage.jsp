@@ -122,9 +122,7 @@
             });
         });
     </script>
-    <footer>
-    </footer>
-	
+    <script src="/BeansPaM/js/menu.js"></script>
 </body>
 
 </html>
