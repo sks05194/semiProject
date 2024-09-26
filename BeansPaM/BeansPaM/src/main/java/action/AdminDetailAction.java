@@ -16,7 +16,7 @@ import vo.MemberVO;
 public class AdminDetailAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		request.setAttribute("member_detail", new MemberDAO().getAllDataForNo(Integer.parseInt(request.getParameter("m_no"))));
+		request.setAttribute("member_detail", new MemberDAO().getMemberByNo(Integer.parseInt(request.getParameter("m_no"))));
 		return new ActionForward("/pages/admin_detail.jsp");
 	}
 }

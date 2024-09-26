@@ -1,230 +1,198 @@
 /* 기본 스타일 초기화 */
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
 }
 
 /* 공통된 스타일 */
-body {
-    background-color: #ffffff;
-    color: #333333;
-}
-
-a {
-    text-decoration: none;
-    color: inherit;
-}
-
-ul {
-    list-style: none;
-}
+body { background-color: #ffffff; color: #333333; }
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
 
 /* 헤더 스타일 */
 header {
-    display: flex;
-    flex-direction: column;
-    padding: 10px 20px;
-    border-bottom: 1px solid #ddd;
-    box-shadow: 0 0 5px #8b4513;
-    margin-bottom: 50px;
+	display: flex;
+	flex-direction: column;
+	padding: 10px 20px;
+	border-bottom: 1px solid #8b4513;
+	margin-bottom: 50px;
 }
 
 /* 유저 정보 스타일 */
 .user-info {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    border-bottom: 1px solid #8b4513;
-    padding: 10px;
-    font-size: 18px;
-    font-weight: 600;
-    color: #333333;
+	height: 50px;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	padding: 10px;
+	font-size: 15px;
+	font-weight: 600;
+	color: #333333;
+	margin-bottom: 0;
 }
 
 .user-info a {
-    margin-left: 20px;
-    margin-right: 20px;
-    color: #333333;
-    transition: color 0.3s;
+	margin-left: 20px;
+	margin-right: 20px;
+	color: #333333;
+	transition: color 0.3s;
 }
 
-.user-info a:hover {
-    color: #007bff;
-}
+.user-info a:hover { color: #007bff; }
 
 /* 내비게이션 스타일 */
 .main-nav {
-    background-color: #ffffff;
-    padding: 0 20px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    position: relative;
+	background-color: #ffffff;
+	padding: 0 20px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	position: relative;
 }
 
 /* 로고와 메뉴 컨테이너 */
 .nav-left {
-    display: flex;
-    align-items: center;
+	display: flex;
+	align-items: center;
 }
 
 /* 로고 스타일 */
 .menu-logo {
-    display: flex;
-    align-items: center;
+	display: flex;
+	align-items: center;
 }
 
-.menu-logo img {
-    width: 100px; /* 로고 크기를 이미지에 맞게 조정 */
-    margin-top: 20px;
-}
+.menu-logo img { width: 100px; }
 
 /* 메뉴 토글 버튼 (모바일) */
 .menu-toggle {
-    position: absolute;
-    right: 20px;
-    top: 15px;
-    font-size: 30px;
-    cursor: pointer;
-    color: #333;
-    display: block; /* 기본적으로 보이도록 설정 */
+	position: absolute;
+	right: 20px;
+	top: 15px;
+	font-size: 30px;
+	cursor: pointer;
+	color: #333;
+	display: block;
 }
 
 /* 메인 메뉴 스타일 */
 .main-menu {
-    display: flex;
-    align-items: center;
-    margin-left: 50px;
-    margin-top: 70px;
+	display: flex;
+	align-items: center;
+	margin-left: 40px;
+	margin-top: 30px;
 }
 
-.main-menu > li {
-    position: relative;
-    margin-left: 30px;
+.main-menu>li {
+	position: relative;
+	margin-left: 30px;
 }
 
-.main-menu > li:first-child {
-    margin-left: 0;
+.main-menu>li:first-child { margin-left: 0; }
+
+.main-menu a, .menu-title {
+	color: #333333;
+	font-size: 18px;
+	font-weight: 600;
+	padding: 15px 10px;
+	transition: color 0.3s;
 }
 
-.main-menu a,
-.menu-title {
-    color: #333333;
-    font-size: 18px;
-    font-weight: 600;
-    padding: 15px 10px;
-    transition: color 0.3s;
-}
-
-.main-menu a:hover,
-.menu-title:hover {
-    color: #007bff;
-}
-
-.menu-title {
-    cursor: pointer;
-}
+.main-menu a:hover, .menu-title:hover { color: #007bff; }
+.menu-title { cursor: pointer; }
 
 /* 서브 메뉴 스타일 */
 .sub-menu {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: rgba(255, 255, 255, 0.9);
-    border: 1px solid #ddd;
-    min-width: 180px;
-    z-index: 1;
+	display: none;
+	position: absolute;
+	top: 100%;
+	left: 0;
+	background-color: rgba(255, 255, 255, 0.9);
+	border: 1px solid #ddd;
+	min-width: 180px;
+	z-index: 1;
 }
 
 .sub-menu li a {
-    padding: 10px;
-    color: #333333;
-    display: block;
-    transition: background-color 0.3s;
+	padding: 10px;
+	color: #333333;
+	display: block;
+	transition: background-color 0.3s;
 }
 
-.sub-menu li a:hover {
-    background-color: #f8f9fa;
+.sub-menu li a:hover { background-color: #f8f9fa; }
+
+@media (min-width: 1200px) {
+	.user-info, .main-nav {
+		width: 1200px;
+		margin: auto;
+	}
+
+	.main-menu>li:hover .sub-menu { display: block; }
 }
 
-/* 데스크톱에서 서브 메뉴 표시 */
-.main-menu > li:hover .sub-menu {
-    display: block;
-}
-
-/* 모바일 메뉴 스타일 */
 @media (max-width: 800px) {
-    .main-menu {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(255, 255, 255, 0.95);
-        z-index: 9999;
-        display: none;
-        flex-direction: column;
-        padding-top: 80px;
-    }
+	.main-menu {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(255, 255, 255, 0.95);
+		z-index: 9999;
+		display: none;
+		flex-direction: column;
+		padding-top: 80px;
+	}
 
-    .main-menu.open {
-        display: flex;
-    }
+	.main-menu.open { display: flex; }
 
-    .main-menu > li {
-        width: 100%;
-        text-align: center;
-        margin: 10px 0;
-    }
+	.main-menu>li {
+		width: 100%;
+		text-align: center;
+		margin: 10px 0;
+	}
 
-    .main-menu a,
-    .menu-title {
-        width: 100%;
-        padding: 15px 20px;
-        font-size: 20px;
-    }
+	.main-menu a, .menu-title {
+		width: 100%;
+		padding: 15px 20px;
+		font-size: 20px;
+	}
 
-    .sub-menu {
-        position: static;
-        display: none;
-        width: 100%;
-    }
+	.sub-menu {
+		position: static;
+		display: none;
+		width: 100%;
+	}
 
-    .main-menu > li.open .sub-menu {
-        display: flex;
-        flex-direction: column;
-    }
+	.main-menu>li.open .sub-menu { display: flex; flex-direction: column; }
 
-    .sub-menu li a {
-        padding: 10px 20px;
-        font-size: 18px;
-    }
+	.sub-menu li a {
+		padding: 10px 20px;
+		font-size: 18px;
+	}
 
-    /* 메뉴 닫기 버튼 스타일 */
-    .menu-close {
-        position: fixed;
-        top: 10px;
-        right: 10px;
-        font-size: 30px;
-        cursor: pointer;
-        z-index: 10000;
-        color: #333;
-        background-color: white;
-        border: none;
-        padding: 5px 10px;
-        border-radius: 50%;
-        display: none; /* 기본적으로 숨김 */
-    }
+	.menu-close {
+		position: fixed;
+		top: 70px;
+		right: 40px;
+		font-size: 30px;
+		cursor: pointer;
+		z-index: 10000;
+		color: #333;
+		background-color: white;
+		border: none;
+		padding: 5px 10px;
+		border-radius: 50%;
+		display: none;
+	}
 
-    /* 메뉴가 열렸을 때 닫기 버튼 표시 */
-    .main-menu.open ~ .menu-close {
-        display: block;
-    }
+	.main-menu.open~.menu-close {
+		display: block;
+	}
 
-    /* 메뉴가 열렸을 때 햄버거 버튼 숨기기 */
-    .main-menu.open ~ .menu-toggle {
-        display: none;
-    }
+	.main-menu.open~.menu-toggle {
+		display: none;
+	}
 }

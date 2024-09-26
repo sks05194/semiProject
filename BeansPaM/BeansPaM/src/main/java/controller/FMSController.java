@@ -26,9 +26,12 @@ import action.Action;
 import action.AdminAction;
 import action.AdminDelAction;
 import action.AdminDetailAction;
+import action.ChangePasswordAction;
+import action.CommuteAction;
 import action.MemberRegistAction;
 import action.MypageAction;
 import action.SalaryAction;
+import action.UpdateMemberAction;
 import action.WorkdayAction;
 import vo.ActionForward;
 
@@ -117,9 +120,54 @@ public class FMSController extends HttpServlet {
 			}
 		}
 
-		/*
-		 * 2024-09-23 민기홍 paied 이름변경 salary
+
+		// 마이페이지 - 민기홍
+		else if (pathInfo.equals("/mypage")) {
+			action = new MypageAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+//			forward = new ActionForward("/pages/mypage.jsp");
+		}
+		else if (pathInfo.equals("/updateMember")) {
+			action = new UpdateMemberAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+//			forward = new ActionForward("/pages/mypage.jsp");
+		}
+		else if (pathInfo.equals("/changePassword")) {
+			action = new ChangePasswordAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		/**
+		 * 09-26 추가
+		 * @see 민기홍
 		 */
+		 		
+		else if (pathInfo.equals("/commute")) {
+			action = new CommuteAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		
+		}
+	
+		/*
+		 * 2024-09-23
+		 * 민기홍
+		 * paied 이름변경 salary
+		 * */
 		// 급여
 		else if (pathInfo.equals("/salary")) {
 			action = new SalaryAction();

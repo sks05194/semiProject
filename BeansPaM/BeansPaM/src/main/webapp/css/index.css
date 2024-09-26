@@ -2,13 +2,15 @@
 
 /* 기본 설정 */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    line-height: 1.6;
-    background-color: #f4f4f4;
-    color: #333;
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+	line-height: 1.6;
+	background-color: #f4f4f4;
+	color: #333;
 }
+
+header { margin-bottom: 0 !important; }
 
 @media (min-width: 1200px) {
 	main {
@@ -17,45 +19,24 @@ body {
 	}
 }
 
-h1, h2, h3 {
-    margin: 0;
-    padding: 10px;
-}
+h1, h2, h3 { margin: 0; padding: 10px; }
+h1 { font-size: 2.5em; color: #333; }
+h2 { font-size: 2em; color: #555; }
+p { margin: 10px 0; padding: 0; }
+a { color: #fff; text-decoration: none; }
 
-h1 {
-    font-size: 2.5em;
-    color: #333;
-}
-
-h2 {
-    font-size: 2em;
-    color: #555;
-}
-
-p {
-    margin: 10px 0;
-    padding: 0;
-}
-
-a {
-    color: #fff;
-    text-decoration: none;
-}
-
-a:hover {
-    opacity: 0.8;
-}
+a:hover { opacity: 0.8; }
 
 /* Hero Section */
 #hero {
-    background: url('/BeansPaM/img/hero-background.jpg') no-repeat center center/cover;
-    height: 400px;
-    color: #fff;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+	background: url('/BeansPaM/img/hero-background.jpg') no-repeat center center/cover;
+	height: 400px;
+	color: #fff;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
 
 #hero div {
@@ -63,143 +44,123 @@ a:hover {
 	background-color: rgba(0, 0, 0, 0.5);
 }
 
-#hero h1 {
-	color: white;
-    font-size: 3em;
-}
+#hero h1 { color: white; font-size: 3em; }
 
-#hero p {
-    font-size: 1.5em;
-    margin-bottom: 40px;
-}
+#hero p { font-size: 1.5em; margin-bottom: 40px; }
 
 #hero .btn-primary {
-    background-color: #b5651d;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-size: 1.2em;
-    transition: background-color 0.3s ease;
+	background-color: #b5651d;
+	padding: 10px 20px;
+	border-radius: 5px;
+	font-size: 1.2em;
+	transition: background-color 0.3s ease;
 }
 
-#hero .btn-primary:hover {
-    background-color: #a0522d;
-}
+#hero .btn-primary:hover { background-color: #a0522d; }
 
 /* About Section */
 #about {
-    padding: 50px;
-    background-color: #fff;
-    text-align: center;
+	padding: 50px;
+	background-color: #fff;
+	text-align: center;
 }
 
 #about p {
-    font-size: 1.2em;
-    line-height: 1.8;
-    max-width: 800px;
-    margin: 0 auto;
+	font-size: 1.2em;
+	line-height: 1.8;
+	max-width: 800px;
+	margin: 0 auto;
 }
 
 /* Featured Products Section */
 #featured-products {
-    padding: 50px;
-    background-color: #fafafa;
-    text-align: center;
+	padding: 50px;
+	background-color: #fafafa;
+	text-align: center;
 }
 
-#featured-products h2 {
-    margin-bottom: 30px;
-}
+#featured-products h2 { margin-bottom: 30px; }
 
 #featured-products .product {
-    display: inline-block;
-    width: 30%;
-    margin: 0 1.5%;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+	display: inline-block;
+	width: 30%;
+	margin: 0 1.5%;
+	background-color: #fff;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	padding: 20px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 #featured-products .product img {
-    width: 100%;
-    height: auto;
-    border-bottom: 1px solid #ddd;
-    margin-bottom: 15px;
+	width: 100%;
+	height: auto;
+	border-bottom: 1px solid #ddd;
+	margin-bottom: 15px;
 }
 
-#featured-products h3 {
-    margin: 15px 0;
-    font-size: 1.5em;
-}
+#featured-products h3 { margin: 15px 0; font-size: 1.5em; }
 
 #featured-products p {
-    font-size: 1em;
-    margin-bottom: 20px;
+	font-size: 1em;
+	margin-bottom: 20px;
 }
 
 #featured-products .btn-secondary {
-    background-color: #333;
-    color: white;
-    padding: 10px 15px;
-    border-radius: 5px;
-    font-size: 1em;
-    transition: background-color 0.3s ease;
+	background-color: #333;
+	color: white;
+	padding: 10px 15px;
+	border-radius: 5px;
+	font-size: 1em;
+	transition: background-color 0.3s ease;
 }
 
-#featured-products .btn-secondary:hover {
-    background-color: #555;
-}
+#featured-products .btn-secondary:hover { background-color: #555; }
 
 /* Contact Section */
 #contact {
-    padding: 50px;
-    background-color: #fff;
-    text-align: center;
+	padding: 50px;
+	background-color: #fff;
+	text-align: center;
 }
 
 #contact form {
-    max-width: 600px;
-    margin: 0 auto;
-    text-align: left;
+	max-width: 600px;
+	margin: 0 auto;
+	text-align: left;
 }
 
 #contact label {
-    display: block;
-    margin-bottom: 10px;
-    font-weight: bold;
+	display: block;
+	margin-bottom: 10px;
+	font-weight: bold;
 }
 
-#contact input[type="text"],
-#contact input[type="email"],
-#contact textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 1em;
+#contact input[type="text"], #contact input[type="email"], #contact textarea {
+	width: 100%;
+	padding: 10px;
+	margin-bottom: 20px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	font-size: 1em;
 }
 
 #contact button {
-    background-color: #b5651d;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    font-size: 1.2em;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+	background-color: #b5651d;
+	color: #fff;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 5px;
+	font-size: 1.2em;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
 }
 
-#contact button:hover {
-    background-color: #a0522d;
-}
+#contact button:hover { background-color: #a0522d; }
 
-/* 반응형 디자인 */
 @media (max-width: 768px) {
-    #featured-products .product {
-        width: 100%;
-        margin-bottom: 20px;
-    }
+	#featured-products .product {
+		width: 100%;
+		margin-bottom: 20px;
+	}
 }
