@@ -1,5 +1,7 @@
+/* 기본 스타일 */
 * {
     margin: 0 auto;
+    box-sizing: border-box;
 }
 
 body {
@@ -7,58 +9,64 @@ body {
     background-color: white;
 }
 
-.menuBar {
-    position: relative;
-    top: 20px;
-    color: wheat;
-}
-
-.logo {
-    width: 150px;
-    margin: 0 auto 20px;
-    display: block;
-}
-
-.menuBar a {
-    display: block;
-    color: wheat;
-    text-decoration: none;
-    margin-top: 12px;
-    font-weight: 400;
-    font-size: 15px;
-    transition: 0.3s;
-}
-
-.menuBar a:hover {
-    color: orangered;
-    background-color: black;
-    width: 120px;
-    border-radius: 5px;
-}
-
-.content {
-    margin-left: 220px;
-    padding: 20px;
+main {
+    padding: 0 130px; /* 좌우에 80px의 여백 추가 */
 }
 
 .board {
-    width: 80%;
-    margin: 20px auto;
+    width: 70%; /* 테이블 너비를 줄임 */
+    margin: auto;
     background-color: white;
     padding: 20px;
     border-radius: 10px;
     position: relative;
 }
 
+/* 테이블 제목과 검색창을 포함한 헤더 */
+.table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px; /* 테이블과의 간격 */
+    margin-top: 20px; /* table-header를 아래로 내리기 위한 추가 */
+}
+
 .board h2 {
     color: black;
-    font-size: 45pt;
-    text-align: center;
-    margin-bottom: 20px;
+    font-size: 40pt;
+    text-align: left;
+}
+
+.search-container {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px; /* 검색창을 아래로 내리기 위한 추가 */
+}
+
+.search-select, .search-input {
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid rgb(207, 170, 156);
+    border-radius: 5px;
+}
+
+.search-button {
+    padding: 8px 15px;
+    background-color: rgb(244, 228, 209);
+    color: rgb(41, 15, 5);
+    border: 1px solid rgb(207, 170, 156);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.search-button:hover {
+    background-color: rgb(207, 170, 156);
+    color: white;
 }
 
 table {
-    width: 70%;
+    width: 100%; /* 테이블이 board 안에서 100%로 */
     border-collapse: separate;
     border-spacing: 0;
     margin-bottom: 20px;
@@ -71,29 +79,22 @@ thead tr th {
     background-color: rgb(252, 237, 223);
     font-size: 11pt;
     font-weight: bold;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
     color: rgb(62, 30, 17);
     padding: 10px;
     text-align: center;
     border-top: 2px solid #c0c0c0;
     border-bottom: 1px solid #c0c0c0;
-	box-shadow: 0 0.3px 0 0 #c0c0c0;
+    box-shadow: 0 0.3px 0 0 #c0c0c0;
 }
 
-/* 두 번째 줄 스타일 */
-/* tbody tr:nth-child(1) td { */
-/*     border-top: 2px solid black; */
-/*     border-bottom: 2px solid black; */
-/* } */
+/* 두 번째부터 열 번째 줄에만 회색 연한 선을 적용 */
+tbody tr:nth-child(n+1):nth-child(-n+9) td {
+    border-bottom: 1px solid #e0e0e0; /* 회색 연한 선 */
+}
 
 /* 마지막 줄 스타일 */
 tbody tr:last-child td {
     border-bottom: 2px solid #c0c0c0;
-}
-
-/* 나머지 줄의 테두리 제거 */
-tbody tr:not(:nth-child(1)):not(:last-child) td {
-    border: none;
 }
 
 td {
@@ -166,119 +167,12 @@ button:hover {
     padding: 5px 10px;
     background-color: rgb(244, 228, 209);
     border-radius: 5px;
-    transition: background-color 0.3s;
     font-size: 10pt;
     margin: 0 5px;
 }
 
-.pagination a:hover {
-    background-color: rgb(207, 170, 156);
-    color: white;
-}
-
-.button-wrapper {
-    display: flex;
-    align-items: center;
-    margin-top: 20px;
-    width: 70%;
-}
-
-.search-container, .pagination, .button-container {
-    display: flex;
-    align-items: center;
-    margin: 0;
-}
-
-.search-container {
-    gap: 10px;
-    margin: 0;
-}
-
-.search-select, .search-input {
-    padding: 8px;
-    font-size: 14px;
-    border: 1px solid rgb(207, 170, 156);
-    border-radius: 5px;
-}
-
-.search-button {
-    padding: 8px 15px;
-    background-color: rgb(244, 228, 209);
-    color: rgb(41, 15, 5);
-    border: 1px solid rgb(207, 170, 156);
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.search-button:hover {
-    background-color: rgb(207, 170, 156);
-    color: white;
-}
-
-.button-container {
-    margin-left: auto;
-}
-
-.button-container button {
-    padding: 10px 15px;
-    background-color: rgb(244, 228, 209);
-    color: rgb(41, 15, 5);
-    border: 1px solid rgb(207, 170, 156);
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.button-container button:hover {
-    background-color: rgb(207, 170, 156);
-    color: white;
-}
-
-td:nth-child(2):hover {
-    color: blue;
-    text-decoration: underline;
-    cursor: pointer;
-}
-
-/* 클릭하지 않은 게시글을 검정색으로 표시 */
-.unread {
-    color: black;
-}
-
-/* 클릭한 게시글을 회색으로 표시 */
-.read {
-    color: #800040;
-}
-
-/* 링크 호버 스타일 */
-td:nth-child(2) a {
-    text-decoration: none;
-    color: black;
-}
-
-td:nth-child(2) a:hover {
-    color: blue;
-    text-decoration: underline;
-}
-
-.pagination {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-}
-
-.pagination a {
-    margin: 0 5px;
-    padding: 8px 16px;
-    text-decoration: none;
-    background-color: rgb(244, 228, 209);
-    border: 1px solid #ddd;
-    color: black;
-}
-
 .pagination a.active {
-    background-color: #4CAF50;
+    background-color: gray;
     color: white;
 }
 
@@ -286,3 +180,54 @@ td:nth-child(2) a:hover {
     background-color: #ddd;
 }
 
+/* 작성하기 버튼 스타일 */
+.button-wrapper {
+    display: flex;
+    justify-content: flex-end; /* 버튼을 오른쪽으로 정렬 */
+    align-items: center;
+    margin-top: 20px;
+}
+
+/* 반응형 미디어 쿼리 */
+@media (max-width: 768px) {
+    .board h2 {
+        font-size: 35pt;
+    }
+
+    .table-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .search-input, .search-button {
+        width: 100%;
+    }
+
+    .pagination {
+        position: static;
+        transform: none;
+    }
+
+    .button-wrapper {
+        justify-content: center; /* 작은 화면에서는 버튼을 가운데로 정렬 */
+    }
+}
+
+/* @media (max-width: 576px) { */
+/*     .board h2 { */
+/*         font-size: 25pt; */
+/*     } */
+
+/*     .board { */
+/*         width: 100%; */
+/*         padding: 15px; */
+/*     } */
+
+/*     table, .pagination, .button-wrapper { */
+/*         width: 100%; */
+/*     } */
+
+/*     th, td { */
+/*         font-size: 9pt; */
+/*     } */
+/* } */

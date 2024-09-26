@@ -1,0 +1,75 @@
+/* 기본 body 스타일 - 중앙 정렬을 위해 flexbox 사용 */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center; /* 수평 중앙 정렬 */
+    align-items: flex-start; /* 상단 정렬로 변경 */
+    min-height: 100vh; /* 화면 전체 높이 */
+}
+
+/* main의 content를 중앙 정렬하고 크기를 조절 */
+main {
+    display: flex;
+    flex-direction: column;
+    width: 80%; /* 중앙 정렬을 위한 너비 조정 */
+    max-width: 1000px; /* 최대 너비 설정 */
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 약간의 그림자 효과 */
+    margin-top: 90px; /* 화면 상단에서 적절한 여백 */
+}
+
+/* 자재 관리 현황 타이틀을 가운데 정렬 */
+h2 {
+    text-align: center;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+/* 자재 관리 현황 테이블 */
+table.status-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table.status-table th, table.status-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+table.status-table th {
+    background-color: #f4f4f4;
+}
+
+/* 경광등 아이콘 공통 스타일 */
+.blinking-light {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    animation: blink 1s infinite; /* 1초 간격으로 깜빡임 */
+}
+
+/* 빨간색 경광등 */
+.red-light {
+    background-color: red;
+}
+
+/* 초록색 경광등 */
+.green-light {
+    background-color: green;
+}
+
+/* 깜빡이는 애니메이션 효과 */
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}

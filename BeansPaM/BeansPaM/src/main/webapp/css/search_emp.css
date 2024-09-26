@@ -3,26 +3,31 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 .container {
     width: 80%;
     margin: auto;
     max-width: 1200px;
 }
+
 .container h1 {
-    margin-top: 130px; 
+    margin-top: 130px;
     /* 모바일에서는 이거 조절 */
 }
+
 .search-container {
     display: flex;
     justify-content: flex-end;
     margin-bottom: 20px;
 }
+
 .search-container select,
 .search-container input {
     padding: 10px;
     font-size: 16px;
     margin-right: 5px;
 }
+
 .search-container button {
     padding: 10px 20px;
     font-size: 16px;
@@ -31,6 +36,7 @@
     border: none;
     cursor: pointer;
 }
+
 table {
     text-align: center;
     width: 100%;
@@ -39,22 +45,27 @@ table {
     background: #fff;
     table-layout: fixed;
 }
+
 tr {
     border-bottom: solid 1px rgb(165, 81, 42);
 }
+
 th, td {
     padding: 12px;
     text-align: center;
     overflow-wrap: break-word;
 }
+
 th {
     background-color: rgb(244, 228, 209);
     color: #000;
 }
+
 .no-results {
     text-align: center;
     padding: 20px;
 }
+
 .pagination {
     display: flex;
     justify-content: center;
@@ -62,6 +73,7 @@ th {
     gap: 4px;
     background-color: rgba(255, 255, 255, 0.8);
 }
+
 .pagination a {
     padding: 10px;
     font-size: 16px;
@@ -69,6 +81,7 @@ th {
     color: rgb(41, 15, 5);
     text-decoration: none;
 }
+
 .pagination a.active {
     background-color: rgb(244, 228, 209);
     color: #000;
@@ -80,12 +93,14 @@ th {
         flex-direction: column;
         align-items: flex-end;
     }
+
     .search-container select,
     .search-container input,
     .search-container button {
         width: 100%;
         margin-bottom: 10px;
     }
+
     .pagination {
         flex-direction: column;
         align-items: center;

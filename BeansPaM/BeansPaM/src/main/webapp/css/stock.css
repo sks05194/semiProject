@@ -1,8 +1,8 @@
-*{
+* {
     margin: 0 auto;
 }
-header{
-    
+
+header {
     position: relative;
     float: left;
     height: 1000vh;
@@ -10,78 +10,90 @@ header{
     background-color: rgb(41, 15, 5);
     z-index: 100;
     text-align: center;
-    
-
 }
-.mark{
+
+.mark {
     position: relative;
     top: 100px;
     left: 20px;
 }
+
 .content {
     transform: translateY(10px);
 }
-.content a{
+
+.content a {
     text-decoration: none;
     color: wheat;
 }
-.mark:hover span{
+
+.mark:hover span {
     background-color: orangered;
     border: none;
 }
-.mark:hover span:nth-child(1){
+
+.mark:hover span:nth-child(1) {
     background-color: orangered;
     border: none;
 }
-.mark:hover span:nth-child(2){
+
+.mark:hover span:nth-child(2) {
     background-color: orangered;
     border: none;
 }
-.mark:hover span:nth-child(3){
+
+.mark:hover span:nth-child(3) {
     background-color: orangered;
     border: none;
 }
-.mark span{
+
+.mark span {
     position: absolute;
     border: solid 1px wheat;
     width: 120px;
     height: 95px;
     left: 15px;
-    top:-20px;
+    top: -20px;
     border-radius: 50px 30px 40px 30px;
     animation: animation linear infinite 7.5s;
-    
+
 }
-.mark:hover span{
+
+.mark:hover span {
     border: none;
     background-color: orangered;
     transition: 0.5s;
     opacity: 0.3;
 }
-.mark:hover span{
+
+.mark:hover span {
     border: none;
     background-color: orangered;
     opacity: 0.3s;
 }
-.mark:hover span:hover{
+
+.mark:hover span:hover {
     border: none;
     background-color: orangered;
     opacity: 0.3s;
 }
-.mark span:nth-child(1){
-  
-   animation: animation linear infinite 6s;
+
+.mark span:nth-child(1) {
+
+    animation: animation linear infinite 6s;
     animation-direction: reverse;
     opacity: 0.8;
 
 }
-.mark span:nth-child(2){
-  
+
+.mark span:nth-child(2) {
+
     animation: animation linear infinite 6.1s;
     opacity: 0.6;
 
 }
-.mark span:nth-child(3){
+
+.mark span:nth-child(3) {
     animation: animation linear infinite 6.2s;
     opacity: 0.3;
 }
@@ -92,162 +104,180 @@ header{
     width: 100px;
     height: 1000vh;
     margin-left: 200px;
-    margin-right: 0 ;
-   background-color: rgb(16, 6, 6);
-   transform: translateY(-426px);
+    margin-right: 0;
+    background-color: rgb(16, 6, 6);
+    transform: translateY(-426px);
     height: 1000vh;
-    
+
     text-align: center;
 
 }
-.selector a{
+
+.selector a {
     height: 30px;
-     display: block;
-     position: relative;
-     top: 400px;
-     text-decoration: none;
-     color: wheat;
-     font-size: 23px;
-     margin-top: 30px;
- }
- .selector i {
-     color: white;
-     font-size: 30px;
- }
-.menubar{
+    display: block;
     position: relative;
-    top:40px;
-    color:rgb(244, 228, 209);
-    top:200px;
+    top: 400px;
+    text-decoration: none;
+    color: wheat;
+    font-size: 23px;
+    margin-top: 30px;
 }
-.menubar li{
+
+.selector i {
+    color: white;
+    font-size: 30px;
+}
+
+.menubar {
+    position: relative;
+    top: 40px;
+    color: rgb(244, 228, 209);
+    top: 200px;
+}
+
+.menubar li {
     margin-top: 10px;
     list-style: none;
     transform: translateX(-20px);
     font-size: 25px;
     cursor: pointer;
-    
-}
-.menubar i{
-    position: absolute;
-    top:-30px;
-    font-size: 20px;
-   
-}
-.menubar h3{
-    font-size:15px;
-    color: rgb(211, 59, 4);
- 
+
 }
 
-.menubar p{
+.menubar i {
+    position: absolute;
+    top: -30px;
+    font-size: 20px;
+
+}
+
+.menubar h3 {
+    font-size: 15px;
+    color: rgb(211, 59, 4);
+
+}
+
+.menubar p {
     transform: translateY(-10px);
     font-size: 20px;
     font-weight: 800;
 }
-.menubar h3{
+
+.menubar h3 {
     color: white;
     transform: translateY(-10px);
     font-size: 30px;
-    
+
 }
 
 
-.metabar{
-    position:relative;
- 
+.metabar {
+    position: relative;
+
     width: 50px;
     height: 50px;
-    top:5px;
-   z-index: 50;
+    top: 5px;
+    z-index: 50;
     cursor: pointer;
     left: 5px;
 }
-.metabar span{
+
+.metabar span {
     position: absolute;
-    border: solid 2px ;
+    border: solid 2px;
     color: wheat;
     width: 49px;
     border-radius: 10px;
 }
-.metabar span:nth-child(1){
+
+.metabar span:nth-child(1) {
     position: absolute;
-    border: solid 2px ;
+    border: solid 2px;
     color: wheat;
     width: 47px;
     transform: translateY(15px);
-    
+
 }
-.metabar span:nth-child(2){
+
+.metabar span:nth-child(2) {
     position: absolute;
-    border: solid 2px ;
+    border: solid 2px;
     color: wheat;
     width: 47px;
     transform: translateY(30px);
-    
+
 }
-.metabar span:nth-child(3){
+
+.metabar span:nth-child(3) {
     position: absolute;
-    border: solid 2px ;
+    border: solid 2px;
     background-color: wheat;
-     width: 47px;
+    width: 47px;
     transform: translateY(45px);
-    
+
 }
-.metabar:active span:nth-child(1){
+
+.metabar:active span:nth-child(1) {
     transform: rotate(45deg);
     color: #ea9a5d;
 }
-.metabar:active span:nth-child(2){
+
+.metabar:active span:nth-child(2) {
     opacity: 0;
-    
-}
-.metabar:active span:nth-child(3){
-    
-    transform: rotate(-45deg);
-   color: #ea9a5d;
+
 }
 
-.home{
+.metabar:active span:nth-child(3) {
+
+    transform: rotate(-45deg);
+    color: #ea9a5d;
+}
+
+.home {
     background-color: rgb(41, 15, 5);
     position: relative;
     float: left;
     height: 100vh;
     width: 200px;
-     z-index: 100;
+    z-index: 100;
     text-align: center;
     position: fixed;
-    
- 
+
+
 }
+
 .mya {
-   transition: 0.5s;
+    transition: 0.5s;
 }
-.menubar{
+
+.menubar {
     position: relative;
-    
+
     color: wheat;
-    top:100px;
+    top: 100px;
     display: block;
 }
 
-.menubar h2{
-    font-size:15px;
+.menubar h2 {
+    font-size: 15px;
     color: rgb(211, 59, 4);
- 
+
 }
-.menubar p{
+
+.menubar p {
     transform: translateY(-5px);
     transition: 0.3s;
 
 }
-.menubar h3{
+
+.menubar h3 {
     color: white;
     transform: translateY(-5px);
-    
+
 }
 
-.mya a{
+.mya a {
     left: 50px;
     font-size: 15px;
     color: wheat;
@@ -255,14 +285,15 @@ header{
     margin-top: 12px;
     display: block;
     font-weight: 400;
-    
-   
+
+
     display: block;
-   
+
     width: 200px;
- 
+
 }
-.menuBar a:hover{
+
+.menuBar a:hover {
     color: orangered;
     background-color: black;
     opacity: 1;
@@ -271,21 +302,24 @@ header{
     border-radius: 5px;
     transition: 0.3s;
 }
-.mark{
+
+.mark {
     position: relative;
-    top:90px;
+    top: 90px;
     width: 100px;
     height: 100px;
     transition: 0.3s;
     left: -30px;
 }
-.content{
+
+.content {
     border: solid 1px color wheat;
     position: relative;
-    top:10px;
+    top: 10px;
     left: 20px;
 }
-.content a{
+
+.content a {
     position: absolute;
     transform: translateY(-10px);
     text-decoration: none;
@@ -294,143 +328,160 @@ header{
     font-size: 15px;
     z-index: 10px;
 }
-mark:hover span{
+
+mark:hover span {
     background-color: orangered;
     border: none;
 }
-mark:hover span:nth-child(1){
+
+mark:hover span:nth-child(1) {
     background-color: orangered;
     border: none;
 }
-mark:hover span:nth-child(2){
+
+mark:hover span:nth-child(2) {
     background-color: orangered;
     border: none;
 }
-mark:hover span:nth-child(3){
+
+mark:hover span:nth-child(3) {
     background-color: orangered;
     border: none;
 }
-.mark span{
+
+.mark span {
     position: absolute;
     border: solid 1px wheat;
     width: 120px;
     height: 95px;
     left: 15px;
-    top:-20px;
+    top: -20px;
     border-radius: 50px 30px 40px 30px;
     animation: animation linear infinite 7.5s;
-    
+
 }
-.menubar i{
+
+.menubar i {
     transform: translateX(10);
     font-size: 25px;
 }
-.mark:hover span{
+
+.mark:hover span {
     border: none;
     background-color: orangered;
     transition: 0.5s;
     opacity: 0.3;
 }
-.mark:hover span{
+
+.mark:hover span {
     border: none;
     background-color: orangered;
     opacity: 0.3s;
 }
-.mark:hover span:hover{
+
+.mark:hover span:hover {
     border: none;
     background-color: orangered;
     opacity: 0.3s;
 }
-.mark span:nth-child(1){
-  
-   animation: animation linear infinite 6s;
+
+.mark span:nth-child(1) {
+
+    animation: animation linear infinite 6s;
     animation-direction: reverse;
     opacity: 0.8;
 
 }
-.mark span:nth-child(2){
-  
+
+.mark span:nth-child(2) {
+
     animation: animation linear infinite 6.1s;
     opacity: 0.6;
 
 }
-.mark span:nth-child(3){
+
+.mark span:nth-child(3) {
     animation: animation linear infinite 6.2s;
     opacity: 0.3;
 }
+
 @keyframes animation {
-    0%{
+    0% {
         transform: rotate(0deg);
     }
 
-    100%{
+    100% {
         transform: rotate(360deg);
     }
 }
+
 /*현재 포지션 fixed */
-main{
+main {
     width: 100px;
     height: 100vh;
 }
-.selec{
+
+.selec {
     border-radius: 0px 10px 0px 10px;
     width: 100px;
     height: 100vh;
     margin-left: 200px;
-    margin-right: 0 ;
-   background-color: rgb(16, 6, 6);
-  
+    margin-right: 0;
+    background-color: rgb(16, 6, 6);
+
     height: 1000vh;
-   
+
     text-align: center;
 
 }
 
-.selec,.selec2 {
+.selec, .selec2 {
     border-radius: 0px 10px 0px 10px;
     width: 100px;
     height: 100vh;
     margin-left: 200px;
-    margin-right: 0 ;
-   background-color: rgb(16, 6, 6);
-   transform: translateY(-326px);
+    margin-right: 0;
+    background-color: rgb(16, 6, 6);
+    transform: translateY(-326px);
     height: 1000vh;
-   
+
     text-align: center;
-   
+
 }
-.selec3{
+
+.selec3 {
     border-radius: 0px 10px 0px 10px;
     width: 100px;
     height: 100vh;
     margin-left: 200px;
-    margin-right: 0 ;
-   background-color: rgb(16, 6, 6);
-   transform: translateY(-206px);
+    margin-right: 0;
+    background-color: rgb(16, 6, 6);
+    transform: translateY(-206px);
     height: 1000vh;
-   
+
     text-align: center;
-   
-  
+
+
 
 }
-.selec4{
-   
+
+.selec4 {
+
     border-radius: 0px 10px 0px 10px;
     width: 100px;
     height: 100vh;
     margin-left: 200px;
-    margin-right: 0 ;
-   background-color: rgb(16, 6, 6);
-   transform: translateY(-206px);
+    margin-right: 0;
+    background-color: rgb(16, 6, 6);
+    transform: translateY(-206px);
     height: 1000vh;
-   
-   
+
+
     text-align: center;
 
 }
 
-.menuBar button{
+.menuBar button {
     display: block;
     cursor: pointer;
     border: none;
@@ -438,7 +489,7 @@ main{
     width: 100px;
     height: 20px;
     transition: 0.3s;
-    
+
     transform: translateY(10px);
     border-radius: 7px;
     color: rgb(41, 15, 5);
@@ -447,39 +498,44 @@ main{
     text-decoration: none;
     margin-top: 10px;
 }
-.btn{
+
+.btn {
     position: absolute;
     left: 50px;
 }
+
 .selector3 a,
 .selector2 a,
-.selector a{
+.selector a {
     font-size: 20px;
-   height: 50px;
+    height: 50px;
     display: block;
     position: relative;
     top: 320px;
     text-decoration: none;
     color: wheat;
 }
+
 .selector3 i,
 .selector2 i,
 .selector i {
     color: white;
 }
 
-main{
+main {
     height: 100vh;
     width: 100%;
-    
+
 }
-.nav1{
+
+.nav1 {
     background-color: rgb(244, 228, 209);
     height: 300px;
-    
-    
+
+
 }
-.menubar a{
+
+.menubar a {
     transform: translateY(100px);
     left: 50px;
     font-size: 15px;
@@ -489,38 +545,43 @@ main{
     display: block;
     font-weight: 400;
     transition: 0.3s;
-   
- 
+
+
 }
-.menubar a:hover, .menubar.active{
+
+.menubar a:hover, .menubar.active {
     color: brown;
     background-color: wheat;
 }
+
 .btn li:hover,
-.btn li.active{
+.btn li.active {
     background-color: rgb(165, 81, 42);
 }
-#d1,#d2,#d3,#d4,#d5{
+
+#d1, #d2, #d3, #d4, #d5 {
     display: none;
 }
-#d1.active,#d2.active,#d3.active,#d4.active,#d5.active{
+
+#d1.active, #d2.active, #d3.active, #d4.active, #d5.active {
     display: block;
 }
 
 
-.chart{
-    
+.chart {
+
     width: 100%;
-    height:300px;
+    height: 300px;
     position: relative;
     background-color: rgb(244, 228, 209);
 
     text-align: center;
-   
+
 }
-.chart h1{
+
+.chart h1 {
     position: relative;
-    top:-10px;
+    top: -10px;
     left: -140px;
     font-size: 30px;
     font-weight: 1400;
@@ -528,24 +589,27 @@ main{
     color: rgb(41, 15, 5);
     transform: translateY(100px);
 }
+
 .maption {
     position: relative;
-    top:-100px;
+    top: -100px;
     text-align: center;
-    
+
 }
-.map1{
+
+.map1 {
     transform: translateX(100px);
     width: 240px;
     border-radius: 12px;
     background-color: rgb(62, 30, 17);
     height: 180px;
     right: -500px;
-    top:-90px;
+    top: -90px;
     margin-left: 10px;
     display: inline-block;
 }
-.map1 i{
+
+.map1 i {
     font-size: 70px;
     position: absolute;
     left: 80px;
@@ -553,18 +617,20 @@ main{
     color: wheat;
 
 }
-#m1 p{
-   transform: translateX(80px); 
+
+#m1 p {
+    transform: translateX(80px);
 }
-.map1 p{
+
+.map1 p {
     position: absolute;
     top: 110px;
-   transform: translateX(88px);
+    transform: translateX(88px);
     color: wheat;
     font-size: 25px;
 }
 
-.map1 button{
+.map1 button {
     position: absolute;
     left: 80px;
     transform: translateY(148px);
@@ -578,41 +644,44 @@ main{
     transition: 0.5s;
     font-weight: 800;
 }
-.map1 button:hover{
+
+.map1 button:hover {
     background-color: rgb(0, 0, 0);
     color: wheat;
     display: block;
 }
 
-.asian{
+.asian {
 
- width: 100%;
- border: solid 1px;
+    width: 100%;
+    border: solid 1px;
     height: 200px;
-   text-align: center;
-  
+    text-align: center;
+
 }
 
-table[id = "africa"],table[id = "asian"],table[id = "american"]{
+table[id="africa"], table[id="asian"], table[id="american"] {
     transform: translateX(100px);
     position: relative;
-   width: 1000px;
-   top:10px;
-   border-collapse: collapse;
-   
+    width: 1000px;
+    top: 10px;
+    border-collapse: collapse;
+
 }
 
 
 
-th{
+th {
     border-bottom: solid 1px black;
     background-color: rgb(33, 16, 9);
     color: wheat;
 }
-td{
+
+td {
     border-bottom: solid 1px white;
 }
-input[type = "text"]{
+
+input[type="text"] {
     border: none;
     width: 200px;
     height: 30px;
@@ -620,29 +689,35 @@ input[type = "text"]{
     color: rgb(77, 25, 6);
     background-color: #ea9a5d;
 }
-.search{
+
+.search {
     position: relative;
-   width: 200px;
-   top:40px;
-   left: 550px;
+    width: 200px;
+    top: 40px;
+    left: 550px;
 }
-.search i{
+
+.search i {
     color: wheat;
     left: 15px;
-    top:8px;
+    top: 8px;
     position: absolute;
 }
+
 .search input:focus {
-   color: wheat;
-   background-color:rgb(41, 15, 5) ;
+    color: wheat;
+    background-color: rgb(41, 15, 5);
 }
-table{
+
+table {
     text-align: center;
 }
-td{
-   
+
+td {
+
     background-color: rgb(245, 239, 232);
 }
+
 .divider {
     position: absolute;
     top: 0;

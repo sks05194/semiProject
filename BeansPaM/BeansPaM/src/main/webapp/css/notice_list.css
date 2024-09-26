@@ -4,18 +4,7 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
     background-color: rgb(255, 255, 255);
-}
-
-header {
-    position: fixed;
-    float: left;
-    height: 100vh;
-    width: 200px;
-    background-color: rgb(41, 15, 5);
-    z-index: 100;
-    text-align: center;
 }
 
 .menuBar {
@@ -63,11 +52,6 @@ header {
     background-color: wheat;
     width: 120px;
     border-radius: 5px;
-}
-
-.content {
-    margin-left: 220px;
-    padding: 20px;
 }
 
 .board {

@@ -18,7 +18,7 @@ import vo.NoticeVO;
 
 /* 공지사항 관리를 위한 SVC 클래스 */
 public class NoticeService {
-	
+
 	/* 공지사항 조회 */
 	public ArrayList<Map<String, Object>> noticeListAction() throws Exception {
 		NoticeDAO noticeDAO = new NoticeDAO();
@@ -26,42 +26,42 @@ public class NoticeService {
 		noticeList = noticeDAO.noticeList();
 //		System.out.println("SVC noticeList" + noticeList);
 
-		return noticeList; 
+		return noticeList;
 	}
-	
+
 	/* 공지사항 등록 */
-	public int noticeWriteAction(NoticeVO noticeVO) throws Exception{	
+	public int noticeWriteAction(NoticeVO noticeVO) throws Exception {
 		NoticeDAO noticeDAO = new NoticeDAO();
-		int registerCount = noticeDAO.noticeRegister(noticeVO); 
-		
+		int registerCount = noticeDAO.noticeRegister(noticeVO);
+
 		return registerCount;
 	}
-	
+
 	/* 공지사항 상세 */
 	public NoticeVO noticeDetailAction(NoticeVO noticeVO) throws Exception {
 		NoticeDAO noticeDAO = new NoticeDAO();
-		return noticeDAO.noticeDetail(noticeVO); 
+		return noticeDAO.noticeDetail(noticeVO);
 	}
-	
+
 	/* 공지사항 수정 */
-	public int noticeUpdateAction(NoticeVO noticeVO) throws Exception{	
+	public int noticeUpdateAction(NoticeVO noticeVO) throws Exception {
 		NoticeDAO noticeDAO = new NoticeDAO();
-		int updateCount = noticeDAO.noticeUpdate(noticeVO); 
-		
+		int updateCount = noticeDAO.noticeUpdate(noticeVO);
+
 		return updateCount;
 	}
-	
+
 	/* 공지사항 삭제 */
 	public int noticeDeleteAction(NoticeVO noticeVO) {
 		NoticeDAO noticeDAO = new NoticeDAO();
-		int deleteCount = noticeDAO.noticeDelete(noticeVO); 
-		
+		int deleteCount = noticeDAO.noticeDelete(noticeVO);
+
 		return deleteCount;
 	}
 
-    // 공지사항 검색
-    public ArrayList<Map<String, Object>> searchNotices(String keyword) throws Exception {
-        NoticeDAO noticeDAO = new NoticeDAO();
-        return noticeDAO.searchNotice(keyword);  // 리턴 타입이 ArrayList<Map<String, Object>>이어야 함
-    }
+	// 공지사항 검색
+	public ArrayList<Map<String, Object>> searchNotices(String keyword) throws Exception {
+		NoticeDAO noticeDAO = new NoticeDAO();
+		return noticeDAO.searchNotice(keyword); // 리턴 타입이 ArrayList<Map<String, Object>>이어야 함
+	}
 }

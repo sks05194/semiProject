@@ -19,6 +19,7 @@ import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -46,7 +47,6 @@ public class BoardController extends HttpServlet {
 		QnaDAO qnaDAO = new QnaDAO(); // QnaDAO 인스턴스 생성
 
 		Action action = null;
-
 
 		switch (pathInfo[1]) {
 		/**
@@ -82,18 +82,18 @@ public class BoardController extends HttpServlet {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-				
-			} else if (pathInfo[2].equals("update")) {	
-				
+
+			} else if (pathInfo[2].equals("update")) {
+
 				action = new NoticeUpdateAction();
 				try {
 					forward = action.execute(request, response);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-				
-			} else if (pathInfo[2].equals("delete")) {	
-							
+
+			} else if (pathInfo[2].equals("delete")) {
+
 				action = new NoticeDeleteAction();
 				try {
 					forward = action.execute(request, response);
@@ -136,7 +136,8 @@ public class BoardController extends HttpServlet {
 				// 현재 페이지에 보여줄 마지막 페이지 수 (10, 20, 30 등...)
 				int endPage = startPage + 10 - 1;
 
-				if (endPage > maxPage) endPage = maxPage;
+				if (endPage > maxPage)
+					endPage = maxPage;
 
 				// 페이지 관련 정보 저장
 				request.setAttribute("currentPage", page);
@@ -153,9 +154,21 @@ public class BoardController extends HttpServlet {
 				// 글 작성 페이지로 이동
 				forward = new ActionForward("/pages/qna_write.jsp");
 			} else if (pathInfo[2].equals("submit")) {
+				Cookie[] cookies = request.getCookies();
+				String writer = null;
+				if (cookies != null) {
+					for (Cookie cookie : cookies) {
+						if ("mem_info".equals(cookie.getName())) {
+							String[] memInfo = cookie.getValue().split("\\+");
+							if (memInfo.length > 1) {
+								writer = memInfo[1];
+							}
+							break;
+						}
+					}
+				}
 				// 글 등록 처리
 				String title = request.getParameter("title");
-				String writer = request.getParameter("writer");
 				String content = request.getParameter("content");
 
 				qnaDAO.insertQna(title, writer, content);
@@ -177,6 +190,7 @@ public class BoardController extends HttpServlet {
 				// 게시글 상세보기 처리
 				String q_no = request.getParameter("q_no");
 				QnaVO qna = qnaDAO.getQnaDetail(Integer.parseInt(q_no)); // q_no로 게시글 상세 정보 조회
+
 				if (qna != null) {
 					request.setAttribute("qna", qna); // request에 게시글 정보 저장
 					forward = new ActionForward("/pages/qna_detail.jsp"); // 상세보기 페이지로 이동 (forward 방식)
@@ -184,17 +198,41 @@ public class BoardController extends HttpServlet {
 					forward = new ActionForward("/pages/error.jsp");
 				}
 			} else if (pathInfo[2].equals("delete")) {
-				// 게시글 삭제 처리
-				String q_no = request.getParameter("q_no");
+				Cookie[] cookies = request.getCookies();
+				String userName = null;
 
-				// DAO에서 게시글 삭제 처리
-				qnaDAO.deleteQna(Integer.parseInt(q_no));
+				if (cookies != null) {
+					for (Cookie cookie : cookies) {
+						if ("mem_info".equals(cookie.getName())) {
+							String[] memInfo = cookie.getValue().split("\\+");
+							if (memInfo.length > 1) {
+								userName = memInfo[1];
+							}
+							break;
+						}
+					}
+				}
+				
+				String writer = new QnaDAO().getWriter(Integer.parseInt(request.getParameter("q_no")));
+				
+				if (userName != null) {
+					// 게시글과 작성자를 비교해서 맞으면 삭제
+					if (userName.equals(writer) || userName.equals("관리자")) {
+						// 게시글 삭제 처리
+						String q_no = request.getParameter("q_no");
 
-				// 자바스크립트를 이용해 삭제 후 알림창 띄우고 리스트 페이지로 이동
-				response.setContentType("text/html; charset=UTF-8");
-				PrintWriter out = response.getWriter();
-				out.println("<script>alert('삭제가 되었습니다.'); location.href='" + request.getContextPath() + "/b/qna';</script>");
-				out.flush();
+						// DAO에서 게시글 삭제 처리
+						qnaDAO.deleteQna(Integer.parseInt(q_no));
+
+						// 자바스크립트를 이용해 삭제 후 알림창 띄우고 리스트 페이지로 이동
+						response.setContentType("text/html; charset=UTF-8");
+						PrintWriter out = response.getWriter();
+						out.println("<script>alert('삭제가 되었습니다.'); location.href='" + request.getContextPath() + "/b/qna';</script>");
+						out.flush();
+					} else {
+						forward = new ActionForward(true, "/BeansPaM/b/qna");
+					}
+				}
 			}
 			break;
 

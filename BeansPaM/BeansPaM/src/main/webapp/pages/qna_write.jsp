@@ -1,6 +1,27 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.List" %>
 <%@ page import="vo.QnaVO" %>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%
+	Cookie[] cookies = request.getCookies();
+	String userName = null;
+
+	if (cookies != null) {
+		for (Cookie cookie : cookies) {
+			if ("mem_info".equals(cookie.getName())) {
+				String[] memInfo = cookie.getValue().split("\\+");
+				if (memInfo.length > 1) {
+					userName = memInfo[1];
+				}
+				break;
+			}
+		}
+	}
+	
+	if (userName == null) {
+		response.sendRedirect("/BeansPaM");
+		return;
+	}
+%>
 <!DOCTYPE html>
 <html lang="kr">
 
@@ -22,8 +43,7 @@
             <h2>게시글 작성</h2>
 
             <!-- 작성된 데이터를 b/qna/submit으로 전송할 form -->
-            <form action="<%=request.getContextPath()%>/b/qna/submit" method="post">
-
+            <form id="writeForm" action="/BeansPaM/b/qna/submit" method="post">
                 <table class="write-table">
                     <tr>
                         <th class="center-align">제목</th>
@@ -31,7 +51,8 @@
                     </tr>
                     <tr>
                         <th class="center-align">작성자</th>
-                        <td><input type="text" class="input-title" name="writer" placeholder="작성자명을 입력하세요" required></td>
+<!--                         <td><input type="text" class="input-title" name="writer" placeholder="작성자명을 입력하세요" required></td> -->
+						<td><%=userName %></td>
                     </tr>
                     <tr>
                         <th class="center-align">내용</th>
@@ -41,7 +62,7 @@
 
                 <!-- 제출 및 나가기 버튼 -->
                 <div class="button-section">
-                    <button type="submit" class="btn-submit">게시글 등록</button>
+                    <button type="button" class="btn-submit" onclick="onSubmit();">게시글 등록</button>
                     <button type="button" class="btn-exit" onclick="exitPost()">나가기</button>
                 </div>
             </form>
@@ -51,18 +72,17 @@
     <footer></footer>
 
     <script>
-    	$('form').on('submit', function(event) {
-        	event.preventDefault(); // 실제 서버로 전송되는 것을 막고, 값이 올바르게 전송되는지 확인
-        	console.log($(this).serialize());
-        	// 서버로 전송하려면 아래 코드를 사용
-        	this.submit();
-    	});
+    	var onSubmit = function(){
+    		if(confirm("게시글을 등록하시겠습니까?")){
+    			$('#writeForm').submit();			
+    		};
+    	}
 
+        // 나가기 버튼 클릭 시 게시글 리스트로 이동
         function exitPost() {
-            window.location.href = '<%=request.getContextPath()%>/b/qna'; // 나가기 버튼 클릭 시 Q&A 목록으로 이동
+            window.location.href = '<%=request.getContextPath()%>/b/qna'; // Q&A 목록으로 이동
         }
     </script>
-
 
 </body>
 

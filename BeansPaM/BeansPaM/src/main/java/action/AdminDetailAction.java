@@ -1,7 +1,7 @@
 /**
  * 문서 생성일: 09.23
  * @author 강동준
- * @see FMSController
+ * @see controller.FMSController
  */
 
 package action;
@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.MemberDAO;
 import vo.ActionForward;
-import vo.MemberVO;
 
 public class AdminDetailAction implements Action {
 	@Override

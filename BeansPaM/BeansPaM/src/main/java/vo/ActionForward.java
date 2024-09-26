@@ -19,7 +19,6 @@ public class ActionForward {
 	}
 
 	public ActionForward(String path) {
-		this.isRedirect = false;
 		this.path = path;
 	}
 	

@@ -30,34 +30,11 @@
     border-radius: 5px;
 }
 
-header {
-    position: fixed;
-    float: left;
-    height: 100vh;
-    width: 200px;
-    background-color: rgb(41, 15, 5);
-    z-index: 100;
-    text-align: center;
-}
-
 /* Notice_write 스타일 시작 */
 body {
     font-family: Arial, sans-serif;
     background-color: #f9f9f9;
     margin: 0;
-    display: flex;
-    justify-content: center;
-}
-
-header {
-    position: fixed;
-    height: 100vh;
-    width: 200px;
-    background-color: rgb(41, 15, 5);
-    z-index: 100;
-    text-align: center;
-    top: 0;
-    left: 0;
 }
 
 .menuBar {

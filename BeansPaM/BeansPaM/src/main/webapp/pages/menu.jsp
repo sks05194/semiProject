@@ -20,6 +20,7 @@
 
 <!-- 유저 정보 상단에 배치 -->
 <div class="user-info">
+	<p id="screenWidth"></p>
 	<% if (userName == null) { %>
 		<a href="/BeansPaM/loginMenu.l">Login</a>
 	<% } else { %>
@@ -53,7 +54,7 @@
 					<span class="menu-title">전자결재</span>
 					<ul class="sub-menu">
 						<li><a href="#">결재상신</a></li>
-						<li><a href="/BeansPaM/fms/report">결재문서</a></li>
+						<li><a href="/BeansPaM/fms/approval_main">결재문서</a></li>
 					</ul>
 				</li>
 				<li class="has-submenu">

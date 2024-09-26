@@ -45,7 +45,6 @@ public class NoticeListAction implements Action {
 			}
 		}
 
-		// 검색어를 받아온다.
 		String keyword = request.getParameter("keyword");
 		
 		// SQL 쿼리문을 반환 받을 SVC 객체 생성
@@ -64,7 +63,7 @@ public class NoticeListAction implements Action {
 		request.setAttribute("loginId", loginId);
 		request.setAttribute("noticeList", noticeList);
 		request.setAttribute("loginName", loginName);
-		request.setAttribute("keyword", keyword);  // 검색어 유지
+		request.setAttribute("keyword", keyword);
 		
 		// ActionForward 객체 생성, JSP로 포워딩
 		forward.setPath("/pages/notice_list.jsp");

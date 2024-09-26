@@ -8,16 +8,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Q&A</title>
+    <title>Q&amp;A</title>
     <link rel="stylesheet" href="/BeansPaM/css/qna.css">
 </head>
 
 <body>
-    <header></header>
-
+    <script src="/BeansPaM/js/menu.js"></script>
     <main>
         <div class="board">
-            <h2>Q&A</h2>
+            <!-- 테이블 제목 및 검색창을 포함할 컨테이너 -->
+            <div class="table-header">
+                <h2>Q&amp;A</h2> <!-- 테이블 좌측 제목 -->
+                <div class="search-container"> <!-- 우측 상단에 검색창 배치 -->
+                    <form id="searchForm" action="<%=request.getContextPath()%>/b/qna/search" method="get">
+                        <select name="searchType" class="search-select">
+                            <option value="writer">제목</option>
+                            <option value="title">작성자</option>
+                            <option value="content">내용</option>
+                        </select>
+                        <input type="text" name="keyword" class="search-input" placeholder="검색어를 입력하세요">
+                        <button type="submit" class="search-button">검색</button>
+                    </form>
+                </div>
+            </div>
 
             <table>
                 <thead>
@@ -37,7 +50,7 @@
                     %>
                     <tr>
                         <td><%= qna.getQ_no() %></td>
-                        <td><a href="qna/detail.do?q_no=<%= qna.getQ_no() %>"><%= qna.getQ_title().length() >= 10 ? qna.getQ_title().substring(0, 11)+"..." : qna.getQ_title() %></a></td>
+                        <td><a href="qna/detail.do?q_no=<%= qna.getQ_no() %>"><%= qna.getQ_title().length() >= 10 ? qna.getQ_title().substring(0, 11) + "..." : qna.getQ_title() %></a></td>
                         <td><%= qna.getQ_writer() %></td>
                         <td><%= qna.getQ_date() %></td>
                         <td><%= qna.getQ_views() %></td>
@@ -58,30 +71,32 @@
             <!-- 페이지네이션 -->
             <div class="pagination">
                 <% 
-                    int currentPage = (int) request.getAttribute("currentPage");
-                    int maxPage = (int) request.getAttribute("maxPage");
-                    int startPage = (int) request.getAttribute("startPage");
-                    int endPage = (int) request.getAttribute("endPage");
+                    Integer currentPage = (Integer) request.getAttribute("currentPage");
+                    Integer maxPage = (Integer) request.getAttribute("maxPage");
+                    Integer startPage = (Integer) request.getAttribute("startPage");
+                    Integer endPage = (Integer) request.getAttribute("endPage");
 
-                    if (startPage > 1) {
+                    if (startPage != null && startPage > 1) {
                 %>
                     <a href="?page=<%= startPage - 1 %>">&laquo; 이전</a>
                 <% 
                     }
 
-                    for (int i = startPage; i <= endPage; i++) {
-                        if (i == currentPage) {
+                    if (startPage != null && endPage != null) {
+                        for (int i = startPage; i <= endPage; i++) {
+                            if (i == currentPage) {
                 %>
                     <a href="?page=<%= i %>" class="active"><%= i %></a>
                 <% 
-                        } else {
+                            } else {
                 %>
                     <a href="?page=<%= i %>"><%= i %></a>
                 <% 
+                            }
                         }
                     }
 
-                    if (endPage < maxPage) {
+                    if (endPage != null && endPage < maxPage) {
                 %>
                     <a href="?page=<%= endPage + 1 %>">다음 &raquo;</a>
                 <% 
@@ -89,24 +104,10 @@
                 %>
             </div>
 
-            <!-- 버튼을 포함할 전체 컨테이너 -->
+            <!-- 글쓰기 관련 버튼 -->
             <div class="button-wrapper">
-                <!-- 검색 컨테이너 -->
-                <div class="search-container">
-                    <form action="<%=request.getContextPath()%>/b/qna/search" method="get">
-                        <select name="searchType" class="search-select">
-                            <option value="writer">제목</option>
-                            <option value="title">작성자</option>
-                            <option value="content">내용</option>
-                        </select>
-                        <input type="text" name="keyword" class="search-input" placeholder="검색어를 입력하세요">
-                        <button type="submit" class="search-button">검색</button>
-                    </form>
-                </div>
-
-                <!-- 글쓰기 관련 버튼 -->
                 <div class="button-container">
-                    <button onclick="location.href='<%=request.getContextPath()%>/pages/qna_write.jsp'">작성하기</button>
+                    <button onclick="location.href='<%=request.getContextPath()%>/pages/qna_write.jsp'" class="search-button">작성하기</button> <!-- 검색 버튼과 동일한 스타일 적용 -->
                 </div>
             </div>
 
@@ -132,6 +133,15 @@
                 const postId = link.getAttribute("href");
                 if (localStorage.getItem(postId) === "read") {
                     link.classList.add("read");
+                }
+            });
+
+            // 검색어 입력 여부 확인
+            document.getElementById("searchForm").addEventListener("submit", function (e) {
+                const keywordInput = document.querySelector("input[name='keyword']");
+                if (keywordInput.value.trim() === "") {
+                    e.preventDefault(); // 검색어가 없으면 폼 제출을 막음
+                    alert("검색어를 입력하세요.");
                 }
             });
         });

@@ -16,6 +16,7 @@ import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -27,14 +28,15 @@ import action.AdminAction;
 import action.AdminDelAction;
 import action.AdminDetailAction;
 import action.ChangePasswordAction;
-import action.CommuteAction;
 import action.MemberRegistAction;
 import action.MypageAction;
 import action.SalaryAction;
 import action.UpdateMemberAction;
 import action.WorkdayAction;
+import action.ApprovalWriteAction;
 import vo.ActionForward;
 
+@MultipartConfig
 public class FMSController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -120,7 +122,6 @@ public class FMSController extends HttpServlet {
 			}
 		}
 
-
 		// 마이페이지 - 민기홍
 		else if (pathInfo.equals("/mypage")) {
 			action = new MypageAction();
@@ -130,8 +131,7 @@ public class FMSController extends HttpServlet {
 				e.printStackTrace();
 			}
 //			forward = new ActionForward("/pages/mypage.jsp");
-		}
-		else if (pathInfo.equals("/updateMember")) {
+		} else if (pathInfo.equals("/updateMember")) {
 			action = new UpdateMemberAction();
 			try {
 				forward = action.execute(request, response);
@@ -139,8 +139,7 @@ public class FMSController extends HttpServlet {
 				e.printStackTrace();
 			}
 //			forward = new ActionForward("/pages/mypage.jsp");
-		}
-		else if (pathInfo.equals("/changePassword")) {
+		} else if (pathInfo.equals("/changePassword")) {
 			action = new ChangePasswordAction();
 			try {
 				forward = action.execute(request, response);
@@ -148,26 +147,13 @@ public class FMSController extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
+
 		/**
-		 * 09-26 추가
-		 * @see 민기홍
-		 */
-		 		
-		else if (pathInfo.equals("/commute")) {
-			action = new CommuteAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		
-		}
-	
-		/*
-		 * 2024-09-23
-		 * 민기홍
 		 * paied 이름변경 salary
-		 * */
+		 * 
+		 * @author 민기홍
+		 * @since 2024-09-23
+		 */
 		// 급여
 		else if (pathInfo.equals("/salary")) {
 			action = new SalaryAction();
@@ -196,19 +182,46 @@ public class FMSController extends HttpServlet {
 			forward = new ActionForward("/pages/stock_2.html");
 		}
 
+		/** 사원 검색 @author 한지수 */
+		else if (pathInfo.equals("/inform")) {
+			forward = new ActionForward("/pages/search_emp.jsp");
+		}
+
 		// 자재관리
 		else if (pathInfo.equals("/vmi")) {
 			forward = new ActionForward("/pages/vmi.html");
 		}
 
-		// 결재 상신
-		else if (pathInfo.equals("/report")) {
-			forward = new ActionForward("/pages/report.html");
+		/** 결재 현황 페이지 @author 임성현 */
+		else if (pathInfo.equals("/approval_main")) {
+			forward = new ActionForward("/pages/approval_main.jsp");
 		}
 
-		/** 사원 검색 @author 한지수 */
-		else if (pathInfo.equals("/inform")) {
-			forward = new ActionForward("/pages/search_emp.jsp");
+		/** 결재 상신 페이지 @author 임성현 */
+		else if (pathInfo.equals("/approval_write")) {
+			forward = new ActionForward("/pages/approval_write.jsp");
+		}
+
+		/** 결재 현황 액션, 임시 생성 @author 임성현 */
+//		else if (pathInfo.equals("/approval_main_action")) {
+//			action = new ApprovalMainAction();
+//			
+//			try {
+//				forward = action.execute(request, response);
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//			}
+//		}
+
+		/** 결재 상신 액션 @author 임성현 */
+		else if (pathInfo.equals("/approval_write_action")) {
+			action = new ApprovalWriteAction();
+
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 
 		// 이하 페이지 에러

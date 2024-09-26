@@ -1,7 +1,7 @@
 /**
  * 문서 생성일: 09.23
  * @author 강동준
- * @see FMSController
+ * @see controller.FMSController
  * 
  * 변경일: 09.24
  * 변경 이유: sql문 페이징

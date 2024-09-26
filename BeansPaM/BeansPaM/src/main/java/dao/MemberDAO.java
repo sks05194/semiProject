@@ -15,10 +15,7 @@
 
 package dao;
 
-import static database.JdbcUtil.close;
-import static database.JdbcUtil.commit;
-import static database.JdbcUtil.getConnection;
-import static database.JdbcUtil.rollback;
+import static database.JdbcUtil.*;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -214,9 +211,9 @@ public class MemberDAO {
 				member.setM_position(rs.getString("m_position"));
 				member.setM_phone(rs.getString("m_phone"));
 				member.setM_email(rs.getString("m_email"));
-				member.setM_leave(rs.getInt("m_leave"));
 				member.setM_salary(rs.getInt("m_salary"));
 				member.setM_dept(rs.getString("m_dept"));
+				member.setM_leave(rs.getInt("m_leave"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

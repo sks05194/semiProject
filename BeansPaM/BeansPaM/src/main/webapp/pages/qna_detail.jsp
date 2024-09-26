@@ -24,6 +24,13 @@
                 <p class="qna-content"><%= qna.getQ_content().replaceAll("\n", "<br>") %></p> <br>
             </div>
 
+            <!-- 답변 안내 문구 추가 -->
+            <div class="response-info">
+                <p style="color: red; font-weight: bold;">해당 질문사항에 대한 답변은 관리자 계정으로 답변드릴 예정입니다.</p>
+                <p style="color: black; font-weight: bold;">관리자 E-Mail : admin@beanspam.com</p><br>
+                
+            </div>
+
             <!-- 삭제하기 버튼 추가 -->
             <div class="button-section">
                 <button class="btn-delete" onclick="deletePost('<%= qna.getQ_no() %>')">삭제하기</button>

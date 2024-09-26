@@ -43,13 +43,8 @@ public class SalaryAction implements Action {
 		if (m_no > 0) {
 			SalaryDAO salaryDAO = new SalaryDAO();
 			ArrayList<SalaryVO> salaryList = salaryDAO.getMemberByNo(m_no);
-			double salarySum = salaryDAO.salarysum(m_no); // 합계를 반환하는 메소드라고 가정
-		    ArrayList<Double> salaryValList = salaryDAO.salaryval(m_no); // 여러 값을 받아오기
-
-		    // salaryList와 salarySum, salaryValList를 request에 저장
-		    request.setAttribute("salaryList", salaryList);
-		    request.setAttribute("salarySum", salarySum);
-		    request.setAttribute("salaryValList", salaryValList); // List를 JSP로 전달
+			// salaryList와 request에 저장
+			request.setAttribute("salaryList", salaryList);
 		}
 		// salary.jsp로 포워딩
 
