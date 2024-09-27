@@ -115,7 +115,6 @@ public class QnaDAO {
 
 	// 게시글 상세 정보 가져오는 메서드 (조회수 증가 포함)
 	public QnaVO getQnaDetail(int q_no) {
-		System.out.println("게시글 상세정보 진입:");
 		QnaVO qna = null;
 		String sql = "SELECT Q_NO, Q_TITLE, Q_WRITER, Q_DATE, Q_VIEWS, Q_CONTENT FROM QNA WHERE Q_NO = ?";
 
@@ -166,7 +165,7 @@ public class QnaDAO {
 			updateCount = pstmt.executeUpdate();
 			commit();
 		} catch (SQLException ex) {
-			System.out.println("조회수 업데이트 에러 : " + ex);
+			System.out.println("QnaDAO.updateReadCount: 조회수 업데이트 에러 : " + ex);
 		} finally {
 			close(pstmt);
 		}

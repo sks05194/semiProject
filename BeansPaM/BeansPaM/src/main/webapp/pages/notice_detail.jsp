@@ -21,17 +21,13 @@
 			<div class="form-group1">
 				<label for="title">제목</label>
 			</div>
-			<!-- 제목 필드 -->
 			<input type="text" id="title" name="title" value="${title}"
 				style="border: solid 1px lightgray; border-radius: 4px;"
-				<c:if test='${loginName != "관리자"}'>disabled</c:if>><br>
-
-			<div class="form-group2" style="position: relative;">
+				<c:if test='${loginName != "관리자"}'>disabled</c:if>>
+			<div class="form-group2" style="position: relative;"><br>
 				<div class="content-header">
 					<label for="content">내용</label>
 				</div>
-				<br>
-				<!-- 내용 필드 -->
 				<textarea id="content" name="content" rows="10" required
 					<c:if test='${loginName != "관리자"}'>disabled</c:if>>${content}</textarea>
 				<input type="hidden" name="n_no" value="${n_no}"> <input

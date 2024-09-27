@@ -125,28 +125,30 @@ button#register:hover {
 table {
     width: 100%;
     border-collapse: collapse;
+    border-top: 2px solid #c0c0c0;
+    border-bottom: 2px solid #c0c0c0;
     margin-top: 20px;
     background-color: white;
-    border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(139, 69, 19, 0.1);
 }
 
 th, td {
-    padding: 15px 20px;
     text-align: center;
-    font-size: 10pt;
+    font-size: 15px;
     color: rgb(62, 30, 17);
 }
 
 th {
     background-color: rgb(252, 237, 223);
     border-bottom: 1px solid #c0c0c0;
+    padding: 15px 20px;
 }
 
 td {
     border-bottom: 1px solid #d2b48c;
     color: #5A2D0C;
+    padding: 5px 20px;
 }
 
 tr:hover {
@@ -164,7 +166,6 @@ tr:hover {
     border: none;
     padding: 10px 15px;
     margin: 0 5px;
-    border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
     transition: background-color 0.3s, transform 0.2s;

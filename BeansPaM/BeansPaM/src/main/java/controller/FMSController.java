@@ -21,19 +21,19 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-//import javax.servlet.http.HttpSession;
 
 import action.Action;
 import action.AdminAction;
 import action.AdminDelAction;
 import action.AdminDetailAction;
+import action.ApprovalWriteAction;
 import action.ChangePasswordAction;
+import action.CommuteAction;
 import action.MemberRegistAction;
 import action.MypageAction;
 import action.SalaryAction;
 import action.UpdateMemberAction;
 import action.WorkdayAction;
-import action.ApprovalWriteAction;
 import vo.ActionForward;
 
 @MultipartConfig
@@ -130,7 +130,6 @@ public class FMSController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-//			forward = new ActionForward("/pages/mypage.jsp");
 		} else if (pathInfo.equals("/updateMember")) {
 			action = new UpdateMemberAction();
 			try {
@@ -138,7 +137,6 @@ public class FMSController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-//			forward = new ActionForward("/pages/mypage.jsp");
 		} else if (pathInfo.equals("/changePassword")) {
 			action = new ChangePasswordAction();
 			try {
@@ -149,10 +147,22 @@ public class FMSController extends HttpServlet {
 		}
 
 		/**
+		 * 09-26 추가
+		 * @see 민기홍
+		 */
+
+		else if (pathInfo.equals("/commute")) {
+			action = new CommuteAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+
+		/*2024-09-23
+		 * 민기홍
 		 * paied 이름변경 salary
-		 * 
-		 * @author 민기홍
-		 * @since 2024-09-23
 		 */
 		// 급여
 		else if (pathInfo.equals("/salary")) {
@@ -174,12 +184,8 @@ public class FMSController extends HttpServlet {
 		}
 
 		// 시설 관리
-		else if (pathInfo.equals("/stock")) {
-			forward = new ActionForward("/pages/stock.html");
-		} else if (pathInfo.equals("/stock1")) {
-			forward = new ActionForward("/pages/stock_1.html");
-		} else if (pathInfo.equals("/stock2")) {
-			forward = new ActionForward("/pages/stock_2.html");
+		else if (pathInfo.equals("/warehouse")) {
+			forward = new ActionForward("/pages/warehouse.jsp");
 		}
 
 		/** 사원 검색 @author 한지수 */
@@ -189,7 +195,7 @@ public class FMSController extends HttpServlet {
 
 		// 자재관리
 		else if (pathInfo.equals("/vmi")) {
-			forward = new ActionForward("/pages/vmi.html");
+			forward = new ActionForward("/pages/vmi.jsp");
 		}
 
 		/** 결재 현황 페이지 @author 임성현 */
@@ -226,7 +232,7 @@ public class FMSController extends HttpServlet {
 
 		// 이하 페이지 에러
 		else {
-			System.out.println("page error. pathInfo = " + pathInfo);
+			System.out.println("FMSController: page error. pathInfo = " + pathInfo);
 			response.sendError(HttpServletResponse.SC_NOT_FOUND);
 		}
 

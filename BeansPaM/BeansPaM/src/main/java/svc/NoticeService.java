@@ -24,7 +24,6 @@ public class NoticeService {
 		NoticeDAO noticeDAO = new NoticeDAO();
 		ArrayList<Map<String, Object>> noticeList = new ArrayList<>();
 		noticeList = noticeDAO.noticeList();
-//		System.out.println("SVC noticeList" + noticeList);
 
 		return noticeList;
 	}

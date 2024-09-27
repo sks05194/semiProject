@@ -128,7 +128,9 @@ header {
 		width: 1200px;
 		margin: auto;
 	}
+}
 
+@media (min-width: 800px) {
 	.main-menu>li:hover .sub-menu { display: block; }
 }
 

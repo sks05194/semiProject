@@ -24,7 +24,6 @@ public class ApprovalDAO {
 		Connection con = getConnection();
 		PreparedStatement ps = null;
 		String sql = "INSERT INTO DOCUMENT (D_NO, D_TITLE, D_CLASS, M_NO, D_CONTENT, D_REQUEST) VALUES (SEQ_D_NO.NEXTVAL, ?, ?, ?, ?, SYSDATE)";
-		System.out.println("title: " + documentVO.getD_title());
 
 		try {
 

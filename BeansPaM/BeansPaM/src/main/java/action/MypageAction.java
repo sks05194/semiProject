@@ -40,7 +40,6 @@ public class MypageAction implements Action {
 
         // 사번 쿠키가 없을 경우 처리
         if (mNo == 0) {
-            System.out.println("로그인 정보가 없습니다.");
             ActionForward forward = new ActionForward();
             forward.setPath("loginMenu.l?failedLogin=failedLogin");
             forward.setRedirect(true);

@@ -58,8 +58,6 @@ public class NoticeDetailAction implements Action{
         request.setAttribute("content", noticeInfo.getN_content());
         request.setAttribute("n_no", noticeInfo.getN_no());
         request.setAttribute("loginName", loginName);
-        
-//        System.out.println("loginId>>" + m_name);
 
         // ActionForward 객체 생성, JSP로 포워딩
         forward = new ActionForward();

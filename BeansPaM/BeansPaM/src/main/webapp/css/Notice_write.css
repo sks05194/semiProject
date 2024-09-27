@@ -64,9 +64,8 @@ body {
 .container {
     color: rgb(41, 15, 5);
     width: 800px;
-    height: 600px;
-    margin-left: 220px; /* 사이드바 너비를 고려한 여백 */
-    margin-top: 50px;
+    height: auto;
+    margin: 0 auto;
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
@@ -97,7 +96,7 @@ label {
     display: block;
 }
 
-input[type="file"], input[type="text"], textarea {
+input[type="text"], textarea {
     width: 100%;
     padding: 10px;
     border: 1px solid #ddd;
@@ -105,8 +104,13 @@ input[type="file"], input[type="text"], textarea {
     font-size: 16px;
 }
 
-textarea {
+textarea#content {
     height: 300px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
     resize: none;
     overflow: auto;
 }
@@ -114,17 +118,14 @@ textarea {
 /* 나가기 버튼과 등록 버튼 스타일 */
 .exit-button, .submit-button {
     padding: 8px 15px;
-    font-size: 14px;
+    font-size: 16px;
     border: none;
     border-radius: 4px;
-    cursor: pointer;
+    cursor:rgb(0, 0, 0)ter;
     width: 60px;
-    background-color: #cfaa9c; 
-    color: white;
-}
-
-.exit-button {
-    width: 80px;
+    background-color: rgb(252, 237, 223);
+    color: black;
+    width: 90px;
 }
 
 .exit-button:hover {
@@ -135,34 +136,18 @@ textarea {
     background-color: lightgray;
 }
 
-input[type="file"] {
-    display: none;
-}
-
-label[for="file-upload"] {
-    margin-bottom: 10px;
-    padding: 8px 12px;
-    background-color: #cfaa9c;
-    color: white;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-label[for="file-upload"]:hover {
-    background-color: lightgray;
-}
-
-/* 내용과 첨부 버튼을 한 줄에 정렬 */
-.content-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
 
 /* 반응형 미디어 쿼리 */
 @media (max-width: 768px) {
     .container {
-        width: 90%;
-        margin-left: 200px; /* 사이드바의 크기를 고려하여 여백 조정 */
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+    
+    .exit-button, .submit-button {
+        width: 30%;
+        flex-direction: column;
+        align-items: center;
     }
 }

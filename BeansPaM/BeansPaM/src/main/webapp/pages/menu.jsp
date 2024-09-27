@@ -46,7 +46,7 @@
 				<li class="has-submenu">
 					<span class="menu-title">ERP</span>
 					<ul class="sub-menu">
-						<li><a href="#">시설관리</a></li>
+						<li><a href="/BeansPaM/fms/warehouse">시설관리</a></li>
 						<li><a href="/BeansPaM/fms/vmi">자재관리</a></li>
 					</ul>
 				</li>

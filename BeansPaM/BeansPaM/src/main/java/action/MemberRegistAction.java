@@ -25,9 +25,9 @@ public class MemberRegistAction implements Action {
 		vo.setM_email(request.getParameter("m_email"));
 
 		if (new MemberDAO().InsertEmp(vo)) {
-			System.out.println("정상적으로 삽입되었습니다.");
+			System.out.println("MemberRegistAction: 정상적으로 삽입되었습니다.");
 		} else {
-			System.out.println("데이터 삽입에 실패했습니다.");
+			System.out.println("MemberRegistAction: 데이터 삽입에 실패했습니다.");
 		}
 
 		return new ActionForward(true, "/BeansPaM/fms/admin");

@@ -33,8 +33,6 @@ public class NoticeDeleteAction implements Action {
 		noticeVO.setN_delete_yn(request.getParameter("n_delete_yn"));
 		noticeVO.setN_no(Integer.parseInt(request.getParameter("n_no")));
 		
-		System.out.println(request.getParameter("n_delete_yn"));
-		
 		
 		// SQL 쿼리문을 반환 받을 SVC 객체 생성
 		NoticeService noticeService = new NoticeService();

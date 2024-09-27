@@ -66,5 +66,6 @@
             </table>
         </section>
     </main>
+	<script src="/BeansPaM/js/menu.js"></script>
 </body>
 </html>

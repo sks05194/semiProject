@@ -56,7 +56,7 @@
 			
 		    <div class="back-button" style="display: inline;">
 		        <a href="admin">
-		            <button type="button" style="background-color: gray;" onclick="location.href = '/BeansPaM/fms/admin'">취소</button>
+		            <button type="button" onclick="location.href = '/BeansPaM/fms/admin'">취소</button>
 		        </a>
 		    </div>
 		</form>

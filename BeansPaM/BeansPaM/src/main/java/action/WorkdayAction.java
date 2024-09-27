@@ -24,7 +24,6 @@ public class WorkdayAction implements Action {
 	            for (Cookie cookie : cookies) {
 	                if ("mem_info".equals(cookie.getName())) {
 	                    memInfo = cookie.getValue(); 
-	                    System.out.println("memInfo"+memInfo);
 	                    break;
 	                    
 	                }
@@ -37,7 +36,6 @@ public class WorkdayAction implements Action {
 	            String[] infoParts = memInfo.split("\\+");
 	            if (infoParts.length > 0) {
 	                m_no = Integer.parseInt(infoParts[0]);  // M_no 값을 정수로 변환
-	                System.out.println("m_no: "+m_no);
 	            }
 	        }
 
@@ -45,6 +43,7 @@ public class WorkdayAction implements Action {
 	        if (m_no > 0) {
 	            AttendanceDAO attendanceDAO = new AttendanceDAO();
 	            ArrayList<AttendanceVO> attendanceList = attendanceDAO.getMemberByNo(m_no);
+	            
 	            // attendanceList를 request에 저장
 	            request.setAttribute("attendanceList", attendanceList);
 	        }

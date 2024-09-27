@@ -68,64 +68,70 @@ body {
     margin-bottom: 20px;
     font-size: 36pt;
 }
-/* 테이블 행에 커서를 올리면 배경색이 변하도록 설정 */
+
+
+table {
+    width: 100%;
+    border-color: gray;
+   	border-left: none;
+	border-right: none;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
 table tr {
+	border-color: gray;
     cursor: pointer;
     transition: background-color 0.2s ease;
 }
 
-/* 마우스가 테이블 행 위에 있을 때 배경색 변경 */
 table tr:hover {
-    background-color: #f0f0f0;
-}
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
+    background-color: lightgray;
 }
 
 td{
     border-top: 1px solid lightgray;
     border-bottom: 1px solid lightgray;
 }
+
 th, td {
+	border-left: none;
+	border-right: none;
     padding: 10px;
-    font-size: 12px;
+    font-size: 16px;
     text-align: center;
     color: rgb(41, 15, 5);
 }
 
 th {
-    font-size: 14px;
-    
-    background-color: rgba(241, 235, 229, 0.902);
+    font-size: 16px;
+    background-color: rgb(252, 237, 223);
 }
 
-/* 페이지 버튼 */
-/* .pagination {
-    text-align: center;
+table th:first-child,
+table td:first-child {
+    min-width: 50px; 
+    padding-right: 50px; 
 }
 
-.pagination a {
-    color: rgb(41, 15, 5);
-    text-decoration: none;
-    margin: 0 5px;
-    padding: 5px 10px;
-    background-color: rgba(241, 235, 229, 0.902);
-    border-radius: 5px;
-}
-
-.pagination a:hover {
-    background-color: lightgray;
-} */
+/* table tr:nth-child(1) { */
+/*     background-color: #fefbf8;  */
+/* } */
 
 .board {
-    position: relative; /* 버튼의 절대 위치 배치를 위한 상대 위치 기준 */
-    width: 80%;
+    position: relative; 
+    width: 65%;
     margin: 20px auto;
     background-color: rgb(255, 255, 255);
     padding: 20px;
     border-radius: 10px;
+}
+
+.board h2 {
+    color: black;
+    font-size: 45px;
+    text-align: left;
+    margin-bottom: 20px;
+    flex-grow: 1; 
 }
 
 .actions-container {
@@ -136,101 +142,130 @@ th {
     margin-top: 25px;
 }
 
-/* 검색창 스타일 */
-.search-container {
+.actions-container {
+    width: 100%; 
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    flex-grow: 0.3;
-    margin-bottom: 10px;
+    margin-top: 25px;
+}
+
+
+.search-container form {
+    display: flex;
+    align-items: center; 
+    gap: 10px; 
+}
+
+
+.search-container select,
+.search-container input[type="search"],
+.search-container input[type="submit"] {
+	display: flex;
+    margin: 0; 
+/*     flex-shrink: 0;  */
+}
+
+.search-container select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
 .search-container input[type="search"] {
     padding: 8px;
-    margin: 6px 10px 0px 3px;
-    margin-right: 10px;
-    width: 60%;
+/*     width: 250px; 검색창 고정 너비 */
     border: 1px solid #ccc;
     border-radius: 4px;
 }
 
-.search-container button {
+.search-container input[type="submit"] {
     padding: 8px 12px;
-    margin-top: 5px;
-    margin-left: -10px;
-    background-color: rgba(241, 235, 229, 0.902);
+    background-color: rgb(252, 237, 223);
     color: #290f05;
     border: none;
     border-radius: 4px;
     cursor: pointer;
 }
 
-.search-container button:hover {
+.search-container input[type="submit"]:hover {
     background-color: lightgray;
 }
-/* 페이지네이션 스타일 */
+
+
+/* bottom-buttons */
+.bottom-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+
+/* 페이지 버튼 */
 .pagination {
     display: flex;
-    align-items: center;
+    margin: 0 auto;
+    margin-bottom: 18px;
     justify-content: center;
-    flex-wrap: wrap;
-    margin-bottom: 5px; 
+    align-items: center;
+    margin-top: 20px;
+    font-size: 16px;
+    
 }
 
 .pagination a {
-    color: #290f05;
-    padding: 6px 12px;
-    margin: 5px;
-    font-size: 14px;
-    background-color: rgba(241, 235, 229, 0.902);
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    color: rgb(41, 15, 5);
+    text-decoration: none;
+    text-align: center;
+    margin: 0 5px;
+    padding: 5px 10px;
+    background-color: white;
+    border-radius: 5px;
 }
 
 .pagination a:hover {
     background-color: lightgray;
-} 
-
-/* 버튼 컨테이너 스타일 */
-.button-container {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    flex-grow: 1;
-    flex-wrap: wrap;
 }
 
-.button-container button {
-    margin-left: 0px;
-    margin-right: 10px;
-    margin-bottom: 5px;
+/* 현재 페이지 스타일 */
+.pagination span {
+    color: black;
+    background-color: rgb(252, 237, 223); 
+    padding: 5px 10px;
+    margin: 0 5px;
+    border-radius: 5px;
+    font-weight: bold; 
+    font-size: 16px;
+}
+
+.write-button {
+    display: flex;
+    justify-content: flex-end; 
+}
+
+.write-button button {
+	font-size: 15px;
+    margin-left: 10px;
     padding: 8px 12px;
-    background-color: rgba(241, 235, 229, 0.902);
+    background-color: rgb(252, 237, 223);
     color: #290f05;
     border: none;
     border-radius: 4px;
     cursor: pointer;
 }
 
-.button-container button:hover {
+.write-button button:hover {
     background-color: lightgray;
 }
+
+
+
 /* 반응형 미디어 쿼리 */
 @media (max-width: 768px) {
     .actions-container {
-        flex-direction: column; /* 작은 화면에서는 요소들이 세로로 배치 */
-        align-items: flex-start; /* 작은 화면에서 왼쪽 정렬 */
-    }
-
-    .search-container,
-    .button-container {
-        width: 80%; /* 작은 화면에서는 각 요소가 전체 너비를 차지 */
-    }
-
-    .button-container {
-        justify-content: flex-start; /* 작은 화면에서 버튼들도 왼쪽 정렬 */
-    }
-
-    .pagination {
-        justify-content: flex-start; /* 페이지네이션도 왼쪽 정렬 */
+		width: 100%;
+        flex-direction: column; 
+        align-items: flex-end; 
     }
 }

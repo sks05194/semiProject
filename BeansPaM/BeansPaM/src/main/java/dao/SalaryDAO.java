@@ -17,16 +17,14 @@ public class SalaryDAO {
 		ArrayList<SalaryVO> list = new ArrayList<SalaryVO>();
 
 		try {
-			String sql = "SELECT * FROM salary WHERE M_NO = ?";
+			String sql = "SELECT * FROM salary WHERE M_NO = ? ORDER BY SAL_DATE DESC";
 			ps = getConnection().prepareStatement(sql);
 			ps.setInt(1, m_no);
 			rs = ps.executeQuery();
 
-			System.out.println("con m_no:" + m_no);
 
 			// 데이터 처리
 			while (rs.next()) {
-				System.out.println("while 문");
 				salaryVO = new SalaryVO();
 				salaryVO.setM_no(rs.getInt("M_NO"));
 				salaryVO.setSal_date(rs.getDate("SAL_DATE"));

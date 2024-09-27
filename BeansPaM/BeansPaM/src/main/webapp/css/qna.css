@@ -10,12 +10,12 @@ body {
 }
 
 main {
-    padding: 0 130px; /* 좌우에 80px의 여백 추가 */
+    padding: 20px 130px;
 }
 
 .board {
-    width: 70%; /* 테이블 너비를 줄임 */
-    margin: auto;
+    width: 70%;
+    margin: 20px auto;
     background-color: white;
     padding: 20px;
     border-radius: 10px;
@@ -27,8 +27,8 @@ main {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px; /* 테이블과의 간격 */
-    margin-top: 20px; /* table-header를 아래로 내리기 위한 추가 */
+    margin-bottom: 20px;
+    margin-top: 20px;
 }
 
 .board h2 {
@@ -40,7 +40,7 @@ main {
 .search-container {
     display: flex;
     gap: 10px;
-    margin-top: 20px; /* 검색창을 아래로 내리기 위한 추가 */
+    margin-top: 20px;
 }
 
 .search-select, .search-input {
@@ -65,8 +65,9 @@ main {
     color: white;
 }
 
+/* 테이블 스타일 */
 table {
-    width: 100%; /* 테이블이 board 안에서 100%로 */
+    width: 100%;
     border-collapse: separate;
     border-spacing: 0;
     margin-bottom: 20px;
@@ -89,7 +90,7 @@ thead tr th {
 
 /* 두 번째부터 열 번째 줄에만 회색 연한 선을 적용 */
 tbody tr:nth-child(n+1):nth-child(-n+9) td {
-    border-bottom: 1px solid #e0e0e0; /* 회색 연한 선 */
+    border-bottom: 1px solid #e0e0e0;
 }
 
 /* 마지막 줄 스타일 */
@@ -102,6 +103,24 @@ td {
     padding: 10px;
     text-align: center;
     color: rgb(62, 30, 17);
+}
+
+/* 행에 호버 시 효과 적용 */
+tbody tr:hover {
+    background-color: #d2d2d2; /* 연한 회색 */
+    cursor: pointer; /* 손가락 모양 커서 */
+}
+
+/* 링크의 기본 밑줄 제거 및 색상 상속 */
+td:nth-child(2) a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* 링크에 호버할 때 밑줄 제거 및 색상 변경 방지 */
+td:nth-child(2) a:hover {
+    text-decoration: none;
+    color: inherit;
 }
 
 th:first-child, td:first-child {
@@ -183,10 +202,34 @@ button:hover {
 /* 작성하기 버튼 스타일 */
 .button-wrapper {
     display: flex;
-    justify-content: flex-end; /* 버튼을 오른쪽으로 정렬 */
+    justify-content: flex-end;
     align-items: center;
     margin-top: 20px;
 }
+
+/* n 아이콘 스타일 (빨간 글씨, 노란색 배경) */
+td .new-icon {
+    font-size: 12px;
+    color: red; /* 빨간색 글씨 */
+    background-color: yellow; /* 노란색 배경 */
+    padding: 2px 5px;
+    border-radius: 3px;
+    margin-left: 5px;
+    font-weight: bold;
+    vertical-align: middle;
+    animation: blink 1s infinite; /* 깜빡이는 애니메이션 */
+}
+
+/* 깜빡이는 애니메이션 설정 */
+@keyframes blink {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}
+
 
 /* 반응형 미디어 쿼리 */
 @media (max-width: 768px) {
@@ -209,25 +252,6 @@ button:hover {
     }
 
     .button-wrapper {
-        justify-content: center; /* 작은 화면에서는 버튼을 가운데로 정렬 */
+        justify-content: center;
     }
 }
-
-/* @media (max-width: 576px) { */
-/*     .board h2 { */
-/*         font-size: 25pt; */
-/*     } */
-
-/*     .board { */
-/*         width: 100%; */
-/*         padding: 15px; */
-/*     } */
-
-/*     table, .pagination, .button-wrapper { */
-/*         width: 100%; */
-/*     } */
-
-/*     th, td { */
-/*         font-size: 9pt; */
-/*     } */
-/* } */

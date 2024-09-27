@@ -17,7 +17,7 @@
 </head>
 
 <body>
-    <div class="chart"> </div>
+	<div class="chart"></div>
     <main>
         <h1>근무표</h1>
         
@@ -47,15 +47,20 @@
             if (attendanceList != null) {
                 for (int i = startRecord; i < endRecord; i++) {
                     AttendanceVO attendance = attendanceList.get(i);
-                    String checkinTimeStr = attendance.getA_checkin().toString();
-                    String checkoutTimeStr = attendance.getA_checkout().toString();
+        
+        String checkinTimeStr = attendance.getA_checkin() != null ? attendance.getA_checkin().toString() : null;
+        String checkoutTimeStr = attendance.getA_checkout() != null ? attendance.getA_checkout().toString() : null;
 
                     Date checkinTime = null;
                     Date checkoutTime = null;
 
                     try {
+            if (checkinTimeStr != null) {
                         checkinTime = timeFormat.parse(checkinTimeStr);
+            }
+            if (checkoutTimeStr != null) {
                         checkoutTime = timeFormat.parse(checkoutTimeStr);
+            }
                     } catch (ParseException e) {
                         e.printStackTrace();
                     }
@@ -64,7 +69,7 @@
                 <td><%= attendance.getA_workdate() %></td>
                 <td><%= checkinTime != null ? timeFormat2.format(checkinTime) : "" %></td>
                 <td><%= checkoutTime != null ? timeFormat2.format(checkoutTime) : "" %></td>
-                <td><%= attendance.getA_issue() %></td>
+				<td><%= attendance.getA_issue() != null ? attendance.getA_issue() : "" %></td>
             </tr>
             <% 
                 } 
@@ -73,7 +78,9 @@
             <tr>
                 <td colspan="4">근무 정보가 없습니다.</td>
             </tr>
-            <% } %>
+			<% } %>
+
+		
         </table>
 
         <div class="pagination">

@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="vo.SalaryVO"%>
 <%@ page import="java.util.ArrayList"%>
+<%@ page import="java.text.DecimalFormat" %>
 <!DOCTYPE html>
 <html lang="kr">
 
@@ -15,7 +16,7 @@
 <body>	
 	<script src="/BeansPaM/js/menu.js"></script>
 	<%
-	
+	new DecimalFormat("#,###");
 	ArrayList<SalaryVO> salaryList = (ArrayList<SalaryVO>) request.getAttribute("salaryList");
 	
 	// 페이지 당 항목 수 설정
@@ -56,11 +57,11 @@
 			<tr>
 				<td><%=salary.getSal_date()%></td>
 				<!-- 지급일 -->
-				<td><%=salary.getSal_salary()%>원</td>
+				<td><%=new DecimalFormat("#,###").format(salary.getSal_salary())%>원</td>
 				<!-- 급여액 -->
-				<td><%=String.format("%.0f", salary.getSal_salary() * 0.1)%>원</td>
+				<td><%=new DecimalFormat("#,###").format(salary.getSal_salary() * 0.1)%>원</td>
 				<!-- 공제액 (급여의 10%) -->
-				<td><%=String.format("%.0f", salary.getSal_salary() * 0.9)%>원</td>
+				<td><%=new DecimalFormat("#,###").format(salary.getSal_salary() * 0.9)%>원</td>
 				<!-- 총 지급액 -->
 			</tr>
 			<%

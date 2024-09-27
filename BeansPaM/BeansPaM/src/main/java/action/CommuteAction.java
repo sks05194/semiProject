@@ -1,15 +1,22 @@
+/**
+ * @author 기홍님으로 추측
+ */
 package action;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.AttendanceDAO;
+import dao.MemberDAO;
 import vo.ActionForward;
+import vo.AttendanceVO;
+import vo.MemberVO;
 
 public class CommuteAction implements Action {
 
@@ -19,12 +26,11 @@ public class CommuteAction implements Action {
         // 쿠키에서 m_no 값 추출하기
         String memInfo = null;
         Cookie[] cookies = request.getCookies();
-
+		MemberDAO memberDAO = new MemberDAO();
         if (cookies != null) {
             for (Cookie cookie : cookies) {
                 if ("mem_info".equals(cookie.getName())) {
                     memInfo = cookie.getValue();
-                    System.out.println("memInfo: " + memInfo);
                     break;
                 }
             }
@@ -36,7 +42,6 @@ public class CommuteAction implements Action {
             String[] infoParts = memInfo.split("\\+");
             if (infoParts.length > 0) {
                 m_no = Integer.parseInt(infoParts[0]); // M_no 값을 정수로 변환
-                System.out.println("commute m_no: " + m_no);
             }
         }
 
@@ -63,14 +68,13 @@ public class CommuteAction implements Action {
 
                     // 출근 시간 기록
                     attendanceDAO.checkIn(m_no, todayStr, checkInTime);
-                    System.out.println("출근 시간 기록: " + checkInTime);
 
                     // 출근 시간이 09:00 이후일 경우 지각 처리
                     if (now.getHour() > 9 || (now.getHour() == 9 && now.getMinute() > 0)) {
                         attendanceDAO.updateIssue(m_no, todayStr, "지각");
+						MemberVO updatedMember = memberDAO.getMemberByNo(m_no);
+						request.setAttribute("member", updatedMember);
                     }
-                } else {
-                    System.out.println("이미 오늘 출근 기록이 있습니다.");
                 }
 
             } else if ("checkout".equals(actionType)) {
@@ -80,7 +84,6 @@ public class CommuteAction implements Action {
 
                 // 퇴근 시간 기록
                 attendanceDAO.checkOut(m_no, todayStr, checkOutTime);
-                System.out.println("퇴근 시간 기록: " + checkOutTime);
 
                 // 퇴근 시간이 18:00 이전일 경우 조퇴 처리
                 if (now.getHour() < 18 || (now.getHour() == 18 && now.getMinute() < 0)) {
@@ -89,6 +92,15 @@ public class CommuteAction implements Action {
             }
         }
 
+		if (m_no > 0) {
+			AttendanceDAO attendanceDAO = new AttendanceDAO();
+			ArrayList<AttendanceVO> attendanceList = attendanceDAO.getMemberByNo(m_no);
+
+			// attendanceList를 request에 저장
+			request.setAttribute("attendanceList", attendanceList);
+		}
+
+		// JSP 페이지로 forward
         return new ActionForward("/pages/workday.jsp");
     }
 }

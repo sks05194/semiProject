@@ -5,10 +5,8 @@ body {
     color: #333;
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center; /* 수평 중앙 정렬 */
-    align-items: flex-start; /* 상단 정렬로 변경 */
     min-height: 100vh; /* 화면 전체 높이 */
+    /* body에서 flex 관련 정보 삭제 */
 }
 
 /* main의 content를 중앙 정렬하고 크기를 조절 */
@@ -21,6 +19,7 @@ main {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 약간의 그림자 효과 */
+    margin : auto; /* 테이블 중앙 배치 */
     margin-top: 90px; /* 화면 상단에서 적절한 여백 */
 }
 
@@ -68,8 +67,8 @@ table.status-table th {
 }
 
 /* 깜빡이는 애니메이션 효과 */
-@keyframes blink {
-    0% { opacity: 1; }
-    50% { opacity: 0; }
-    100% { opacity: 1; }
-}
+/* @keyframes blink { */
+/*     0% { opacity: 1; } */
+/*     50% { opacity: 0; } */
+/*     100% { opacity: 1; } */
+/* } */

@@ -22,7 +22,6 @@ public class SalaryAction implements Action {
 			for (Cookie cookie : cookies) {
 				if ("mem_info".equals(cookie.getName())) {
 					memInfo = cookie.getValue();
-					System.out.println("memInfo" + memInfo);
 					break;
 
 				}
@@ -35,7 +34,6 @@ public class SalaryAction implements Action {
 			String[] infoParts = memInfo.split("\\+");
 			if (infoParts.length > 0) {
 				m_no = Integer.parseInt(infoParts[0]); // M_no 값을 정수로 변환
-				System.out.println("m_no: " + m_no);
 			}
 		}
 
