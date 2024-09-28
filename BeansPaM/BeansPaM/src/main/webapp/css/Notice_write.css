@@ -5,58 +5,10 @@
 	color: #290f05;
 }
 
-/* 좌측 메뉴탭 */
-.logo {
-	width: 150px;
-	margin: 0 auto 20px;
-	display: block;
-}
-
-.menuBar a {
-	font-size: 15px;
-	color: wheat;
-	text-decoration: none;
-	margin-top: 12px;
-	display: block;
-	font-weight: 400;
-	transition: 0.3s;
-	gap: 8px;
-}
-
-.menuBar a:hover {
-	color: rgb(41, 15, 5);
-	background-color: wheat;
-	width: 120px;
-	border-radius: 5px;
-}
-
 /* Notice_write 스타일 시작 */
 body {
-	font-family: Arial, sans-serif;
 	background-color: #f0f0f0;
 	margin: 0;
-}
-
-.menuBar {
-	padding-top: 20px;
-}
-
-.menuBar a {
-	font-size: 15px;
-	color: wheat;
-	text-decoration: none;
-	margin-top: 12px;
-	display: block;
-	font-weight: 400;
-	transition: 0.3s;
-}
-
-.menuBar a:hover {
-	color: rgb(41, 15, 5);
-	background-color: wheat;
-	width: 120px;
-	border-radius: 5px;
-	margin: 0 auto;
 }
 
 /* 공지사항 글쓰기 창 */

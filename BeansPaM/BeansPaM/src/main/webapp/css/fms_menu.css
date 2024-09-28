@@ -332,7 +332,6 @@ label[for="ham"]>span:nth-child(3) {
 	position: absolute;
 	text-decoration: none;
 	font-size: 8px;
-	font-family: 400;
 	top: 16px;
 	font-weight: 1000;
 	color: rgb(0, 0, 0);

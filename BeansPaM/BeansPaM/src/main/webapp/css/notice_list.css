@@ -7,53 +7,6 @@ body {
 	background-color: rgb(255, 255, 255);
 }
 
-.menuBar {
-	position: relative;
-	top: 20px;
-	color: wheat;
-}
-
-/* 로고 스타일 */
-.logo {
-	width: 150px;
-	margin: 0 auto 20px;
-	display: block;
-}
-
-.menuBar h2 {
-	font-size: 15px;
-	color: rgb(211, 59, 4);
-}
-
-.menuBar p {
-	transform: translateY(85px);
-}
-
-.menuBar h3 {
-	color: white;
-	transform: translateY(80px);
-}
-
-.menuBar a {
-	transform: translateY(100px);
-	left: 50px;
-	font-size: 15px;
-	color: wheat;
-	text-decoration: none;
-	margin-top: 12px;
-	display: block;
-	font-weight: 400;
-	transition: 0.3s;
-	gap: 8px;
-}
-
-.menuBar a:hover {
-	color: rgb(41, 15, 5);
-	background-color: wheat;
-	width: 120px;
-	border-radius: 5px;
-}
-
 .board {
 	width: 80%;
 	margin: 20px auto;

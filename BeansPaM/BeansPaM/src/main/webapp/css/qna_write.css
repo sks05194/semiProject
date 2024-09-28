@@ -1,37 +1,7 @@
 body {
-    font-family: Arial, sans-serif;
     background-color: #f9f9f9;
     padding: 20px;
     margin: 0;
-}
-
-.menuBar {
-    position: relative;
-    top: 20px;
-    color: wheat;
-}
-
-.logo {
-    width: 150px;
-    margin: 0 auto 20px;
-    display: block;
-}
-
-.menuBar a {
-    display: block;
-    color: wheat;
-    text-decoration: none;
-    margin-top: 12px;
-    font-weight: 400;
-    font-size: 15px;
-    transition: 0.3s;
-}
-
-.menuBar a:hover {
-    color: orangered;
-    background-color: black;
-    width: 120px;
-    border-radius: 5px;
 }
 
 .content {
