@@ -14,7 +14,7 @@
 
 <body>
 	<div class="container">
-		<h1>공지사항 상세 페이지</h1>
+		<h1>BeansPaM 공지사항</h1>
 
 		<form id="detailForm" class="form" action="./update" method="post">
 

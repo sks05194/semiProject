@@ -22,7 +22,6 @@ body {
 	font-size: 36pt;
 }
 
-
 table {
 	width: 100%;
 	border-color: gray;
@@ -51,14 +50,14 @@ th, td {
 	border-left: none;
 	border-right: none;
 	padding: 10px;
-	font-size: 14px;
+	font-size: 15px;
 	text-align: center;
 	color: rgb(41, 15, 5);
 }
 
 th {
-	font-size: 14px;
-	background-color: rgb(252, 237, 223);
+	font-size: 15px;
+	background-color: rgb(244, 228, 209);
 }
 
 table th:first-child,
@@ -115,6 +114,7 @@ table td:first-child {
 .search-container select,
 .search-container input[type="search"],
 .search-container input[type="submit"] {
+	font-size: 16px;
 	display: flex;
 	margin: 0;
 	/*     flex-shrink: 0;  */
@@ -134,16 +134,17 @@ table td:first-child {
 }
 
 .search-container input[type="submit"] {
+	font-size: 16px;
 	padding: 8px 12px;
-	background-color: rgb(252, 237, 223);
-	color: #290f05;
+	background-color: rgb(244, 228, 209);
+	color: rgb(41, 15, 5);
 	border: none;
 	border-radius: 4px;
 	cursor: pointer;
 }
 
 .search-container input[type="submit"]:hover {
-	background-color: lightgray;
+	background-color: rgb(207, 170, 156);
 }
 
 
@@ -179,13 +180,13 @@ table td:first-child {
 }
 
 .pagination a:hover {
-	background-color: lightgray;
+	background-color: rgb(207, 170, 156);
 }
 
 /* 현재 페이지 스타일 */
 .pagination span {
 	color: black;
-	background-color: rgb(252, 237, 223);
+	background-color: rgb(244, 228, 209);
 	padding: 5px 10px;
 	margin: 0 5px;
 	border-radius: 5px;
@@ -199,29 +200,25 @@ table td:first-child {
 }
 
 .write-button button {
-	font-size: 14px;
+	font-size: 15px;
 	margin-left: 10px;
 	padding: 8px 12px;
-	background-color: rgb(252, 237, 223);
-	color: #290f05;
+	background-color: rgb(244, 228, 209);
+	color: rgb(41, 15, 5);
 	border: none;
 	border-radius: 4px;
 	cursor: pointer;
 }
 
 .write-button button:hover {
-	background-color: lightgray;
+	background-color: rgb(207, 170, 156);
 }
 
 table td.title {
 	white-space: nowrap;
-	/* 한 줄로 표시 */
 	overflow: hidden;
-	/* 넘치는 부분은 숨김 */
 	text-overflow: ellipsis;
-	/* 넘치는 텍스트에 "..." 적용 */
 	max-width: 200px;
-	/* 최대 너비 설정 */
 }
 
 /* 반응형 미디어 쿼리 */
