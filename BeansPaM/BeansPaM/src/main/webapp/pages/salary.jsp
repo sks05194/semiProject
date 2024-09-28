@@ -49,63 +49,45 @@
 			</tr>
 
 			<!-- 급여 데이터 출력 -->
-			<%
-			if (salaryList != null && totalRecords > 0) {
+			<% if (salaryList != null && totalRecords > 0) {
 				for (int i = startRecord; i < endRecord; i++) {
 					SalaryVO salary = salaryList.get(i);
 			%>
-			<tr>
-				<td><%=salary.getSal_date()%></td>
-				<!-- 지급일 -->
-				<td><%=new DecimalFormat("#,###").format(salary.getSal_salary())%>원</td>
-				<!-- 급여액 -->
-				<td><%=new DecimalFormat("#,###").format(salary.getSal_salary() * 0.1)%>원</td>
-				<!-- 공제액 (급여의 10%) -->
-				<td><%=new DecimalFormat("#,###").format(salary.getSal_salary() * 0.9)%>원</td>
-				<!-- 총 지급액 -->
-			</tr>
-			<%
-			}
-			} else {
-			%>
-			<tr>
-				<td colspan="4">데이터가 없습니다.</td>
-			</tr>
-			<%
-			}
-			%>
+				<tr>
+					<td><%=salary.getSal_date()%></td>
+					<!-- 지급일 -->
+					<td><%=new DecimalFormat("#,###").format(salary.getSal_salary())%>원</td>
+					<!-- 급여액 -->
+					<td><%=new DecimalFormat("#,###").format(salary.getSal_salary() * 0.1)%>원</td>
+					<!-- 공제액 (급여의 10%) -->
+					<td><%=new DecimalFormat("#,###").format(salary.getSal_salary() * 0.9)%>원</td>
+					<!-- 총 지급액 -->
+				</tr>
+			<% }
+			} else { %>
+				<tr>
+					<td colspan="4">데이터가 없습니다.</td>
+				</tr>
+			<% } %>
 
 		</table>
 
 		<!-- 페이지 전환 버튼 -->
 		<div class="pagination">
 			<!-- 이전 페이지 버튼 -->
-			<%
-			if (currentPage > 1) {
-			%>
+			<% if (currentPage > 1) { %>
 			<a href="?page=<%=currentPage - 1%>">이전</a>
-			<%
-			}
-			%>
+			<% } %>
 
 			<!-- 페이지 번호 링크 -->
-			<%
-			for (int i = 1; i <= totalPages; i++) {
-			%>
-			<a href="?page=<%=i%>"
-				<%=i == currentPage ? "class='active'" : ""%>><%=i%></a>
-			<%
-			}
-			%>
+			<% for (int i = 1; i <= totalPages; i++) { %>
+				<a href="?page=<%=i%>" <%=i == currentPage ? "class='active'" : ""%>><%=i%></a>
+			<% } %>
 
 			<!-- 다음 페이지 버튼 -->
-			<%
-			if (currentPage < totalPages) {
-			%>
-			<a href="?page=<%=currentPage + 1%>">다음</a>
-			<%
-			}
-			%>
+			<% if (currentPage < totalPages) { %>
+				<a href="?page=<%=currentPage + 1%>">다음</a>
+			<% } %>
 		</div>
 	</main>
 

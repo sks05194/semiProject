@@ -43,7 +43,6 @@ function menu_js() {
 		} else {
 			setMobileMenu();  // 모바일 환경 설정
 		}
-		document.querySelector('#screenWidth').innerHTML = 'width: ' + window.innerWidth + 'px';
 	};
 
 	// 웹 환경에서의 메뉴 기능 제어

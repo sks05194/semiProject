@@ -1,108 +1,129 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
 .container {
-    width: 80%;
-    margin: auto;
-    max-width: 1200px;
+	width: 80%;
+	margin: auto;
+	max-width: 1200px;
 }
 
 .container h1 {
-    margin-top: 130px;
-    /* 모바일에서는 이거 조절 */
+	margin-top: 40px;
 }
 
 .search-container {
-    display: flex;
-    justify-content: flex-end;
-    margin-bottom: 20px;
+	display: flex;
+	justify-content: flex-end;
+	margin-bottom: 20px;
 }
 
-.search-container select,
-.search-container input {
-    padding: 10px;
-    font-size: 16px;
-    margin-right: 5px;
+.search-container select, .search-container input {
+	height: 40px;
+	padding: 10px;
+	font-size: 16px;
+	border: 1px solid rgb(207, 170, 156);
+	border-radius: 5px;
 }
 
 .search-container button {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: rgb(244, 228, 209);
-    color: #000;
-    border: none;
-    cursor: pointer;
+	padding: 10px 20px;
+	font-size: 16px;
+	background-color: rgb(244, 228, 209);
+	color: #000;
+	border: 1px solid rgb(207, 170, 156);
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color 0.3s;
+}
+
+.search-container button:hover {
+	background-color: rgb(207, 170, 156);
+	color: white;
 }
 
 table {
-    text-align: center;
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0;
-    background: #fff;
-    table-layout: fixed;
+	text-align: center;
+	width: 100%;
+	border-collapse: collapse;
+	margin: 20px 0;
+	background: #fff;
+	table-layout: fixed;
 }
 
-tr {
-    border-bottom: solid 1px rgb(165, 81, 42);
+thead tr th {
+	font-size: 11pt;
+	font-weight: bold;
+	padding: 10px;
+	text-align: center;
+	border-top: 2px solid #c0c0c0;
+	border-bottom: 1px solid #c0c0c0;
+	box-shadow: 0 0.3px 0 0 #c0c0c0;
+}
+
+/* 두 번째부터 열 번째 줄에만 회색 연한 선을 적용 */
+tbody tr:nth-child(n+1):nth-child(-n+9) td {
+	border-bottom: 1px solid #e0e0e0;
+	/* 회색 연한 선 */
 }
 
 th, td {
-    padding: 12px;
-    text-align: center;
-    overflow-wrap: break-word;
+	padding: 12px;
+	text-align: center;
+	overflow-wrap: break-word;
 }
 
 th {
-    background-color: rgb(244, 228, 209);
-    color: #000;
+	background-color: rgb(252, 237, 223);
+	color: #000;
 }
 
 .no-results {
-    text-align: center;
-    padding: 20px;
+	text-align: center;
+	padding: 20px;
 }
 
 .pagination {
-    display: flex;
-    justify-content: center;
-    padding: 10px 0;
-    gap: 4px;
-    background-color: rgba(255, 255, 255, 0.8);
+	display: flex;
+	justify-content: center;
+	margin-top: 25px;
+	margin-bottom: 50px;
+	background-color: rgba(255, 255, 255, 0.8);
 }
 
 .pagination a {
-    padding: 10px;
-    font-size: 16px;
-    background-color: white;
-    color: rgb(41, 15, 5);
-    text-decoration: none;
+	color: black;
+	text-decoration: none;
+	padding: 5px 10px;
+	background-color: rgb(244, 228, 209);
+	border-radius: 5px;
+	font-size: 10pt;
+	margin: 0 5px;
 }
 
 .pagination a.active {
-    background-color: rgb(244, 228, 209);
-    color: #000;
+	background-color: gray;
+	color: white;
 }
 
 /* 반응형 디자인 */
-@media (max-width: 768px) {
-    .search-container {
-        flex-direction: column;
-        align-items: flex-end;
-    }
+@media (max-width: 700px) {
+	.search-container {
+		flex-direction: column;
+		align-items: flex-end;
+	}
 
-    .search-container select,
-    .search-container input,
-    .search-container button {
-        width: 100%;
-        margin-bottom: 10px;
-    }
+	.search-container select,
+	.search-container input,
+	.search-container button {
+		width: 100%;
+		margin-bottom: 10px;
+	}
 
-    .pagination {
-        flex-direction: column;
-        align-items: center;
-    }
+	.pagination {
+		flex-direction: column;
+		align-items: center;
+	}
 }

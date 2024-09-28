@@ -1,66 +1,76 @@
-body {
-    margin: 0;
-}
+body { margin: 0; }
 
 main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    width: 90%;
-    margin-bottom: 5px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	transform: translateX(14%);
+	text-align: center;
+	width: 80%;
+	margin-bottom: 5px;
 }
 
-h1 {
-    margin-bottom: 20px;
-}
+h1 { margin-bottom: 20px; }
 
 /*메인 부분*/
 table {
-
-    background-color: white;
-    width: 100%;
-    border-collapse: collapse;
-    border: none;
-    margin-bottom: 15px;
-    /* display: none; */
+	background-color: white;
+	width: 100%;
+	border-collapse: collapse;
+	border: none;
+	margin-bottom: 15px;
+	/* display: none; */
 }
 
 /* 표 헤더(th) 스타일 */
 th {
-    border-bottom: solid;
-    background-color: (244, 228, 209);
-    padding: 10px;
-    text-align: center;
-    color: rgb(62, 30, 17);
-    background-color: rgb(252, 237, 223);
+	background-color: rgb(252, 237, 223);
+	font-size: 15pt;
+	font-weight: bold;
+	color: rgb(62, 30, 17);
+	padding: 10px;
+	text-align: center;
+	border-top: 2px solid #c0c0c0;
+	border-bottom: 1px solid #c0c0c0;
+	box-shadow: 0 0.3px 0 0 #c0c0c0;
 }
 
-/* 표 데이터 셀(td) 스타일 */
+tbody tr:nth-child(n+1):nth-child(-n+9) td {
+	border-bottom: 1px solid #e0e0e0;
+}
+
+/* 마지막 줄 스타일 */
+tbody tr:last-child td {
+	border-bottom: 2px solid #c0c0c0;
+}
+
 td {
-    font-size: 10pt;
-    border-bottom: 2px solid;
-    padding: 10px;
-    text-align: center;
-    color: rgb(62, 30, 17);
+	padding: 10px;
+	text-align: center;
+	color: rgb(62, 30, 17);
 }
 
 .pagination a {
-    margin: 0 5px;
-    padding: 5px 10px;
-    text-decoration: none;
-    cursor: pointer;
-    border: 1px solid wheat;
-    background-color: wheat;
-    border-radius: 5px;
+	margin: 0 5px;
+	padding: 5px 10px;
+	text-decoration: none;
+	cursor: pointer;
+	border: 1px solid wheat;
+	background-color: wheat;
+	border-radius: 5px;
+}
+
+.pagination a.hover {
+	background-color: rgb(207, 170, 156);
+	color: white;
 }
 
 .pagination a.active {
-    background-color: #4CAF50;
-    color: white;
+	background-color: gray;
+	color: white;
 }
 
 .pagination {
-    display: flex;
-    justify-content: center;
+	display: flex;
+	justify-content: center;
 }

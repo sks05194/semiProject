@@ -53,8 +53,8 @@
 				<li class="has-submenu">
 					<span class="menu-title">전자결재</span>
 					<ul class="sub-menu">
-						<li><a href="#">결재상신</a></li>
-						<li><a href="/BeansPaM/fms/approval_main">결재문서</a></li>
+						<li><a href="/BeansPaM/fms/approval_write">결재상신</a></li>
+						<li><a href="/BeansPaM/fms/approval_main_action">결재문서</a></li>
 					</ul>
 				</li>
 				<li class="has-submenu">

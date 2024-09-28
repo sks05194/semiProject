@@ -112,7 +112,7 @@ public class ApprovalWriteAction implements Action {
 			}
 			approvalService.estimateAction(documentVO);			
 		}
-		forward = new ActionForward("approval_write");
+		forward = new ActionForward(true, "approval_main_action");
 		return forward;
 	}
 

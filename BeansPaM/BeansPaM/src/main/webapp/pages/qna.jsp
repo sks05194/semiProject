@@ -105,7 +105,7 @@
             <!-- 글쓰기 관련 버튼 -->
             <div class="button-wrapper">
                 <div class="button-container">
-                    <button onclick="location.href='<%=request.getContextPath()%>/pages/qna_write.jsp'" class="search-button">작성하기</button>
+                    <button onclick="location.href='<%=request.getContextPath()%>/pages/qna_write.jsp'" class="search-button">글쓰기</button>
                 </div>
             </div>
 

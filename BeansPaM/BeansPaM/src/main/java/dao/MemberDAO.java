@@ -1,13 +1,9 @@
 /**
+ * 최초 생성일: 2024-09-11
+ * 
  * 기여자
  * @author 강동준
  * @author 임성현
- * @author 민기홍
- * 
- * 최초 생성일: 2024-09-11
- * @author 강동준
- * 
- * 마지막 수정일: 2024-09-25
  * @author 민기홍
  * 
  * 주요 수정 내용: updateMemberInfo, updatePasswdInfo 메소드 생성
@@ -365,7 +361,6 @@ public class MemberDAO {
 		boolean isUpdated = false;
 
 		try {
-
 			String sql = "UPDATE member SET m_email = ?, m_phone = ? WHERE m_no = ?";
 			ps = getConnection().prepareStatement(sql);
 			ps.setString(1, email);
@@ -380,15 +375,12 @@ public class MemberDAO {
 			} else {
 				rollback();
 			}
-
 		} catch (Exception e) {
 			e.printStackTrace();
 			rollback();
 		} finally {
 			close(ps);
-
 		}
-
 		return isUpdated;
 	}
 
@@ -404,7 +396,6 @@ public class MemberDAO {
 		boolean isUpdated = false;
 
 		try {
-
 			String sql = "UPDATE member SET m_pw = ? WHERE m_no = ?";
 			ps = getConnection().prepareStatement(sql);
 			ps.setString(1, newPwd);
@@ -418,13 +409,11 @@ public class MemberDAO {
 			} else {
 				rollback();
 			}
-
 		} catch (Exception e) {
 			e.printStackTrace();
 			rollback();
 		} finally {
 			close(ps);
-
 		}
 
 		return isUpdated;

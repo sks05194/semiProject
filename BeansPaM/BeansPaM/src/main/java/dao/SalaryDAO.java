@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import vo.SalaryVO;
 
 public class SalaryDAO {
-	
 	public ArrayList<SalaryVO> getMemberByNo(int m_no) {
 		PreparedStatement ps = null;
 		ResultSet rs = null;

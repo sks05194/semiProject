@@ -78,7 +78,7 @@ table {
 /* 첫 번째 줄 스타일 */
 thead tr th {
     background-color: rgb(252, 237, 223);
-    font-size: 11pt;
+    font-size: 16pt;
     font-weight: bold;
     color: rgb(62, 30, 17);
     padding: 10px;
@@ -209,7 +209,7 @@ button:hover {
 
 /* n 아이콘 스타일 (빨간 글씨, 노란색 배경) */
 td .new-icon {
-    font-size: 12px;
+    font-size: 8px;
     color: red; /* 빨간색 글씨 */
     background-color: yellow; /* 노란색 배경 */
     padding: 2px 5px;
@@ -217,18 +217,14 @@ td .new-icon {
     margin-left: 5px;
     font-weight: bold;
     vertical-align: middle;
-    animation: blink 1s infinite; /* 깜빡이는 애니메이션 */
+    /* animation: blink 1s infinite; */ /* 깜빡이는 애니메이션 */
 }
 
 /* 깜빡이는 애니메이션 설정 */
-@keyframes blink {
-    0%, 100% {
-        opacity: 1;
-    }
-    50% {
-        opacity: 0;
-    }
-}
+/* @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+} */
 
 
 /* 반응형 미디어 쿼리 */

@@ -9,22 +9,51 @@
  */
 package svc;
 
-import dao.ApprovalDAO;
+import java.util.List;
+
+import dao.DocumentDAO;
 import vo.DocumentVO;
 
 public class ApprovalService {
-	ApprovalDAO approvalDAO = new ApprovalDAO();
+	DocumentDAO documentDAO = new DocumentDAO();
 
 	public int attendanceAction(DocumentVO documentVO) {
-		return approvalDAO.approval(documentVO);
+		return documentDAO.approval(documentVO);
 	}
 	
 	public int tripAction(DocumentVO documentVO) {
-		return approvalDAO.approval(documentVO);
+		return documentDAO.approval(documentVO);
 	}
 	
 	public int estimateAction(DocumentVO documentVO) {
-		return approvalDAO.approval(documentVO);
+		return documentDAO.approval(documentVO);
 	}
 	
+	public List<DocumentVO> getPageListAction(int pageNum, int amount) {
+		return documentDAO.getPageList(pageNum, amount);
+	}
+	
+	public int getTotalPageAction() {
+		return documentDAO.getTotalPage();
+	}
+	
+	public List<DocumentVO> getPageContentsAction(int d_no) {
+		return documentDAO.getPageContents(d_no);
+	}
+	
+	public int delPageAction(int d_no) {
+		return documentDAO.delPage(d_no);
+	}
+	
+	public List<DocumentVO> getNameAction(int mNo) {
+		return documentDAO.getName(mNo);
+	}
+	
+	public String ConfirmAction(String m_name, String m_position, int d_no) {
+		return documentDAO.Confirm(m_name, m_position, d_no);
+	}
+	
+	public String getDNameAction(int d_m_no) {
+		return documentDAO.getDName(d_m_no);
+	}
 }

@@ -1,131 +1,131 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    color: #290f05;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	color: #290f05;
 }
 
 /* 좌측 메뉴탭 */
 .logo {
-    width: 150px;
-    margin: 0 auto 20px;
-    display: block;
+	width: 150px;
+	margin: 0 auto 20px;
+	display: block;
 }
 
 .menuBar a {
-    font-size: 15px;
-    color: wheat;
-    text-decoration: none;
-    margin-top: 12px;
-    display: block;
-    font-weight: 400;
-    transition: 0.3s;
-    gap: 8px;
+	font-size: 15px;
+	color: wheat;
+	text-decoration: none;
+	margin-top: 12px;
+	display: block;
+	font-weight: 400;
+	transition: 0.3s;
+	gap: 8px;
 }
 
 .menuBar a:hover {
-    color: rgb(41, 15, 5);
-    background-color: wheat;
-    width: 120px;
-    border-radius: 5px;
+	color: rgb(41, 15, 5);
+	background-color: wheat;
+	width: 120px;
+	border-radius: 5px;
 }
 
 /* Notice_write 스타일 시작 */
 body {
-    font-family: Arial, sans-serif;
-    background-color: rgb(255, 255, 255);
-/*     display: flex;  */
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
+	font-family: Arial, sans-serif;
+	background-color: rgb(255, 255, 255);
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	margin: 0;
 }
 
 
 /* 공지사항 상세페이지 창 */
 .container {
-    color: rgb(41, 15, 5);
-    width: 800px;
-    height: auto;
-    margin: 0 auto;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+	color: rgb(41, 15, 5);
+	width: 800px;
+	height: auto;
+	margin: 0 auto;
+	background-color: #fff;
+	padding: 20px;
+	border-radius: 8px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	flex-direction: column;
+	justify-content: center;
 }
 
 h1 {
-    text-align: center;
-    margin-bottom: 30px;
-    font-size: 25px;
+	text-align: center;
+	margin-bottom: 30px;
+	font-size: 25px;
 }
 
 .form {
-    display: flex;
-    flex-direction: column;
+	display: flex;
+	flex-direction: column;
 }
 
 
 label {
-    font-weight: bold;
-    margin-bottom: 5px;
-    display: block;
+	font-weight: bold;
+	margin-bottom: 5px;
+	display: block;
 }
 
 input[type="text"], textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 16px;
-    min-width: 500px;
+	width: 100%;
+	padding: 10px;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	font-size: 16px;
 }
 
 textarea {
-    height: 300px;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 16px;
-    resize: none;
-    overflow: auto;
-    min-width: 500px;
+	height: 300px;
+	padding: 10px;
+	margin-bottom: 10px;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	font-size: 16px;
+	resize: none;
+	overflow: auto;
 }
 
 .button-group {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 20px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 20px;
 }
 
 button {
 	width: 90px;
-    margin: 0;
-    padding: 8px 15px;
-    background-color: rgb(252, 237, 223);
-    color: black;
-    border: none;
-    border-radius: 4px;
-    font-size: 14px;
-    cursor: pointer;
+	margin: 0;
+	padding: 8px 15px;
+	background-color: rgb(252, 237, 223);
+	color: black;
+	border: none;
+	border-radius: 4px;
+	font-size: 14px;
+	cursor: pointer;
 }
 
 button:hover {
-    background-color: lightgray;
+	background-color: lightgray;
 }
 
 
 /* 반응형 미디어 쿼리 */
 @media (max-width: 768px) {
-    .container {
-    	min-width: 500px;
-        width: 100%;
-        flex-direction: column;
-        align-items: flex-start;
-    }
+	.container {
+		width: 100%;
+		flex-direction: column;
+		/* align-items: flex-start; */
+	}
+
+	input[type="text"], textarea {
+		width: 100%;
+		flex-direction: column;
+	}
 }

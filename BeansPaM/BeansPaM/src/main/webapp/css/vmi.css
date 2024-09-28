@@ -1,164 +1,197 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-}
-
-header {
-    position: fixed;
-    left: 0;
-    height: 100vh;
-    width: 200px;
-    background-color: rgb(41, 15, 5);
-    z-index: 100;
-    text-align: center;
-}
-
-.menuBar {
-    position: relative;
-    top: 20px;
-    color: wheat;
-}
-
-.logo {
-    width: 150px;
-    margin: 0 auto 20px;
-    display: block;
-}
-
-.menuBar a {
-    display: block;
-    color: wheat;
-    text-decoration: none;
-    margin-top: 12px;
-    font-weight: 400;
-    font-size: 15px;
-    transition: 0.3s;
-}
-
-.menuBar a:hover {
-    color: orangered;
-    background-color: black;
-    width: 120px;
-    border-radius: 5px;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
 .content {
-    margin-left: 220px;
-    padding: 20px;
+	width: 80%;
+	max-width: 1200px;
+	margin: auto;
+}
+
+.content h1 {
+	margin-top: 40px;
 }
 
 .material-section {
-    margin-top: 80px;
-    margin-bottom: 40px;
+	margin-top: 50px;
+	margin-bottom: 40px;
 }
 
-/* 타이틀 및 컨트롤 섹션 정렬 */
 .header-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 20px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-bottom: 20px;
 }
 
-h2 {
-    color: #333;
-    font-size: 24px;
-    margin-bottom: 10px;
-    text-align: center;
-}
-
-/* 스케줄러와 버튼을 같은 줄에 정렬 */
 .controls {
-    display: flex;
-    justify-content: space-between;
-    width: 80%;
-    margin: 0 auto;
-    align-items: center;
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	width: 100%;
+	margin: 0 auto;
 }
 
 .scheduler {
-    display: flex;
-    align-items: center;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
 }
 
 .scheduler label {
-    margin-right: 10px;
-    font-size: 14px;
-    color: #333;
+	margin-right: 10px;
+	font-size: 14px;
+	color: #333;
 }
 
 .scheduler input {
-    padding: 5px;
-    margin: 0 5px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+	padding: 5px;
+	margin: 0 5px;
+	border: 1px solid #ddd;
+	border-radius: 5px;
 }
 
-/* 작성하기, 수정하기, 삭제하기 버튼 스타일 */
 .action-buttons {
-    display: flex;
-    gap: 10px;
+	gap: 10px;
+	display: flex;
+	justify-content: flex-end;
 }
 
 .action-button {
-    padding: 8px 12px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+	margin-top: 10px;
+	padding: 8px 15px;
+	background-color: rgb(244, 228, 209);
+	color: rgb(41, 15, 5);
+	border: 1px solid rgb(207, 170, 156);
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color 0.3s;
 }
 
 .action-button:hover {
-    background-color: #0056b3;
+	background-color: rgb(207, 170, 156);
+	color: white;
 }
 
 .status-table {
-    width: 80%;
-    margin: 0 auto;
-    border-collapse: collapse;
-    background-color: white;
-    border: 1px solid #ddd;
+	text-align: center;
+	width: 100%;
+	border-collapse: collapse;
+	margin: 20px 0;
+	background: #fff;
+	table-layout: fixed;
 }
 
 .status-table th, .status-table td {
-    padding: 12px;
-    text-align: center;
-    border: 1px solid #ddd;
-    font-size: 12px;
+	padding: 12px;
+	text-align: center;
+	overflow-wrap: break-word;
 }
 
 .status-table th {
-    background-color: #f2f2f2;
-    font-weight: bold;
+	background-color: rgb(252, 237, 223);
+	font-size: 11pt;
+	font-weight: bold;
+	color: rgb(62, 30, 17);
+	border-top: 2px solid #c0c0c0;
+	border-bottom: 1px solid #c0c0c0;
 }
 
-.status-table tr:nth-child(even) {
-    background-color: #f9f9f9;
+.status-table td {
+	font-size: 11pt;
+	color: rgb(62, 30, 17);
 }
 
-/* 편집 가능 상태에서 셀 스타일 */
+tbody tr:nth-child(n+1):nth-child(-n+50) td {
+	border-bottom: 1px solid #e0e0e0;
+}
+
+.hidden {
+	display: none;
+}
+
+.load-more-container {
+	display: flex;
+	justify-content: center;
+	margin-top: 20px;
+}
+
+#load-more-btn {
+	padding: 10px 20px;
+	font-size: 16px;
+	background-color: rgb(244, 228, 209);
+	color: #000;
+	border: 1px solid rgb(207, 170, 156);
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color 0.3s;
+}
+
+#load-more-btn:hover {
+	background-color: rgb(207, 170, 156);
+	color: white;
+}
+
 .editable {
-    cursor: text;
+	cursor: text;
 }
 
 .status-table tr:hover .editable {
-    border: 1px solid #ccc;
+	border: 1px solid #ccc;
 }
 
-/* 삭제 모드에서 행 스타일 */
 .deletable-row {
-    cursor: pointer;
+	cursor: pointer;
 }
 
 .deletable-row:hover {
-    border: 2px solid orangered;
-    cursor: pointer;
+	border: 2px solid orangered;
+	cursor: pointer;
+}
+
+@media (max-width: 400px) {
+	.content {
+		width: 95%;
+	}
+
+	.controls {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	.scheduler {
+		flex-direction: column;
+	}
+
+	.action-buttons {
+		flex-direction: column;
+		align-items: stretch;
+		width: 100%;
+	}
+
+	.action-button {
+		width: 100%;
+		margin-bottom: 10px;
+	}
+
+	.status-table {
+		font-size: 10pt;
+	}
+}
+
+@media (max-width: 400px) {
+	.scheduler input {
+		font-size: 12px;
+	}
+
+	.action-button {
+		width: 100%;
+		margin-bottom: 10px;
+	}
+
+	.status-table th, .status-table td {
+		padding: 5px;
+	}
 }

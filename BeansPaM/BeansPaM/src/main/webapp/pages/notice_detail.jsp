@@ -40,7 +40,7 @@
 					<c:if test='${loginName == "관리자"}'>
 						<button type="button" id="deleteButton"
 							onclick="goDelete(${n_no})">삭제</button>
-						<button type="submit" id="editButton">수정</button>
+						<button type="submit" id="editButton" onclick="goUpdate()">수정완료</button>
 					</c:if>
 				</div>
 			</div>
@@ -51,6 +51,10 @@
 			if (confirm("정말 삭제하시겠습니까?")) {
 				location.href = "/BeansPaM/b/notice/delete?n_no=" + ${n_no}
 			}
+		}
+		
+		function goUpdate(){
+			alert("수정이 완료되었습니다.");
 		}
 	</script>
 	<script src="/BeansPaM/js/menu.js"></script>

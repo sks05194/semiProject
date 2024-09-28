@@ -1,11 +1,10 @@
 /**
  * 최초 생성일: 2024-09-11
- * @author 강동준
  * 
  * 기여자
+ * @author 강동준
  * @author 민기홍
- * 
- * 최종 수정일: 2024-09-24
+ * @author 임성현
  * @author 한지수
  * 
  * 주요 수정 내용: /inform 경로 수정
@@ -21,19 +20,9 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+//import javax.servlet.http.HttpSession;
 
-import action.Action;
-import action.AdminAction;
-import action.AdminDelAction;
-import action.AdminDetailAction;
-import action.ApprovalWriteAction;
-import action.ChangePasswordAction;
-import action.CommuteAction;
-import action.MemberRegistAction;
-import action.MypageAction;
-import action.SalaryAction;
-import action.UpdateMemberAction;
-import action.WorkdayAction;
+import action.*;
 import vo.ActionForward;
 
 @MultipartConfig
@@ -148,9 +137,8 @@ public class FMSController extends HttpServlet {
 
 		/**
 		 * 09-26 추가
-		 * @see 민기홍
+		 * @author 민기홍
 		 */
-
 		else if (pathInfo.equals("/commute")) {
 			action = new CommuteAction();
 			try {
@@ -202,23 +190,61 @@ public class FMSController extends HttpServlet {
 		else if (pathInfo.equals("/approval_main")) {
 			forward = new ActionForward("/pages/approval_main.jsp");
 		}
-
+		
+		/** 결재 현황 페이지의 게시글 @author 임성현 */
+		else if (pathInfo.equals("/approval_contents")) {
+			forward = new ActionForward("/pages/approval_contents.jsp");
+		}
+		
 		/** 결재 상신 페이지 @author 임성현 */
 		else if (pathInfo.equals("/approval_write")) {
 			forward = new ActionForward("/pages/approval_write.jsp");
 		}
-
-		/** 결재 현황 액션, 임시 생성 @author 임성현 */
-//		else if (pathInfo.equals("/approval_main_action")) {
-//			action = new ApprovalMainAction();
-//			
-//			try {
-//				forward = action.execute(request, response);
-//			} catch (Exception e) {
-//				e.printStackTrace();
-//			}
-//		}
-
+		
+		/** 결재 현황 액션 @author 임성현 */
+		else if (pathInfo.equals("/approval_main_action")) {
+			action = new ApprovalMainAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		/** 결재 현황 게시글 액션 @author 임성현 */
+		else if (pathInfo.equals("/approval_contents_action")) {
+			action = new ApprovalContentsAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		/** 결재 현황 게시글 삭제 액션 @author 임성현 */
+		else if (pathInfo.equals("/approval_contents_del_action")) {
+			action = new ApprovalContentsDelAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		/** 결재 현황 결재 확인 액션 @author 임성현 */
+		else if (pathInfo.equals("/approval_contents_edit_action")) {
+			action = new ApprovalContentsConfirmAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
 		/** 결재 상신 액션 @author 임성현 */
 		else if (pathInfo.equals("/approval_write_action")) {
 			action = new ApprovalWriteAction();

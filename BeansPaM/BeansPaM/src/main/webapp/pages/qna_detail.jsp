@@ -33,8 +33,8 @@
 
             <!-- 삭제하기 버튼 추가 -->
             <div class="button-section">
-                <button class="btn-delete" onclick="deletePost('<%= qna.getQ_no() %>')">삭제하기</button>
                 <button class="btn-exit" onclick="exitPost()">나가기</button>
+                <button class="btn-delete" onclick="deletePost('<%= qna.getQ_no() %>')">삭제하기</button>
             </div>
         <%
             } else {

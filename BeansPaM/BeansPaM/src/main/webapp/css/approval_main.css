@@ -1,59 +1,10 @@
-* {
-	margin: 0 auto;
-	box-sizing: border-box;
-}
-
-.menuBar {
-	position: relative;
-	top: 20px;
-	color: wheat;
-}
-
-/* 로고 스타일 */
-.logo {
-	width: 150px;
-	margin: 0 auto 20px;
-	display: block;
-}
-
-.menuBar h2 {
-	font-size: 15px;
-	color: rgb(211, 59, 4);
-}
-
-.menuBar p {
-	transform: translateY(85px);
-}
-
-.menuBar h3 {
-	color: white;
-	transform: translateY(80px);
-}
-
-.menuBar a {
-	transform: translateY(100px);
-	left: 50px;
-	font-size: 15px;
-	color: wheat;
-	text-decoration: none;
-	margin-top: 12px;
-	display: block;
-	font-weight: 400;
-	transition: 0.3s;
-	gap: 8px;
-}
-
-.menuBar a:hover {
-	color: rgb(41, 15, 5);
-	background-color: wheat;
-	width: 120px;
-	border-radius: 5px;
+body {
+	font-family: Arial, sans-serif;
 }
 
 .board {
-	position: relative;
 	width: 80%;
-	margin: auto;
+	margin: 20px auto;
 	background-color: rgb(255, 255, 255);
 	padding: 20px;
 	border-radius: 10px;
@@ -89,9 +40,19 @@ th {
 	background-color: rgba(255, 252, 249, 0.902);
 }
 
+.board {
+	position: relative;
+	width: 80%;
+	margin: 20px auto;
+	background-color: rgb(255, 255, 255);
+	padding: 20px;
+	border-radius: 10px;
+}
+
 .actions-container {
 	display: flex;
-	justify-content: flex-start; /* 왼쪽 정렬 */
+	justify-content: flex-start;
+	/* 왼쪽 정렬 */
 	flex-wrap: wrap;
 	/* align-items: center; */
 	margin-top: 25px;
@@ -129,9 +90,11 @@ th {
 .search-container button:hover {
 	background-color: lightgray;
 }
+
 /* 페이지네이션 */
 .pagination {
-	justify-content: flex-start; /* 왼쪽 정렬 */
+	justify-content: flex-start;
+	/* 왼쪽 정렬 */
 	display: flex;
 	flex-wrap: wrap;
 	margin-bottom: 5px;
@@ -175,18 +138,24 @@ th {
 .button-container button:hover {
 	background-color: lightgray;
 }
+
 /* 반응형 미디어 쿼리 */
-@media ( max-width : 768px) {
+@media (max-width: 768px) {
 	.actions-container {
-		flex-direction: column; /* 작은 화면에서는 요소들이 세로로 배치 */
-		align-items: flex-start; /* 작은 화면에서 왼쪽 정렬 */
+		flex-direction: column;
+		/* 작은 화면에서는 요소들이 세로로 배치 */
+		align-items: flex-start;
+		/* 작은 화면에서 왼쪽 정렬 */
 	}
+
 	.search-container, .button-container {
 		width: 30%;
 	}
+
 	.button-container {
 		justify-content: flex-start;
 	}
+
 	.pagination {
 		justify-content: flex-start;
 	}

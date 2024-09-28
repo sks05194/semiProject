@@ -1,29 +1,22 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="ko">
 
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="/BeansPaM/css/approval_main.css">
-<title>결재 현황 리스트</title>
-<style>
-</style>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="/BeansPaM/css/approval_main.css">
+	<title>결재 현황</title>
 </head>
+
 <body>
 	<main class="content">
 		<div class="board">
-			<h2>결재 현황 리스트</h2>
+			<h2>결재 현황</h2>
 			<!-- 버튼 컨테이너 -->
 			<div class="button-container">
-				<button onclick="location.href='./approval_write'">결재상신</button>
-				<button>결재 승인</button>
-				<button>결재 반려</button>
-				<button>결재 취소</button>
-				<button>문서 수정</button>
-				<button>문서 삭제</button>
+				<button onclick="location.href='/BeansPaM/fms/approval_write'">결재 상신</button>
 			</div>
 			<table>
 				<thead>
@@ -36,92 +29,60 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td>10</td>
-						<td>N사 견적서</td>
-						<td>설보라 대리</td>
-						<td>2024-09-10</td>
-						<td>결재대기</td>
-					</tr>
-					<tr>
-						<td>9</td>
-						<td>S사 견적서</td>
-						<td>송상훈 대리</td>
-						<td>2024-09-08</td>
-						<td>결재대기</td>
-					</tr>
-					<tr>
-						<td>8</td>
-						<td>출장서</td>
-						<td>이귀화 대리</td>
-						<td>2024-09-06</td>
-						<td>결재완료</td>
-					</tr>
-					<tr>
-						<td>7</td>
-						<td>지출결의서</td>
-						<td>한지수 대리</td>
-						<td>2024-09-05</td>
-						<td>결재완료</td>
-					</tr>
-					<tr>
-						<td>6</td>
-						<td>휴가신청서</td>
-						<td>임성현 대리</td>
-						<td>2024-09-03</td>
-						<td>결재완료</td>
-					</tr>
-					<tr>
-						<td>5</td>
-						<td>지출결의서</td>
-						<td>손동진 대리</td>
-						<td>2024-09-02</td>
-						<td>결재완료</td>
-					</tr>
-					<tr>
-						<td>4</td>
-						<td>업무기안서</td>
-						<td>민기홍 대리</td>
-						<td>2024-09-02</td>
-						<td>결재완료</td>
-					</tr>
-					<tr>
-						<td>3</td>
-						<td>P사 견적서</td>
-						<td>고길동 사원</td>
-						<td>2024-09-01</td>
-						<td>결재완료</td>
-					</tr>
-					<tr>
-						<td>2</td>
-						<td>N사 견적서</td>
-						<td>이진욱 사원</td>
-						<td>2024-08-29</td>
-						<td>결재완료</td>
-					</tr>
-					<tr>
-						<td>1</td>
-						<td>N사 견적서</td>
-						<td>지창욱 사원</td>
-						<td>2024-09-28</td>
-						<td>결재완료</td>
-					</tr>
+					<c:choose>
+						<c:when test="${not empty getPageList}">
+							<c:forEach var="documentVO" items="${getPageList}">
+								<tr>
+									<td>${documentVO.d_no}</td>
+									<td>
+										<a href="approval_contents_action?d_no=${documentVO.d_no}">${documentVO.d_title}</a>
+									</td>
+									<td>${documentVO.m_name} ${documentVO.m_position}</td>
+									<td>${documentVO.d_request}</td>
+									<td>
+										<c:choose>
+											<c:when test="${empty documentVO.d_response}">
+												${"결재대기"}
+											</c:when>
+											<c:otherwise>
+												${"결재완료"}
+											</c:otherwise>
+										</c:choose>
+									</td>
+								</tr>
+							</c:forEach>
+						</c:when>
+						<c:otherwise>
+							<tr>
+								<td colspan="6" align="center">게시글이 없습니다.</td>
+							</tr>
+						</c:otherwise>
+					</c:choose>
 				</tbody>
 			</table>
 			<div class="actions-container">
-				<!-- 검색창 -->
-				<div class="search-container">
+				<div class="pagination" style="margin-left: 0;">
+
+					<!-- 2. 이전버튼 활성화 여부 -->
+					<c:if test="${pageVO.prev }">
+						<a href="approval_main_action?pageNum=${pageVO.startPage - 1 }&amount=${pageVO.amount}">이전</a>
+					</c:if>
+
+					<!-- 1. 페이지번호 처리 -->
+					<c:forEach var="num" begin="${pageVO.startPage }" end="${pageVO.endPage }">
+						<div class="${pageVO.pageNum eq num ? 'active' : '' }"><a href="approval_main_action?pageNum=${num }&amount=${pageVO.amount}">${num }</a>
+						</div>
+					</c:forEach>
+
+					<!-- 3. 다음버튼 활성화 여부 -->
+					<c:if test="${pageVO.next }">
+						<a href="approval_main_action?pageNum=${pageVO.endPage + 1 }&amount=${pageVO.amount}">다음</a>
+					</c:if>
+				</div>
+				<!-- <div class="search-container">
 					<input type="search" placeholder="검색할 내용 입력">
 					<button>검색</button>
-				</div>
-
-				<!-- 페이지네이션 -->
-				<div class="pagination" style="margin-left: 0;">
-					<a href="#">&laquo;</a> <a href="#">1</a> <a href="#">2</a> <a
-						href="#">3</a> <a href="#">&raquo;</a>
-				</div>
-
-
+				</div> -->
 			</div>
 		</div>
 	</main>
@@ -166,4 +127,5 @@
 	</script>
 	<script src="/BeansPaM/js/menu.js"></script>
 </body>
+
 </html>
