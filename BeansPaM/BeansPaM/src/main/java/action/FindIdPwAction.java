@@ -17,10 +17,7 @@ import vo.*;
 
 /* 아이디/비밀번호 찾기를 위한 Action 클래스 */
 public class FindIdPwAction implements Action {
-
-	/**
-	 * @author 임성현
-	 */
+	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ActionForward forward = null;
 		MemberVO memberVO = null;

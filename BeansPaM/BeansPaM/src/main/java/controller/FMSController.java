@@ -18,6 +18,8 @@ import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.*;
 
 import action.*;
+import svc.VMIService;
+import svc.AdminService;
 import vo.ActionForward;
 
 @MultipartConfig
@@ -75,13 +77,7 @@ public class FMSController extends HttpServlet {
 
 		/** 사원 추가 @author 강동준 */
 		else if (pathInfo.equals("/regist_member")) {
-			action = new MemberRegistAction();
-
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+			new AdminService().memberRegistByAdmin(request, response);
 		}
 
 		/** 사원 삭제 @author 강동준 */
@@ -175,9 +171,16 @@ public class FMSController extends HttpServlet {
 			forward = new ActionForward("/pages/search_emp.jsp");
 		}
 
-		// 자재관리
+		/** 자재관리 @author 한지수 */
 		else if (pathInfo.equals("/vmi")) {
 			forward = new ActionForward("/pages/vmi.jsp");
+		}
+		
+		/** 자재 반영 @author 강동준 */
+		else if (pathInfo.equals("/save-vmi")) {
+			VMIService svc = new VMIService(); 
+			
+			svc.saveChanges(request, response);
 		}
 
 		/** 결재 현황 페이지 @author 임성현 */
@@ -276,13 +279,11 @@ public class FMSController extends HttpServlet {
 		}
 	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doProcess(request, response);
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doProcess(request, response);
 	}
 }

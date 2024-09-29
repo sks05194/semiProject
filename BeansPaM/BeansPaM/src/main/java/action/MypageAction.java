@@ -33,8 +33,8 @@ public class MypageAction implements Action {
             for (Cookie cookie : cookies) {
                 if ("mem_info".equals(cookie.getName())) {
                     mNo = Integer.parseInt(cookie.getValue().split("\\+")[0]);
-                    break;
-                }
+					break;
+				}
             }
         }
 

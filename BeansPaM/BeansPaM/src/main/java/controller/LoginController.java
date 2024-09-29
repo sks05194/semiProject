@@ -90,9 +90,7 @@ public class LoginController extends HttpServlet {
 			}
 		}
 
-		/**
-		 * @author 강동준
-		 */
+		/** @author 강동준 */
 		else if (command.equals("/logout.l")) {
 			LoginService svc = new LoginService();
 
@@ -115,14 +113,11 @@ public class LoginController extends HttpServlet {
 		}
 	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doProcess(request, response);
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doProcess(request, response);
 	}
-
 }

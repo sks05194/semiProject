@@ -1,3 +1,7 @@
+/**
+ * @since 09.24
+ * @author 민기홍
+ */
 package dao;
 
 import static database.JdbcUtil.*;
@@ -9,6 +13,11 @@ import java.util.ArrayList;
 import vo.SalaryVO;
 
 public class SalaryDAO {
+	/**
+	 * @since 09.24
+	 * @author 민기홍
+	 * @see action.SalaryAction
+	 */
 	public ArrayList<SalaryVO> getMemberByNo(int m_no) {
 		PreparedStatement ps = null;
 		ResultSet rs = null;

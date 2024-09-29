@@ -264,8 +264,9 @@ public class MemberDAO {
 	 * @author 강동준
 	 * @see action.MemberRegistAction
 	 */
-	public boolean InsertEmp(MemberVO vo) {
+	public int InsertEmp(MemberVO vo) {
 		PreparedStatement ps = null;
+		int result = 0;
 
 		try {
 			ps = getConnection()
@@ -277,9 +278,10 @@ public class MemberDAO {
 			ps.setString(4, vo.getM_dept());
 			ps.setString(5, vo.getM_email());
 
-			if (ps.executeUpdate() > 0) {
-				commit();
-				return true;
+			result = ps.executeUpdate();
+			System.out.println(result);
+			if (result > 0) {
+				commit();				
 			}
 		} catch (SQLException e) {
 			rollback();
@@ -288,7 +290,7 @@ public class MemberDAO {
 			close(ps);
 		}
 
-		return false;
+		return result;
 	}
 
 	/**

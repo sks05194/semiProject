@@ -1,3 +1,7 @@
+/**
+ * @since 09.27
+ * @author 송상훈
+ */
 package dao;
 
 import java.sql.Connection;
@@ -21,7 +25,6 @@ public class WarehouseDAO {
         String query = "SELECT W_NO, W_LOC, W_TEMP, W_HUMI, M_NO, W_ISSUE FROM WAREHOUSE";
 
         try {
-            // 연결 생성 (JdbcUtil.connecting() 필요없다면 생략)
             conn = JdbcUtil.getConnection();  
             pstmt = conn.prepareStatement(query);
             rs = pstmt.executeQuery();
@@ -42,7 +45,6 @@ public class WarehouseDAO {
         } finally {
             JdbcUtil.close(rs);
             JdbcUtil.close(pstmt);
-//            JdbcUtil.close(con);  // 연결 종료
         }
         
         return warehouses;

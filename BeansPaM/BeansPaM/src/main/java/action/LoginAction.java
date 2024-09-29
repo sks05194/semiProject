@@ -15,17 +15,11 @@ import vo.*;
 
 /* 로그인을 위한 Action 클래스 */
 public class LoginAction implements Action {
-
-	/**
-	 * @author 임성현
-	 * @author 강동준: 캐시 설정
-	 */
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ActionForward forward = null;
 		MemberVO memberVO = null;
 		MemberVO memberInfo = null;
-//		HttpSession session = request.getSession();
 
 		// 입력한 아이디, 비밀번호를 memberVO 객체에 저장
 		memberVO = new MemberVO();
@@ -37,7 +31,7 @@ public class LoginAction implements Action {
 		memberInfo = loginService.loginAction(memberVO);
 
 		// 로그인 성공
-		if (!"false".equals(memberInfo.getM_id())) {
+		if (!memberInfo.getM_id().equals("false")) {
 			Cookie cookie = new Cookie("mem_info", memberInfo.getM_no() + "+" + memberInfo.getM_name());
 			cookie.setPath("/BeansPaM");
 			cookie.setMaxAge(60 * 60 * 9); // 9시간

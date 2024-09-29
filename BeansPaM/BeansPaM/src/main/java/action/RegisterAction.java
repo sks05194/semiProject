@@ -20,29 +20,29 @@ public class RegisterAction implements Action {
 	 * @author 임성현
 	 */
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		ActionForward forward = null; 
+		ActionForward forward = null;
 		MemberVO memberVO = null;
 		int registerCheck = 0;
-		
+
 		// 사원번호 String 자료형으로 형변환
 		String registerNoStr = request.getParameter("registerNo");
 		int registerNo = Integer.parseInt(registerNoStr);
-		
+
 		// 입력한 사원번호, 아이디, 비밀번호를 memberVO 객체에 저장
-		memberVO = new MemberVO(); 
+		memberVO = new MemberVO();
 		memberVO.setM_no(registerNo);
 		memberVO.setM_id(request.getParameter("registerId").toLowerCase());
-		memberVO.setM_pw(request.getParameter("registerPw")); 
-		
+		memberVO.setM_pw(request.getParameter("registerPw"));
+
 		// SQL 쿼리문을 반환 받을 SVC 객체 생성
 		LoginService loginService = new LoginService();
-		registerCheck = loginService.registerAction(memberVO); 
-				
+		registerCheck = loginService.registerAction(memberVO);
+
 		// 사용자 신청 성공 여부 판단하는 조건문
-		if(registerCheck >= 0) {
+		if (registerCheck >= 0) {
 			forward = new ActionForward();
 			forward.setRedirect(true);
-			switch(registerCheck) {
+			switch (registerCheck) {
 				case 1 : forward.setRedirect(false); forward.setPath("/loginMenu.l"); break; // 1: 사용자 신청 성공    
 			    case 2 : forward.setPath("registerMenu.l?invalidNo=invalidNo"); break; // 2: 잘못된 사원 번호 입력 
 			    case 3 : forward.setPath("registerMenu.l?idExists=idExists"); break; // 3: 이미 아이디를 생성함 
@@ -52,5 +52,4 @@ public class RegisterAction implements Action {
 		}	
 		return forward;
 	}
-	
 }

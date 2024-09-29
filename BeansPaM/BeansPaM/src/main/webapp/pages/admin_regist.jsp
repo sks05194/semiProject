@@ -6,6 +6,7 @@
 	<meta charset="UTF-8">
 	<title>사원 등록</title>
 	<link rel="stylesheet" type="text/css" href="/BeansPaM/css/admin.css">
+	<script src="/BeansPaM/js/jquery.js"></script>
 </head>
 
 <body>
@@ -19,7 +20,7 @@
 			</div>
 
 			<div class="form-group">
-				<label for="m_position">직책</label>
+				<label for="m_position">직급</label>
 				<select id="m_position" name="m_position" required>
 					<option value="인턴">인턴</option>
 					<option value="사원">사원</option>
@@ -44,6 +45,9 @@
 					<option value="관리부">관리부</option>
 					<option value="영업부">영업부</option>
 					<option value="기획부">기획부</option>
+					<option value="인사부">인사부</option>
+					<option value="재무부">재무부</option>
+					<option value="관리부">관리부</option>
 				</select>
 			</div>
 
@@ -73,6 +77,30 @@
 			}
 			return true;
 		}
+
+		document.querySelector('#m_phone').addEventListener('blur', function () {
+			let phoneNum = this.value.split('-').join('');
+			if (phoneNum.length == 11) {
+				this.value = phoneNum.slice(0, 3) + '-' + phoneNum.slice(3, 7) + '-' + phoneNum.slice(7);
+			}
+		});
+
+		$('.employee-form').submit(function () {
+			event.preventDefault();
+
+			$.ajax({
+				type: 'POST',
+				url: 'regist_member',
+				data: $(this).serialize(),
+				success: function(response) {
+					alert('사원 정보가 정상적으로 등록되었습니다.');
+					window.location.href = "admin";
+				},
+				error: function (xhr, status, error) {
+					alert('사원 등록에 실패하였습니다.');
+				}
+			});
+		});
 	</script>
 	<script src="/BeansPaM/js/menu.js"></script>
 </body>

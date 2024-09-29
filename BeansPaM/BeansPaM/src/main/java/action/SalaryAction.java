@@ -1,3 +1,7 @@
+/**
+ * @since 09.25
+ * @author 민기홍
+ */
 package action;
 
 import java.util.ArrayList;
@@ -23,7 +27,6 @@ public class SalaryAction implements Action {
 				if ("mem_info".equals(cookie.getName())) {
 					memInfo = cookie.getValue();
 					break;
-
 				}
 			}
 		}
@@ -44,9 +47,8 @@ public class SalaryAction implements Action {
 			// salaryList와 request에 저장
 			request.setAttribute("salaryList", salaryList);
 		}
-		// salary.jsp로 포워딩
 
+		// salary.jsp로 포워딩
 		return new ActionForward("/pages/salary.jsp");
 	}
-
 }

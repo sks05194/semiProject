@@ -39,9 +39,6 @@ public class BoardController extends HttpServlet {
 
 	private void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		String RequestURI = request.getRequestURI();
-		String contextPath = request.getContextPath();
-		String command = RequestURI.substring(contextPath.length());
 		String[] pathInfo = request.getPathInfo().split("/");
 		ActionForward forward = null;
 		QnaDAO qnaDAO = new QnaDAO(); // QnaDAO 인스턴스 생성
@@ -61,12 +58,13 @@ public class BoardController extends HttpServlet {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
+			}
 
-			} else if (pathInfo[2].equals("write")) {
+			else if (pathInfo[2].equals("write")) {
 				forward = new ActionForward("/pages/notice_write.jsp");
+			}
 
-			} else if (pathInfo[2].equals("register")) {
-
+			else if (pathInfo[2].equals("register")) {
 				action = new NoticeWriteAction();
 				try {
 					forward = action.execute(request, response);
@@ -102,8 +100,6 @@ public class BoardController extends HttpServlet {
 				}
 
 			} else if (pathInfo[2].matches("\\d+")) {
-				// 임시적으로 링크로 이동하게 만듭니다.
-				// TODO 추후 pathInfo[2](=글번호)로 글을 불러올 수 있는 메소드를 만들어주세요.
 				forward = new ActionForward("/pages/notice_detail.jsp");
 			}
 			break;
@@ -187,10 +183,10 @@ public class BoardController extends HttpServlet {
 				if (request.getParameter("page") != null) {
 					page = Integer.parseInt(request.getParameter("page"));
 				}
-				
+
 				// 검색된 게시글 목록을 가져옴
 				List<QnaVO> qnaList = qnaDAO.searchQnaListWithPaging(searchType, keyword, page, limit);
-				
+
 				// 전체 게시글 수 가져오기
 				int searchTotalQnaCount = qnaDAO.getSearchTotalCount(searchType, keyword);
 
@@ -203,8 +199,7 @@ public class BoardController extends HttpServlet {
 				// 현재 페이지에 보여줄 마지막 페이지 수 (10, 20, 30 등...)
 				int endPage = startPage + 10 - 1;
 
-				if (endPage > maxPage)
-					endPage = maxPage;
+				if (endPage > maxPage) endPage = maxPage;
 
 				// 페이지 관련 정보 저장
 				request.setAttribute("currentPage", page);
@@ -242,9 +237,9 @@ public class BoardController extends HttpServlet {
 						}
 					}
 				}
-				
+
 				String writer = new QnaDAO().getWriter(Integer.parseInt(request.getParameter("q_no")));
-				
+
 				if (userName != null) {
 					// 게시글과 작성자를 비교해서 맞으면 삭제
 					if (userName.equals(writer) || userName.equals("관리자")) {

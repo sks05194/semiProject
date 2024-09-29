@@ -12,7 +12,6 @@ package action;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import svc.NoticeService;
 import vo.ActionForward;
@@ -28,7 +27,6 @@ public class NoticeDetailAction implements Action{
 		ActionForward forward = null;
 		NoticeVO noticeVO = null;
 		NoticeVO noticeInfo = null;
-		HttpSession session = request.getSession();
 		
 		String loginName = "";
 		

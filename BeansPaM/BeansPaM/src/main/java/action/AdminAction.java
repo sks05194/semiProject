@@ -26,27 +26,26 @@ public class AdminAction implements Action {
 
 		String sql = "SELECT * FROM (SELECT a.*, ROWNUM rnum FROM  (SELECT * FROM member";
 		String countSql = "SELECT count(*) c FROM member";
-		
+
 		String target = request.getParameter("target");
 		String keyword = request.getParameter("keyword");
-		
 
 		if (keyword != null && !keyword.equals("")) {
 			if (target.equals("m_no") && !isInteger(keyword)) {
 				return new ActionForward("/pages/admin.jsp");
 			}
-			
+
 			String whereSql = " WHERE " + target + " LIKE '%" + keyword + "%'";
 			sql += whereSql;
 			countSql += whereSql;
 		}
-		
+
 		int pageCount = dao.getPageCount(countSql);
-		
+
 		if (pageCount < 0)
 			return new ActionForward("/pages/admin.jsp");
 
-		int pageNum = request.getParameter("p") != null &&	Integer.parseInt(request.getParameter("p")) > 0 ? Integer.parseInt(request.getParameter("p")) : 1;
+		int pageNum = request.getParameter("p") != null && Integer.parseInt(request.getParameter("p")) > 0 ? Integer.parseInt(request.getParameter("p")) : 1;
 		sql += " ORDER BY m_no desc) a WHERE ROWNUM <= " + (pageNum * record);
 		sql += ") WHERE rnum > " + ((pageNum - 1) * record);
 
@@ -58,18 +57,19 @@ public class AdminAction implements Action {
 
 		return new ActionForward("/pages/admin.jsp");
 	}
-	
+
 	/**
 	 * 문자열 정수 변환 가능 여부
+	 * 
 	 * @author 강동준
 	 * @see AdminAction.execute
 	 */
-    public static boolean isInteger(String s) {
-        try {
-            Integer.parseInt(s);
-            return true;
-        } catch (NumberFormatException e) {
-            return false;
-        }
-    }
+	public static boolean isInteger(String s) {
+		try {
+			Integer.parseInt(s);
+			return true;
+		} catch (NumberFormatException e) {
+			return false;
+		}
+	}
 }

@@ -1,5 +1,7 @@
 /**
- * @author 기홍님으로 추측
+ * @since 09.26
+ * @author 민기홍
+ * @see controller.FMSController
  */
 package action;
 

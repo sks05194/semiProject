@@ -9,7 +9,7 @@
 	<link rel="stylesheet" type="text/css" href="/BeansPaM/css/admin.css">
 </head>
 <body>
-	<main>
+	<main style="width: 700px">
 		<h1>사원 정보</h1>
 
 		<c:choose>

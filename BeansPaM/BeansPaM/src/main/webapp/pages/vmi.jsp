@@ -147,6 +147,9 @@
 	</main>
 	<script>
 		let currentMaxNo = 0; // 현재 최대 고유번호
+		const columnName = ['No', '입고처', '입고번호', '입고일자', '수량', '품번', '담당자사번', '부서', '현재 수량', '창고 위치'];
+		let sqlArray = [];
+		// 강동준: 수정, 삭제, 삽입 시 sqlArray에 sql문을 저장하세요. 동작하게 만들었습니다.
 
 		// 현재 최대 고유번호를 계산하는 함수
 		function calculateMaxNo() {
@@ -204,6 +207,23 @@
 			isDeleteMode = true; // 삭제 모드 활성화
 			disableEditing(); // 삭제 모드에서는 편집 불가능
 			tooltip.style.display = 'none'; // 툴팁 숨김
+		});
+
+		// 저장하기 버튼 기능 - 강동준
+		document.getElementById('save-row-btn').addEventListener('click', function () {
+			fetch('/BeansPaM/fms/save-vmi', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: sqlArray.join(',')
+			})
+			.then(response => response.text())
+			.then(data => {
+				alert(data);
+				sqlArray = [];
+			})
+			.catch(error => console.log('error: ' + error));
 		});
 
 		// 행 추가 기능

@@ -1,3 +1,7 @@
+/**
+ * @since 09.26
+ * @author 민기홍
+ */
 package action;
 
 import javax.servlet.http.Cookie;

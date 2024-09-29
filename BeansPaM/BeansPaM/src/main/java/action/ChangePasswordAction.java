@@ -1,3 +1,8 @@
+/**
+ * @since 09.26
+ * @author 민기홍
+ * @see controller.FMSController
+ */
 package action;
 
 import javax.servlet.http.Cookie;
@@ -9,9 +14,6 @@ import vo.ActionForward;
 import vo.MemberVO;
 
 public class ChangePasswordAction implements Action {
-
-	
-
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		  // 쿠키에서 m_no 값 추출하기

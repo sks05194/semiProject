@@ -15,7 +15,6 @@ import java.util.Map;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import svc.NoticeService;
 import vo.ActionForward;
@@ -28,7 +27,6 @@ public class NoticeListAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ActionForward forward = new ActionForward();
-		HttpSession session = request.getSession();
 		ArrayList<Map<String, Object>> noticeList = new ArrayList<>();
 		
 		String loginName = "";

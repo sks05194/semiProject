@@ -23,7 +23,7 @@ public class ApprovalMainAction implements Action {
 		int pageNum = 1;
 		int amount = 10;
 		int mNo = 0;
-		
+
 		Cookie[] cookies = request.getCookies();
 
 		// 쿠키에서 사원번호 mNO 가져오기
@@ -43,7 +43,7 @@ public class ApprovalMainAction implements Action {
 		}
 
 		// 페이지 번호 클릭
-		if(request.getParameter("pageNum") != null && request.getParameter("amount") != null) {
+		if (request.getParameter("pageNum") != null && request.getParameter("amount") != null) {
 			pageNum = Integer.parseInt(request.getParameter("pageNum"));
 			amount = Integer.parseInt(request.getParameter("amount"));
 		}

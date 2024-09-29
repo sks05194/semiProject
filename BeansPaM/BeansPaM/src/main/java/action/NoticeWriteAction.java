@@ -18,32 +18,28 @@ import vo.NoticeVO;
 
 /* 공지사항 등록을 위한 Action 클래스 */
 public class NoticeWriteAction implements Action {
-	/**
-	 * @author 설보라
-	 */
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		ActionForward forward = null; 
+		ActionForward forward = null;
 		NoticeVO noticeVO = null;
 		int registerCheck = 0;
-		
+
 		// 입력한 제목, 내용 noticeVO 객체에 저장
-		noticeVO = new NoticeVO(); 
+		noticeVO = new NoticeVO();
 		noticeVO.setN_title(request.getParameter("title"));
 		noticeVO.setN_content(request.getParameter("content"));
-		
+
 		// SQL 쿼리문을 반환 받을 SVC 객체 생성
 		NoticeService noticeService = new NoticeService();
-		
-		registerCheck = noticeService.noticeWriteAction(noticeVO); 
-				
+
+		registerCheck = noticeService.noticeWriteAction(noticeVO);
+
 		// 공지사항 등록 성공 여부 판단하는 조건문
-		if(registerCheck >= 0) {
+		if (registerCheck >= 0) {
 			forward = new ActionForward();
 			forward.setRedirect(true);
 			forward.setPath("/BeansPaM/b/notice");
-		}	
+		}
 		return forward;
 	}
-	
 }
