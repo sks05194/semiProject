@@ -6,17 +6,16 @@
  * @author 임성현
  * 
  * 주요 수정 내용 : 문서 정리
- * ps. 이게 뭐에요?
  * */
 package vo;
 
 public class PageVO {
-	private int startPage; // 게시글 첫 번째 번호
-	private int endPage; // 게시글 마지막 번호
-	private boolean prev, next; // 이전, 다음 버튼 활성화 여부
-	private int pageNum; // 현재 조회하는 페이지 번호
-	private int amount = 10; // 화면에 보여줄 게시글 수
-	private int total; // 전체게시글 수
+	private int startPage;        // 게시글 첫 번째 번호
+	private int endPage;          // 게시글 마지막 번호
+	private boolean prev, next;   // 이전, 다음 버튼 활성화 여부
+	private int pageNum;          // 현재 조회하는 페이지 번호
+	private int amount = 10;      // 화면에 보여줄 게시글 수
+	private int total;            // 전체게시글 수
 
 	// 페이징 처리 계산 생성자
 	public PageVO(int pageNum, int amount, int total) {

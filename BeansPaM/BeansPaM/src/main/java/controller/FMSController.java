@@ -13,13 +13,9 @@ package controller;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
+import javax.servlet.*;
 import javax.servlet.annotation.MultipartConfig;
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 
 import action.*;
 import vo.ActionForward;
@@ -28,8 +24,7 @@ import vo.ActionForward;
 public class FMSController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	private void doProcess(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	private void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		String pathInfo = request.getPathInfo();
 		ActionForward forward = null;
@@ -200,17 +195,6 @@ public class FMSController extends HttpServlet {
 			forward = new ActionForward("/pages/approval_write.jsp");
 		}
 		
-		/** 결재 상신 액션 @author 임성현 */
-		else if (pathInfo.equals("/approval_write_action")) {
-			action = new ApprovalWriteAction();
-			
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-		
 		/** 결재 현황 액션 @author 임성현 */
 		else if (pathInfo.equals("/approval_main_action")) {
 			action = new ApprovalMainAction();
@@ -266,10 +250,9 @@ public class FMSController extends HttpServlet {
 			}
 		}
 		
-		/** 결재 상신 액션 @author 임성현 */
-		else if (pathInfo.equals("/approval_write_action")) {
-			action = new ApprovalWriteAction();
-
+		/** 결재 현황 게시글 파일 다운로드 액션 @author 임성현 */
+		else if (pathInfo.equals("/approval_contents_file_action")) {
+			action = new ApprovalContentsFileAction();	
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {

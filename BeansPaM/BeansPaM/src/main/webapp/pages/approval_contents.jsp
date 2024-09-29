@@ -32,7 +32,7 @@
 							</tr>
 							<tr>
 								<td><strong>결재 작성자</strong></td>
-								<td>${contents.getM_name()}${contents.getM_position()}</td>
+								<td>${contents.getM_name()} ${contents.getM_position()}</td>
 							</tr>
 							<tr>
 								<td><strong>결재 작성일</strong></td>

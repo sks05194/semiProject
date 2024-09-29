@@ -45,14 +45,14 @@
 									<td>${documentVO.m_name} ${documentVO.m_position}</td>
 									<td>${documentVO.d_request}</td>
 									<td>
-									    <c:choose>
+										<c:choose>
 											<c:when test="${empty documentVO.d_response}">
-											    ${"결재대기"}
-						                    </c:when>
+												${"결재대기"}
+											</c:when>
 											<c:otherwise>
-											    ${"결재완료"}
-						                    </c:otherwise>
-									    </c:choose>
+												${"결재완료"}
+											</c:otherwise>
+										</c:choose>
 									</td>
 								</tr>
 							</c:forEach>

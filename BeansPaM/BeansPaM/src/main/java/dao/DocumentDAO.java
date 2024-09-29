@@ -158,7 +158,6 @@ public class DocumentDAO {
 				} else {
 					documentVO.setD_request("");
 				}
-
 				if (rs.getDate("D_RESPONSE") != null) {
 					documentVO.setD_response(sdf.format(rs.getDate("D_RESPONSE")));
 				} else {
@@ -336,15 +335,50 @@ public class DocumentDAO {
 		Connection con = getConnection();
 		PreparedStatement ppst = null;
 		PreparedStatement ps = null;
+		PreparedStatement ps2 = null;
 		ResultSet rs = null;
 		
 		int fCount = 0;
 		
 		String sql = "SELECT COUNT(*) FROM DOCUMENT D LEFT JOIN MEMBER M ON D.M_NO = M.M_NO WHERE " + sel + " LIKE ? AND D.M_NO = ?";
 		String sql2 = "SELECT COUNT(*) FROM DOCUMENT D LEFT JOIN MEMBER M ON D.M_NO = M.M_NO WHERE D_RESPONSE IS NULL AND D.M_NO = ?";
+		String sql3 = "SELECT COUNT(*) FROM DOCUMENT D LEFT JOIN MEMBER M ON D.M_NO = M.M_NO WHERE " + sel + " LIKE ?";
+		String sql4 = "SELECT COUNT(*) FROM DOCUMENT D LEFT JOIN MEMBER M ON D.M_NO = M.M_NO WHERE D_RESPONSE IS NULL";
 		
 		try {
 			ppst = con.prepareStatement(sql);
+			
+			if (mNo == 1) {
+				if (sel.equals("D_RESPONSE")) {
+					if (sfind.equals("완료")) {
+						ps2 = con.prepareStatement(sql3);
+						ps2.setString(1, "%" + 2 + "%");
+						rs = ps2.executeQuery();
+						if (rs.next()) {
+							fCount = rs.getInt(1);
+						}
+						return fCount;
+					} else {
+						ps2 = con.prepareStatement(sql4);
+						rs = ps2.executeQuery();
+						if (rs.next()) {
+							fCount = rs.getInt(1);
+						}
+						return fCount;
+					}
+				}
+				ps2 = con.prepareStatement(sql3);
+				if (sfind == null || sfind.equals("")) {
+					ps2.setInt(1, nfind);
+				} else {
+					ps2.setString(1, "%" + sfind + "%");
+				}
+				rs = ps2.executeQuery();
+				if (rs.next()) {
+					fCount = rs.getInt(1);
+				}
+				return fCount;
+			}
 			
 			if (sel.equals("D_RESPONSE")) {
 				if (sfind.equals("완료")) {
@@ -381,6 +415,8 @@ public class DocumentDAO {
 		} finally {
 			close(rs);
 			close(ppst);
+			close(ps);
+			close(ps2);
 		}
 		return fCount; 
 	}
@@ -494,6 +530,7 @@ public class DocumentDAO {
 		} finally {
 			close(rs);
 			close(ppst);
+			close(ps);
 		}
 		return list; 
 	}

@@ -12,18 +12,18 @@ package vo;
 
 /* 결재 문서를 담는 VO 클래스입니다. */
 public class DocumentVO {
-	private int d_no = 0; // 결재 번호
-	private String d_title = null; // 결재 제목
-	private String d_class = null; // 결재 종류: 사직서, 휴직서 등...
-	private int m_no = 0; // 결재 작성자 사번
-	private int d_m_no = 0; // 결재 승인자 사번
-	private String d_content = null; // 결재 내용
-	private String d_request = null; // 결재 작성일
-	private String d_response = null; // 결재 승인일
-	private String m_name = null; // 결재 작성자 이름 - 새로추가
-	private String d_m_name = null; // 결재 승인자 이름 - 새로추가
-	private String m_position = null; // 직급 - 새로추가
-	private String filename = null; // 파일명 - 새로추가 및 DB 컬럼에도 추가
+	private int d_no = 0;               // 결재 번호
+	private String d_title = null;      // 결재 제목
+	private String d_class = null;      // 결재 종류: 사직서, 휴직서 등...
+	private int m_no = 0;               // 결재 작성자 사번
+	private int d_m_no = 0;             // 결재 승인자 사번
+	private String d_content = null;    // 결재 내용
+	private String d_request = null;    // 결재 작성일
+	private String d_response = null;   // 결재 승인일
+	private String m_name = null;       // 결재 작성자 이름 - 새로추가
+	private String d_m_name = null;     // 결재 승인자 이름 - 새로추가
+	private String m_position = null;   // 직급 - 새로추가
+	private String filename = null;     // 파일명 - 새로추가 및 DB 컬럼에도 추가
 
 	public int getD_no() { return d_no; }
 	public void setD_no(int d_no) { this.d_no = d_no; }

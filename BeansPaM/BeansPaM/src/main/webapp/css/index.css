@@ -11,9 +11,9 @@ body {
 
 header { margin-bottom: 0 !important; }
 
-@media (min-width: 1200px) {
+@media (min-width: 1230px) {
 	main {
-		width: 1200px;
+		width: 1230px;
 		margin: auto;
 	}
 }
@@ -83,6 +83,7 @@ a:hover { opacity: 0.8; }
 #featured-products .product {
 	display: inline-block;
 	width: 30%;
+	height: 600px;
 	margin: 0 1.5%;
 	background-color: #fff;
 	border: 1px solid #ddd;

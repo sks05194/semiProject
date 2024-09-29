@@ -20,7 +20,6 @@
 
 <!-- 유저 정보 상단에 배치 -->
 <div class="user-info">
-	<p id="screenWidth"></p>
 	<% if (userName == null) { %>
 		<a href="/BeansPaM/loginMenu.l">Login</a>
 	<% } else { %>
