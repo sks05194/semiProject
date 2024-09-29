@@ -1,252 +1,231 @@
 /* 기본 스타일 */
 * {
-    margin: 0 auto;
-    box-sizing: border-box;
+	margin: 0 auto;
+	box-sizing: border-box;
 }
 
 body {
-    background-color: white;
+	background-color: white;
 }
 
 main {
-    padding: 20px 130px;
+	padding: 20px 130px;
 }
 
 .board {
-    width: 70%;
-    margin: 20px auto;
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    position: relative;
+	width: 70%;
+	margin: 20px auto;
+	background-color: white;
+	padding: 20px;
+	border-radius: 10px;
+	position: relative;
 }
 
 /* 테이블 제목과 검색창을 포함한 헤더 */
 .table-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-    margin-top: 20px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 20px;
+	margin-top: 20px;
 }
 
 .board h2 {
-    color: black;
-    font-size: 40pt;
-    text-align: left;
+	color: black;
+	font-size: 36pt;
+	text-align: left;
 }
 
 .search-container {
-    display: flex;
-    gap: 10px;
-    margin-top: 20px;
+	display: flex;
+	gap: 10px;
+	margin-top: 20px;
 }
 
 .search-select, .search-input {
-    padding: 8px;
-    font-size: 14px;
-    border: 1px solid rgb(207, 170, 156);
-    border-radius: 5px;
+	padding: 8px;
+	font-size: 14px;
+	border: 1px solid rgb(207, 170, 156);
+	border-radius: 5px;
 }
 
 .search-button {
-    padding: 8px 15px;
-    background-color: rgb(244, 228, 209);
-    color: rgb(41, 15, 5);
-    border: 1px solid rgb(207, 170, 156);
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+	padding: 8px 15px;
+	background-color: rgb(244, 228, 209);
+	color: rgb(41, 15, 5);
+	border: 1px solid rgb(207, 170, 156);
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color 0.3s;
 }
 
 .search-button:hover {
-    background-color: rgb(207, 170, 156);
-    color: white;
+	background-color: rgb(207, 170, 156);
+	color: white;
 }
 
 /* 테이블 스타일 */
 table {
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 0;
-    margin-bottom: 20px;
-    border-radius: 1px;
-    overflow: hidden;
+	width: 100%;
+	border-collapse: separate;
+	border-spacing: 0;
+	margin-bottom: 20px;
+	border-radius: 1px;
+	overflow: hidden;
 }
 
 /* 첫 번째 줄 스타일 */
 thead tr th {
-    background-color: rgb(252, 237, 223);
-    font-size: 16pt;
-    font-weight: bold;
-    color: rgb(62, 30, 17);
-    padding: 10px;
-    text-align: center;
-    border-top: 2px solid #c0c0c0;
-    border-bottom: 1px solid #c0c0c0;
-    box-shadow: 0 0.3px 0 0 #c0c0c0;
+	background-color: rgb(252, 237, 223);
+	font-size: 14px;
+	font-weight: bold;
+	color: rgb(62, 30, 17);
+	padding: 10px;
+	text-align: center;
+	border-top: 2px solid #c0c0c0;
+	border-bottom: 1px solid #c0c0c0;
+	box-shadow: 0 0.3px 0 0 #c0c0c0;
 }
 
 /* 두 번째부터 열 번째 줄에만 회색 연한 선을 적용 */
 tbody tr:nth-child(n+1):nth-child(-n+9) td {
-    border-bottom: 1px solid #e0e0e0;
+	border-bottom: 1px solid #e0e0e0;
 }
 
 /* 마지막 줄 스타일 */
 tbody tr:last-child td {
-    border-bottom: 2px solid #c0c0c0;
+	border-bottom: 2px solid #c0c0c0;
 }
 
 td {
-    font-size: 10pt;
-    padding: 10px;
-    text-align: center;
-    color: rgb(62, 30, 17);
+	font-size: 14px;
+	padding: 10px;
+	text-align: center;
+	color: rgb(62, 30, 17);
 }
 
 /* 행에 호버 시 효과 적용 */
 tbody tr:hover {
-    background-color: #d2d2d2; /* 연한 회색 */
-    cursor: pointer; /* 손가락 모양 커서 */
+	background-color: rgb(222, 222, 222);
+	cursor: pointer; /* 손가락 모양 커서 */
 }
 
 /* 링크의 기본 밑줄 제거 및 색상 상속 */
 td:nth-child(2) a {
-    text-decoration: none;
-    color: inherit;
+	text-decoration: none;
+	color: inherit;
 }
 
 /* 링크에 호버할 때 밑줄 제거 및 색상 변경 방지 */
 td:nth-child(2) a:hover {
-    text-decoration: none;
-    color: inherit;
+	text-decoration: none;
+	color: inherit;
 }
 
 th:first-child, td:first-child {
-    width: 30px;
+	width: 30px;
 }
 
 th:nth-child(2), td:nth-child(2) {
-    width: 220px;
+	width: 220px;
 }
 
 th:nth-child(3), td:nth-child(3) {
-    width: 60px;
+	width: 60px;
 }
 
 th:nth-child(4), td:nth-child(4) {
-    width: 60px;
+	width: 60px;
 }
 
 th:nth-child(5), td:nth-child(5) {
-    width: 20px;
+	width: 20px;
 }
 
 input[type="checkbox"] {
-    transform: scale(1.2);
+	transform: scale(1.2);
 }
 
 button {
-    background-color: wheat;
-    color: rgb(62, 30, 17);
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s;
+	background-color: wheat;
+	color: rgb(62, 30, 17);
+	border: none;
+	padding: 5px 10px;
+	cursor: pointer;
+	border-radius: 5px;
+	transition: background-color 0.3s;
 }
 
 button:hover {
-    background-color: rgb(207, 170, 156);
-    color: white;
-}
-
-.lock-icon {
-    margin-left: 5px;
-    color: #ff4500;
-    font-size: 12px;
-    vertical-align: middle;
+	background-color: rgb(207, 170, 156);
+	color: white;
 }
 
 /* 페이지네이션 스타일 */
 .pagination {
-    display: flex;
-    justify-content: center;
-    margin-top: 10px;
-    margin-bottom: 50px;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+	display: flex;
+	margin: 0 auto;
+	margin-bottom: 18px;
+	justify-content: center;
+	align-items: center;
+	margin-top: 20px;
+	font-size: 16px;
 }
 
 .pagination a {
-    color: black;
-    text-decoration: none;
-    padding: 5px 10px;
-    background-color: rgb(244, 228, 209);
-    border-radius: 5px;
-    font-size: 10pt;
-    margin: 0 5px;
+	color: rgb(41, 15, 5);
+	text-decoration: none;
+	text-align: center;
+	margin: 0 5px;
+	padding: 5px 10px;
+	background-color: white;
+	border-radius: 5px;
 }
 
+/* 현재 페이지의 버튼 색상을 wheat로 설정, 호버 기능 제거 */
 .pagination a.active {
-    background-color: gray;
-    color: white;
+	background-color: wheat;
+	color: rgb(41, 15, 5);
+	font-weight: bold; /* 현재 페이지는 굵은 글씨 */
+	pointer-events: none; /* 현재 페이지는 클릭 비활성화 */
 }
 
+/* 현재 페이지에는 호버 효과를 제거 */
+.pagination a.active:hover {
+	background-color: wheat; /* 호버 시에도 변경되지 않음 */
+}
+
+/* 나머지 페이지에 호버 시 연한 회색으로 변경 */
 .pagination a:hover {
-    background-color: #ddd;
+	background-color: lightgray;
+}
+
+/* 이전/다음 버튼 비활성화 스타일 */
+.pagination .disabled-button {
+	color: gray;
+	padding: 5px 10px;
+	background-color: #f0f0f0;
+	border-radius: 5px;
+	margin: 0 5px;
+	cursor: not-allowed;
 }
 
 /* 작성하기 버튼 스타일 */
 .button-wrapper {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    margin-top: 20px;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	margin-top: 20px;
 }
 
-/* n 아이콘 스타일 (빨간 글씨, 노란색 배경) */
-td .new-icon {
-    font-size: 8px;
-    color: red; /* 빨간색 글씨 */
-    background-color: yellow; /* 노란색 배경 */
-    padding: 2px 5px;
-    border-radius: 3px;
-    margin-left: 5px;
-    font-weight: bold;
-    vertical-align: middle;
-    /* animation: blink 1s infinite; */ /* 깜빡이는 애니메이션 */
-}
-
-/* 깜빡이는 애니메이션 설정 */
-/* @keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
-} */
-
-
-/* 반응형 미디어 쿼리 */
-@media (max-width: 768px) {
-    .board h2 {
-        font-size: 35pt;
-    }
-
-    .table-header {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .search-input, .search-button {
-        width: 100%;
-    }
-
-    .pagination {
-        position: static;
-        transform: none;
-    }
-
-    .button-wrapper {
-        justify-content: center;
-    }
+/* N 아이콘 스타일 (빨간 글씨, 노란색 배경, 작은 폰트) */
+.new-icon {
+	font-size: 10px; /* 작은 폰트 사이즈 */
+	color: red; /* 빨간색 글씨 */
+	background-color: yellow; /* 노란색 배경 */
+	padding: 2px 5px; /* 약간의 패딩 */
+	border-radius: 3px; /* 모서리를 둥글게 */
+	margin-left: 5px; /* 아이콘과 텍스트 간의 간격 */
+	font-weight: bold; /* 굵은 글씨 */
+	vertical-align: middle; /* 글자와 아이콘 수평 맞춤 */
 }

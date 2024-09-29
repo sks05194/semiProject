@@ -33,12 +33,20 @@ h2 {
 }
 
 form.approval-form {
-	display: none;
+	display: block;
 	background-color: rgba(255, 252, 249, 0.9);
 	padding: 20px;
 	border-radius: 10px;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 	margin-bottom: 20px;
+}
+
+#estimateForm {
+	display: none;
+}
+
+#tripForm {
+	display: none;
 }
 
 form h3 {
@@ -83,30 +91,26 @@ form button {
 	transition: 0.3s;
 }
 
-/* 버튼 컨테이너를 우측 정렬 */
 .button-container {
 	text-align: right;
 }
 
 .button-container button {
-	padding: 10px 20px;
-	background-color: rgb(41, 15, 5);
-	color: white;
-	border: none;
+	padding: 8px 15px;
+	background-color: rgb(244, 228, 209);
+	color: rgb(41, 15, 5);
+	border: 1px solid rgb(207, 170, 156);
 	border-radius: 5px;
-	font-size: 16px;
 	cursor: pointer;
-	transition: 0.3s;
+	transition: background-color 0.3s;
 	margin-left: 10px;
-	/* 버튼 간 간격 */
 }
 
 .button-container button:hover {
-	background-color: wheat;
-	color: rgb(41, 15, 5);
+	background-color: rgb(207, 170, 156);
+	color: white;
 }
 
-/* 취소 버튼 스타일 */
 .cancel-button {
 	background-color: #ccc;
 }

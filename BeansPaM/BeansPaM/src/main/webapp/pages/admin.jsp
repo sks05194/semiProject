@@ -70,7 +70,7 @@
 						<td>${members[i].m_leave}일</td>
 						<td>
 							<button type="button" id="info" onclick="location.href='admin_detail?m_no=${members[i].m_no}'">정보</button>
-							<button type="button" id="del" onclick="location.href='admin_del?m_no=${members[i].m_no}'">삭제</button>
+							<button type="button" id="del" onclick="delEmp(${members[i].m_no})">삭제</button>
 						</td>
 					</tr>
 				</c:forEach>
@@ -87,21 +87,30 @@
 		    <c:if test="${not empty members and members.size() ne 0}">
 		        <!-- 이전 페이지 버튼 -->
 		        <c:if test="${minPageCount > 5}">
-		            <button onclick="goToPage(${minPageCount - 1})">
+		            <button type="button" onclick="goToPage(${minPageCount - 1})">
 		                <c:out value="<"/>
 		            </button>
 		        </c:if>
-		
+
 		        <!-- 페이징 번호 버튼 -->
 		        <c:forEach var="i" begin="${minPageCount}" end="${maxPageCount}" step="1">
-		            <button onclick="goToPage(${i})">
-		                <c:out value="${i}"/>
-		            </button>
+		        	<c:choose>
+		        		<c:when test="${not empty param.p and param.p eq i or empty param.p and i eq 1}">
+				            <button type="button" id="curPage">
+				                <c:out value="${i}"/>
+				            </button>
+		        		</c:when>
+		        		<c:otherwise>
+				            <button type="button" onclick="goToPage(${i})">
+				                <c:out value="${i}"/>
+				            </button>
+		        		</c:otherwise>
+		        	</c:choose>
 		        </c:forEach>
 		
 		        <!-- 다음 페이지 버튼 -->
 		        <c:if test="${maxPageCount % 5 == 0}">
-		            <button onclick="goToPage(${maxPageCount + 1})">
+		            <button type="button" onclick="goToPage(${maxPageCount + 1})">
 		                <c:out value=">"/>
 		            </button>
 		        </c:if>
@@ -127,6 +136,12 @@
 	
 	        window.location.href = url;
 	    }
+	    
+	    function delEmp(m_no) {
+	    	if (confirm(m_no + "번 사번의 사원을 제거합니다.")) {
+		    	location.href = 'admin_del?m_no=' + m_no;				
+			}
+		}
 	</script>
 	
 	<script src="/BeansPaM/js/menu.js"></script>

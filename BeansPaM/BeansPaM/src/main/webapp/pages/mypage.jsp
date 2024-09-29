@@ -89,7 +89,7 @@
 					<button type="submit">급여정보 확인</button>
 				</form>
 				<form id="salaryForm" action="workday" method="post">
-					<button type="submit">근퇴 시간 조회</button>
+					<button type="submit">근태 시간 조회</button>
 				</form>
 			</div>
 		</div>

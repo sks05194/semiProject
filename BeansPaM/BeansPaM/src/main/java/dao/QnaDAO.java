@@ -95,6 +95,78 @@ public class QnaDAO {
 		}
 		return qnaList;
 	}
+	
+	public List<QnaVO> searchQnaListWithPaging(String searchType, String keyword, int page, int limit) {
+	    List<QnaVO> qnaList = new ArrayList<>();
+	    String sql = "";
+	    
+	    // 검색 유형에 따른 SQL 쿼리 구성
+	    if (searchType.equals("writer")) {
+	        sql = "SELECT * FROM (SELECT ROWNUM rnum, Q_NO, Q_TITLE, Q_WRITER, Q_DATE, Q_VIEWS "
+	            + "FROM (SELECT Q_NO, Q_TITLE, Q_WRITER, Q_DATE, Q_VIEWS FROM QNA "
+	            + "WHERE Q_WRITER LIKE ? ORDER BY Q_NO DESC)) "
+	            + "WHERE rnum BETWEEN ? AND ?";
+	    } else if (searchType.equals("title")) {
+	        sql = "SELECT * FROM (SELECT ROWNUM rnum, Q_NO, Q_TITLE, Q_WRITER, Q_DATE, Q_VIEWS "
+	            + "FROM (SELECT Q_NO, Q_TITLE, Q_WRITER, Q_DATE, Q_VIEWS FROM QNA "
+	            + "WHERE Q_TITLE LIKE ? ORDER BY Q_NO DESC)) "
+	            + "WHERE rnum BETWEEN ? AND ?";
+	    } else if (searchType.equals("content")) {
+	        sql = "SELECT * FROM (SELECT ROWNUM rnum, Q_NO, Q_TITLE, Q_WRITER, Q_DATE, Q_VIEWS "
+	            + "FROM (SELECT Q_NO, Q_TITLE, Q_WRITER, Q_DATE, Q_VIEWS FROM QNA "
+	            + "WHERE Q_CONTENT LIKE ? ORDER BY Q_NO DESC)) "
+	            + "WHERE rnum BETWEEN ? AND ?";
+	    }
+
+	    // 페이징 계산
+	    int startRow = (page - 1) * limit + 1; // 시작하는 rownum 계산
+	    int endRow = startRow + limit - 1; // 끝나는 rownum 계산
+
+	    try (PreparedStatement pstmt = getConnection().prepareStatement(sql)) {
+	        pstmt.setString(1, "%" + keyword + "%");
+	        pstmt.setInt(2, startRow);
+	        pstmt.setInt(3, endRow);
+	        
+	        ResultSet rs = pstmt.executeQuery();
+	        while (rs.next()) {
+	            QnaVO qna = new QnaVO();
+	            qna.setQ_no(rs.getInt("Q_NO"));
+	            qna.setQ_title(rs.getString("Q_TITLE"));
+	            qna.setQ_writer(rs.getString("Q_WRITER"));
+	            qna.setQ_date(rs.getDate("Q_DATE"));
+	            qna.setQ_views(rs.getInt("Q_VIEWS"));
+	            qnaList.add(qna);
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	    return qnaList;
+	}
+	
+	// 검색된 게시글 총 갯수를 가져오는 메소드
+	public int getSearchTotalCount(String searchType, String keyword) {
+	    int totalCount = 0;
+	    String sql = "";
+
+	    if (searchType.equals("writer")) {
+	        sql = "SELECT COUNT(*) FROM QNA WHERE Q_WRITER LIKE ?";
+	    } else if (searchType.equals("title")) {
+	        sql = "SELECT COUNT(*) FROM QNA WHERE Q_TITLE LIKE ?";
+	    } else if (searchType.equals("content")) {
+	        sql = "SELECT COUNT(*) FROM QNA WHERE Q_CONTENT LIKE ?";
+	    }
+
+	    try (PreparedStatement pstmt = getConnection().prepareStatement(sql)) {
+	        pstmt.setString(1, "%" + keyword + "%");
+	        ResultSet rs = pstmt.executeQuery();
+	        if (rs.next()) {
+	            totalCount = rs.getInt(1); // 검색된 총 게시글 수
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	    return totalCount;
+	}
 
 	// 게시글 등록 메서드
 	public void insertQna(String title, String writer, String content) {

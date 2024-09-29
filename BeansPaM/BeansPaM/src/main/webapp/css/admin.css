@@ -109,7 +109,6 @@ table {
 	border-collapse: collapse;
 	margin-top: 20px;
 	background-color: white;
-	border-top: 2px solid #c0c0c0;
 	border-bottom: 2px solid #c0c0c0;
 	overflow: hidden;
 	box-shadow: 0 4px 8px rgba(139, 69, 19, 0.1);
@@ -124,6 +123,7 @@ th, td {
 th {
 	padding: 15px 20px;
 	background-color: rgb(252, 237, 223);
+	border-top: 2px solid #c0c0c0;
 	border-bottom: 1px solid #c0c0c0;
 }
 
@@ -144,10 +144,9 @@ tr:hover {
 }
 
 #pageButtons button {
-	background-color: rgb(252, 237, 223);
+	background-color: transparent;
 	border: none;
 	padding: 10px 15px;
-	margin: 0 5px;
 	border-radius: 5px;
 	cursor: pointer;
 	font-size: 16px;
@@ -156,7 +155,6 @@ tr:hover {
 
 #pageButtons button:hover {
 	background-color: #8B4513;
-	transform: translateY(-2px);
 	color: white;
 	font-weight: bold;
 }
@@ -190,6 +188,18 @@ button#info:hover {
 button#del:hover {
 	background-color: #8B4513;
 	transform: translateY(-2px);
+}
+
+button#curPage {
+	cursor: auto;
+	background-color: #8B4513;
+	color: white;
+	font-weight: bold;
+}
+
+button#curPage:hover {
+	background-color: #8B4513;
+	transform: none;
 }
 
 /* 사원 등록 폼 스타일 */
@@ -247,16 +257,6 @@ button#submitBtn:hover {
 	transform: translateY(-2px);
 }
 
-/* 사원 정보 테이블 스타일 */
-.employee-details {
-	border-collapse: collapse;
-	margin-top: 20px;
-	background-color: white;
-	border-radius: 8px;
-	box-shadow: 0 4px 8px rgba(139, 69, 19, 0.1);
-	margin: auto;
-}
-
 .employee-details th, .employee-details td {
 	padding: 15px 20px;
 	text-align: left;
@@ -269,20 +269,17 @@ button#submitBtn:hover {
 	background-color: #f0e6d6;
 	font-weight: bold;
 	width: 200px;
-	color: #5A2D0C;
+	border-top: 2px solid #d2b48c;
 	border-bottom: 2px solid #d2b48c;
 }
 
 .employee-details td {
-	border-bottom: 1px solid #d2b48c;
+	border-top: 2px solid #d2b48c;
+	border-bottom: 2px solid #d2b48c;
 }
 
 .employee-details tr:hover {
 	background-color: #f0e6d6;
-}
-
-.employee-details tr:last-child td {
-	border-bottom: none;
 }
 
 /* 뒤로가기 버튼 스타일 */

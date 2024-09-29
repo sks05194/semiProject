@@ -26,14 +26,18 @@ td {
 
 th, td {
 	padding: 10px;
-	font-size: 12px;
+	font-size: 16px;
 	text-align: center;
 	color: rgb(41, 15, 5);
 }
 
 th {
-	font-size: 14px;
-	background-color: rgba(255, 252, 249, 0.902);
+	background-color: #FCEDDF;
+}
+
+thead {
+	border-top: 2px solid #ccc;
+	border-bottom: 2px solid #ccc;
 }
 
 .board {
@@ -47,70 +51,66 @@ th {
 
 .actions-container {
 	display: flex;
-	justify-content: flex-start;
-	/* 왼쪽 정렬 */
+	justify-content: center;
 	flex-wrap: wrap;
-	/* align-items: center; */
 	margin-top: 25px;
 }
 
-/* 검색창 */
 .search-container {
 	display: flex;
 	flex-grow: 0.3;
-	margin-bottom: 10px;
-	margin-left: 0;
+	justify-content: space-between;
+	align-items: center;
+	margin: 0;
+	gap: 10px;
+	margin-right: auto;
 }
 
-.search-container input[type="search"] {
-	text-align: left;
+.search-form {
+	margin-left: auto;
+}
+
+.search-select, .search-input {
 	padding: 8px;
-	margin: 6px 10px 0 0;
-	margin-right: 10px;
-	width: 60%;
-	border: 1px solid #ccc;
-	border-radius: 4px;
+	font-size: 14px;
+	border: 1px solid rgb(207, 170, 156);
+	border-radius: 5px;
 }
 
-.search-container button {
-	padding: 8px 12px;
-	margin-top: 5px;
-	margin-left: -10px;
-	background-color: rgba(241, 235, 229, 0.902);
-	color: #290f05;
-	border: none;
-	border-radius: 4px;
+.search-button {
+	padding: 8px 15px;
+	background-color: rgb(244, 228, 209);
+	color: rgb(41, 15, 5);
+	border: 1px solid rgb(207, 170, 156);
+	border-radius: 5px;
 	cursor: pointer;
+	transition: background-color 0.3s;
 }
 
-.search-container button:hover {
-	background-color: lightgray;
+.search-button:hover {
+	background-color: rgb(207, 170, 156);
+	color: white;
 }
 
-/* 페이지네이션 */
 .pagination {
 	justify-content: flex-start;
-	/* 왼쪽 정렬 */
 	display: flex;
 	flex-wrap: wrap;
 	margin-bottom: 5px;
 }
 
 .pagination a {
+	padding: 8px 12px;
 	color: #290f05;
-	padding: 6px 12px;
 	margin: 5px;
 	font-size: 14px;
-	background-color: rgba(241, 235, 229, 0.902);
-	border: 1px solid #ccc;
-	border-radius: 4px;
 }
 
 .pagination a:hover {
-	background-color: lightgray;
+	background-color: rgb(207, 170, 156);
+	color: white;
 }
 
-/* 버튼 컨테이너 */
 .button-container {
 	display: flex;
 	justify-content: flex-end;
@@ -124,7 +124,7 @@ th {
 	margin-right: 10px;
 	margin-bottom: 20px;
 	padding: 8px 12px;
-	background-color: rgba(241, 235, 229, 0.902);
+	background-color: #FCEDDF;
 	color: #290f05;
 	border: none;
 	border-radius: 4px;
@@ -132,16 +132,14 @@ th {
 }
 
 .button-container button:hover {
-	background-color: lightgray;
+	background-color: rgb(207, 170, 156);
+	color: white;
 }
 
-/* 반응형 미디어 쿼리 */
 @media (max-width: 768px) {
 	.actions-container {
 		flex-direction: column;
-		/* 작은 화면에서는 요소들이 세로로 배치 */
 		align-items: flex-start;
-		/* 작은 화면에서 왼쪽 정렬 */
 	}
 
 	.search-container, .button-container {

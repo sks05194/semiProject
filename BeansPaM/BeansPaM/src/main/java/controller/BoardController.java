@@ -180,9 +180,39 @@ public class BoardController extends HttpServlet {
 				String searchType = request.getParameter("searchType");
 				String keyword = request.getParameter("keyword");
 
+				// 페이지 파라미터와 한 페이지당 보여줄 게시글 수
+				int page = 1;
+				int limit = 10;
+
+				if (request.getParameter("page") != null) {
+					page = Integer.parseInt(request.getParameter("page"));
+				}
+				
 				// 검색된 게시글 목록을 가져옴
-				List<QnaVO> qnaList = qnaDAO.searchQnaList(searchType, keyword);
+				List<QnaVO> qnaList = qnaDAO.searchQnaListWithPaging(searchType, keyword, page, limit);
+				
+				// 전체 게시글 수 가져오기
+				int searchTotalQnaCount = qnaDAO.getSearchTotalCount(searchType, keyword);
+
+				// 총 페이지 수 계산
+				int maxPage = (int) ((double) searchTotalQnaCount / limit + 0.95); // 올림 처리
+
+				// 현재 페이지에 보여줄 첫 페이지 수 (1, 11, 21 등...)
+				int startPage = (((int) ((double) page / 10 + 0.9)) - 1) * 10 + 1;
+
+				// 현재 페이지에 보여줄 마지막 페이지 수 (10, 20, 30 등...)
+				int endPage = startPage + 10 - 1;
+
+				if (endPage > maxPage)
+					endPage = maxPage;
+
+				// 페이지 관련 정보 저장
+				request.setAttribute("currentPage", page);
+				request.setAttribute("maxPage", maxPage);
+				request.setAttribute("startPage", startPage);
+				request.setAttribute("endPage", endPage);
 				request.setAttribute("qnaList", qnaList);
+				request.setAttribute("totalQnaCount", searchTotalQnaCount);
 
 				// 검색 결과를 qna.jsp로 전달
 				forward = new ActionForward("/pages/qna.jsp");

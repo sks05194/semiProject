@@ -43,7 +43,7 @@ table.status-table th, table.status-table td {
 }
 
 table.status-table th {
-    background-color: #f4f4f4;
+    background-color: rgb(244, 228, 209);
 }
 
 /* 경광등 아이콘 공통 스타일 */

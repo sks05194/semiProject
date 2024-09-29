@@ -20,7 +20,6 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-//import javax.servlet.http.HttpSession;
 
 import action.*;
 import vo.ActionForward;
@@ -201,9 +200,31 @@ public class FMSController extends HttpServlet {
 			forward = new ActionForward("/pages/approval_write.jsp");
 		}
 		
+		/** 결재 상신 액션 @author 임성현 */
+		else if (pathInfo.equals("/approval_write_action")) {
+			action = new ApprovalWriteAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
 		/** 결재 현황 액션 @author 임성현 */
 		else if (pathInfo.equals("/approval_main_action")) {
 			action = new ApprovalMainAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		/** 결재 현황 게시글 검색 액션 @author 임성현 */
+		else if (pathInfo.equals("/approval_search_action")) {
+			action = new ApprovalSearchAction();
 			
 			try {
 				forward = action.execute(request, response);
@@ -234,8 +255,8 @@ public class FMSController extends HttpServlet {
 			}
 		}
 		
-		/** 결재 현황 결재 확인 액션 @author 임성현 */
-		else if (pathInfo.equals("/approval_contents_edit_action")) {
+		/** 결재 현황 게시글 결재 확인 액션 @author 임성현 */
+		else if (pathInfo.equals("/approval_contents_confirm_action")) {
 			action = new ApprovalContentsConfirmAction();
 			
 			try {

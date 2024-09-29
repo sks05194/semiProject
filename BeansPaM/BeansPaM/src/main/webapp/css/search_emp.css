@@ -29,10 +29,9 @@
 }
 
 .search-container button {
-	padding: 10px 20px;
-	font-size: 16px;
+	padding: 8px 15px;
 	background-color: rgb(244, 228, 209);
-	color: #000;
+	color: rgb(41, 15, 5);
 	border: 1px solid rgb(207, 170, 156);
 	border-radius: 5px;
 	cursor: pointer;
@@ -51,10 +50,11 @@ table {
 	margin: 20px 0;
 	background: #fff;
 	table-layout: fixed;
+	font-size: 15px;
 }
 
 thead tr th {
-	font-size: 11pt;
+	font-size: 15px;
 	font-weight: bold;
 	padding: 10px;
 	text-align: center;
@@ -90,22 +90,23 @@ th {
 	justify-content: center;
 	margin-top: 25px;
 	margin-bottom: 50px;
-	background-color: rgba(255, 255, 255, 0.8);
+	background-color: white;
+	color: black;
 }
 
 .pagination a {
-	color: black;
 	text-decoration: none;
 	padding: 5px 10px;
-	background-color: rgb(244, 228, 209);
+	background-color: white;
+	color: black;
 	border-radius: 5px;
 	font-size: 10pt;
 	margin: 0 5px;
 }
 
 .pagination a.active {
-	background-color: gray;
-	color: white;
+	background-color: rgb(244, 228, 209);
+	color: black;
 }
 
 /* 반응형 디자인 */
