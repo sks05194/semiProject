@@ -113,7 +113,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="/BeansPaM/css/notice_list.css">
-   	<script src="/BeansPaM/js/fontawsome.js"></script>
+   	<script src="/BeansPaM/js/fontawesome.js"></script>
 	<script src="/BeansPaM/js/jquery.js"></script>
 	<title>공지사항</title>
 </head>

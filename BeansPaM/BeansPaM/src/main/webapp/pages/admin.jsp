@@ -15,7 +15,7 @@
 	<title>관리자</title>
 
 	<link rel="stylesheet" href="/BeansPaM/css/admin.css">
-	<script src="/BeansPaM/js/fontawsome.js"></script>
+	<script src="/BeansPaM/js/fontawesome.js"></script>
 	<script src="/BeansPaM/js/jquery.js"></script>
 </head>
 

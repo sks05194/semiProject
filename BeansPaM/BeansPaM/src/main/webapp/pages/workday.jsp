@@ -12,7 +12,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>workday</title>
 	<link rel="stylesheet" href="/BeansPaM/css/workday.css">
-	<!-- <script src="/BeansPaM/js/fontawsome.js"></script> -->
+	<!-- <script src="/BeansPaM/js/fontawesome.js"></script> -->
 	<!-- <script src="/BeansPaM/js/jquery.js"></script> -->
 </head>
 

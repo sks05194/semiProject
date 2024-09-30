@@ -9,18 +9,6 @@
 	<link rel="stylesheet" href="/BeansPaM/css/vmi.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 	<title>자재 관리 현황 ERP 시스템</title>
-	<style>
-		.tooltip {
-			display: none;
-			position: absolute;
-			background: #333;
-			color: #fff;
-			padding: 5px;
-			border-radius: 5px;
-			font-size: 0.8em;
-			z-index: 1000;
-		}
-	</style>
 </head>
 <body>
 	<main class="content">

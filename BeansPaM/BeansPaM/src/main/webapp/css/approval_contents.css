@@ -24,7 +24,7 @@ h2 {
 
 
 .qna-detail p {
-	font-size: 16px;
+	font-size: 18px;
 	margin-bottom: 10px;
 }
 
@@ -38,6 +38,7 @@ h2 {
 	padding: 15px;
 	border-radius: 5px;
 	line-height: 1.6;
+	font-size: 18px;
 }
 
 .button-section {
@@ -54,6 +55,8 @@ h2 {
 	border-radius: 5px;
 	cursor: pointer;
 	transition: background-color 0.3s;
+	font-size: 18px;
+	margin-top: 20px;
 }
 
 .btn-delete:hover {
@@ -68,7 +71,9 @@ h2 {
 	border-radius: 5px;
 	cursor: pointer;
 	transition: background-color 0.3s;
-	margin-left: -150px;
+	margin-left: -130px;
+	margin-top: 20px;
+	font-size: 18px;
 }
 
 .btn-confirm:hover {
@@ -83,6 +88,8 @@ h2 {
 	border-radius: 5px;
 	cursor: pointer;
 	transition: background-color 0.3s;
+	font-size: 18px;
+	margin-top: 20px;
 }
 
 .btn-exit:hover {
@@ -91,6 +98,7 @@ h2 {
 
 table {
 	border-collapse: collapse;
+	font-size: 18px !important;
 }
 
 td {

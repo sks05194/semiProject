@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>사원 검색</title>
-    <script src="/BeansPaM/js/fontawsome.js"></script>
+    <script src="/BeansPaM/js/fontawesome.js"></script>
     <script src="/BeansPaM/js/jquery.js"></script>
 	<link rel="stylesheet" href="/BeansPaM/css/search_emp.css">
 </head>

@@ -42,7 +42,7 @@
 
 .scheduler label {
 	margin-right: 10px;
-	font-size: 14px;
+	font-size: 18px;
 	color: #333;
 }
 
@@ -68,6 +68,7 @@
 	border-radius: 5px;
 	cursor: pointer;
 	transition: background-color 0.3s;
+	font-size: 16px;
 }
 
 .action-button:hover {
@@ -75,7 +76,7 @@
 	color: white;
 }
 
-.status-table {
+table {
 	text-align: center;
 	width: 100%;
 	border-collapse: collapse;
@@ -84,23 +85,22 @@
 	table-layout: fixed;
 }
 
-.status-table th, .status-table td {
+table th, table td {
 	padding: 12px;
 	text-align: center;
 	overflow-wrap: break-word;
+	font-size: 18px;
 }
 
-.status-table th {
+table th {
 	background-color: rgb(252, 237, 223);
-	font-size: 11pt;
 	font-weight: bold;
 	color: rgb(62, 30, 17);
 	border-top: 2px solid #c0c0c0;
 	border-bottom: 1px solid #c0c0c0;
 }
 
-.status-table td {
-	font-size: 11pt;
+table td {
 	color: rgb(62, 30, 17);
 }
 
@@ -126,6 +126,7 @@ tbody tr:nth-child(n+1):nth-child(-n+50) td {
 	border-radius: 5px;
 	cursor: pointer;
 	transition: background-color 0.3s;
+	font-size: 16px;
 }
 
 #load-more-btn:hover {
@@ -148,6 +149,17 @@ tbody tr:nth-child(n+1):nth-child(-n+50) td {
 .deletable-row:hover {
 	border: 2px solid orangered;
 	cursor: pointer;
+}
+
+.tooltip {
+			display: none;
+			position: absolute;
+			background: #333;
+			color: #fff;
+			padding: 5px;
+			border-radius: 5px;
+			font-size: 0.8em;
+			z-index: 1000;
 }
 
 @media (max-width: 400px) {
@@ -176,7 +188,7 @@ tbody tr:nth-child(n+1):nth-child(-n+50) td {
 	}
 
 	.status-table {
-		font-size: 10pt;
+		font-size: 18px;
 	}
 }
 

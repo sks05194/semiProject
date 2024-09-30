@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page import="java.util.*" %>
+<%@ page import="vo.DocumentVO" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!DOCTYPE html>
@@ -10,6 +12,17 @@
 	<link rel="stylesheet" href="/BeansPaM/css/approval_contents.css">
 	<script src="/BeansPaM/js/jquery.js"></script>
 </head>
+<%
+    List<DocumentVO> confirmBtnCheck = (List<DocumentVO>) request.getAttribute("getPageContents");
+    String dResponse = null;
+    if (confirmBtnCheck != null) {
+        for (DocumentVO document : confirmBtnCheck) {
+            dResponse = document.getD_response();
+        }
+    }
+    request.setAttribute("dResponse", dResponse);
+%>
+
 <body>
 	<div class="qna-container">
 		<h2>결재 게시판</h2>
@@ -63,17 +76,37 @@
 								</c:choose>
 							</tr>
 							<tr>
-								<td><strong>결재 파일</strong></td>
+							    <td><strong>${startDateOutput != null ? startDateOutput : (estimateDateOutput != null ? estimateDateOutput : (tripStartDateOutput != null ? tripStartDateOutput : ""))}</strong></td>
+							    <td>${startDate != null ? startDate : (estimateDate != null ? estimateDate : (tripStartDate != null ? tripStartDate : ""))}</td>
+							</tr>
+							<tr>
+							    <td><strong>${endDateOutput != null ? endDateOutput : (estimateCompanyOutput != null ? estimateCompanyOutput : (tripEndDateOutput != null ? tripEndDateOutput : ""))}</strong></td>
+							    <td>${endDate != null ? endDate : (estimateCompany != null ? estimateCompany : (tripEndDate != null ? tripEndDate : ""))}</td>
+							</tr>
+							<c:if test="${not empty tripDestinationOutput or not empty estimateAmountOutput}">
+							    <tr>
+							        <td><strong>${tripDestinationOutput != null ? tripDestinationOutput : (estimateAmountOutput != null ? estimateAmountOutput : "")}</strong></td>
+							        <td>${tripDestination != null ? tripDestination : (estimateAmount != null ? estimateAmount : "")}</td>
+							    </tr>
+							</c:if>
+							<c:if test="${not empty tripPurpose}">
+								<tr>
+								    <td><strong>${tripPurposeOutput}</strong></td>
+								    <td>${tripPurpose}</td>
+								</tr>
+							</c:if>																																		
+							<tr>
+								<td><strong>첨부 파일</strong></td>
 								<td><a href="approval_contents_file_action?filename=${contents.getFilename()}">${contents.getFilename()}</a></td>
 							</tr>
 						</table>
 					</div>
-					<p class="qna-content">${contents.getD_content()}</p>
+					<p class="qna-content">${reason != null ? reason : (tripReason != null ? tripReason : (estimateReason != null ? estimateReason : ""))}</p>
 				</c:forEach>
 				<div class="button-section">
 					<button class="btn-delete" onclick="deletePost()">삭제하기</button>
 					<c:forEach var="confirm" items="${getName}">
-						<c:if test="${confirm.m_name eq '관리자'}">
+						<c:if test="${confirm.m_name eq '관리자' and empty dResponse}">
 							<button class="btn-confirm" onclick="confirmPost()">결재승인</button>
 							<div class="div-confirm1" data-dno="${confirm.m_position}"></div>
 							<div class="div-confirm2" data-dno="${confirm.m_name}"></div>

@@ -29,7 +29,7 @@ h2 {
 	padding: 10px;
 	border: 1px solid #ccc;
 	border-radius: 5px;
-	font-size: 16px;
+	font-size: 18px;
 }
 
 form.approval-form {
@@ -56,7 +56,7 @@ form h3 {
 }
 
 form label {
-	font-size: 16px;
+	font-size: 18px;
 	color: rgb(41, 15, 5);
 	display: block;
 	margin-bottom: 10px;
@@ -72,7 +72,7 @@ form textarea {
 	margin-bottom: 20px;
 	border: 1px solid #ccc;
 	border-radius: 5px;
-	font-size: 16px;
+	font-size: 18px;
 }
 
 form textarea {
@@ -86,7 +86,7 @@ form button {
 	color: white;
 	border: none;
 	border-radius: 5px;
-	font-size: 16px;
+	font-size: 18px;
 	cursor: pointer;
 	transition: 0.3s;
 }
@@ -122,5 +122,5 @@ form button {
 form input[type="file"] {
 	padding: 5px;
 	margin-bottom: 20px;
-	font-size: 16px;
+	font-size: 18px;
 }

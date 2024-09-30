@@ -64,6 +64,176 @@ public class ApprovalContentsAction implements Action {
 		}
 
 		request.setAttribute("getPageContents", getPageContents);
+		
+		// 출장 content 분리
+		for (DocumentVO document1 : getPageContents) {
+		    String content = document1.getD_content(); 
+		    
+    		String tripStartDateOutput = ""; 
+    		String tripEndDateOutput = ""; 
+    		String tripDestinationOutput = ""; 
+    		String tripPurposeOutput = "";
+    		
+    		String tripStartDate = ""; 
+    		String tripEndDate = ""; 
+    		String tripDestination = ""; 
+    		String tripPurpose = "";
+    		String tripReason = "";
+
+		    if (content.contains("출장 시작 날짜 :")) {
+		    	
+		    	for (DocumentVO document2 : getPageContents) {
+		    		String dContent = document2.getD_content(); 
+		    		
+		    		String[] parts = dContent.split("<br>");
+		    		
+		    		for (String part : parts) {
+		    			String[] keyValue = part.split(":");
+		    			if (keyValue.length > 1) {
+		    				String key = keyValue[0].trim(); 
+		    				String value = keyValue[1].trim(); 
+		    				
+		    				if (key.equals("출장 시작 날짜")) {
+		    					tripStartDate = value; 
+		    					tripStartDateOutput = key; 
+		    				} else if (key.equals("출장 종료 날짜")) {
+		    					tripEndDate = value; 
+		    					tripEndDateOutput = key; 
+		    				} else if (key.equals("출장 목적지")) {
+		    					tripDestination = value; 
+		    					tripDestinationOutput = key; 
+		    				} else if (key.equals("출장 목적")) {
+		    					tripPurpose = value;
+		    					tripPurposeOutput = key;
+		    				} else if (key.equals("출장 세부사항")) {
+		    					tripReason = value;
+		    				}
+		    			}
+		    		}
+		    		
+		    	}
+		    	request.setAttribute("tripStartDate", tripStartDate);
+		    	request.setAttribute("tripEndDate", tripEndDate);
+		    	request.setAttribute("tripDestination", tripDestination);
+		    	request.setAttribute("tripPurpose", tripPurpose);
+		    	request.setAttribute("tripReason", tripReason);
+		    	
+		    	request.setAttribute("tripStartDateOutput", tripStartDateOutput);
+		    	request.setAttribute("tripEndDateOutput", tripEndDateOutput);
+		    	request.setAttribute("tripDestinationOutput", tripDestinationOutput);
+		    	request.setAttribute("tripPurposeOutput", tripPurposeOutput);
+		    	
+		    	return forward = new ActionForward("/fms/approval_contents");
+		    } else {
+		    	break;
+		    }
+		}
+		
+		// 견적 content 분리
+		for (DocumentVO document1 : getPageContents) {
+		    String content = document1.getD_content(); 
+		    
+    		String estimateDateOutput = "";
+    		String estimateCompanyOutput = "";
+    		String estimateAmountOutput = "";
+    		
+    		String estimateDate = ""; 
+    		String estimateCompany = ""; 
+    		String estimateAmount =""; 
+    		String estimateReason = "";
+
+		    if (content.contains("견적서 발행 날짜 :")) {
+		    	
+		    	for (DocumentVO document2 : getPageContents) {
+		    		String dContent = document2.getD_content(); 
+		    		
+		    		String[] parts = dContent.split("<br>");
+		    		
+		    		for (String part : parts) {
+		    			String[] keyValue = part.split(":");
+		    			if (keyValue.length > 1) {
+		    				String key = keyValue[0].trim(); 
+		    				String value = keyValue[1].trim(); 
+		    				
+		    				if (key.equals("견적서 발행 날짜")) {
+		    					estimateDate = value; 
+		    					estimateDateOutput = key; 
+		    				} else if (key.equals("견적서 발행 회사")) {
+		    					estimateCompany = value; 
+		    					estimateCompanyOutput = key; 
+		    				} else if (key.equals("견적 금액")) {
+		    					estimateAmount = value; 
+		    					estimateAmountOutput = key; 
+		    				} else if (key.equals("세부 사항")) {
+		    					estimateReason = value;
+		    				}
+		    			}
+		    		}
+		    		
+		    	}
+		    	request.setAttribute("estimateDate", estimateDate);
+		    	request.setAttribute("estimateCompany", estimateCompany);
+		    	request.setAttribute("estimateAmount", estimateAmount);
+		    	request.setAttribute("estimateReason", estimateReason);
+		    	
+		    	request.setAttribute("estimateDateOutput", estimateDateOutput);
+		    	request.setAttribute("estimateCompanyOutput", estimateCompanyOutput);
+		    	request.setAttribute("estimateAmountOutput", estimateAmountOutput);
+		    	return forward = new ActionForward("/fms/approval_contents");
+		    } else {
+		    	break;
+		    }
+		}
+		
+		// 근태 content 분리
+		for (DocumentVO document1 : getPageContents) {
+		    String content = document1.getD_content(); 
+		    
+    		String startDateOutput = "";
+    		String endDateOutput = "";
+    		
+    		String startDate = ""; 
+    		String endDate = ""; 
+    		String reason = ""; 
+
+		    if (content.contains("시작 날짜 :")) {
+		    	
+		    	for (DocumentVO document2 : getPageContents) {
+		    		String dContent = document2.getD_content(); 
+		    		
+		    		String[] parts = dContent.split("<br>");
+		    		
+		    		for (String part : parts) {
+		    			String[] keyValue = part.split(":");
+		    			if (keyValue.length > 1) {
+		    				String key = keyValue[0].trim(); 
+		    				String value = keyValue[1].trim(); 
+		    				
+		    				if (key.equals("시작 날짜")) {
+		    					startDate = value; 
+		    					startDateOutput = key; 
+		    				} else if (key.equals("종료 날짜")) {
+		    					endDate = value; 
+		    					endDateOutput = key; 
+		    				} else if (key.equals("사유")) {
+		    					reason = value; 
+		    				}
+		    			}
+		    		}
+		    		
+		    	}
+		    	request.setAttribute("startDate", startDate);
+		    	request.setAttribute("endDate", endDate);
+		    	request.setAttribute("reason", reason);
+		    	
+		    	request.setAttribute("startDateOutput", startDateOutput);
+		    	request.setAttribute("endDateOutput", endDateOutput);
+		    	return forward = new ActionForward("/fms/approval_contents");
+		    } else {
+		    	break;
+		    }
+		}
+		
 
 		forward = new ActionForward("/fms/approval_contents");
 		return forward;

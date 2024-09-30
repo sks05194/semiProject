@@ -157,23 +157,21 @@
 	</main>
 
 	<script>
-		// 모달 열기 및 닫기 로직
 		$(document).ready(function () {
-			// 모달 엘리먼트 가져오기
 			var editInfoModal = $("#editInfoModal");
 			var changePwdModal = $("#changePwdModal");
 
-			// 회원정보 수정 버튼 클릭 시
+			// 회원정보 수정 버튼 클릭 시 모달 열기
 			$("#editInfoBtn").click(function () {
 				editInfoModal.show();
 			});
 
-			// 비밀번호 변경 버튼 클릭 시
+			// 비밀번호 변경 버튼 클릭 시 모달 열기
 			$("#changePwdBtn").click(function () {
 				changePwdModal.show();
 			});
 
-			// 모달 닫기 버튼 기능
+			// 모달 닫기 버튼
 			$(".close").click(function () {
 				editInfoModal.hide();
 				changePwdModal.hide();
@@ -189,6 +187,7 @@
 				}
 			});
 		});
+
 		// 유효성 검사 함수
 		function validateForm() {
 			var phone = document.getElementById('phone').value;

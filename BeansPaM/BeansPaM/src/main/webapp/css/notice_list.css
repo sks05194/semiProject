@@ -50,13 +50,11 @@ th, td {
 	border-left: none;
 	border-right: none;
 	padding: 10px;
-	font-size: 15px;
 	text-align: center;
 	color: rgb(41, 15, 5);
 }
 
 th {
-	font-size: 15px;
 	background-color: rgb(244, 228, 209);
 }
 

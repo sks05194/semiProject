@@ -25,7 +25,7 @@ table {
 /* 표 헤더(th) 스타일 */
 th {
 	background-color: rgb(252, 237, 223);
-	font-size: 15pt;
+	font-size: 15pt !important;
 	font-weight: bold;
 	color: rgb(62, 30, 17);
 	padding: 10px;
@@ -55,22 +55,24 @@ td {
 	padding: 5px 10px;
 	text-decoration: none;
 	cursor: pointer;
-	border: 1px solid wheat;
-	background-color: wheat;
 	border-radius: 5px;
 }
 
-.pagination a.hover {
-	background-color: rgb(207, 170, 156);
+.pagination a:hover {
+	background-color: #8B4513;
 	color: white;
 }
 
 .pagination a.active {
-	background-color: gray;
+	background-color: #8B4513;	
 	color: white;
 }
 
 .pagination {
 	display: flex;
 	justify-content: center;
+}
+
+@media (min-width: 1200px) {
+	table { width: 1200px }
 }
