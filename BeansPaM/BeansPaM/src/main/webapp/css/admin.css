@@ -116,7 +116,7 @@ table {
 
 th, td {
 	text-align: center;
-	font-size: 10pt;
+	font-size: 16px;
 	color: rgb(62, 30, 17);
 }
 
@@ -221,6 +221,7 @@ button#curPage:hover {
 	margin-bottom: 5px;
 	font-weight: bold;
 	color: #5A2D0C;
+	font-size: 18px;
 }
 
 .form-group input, .form-group select {
@@ -228,7 +229,7 @@ button#curPage:hover {
 	padding: 10px;
 	border: 1px solid #d2b48c;
 	border-radius: 5px;
-	font-size: 16px;
+	font-size: 18px;
 	box-sizing: border-box;
 	appearance: none;
 	-webkit-appearance: none;

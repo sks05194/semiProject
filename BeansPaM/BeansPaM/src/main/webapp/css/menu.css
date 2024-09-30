@@ -19,6 +19,10 @@ header {
 	margin-bottom: 30px;
 }
 
+table th, table td {
+	font-size: 18px;
+}
+
 /* 유저 정보 스타일 */
 .user-info {
 	height: 50px;
@@ -37,6 +41,7 @@ header {
 	margin-right: 20px;
 	color: #333333;
 	transition: color 0.3s;
+	font-size: 18px;
 }
 
 .user-info a:hover { color: #007bff; }
@@ -93,7 +98,7 @@ header {
 
 .main-menu a, .menu-title {
 	color: #333333;
-	font-size: 18px;
+	font-size: 24px;
 	font-weight: 600;
 	padding: 15px 10px;
 	transition: color 0.3s;
@@ -106,7 +111,7 @@ header {
 .sub-menu {
 	display: none;
 	position: absolute;
-	top: 100%;
+	top: 40px;
 	left: 0;
 	background-color: rgba(255, 255, 255, 0.9);
 	border: 1px solid #ddd;
