@@ -35,7 +35,7 @@ th {
 	box-shadow: 0 0.3px 0 0 #c0c0c0;
 }
 
-tbody tr:nth-child(n+1):nth-child(-n+9) td {
+tbody tr:nth-child(n+1):nth-child(-n+10) td {
 	border-bottom: 1px solid #e0e0e0;
 }
 

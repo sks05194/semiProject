@@ -149,7 +149,10 @@
 		let currentMaxNo = 0; // 현재 최대 고유번호
 		const columnName = ['No', '입고처', '입고번호', '입고일자', '수량', '품번', '담당자사번', '부서', '현재 수량', '창고 위치'];
 		let sqlArray = [];
-		// 강동준: 수정, 삭제, 삽입 시 sqlArray에 sql문을 저장하세요. 동작하게 만들었습니다.
+		let isEditMode = false; // 수정 모드 상태
+		let isDeleteMode = false; // 삭제 모드 상태
+		let isWritable = false; // 작성 및 수정 가능한 상태
+		let rowsLoaded = 10; // 현재 로드된 행 수
 
 		// 현재 최대 고유번호를 계산하는 함수
 		function calculateMaxNo() {
@@ -207,6 +210,9 @@
 			isDeleteMode = true; // 삭제 모드 활성화
 			disableEditing(); // 삭제 모드에서는 편집 불가능
 			tooltip.style.display = 'none'; // 툴팁 숨김
+			document.querySelectorAll('#material-table tbody tr').forEach(row => {
+                row.classList.add('deletable-row'); // 삭제 가능한 행 스타일 적용
+            });
 		});
 
 		// 저장하기 버튼 기능 - 강동준
@@ -220,8 +226,9 @@
 			})
 			.then(response => response.text())
 			.then(data => {
-				alert(data);
-				sqlArray = [];
+				alert("저장되었습니다."); 
+		        sqlArray = []; 
+		        disableEditing(); 
 			})
 			.catch(error => console.log('error: ' + error));
 		});
@@ -242,27 +249,48 @@
 			}
 
 			tableBody.insertBefore(newRow, tableBody.firstChild);
+
+			// 행 클릭 시 삭제 기능 추가
+			newRow.addEventListener('click', function() {
+				if (isDeleteMode) {
+					this.remove(); // 선택한 행 삭제
+				}
+			});
 		}
 
 		// 편집 가능하게 설정하는 함수
 		function enableEditing() {
-			if (isWritable) {
-				document.querySelectorAll('#material-table tbody tr td').forEach(cell => {
-					cell.contentEditable = true; // 편집 가능할 때 설정
-					cell.classList.add('editable'); // 편집 가능할 때 스타일 적용
-				});
-			}
+		    if (isWritable) {
+		        document.querySelectorAll('#material-table tbody tr').forEach(row => {
+		            const cells = row.children;
+		            const editableColumns = [2, 3, 5, 6, 8, 9];
+		            editableColumns.forEach(index => {
+		                if (cells[index]) {
+		                    cells[index].contentEditable = true; // 편집 가능하게 설정
+		                    cells[index].classList.add('editable'); // 편집 가능할 때 스타일 적용
+		                }
+		            });
+		        });
+		    }
 		}
 
 		// 편집 불가능하게 설정하는 함수
 		function disableEditing() {
-			document.querySelectorAll('#material-table tbody tr td').forEach(cell => {
-				cell.contentEditable = false; // 편집 불가능할 때 설정
-				cell.classList.remove('editable'); // 편집 불가능할 때 스타일 제거
-			});
+		    document.querySelectorAll('#material-table tbody tr').forEach(row => {
+		        const cells = row.children;
+		        // 수정 가능한 컬럼 인덱스
+		        const editableColumns = [2, 3, 5, 6, 8, 9];
+		        editableColumns.forEach(index => {
+		            if (cells[index]) {
+		                cells[index].contentEditable = false; // 편집 불가능하게 설정
+		                cells[index].classList.remove('editable'); // 편집 불가능할 때 스타일 제거
+		            }
+		        });
+		    });
 		}
 
-		// 행 삭제 기능 - 행 클릭 시 삭제
+		
+		// 기존 행 클릭 시 삭제 기능 추가
 		document.querySelectorAll('#material-table tbody tr').forEach(row => {
 			row.addEventListener('click', function() {
 				if (isDeleteMode) {
@@ -321,11 +349,6 @@
 				loadMoreBtn.onclick = null; // 기존 클릭 이벤트 리셋
 			};
 		}
-
-		let isEditMode = false; // 수정 모드 상태
-		let isDeleteMode = false; // 삭제 모드 상태
-		let isWritable = false; // 작성 및 수정 가능한 상태
-		let rowsLoaded = 10; // 현재 로드된 행 수
 
 		// "더보기" 버튼 클릭 시 숨겨진 데이터 표시
 		document.getElementById('load-more-btn').addEventListener('click', function() {

@@ -31,11 +31,16 @@
 		con = DriverManager.getConnection(jdbcUrl, jdbcUser, jdbcPass);
 
 		String keyword = request.getParameter("keyword");
+		String searchType = request.getParameter("search_notice"); // 검색할 필드(제목 또는 내용)
 
 		// 전체 공지사항 개수 조회 (검색어 포함)
 		String countSql = "SELECT COUNT(*) FROM NOTICE WHERE N_DELETE_YN = 'N'";
 		if (keyword != null && !keyword.trim().isEmpty()) {
-			countSql += " AND N_TITLE LIKE ?";
+			if ("n_content".equals(searchType)) {
+				countSql += " AND N_CONTENT LIKE ?";
+			} else {
+				countSql += " AND N_TITLE LIKE ?";
+			}
 		}
 		
 		ps1 = con.prepareStatement(countSql);
@@ -58,7 +63,11 @@
 					 "    WHERE N_DELETE_YN = 'N' ";
 
 		if (keyword != null && !keyword.trim().isEmpty()) {
-			sql += " AND N_TITLE LIKE ? ";
+			if ("n_content".equals(searchType)) {
+				sql += " AND N_CONTENT LIKE ? ";
+			} else {
+				sql += " AND N_TITLE LIKE ? ";
+			}
 		}
 
 		sql += " ORDER BY N_NO DESC " +
@@ -116,7 +125,8 @@
 				<div class="search-container">
 					<form method="get" action="/BeansPaM/b/notice">
 						<select name="search_notice" id="search_notice">
-							<option value="n_title">제목</option>
+							<option value="n_title" <c:if test="${param.search_notice == 'n_title'}">selected</c:if>>제목</option>
+							<option value="n_content" <c:if test="${param.search_notice == 'n_content'}">selected</c:if>>내용</option>
 						</select>
 						<div class="search">
 							<input type="search" name="keyword" id="keyword" placeholder="검색할 내용 입력" value="${param.keyword}">

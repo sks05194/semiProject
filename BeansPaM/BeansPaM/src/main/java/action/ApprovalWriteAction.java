@@ -39,7 +39,7 @@ public class ApprovalWriteAction implements Action {
 		Part filePart = null;
 		String fileName = null;
 		String filePath = null;
-		String saveFolder = "BeansPaMUploads";
+		String saveFolder = "files";
 		int Success = 0;
 
 		Cookie[] cookies = request.getCookies();
@@ -82,7 +82,7 @@ public class ApprovalWriteAction implements Action {
 			// 파일 업로드 처리 부분에서 호출
 			if (filePart != null && filePart.getSize() > 0) {
 				fileName = filePart.getSubmittedFileName(); // 원래 파일 이름
-				filePath = "C:\\semiproject\\BeansPaM\\src\\main\\webapp\\" + saveFolder;
+				filePath = "C:\\semiProject\\BeansPaM\\BeansPaM\\src\\main\\webapp\\" + saveFolder;
 				File f = new File(filePath);
 				if (!f.exists()) {
 					f.mkdirs();
@@ -91,6 +91,7 @@ public class ApprovalWriteAction implements Action {
 				// 고유한 파일 이름 생성
 				String uniqueFileName = getUniqueFileName(filePath, fileName);
 
+				System.out.println(filePath + File.separator + uniqueFileName);
 				// 파일 저장
 				filePart.write(filePath + File.separator + uniqueFileName);
 				documentVO.setFilename(uniqueFileName);
@@ -125,7 +126,7 @@ public class ApprovalWriteAction implements Action {
 			// 파일 업로드 처리 부분에서 호출
 			if (filePart != null && filePart.getSize() > 0) {
 				fileName = filePart.getSubmittedFileName(); // 원래 파일 이름
-				filePath = "C:\\semiproject\\BeansPaM\\src\\main\\webapp\\" + saveFolder;
+				filePath = "C:\\semiProject\\BeansPaM\\BeansPaM\\src\\main\\webapp\\" + saveFolder;
 				File f = new File(filePath);
 				if (!f.exists()) {
 					f.mkdirs();
@@ -167,7 +168,7 @@ public class ApprovalWriteAction implements Action {
 			// 파일 업로드 처리 부분에서 호출
 			if (filePart != null && filePart.getSize() > 0) {
 				fileName = filePart.getSubmittedFileName(); // 원래 파일 이름
-				filePath = "C:\\semiproject\\BeansPaM\\src\\main\\webapp\\" + saveFolder;
+				filePath = "C:\\semiProject\\BeansPaM\\BeansPaM\\src\\main\\webapp\\" + saveFolder;
 				File f = new File(filePath);
 				if (!f.exists()) {
 					f.mkdirs();

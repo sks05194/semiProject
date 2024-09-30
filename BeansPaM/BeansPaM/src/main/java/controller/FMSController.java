@@ -198,6 +198,17 @@ public class FMSController extends HttpServlet {
 			forward = new ActionForward("/pages/approval_write.jsp");
 		}
 		
+		/** 결재 상신 액션 @author 임성현 */
+		else if (pathInfo.equals("/approval_write_action")) {
+			action = new ApprovalWriteAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
 		/** 결재 현황 액션 @author 임성현 */
 		else if (pathInfo.equals("/approval_main_action")) {
 			action = new ApprovalMainAction();

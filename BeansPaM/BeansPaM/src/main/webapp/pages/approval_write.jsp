@@ -105,14 +105,17 @@
 			tripStartDate.max = tripEndDate.value;
 		});
 
-		const dateInput = document.getElementById("estimateDate");
+		const dateInputs = document.querySelectorAll('input[type="date"]');
 		const today = new Date();
+		today.setDate(today.getDate() + 1);
 		const yyyy = today.getFullYear();
 		const mm = String(today.getMonth() + 1).padStart(2, '0'); 
 		const dd = String(today.getDate()).padStart(2, '0'); 
 		const formattedToday = yyyy + "-" + mm + "-" + dd;
 
-		dateInput.min = formattedToday;
+		dateInputs.forEach((dateInput) => {
+			dateInput.min = formattedToday;
+		});
 		
 		<%-- 폼 선택 함수 --%>
 		function showForm() {

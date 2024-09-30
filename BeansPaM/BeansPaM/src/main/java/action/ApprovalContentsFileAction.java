@@ -23,7 +23,7 @@ public class ApprovalContentsFileAction implements Action {
 			String fileName = request.getParameter("filename");
 
 			// 파일이 실제 업로드 되어있는(파일이 존재하는) 경로를 지정한다._경로수정
-			String filePath = "C:\\semiproject\\BeansPaM\\src\\main\\webapp\\BeansPaMUploads\\";
+			String filePath = "C:\\semiProject\\BeansPaM\\BeansPaM\\src\\main\\webapp\\files\\";
 
 			// 경로와 파일명으로 파일 객체를 생성한다.
 			File dFile = new File(filePath, fileName);

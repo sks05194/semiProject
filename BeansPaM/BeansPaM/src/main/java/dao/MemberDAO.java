@@ -282,6 +282,8 @@ public class MemberDAO {
 			System.out.println(result);
 			if (result > 0) {
 				commit();				
+			} else {
+				rollback();
 			}
 		} catch (SQLException e) {
 			rollback();

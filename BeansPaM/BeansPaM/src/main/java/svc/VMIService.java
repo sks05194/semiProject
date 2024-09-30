@@ -37,6 +37,9 @@ public class VMIService {
 
 	        String[] sqls = stringBuilder.toString().split(",");
 	        for (String sql : sqls) {
+	        	if (sql == null || sql.equals("")) {
+					continue;
+				}
 				result += dao.updateStock(sql) ? 1 : 0;
 			}
 
