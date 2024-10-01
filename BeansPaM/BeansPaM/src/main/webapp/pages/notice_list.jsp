@@ -170,7 +170,7 @@
 							<!-- 제목 (긴 텍스트는 ...으로 표시) -->
 							<td class="title" style="text-align:left;">
 								<% if ("1".equals(notice.get("n_important_yn"))) { %>
-							        [❗중요]
+							        <b style="color: red;">[중요]</b>
 						  	 	<% } %>
 							    <%= notice.get("n_title") %>
 							</td>
