@@ -18,6 +18,7 @@ public class NoticeVO {
 	private String n_r_date = null;
 	private String n_c_writer = null;
 	private String n_r_writer = null;
+	private String n_important_yn = null;
 
 	public int getN_no() { return n_no; }
 	public void setN_no(int n_no) { this.n_no = n_no; }
@@ -45,4 +46,7 @@ public class NoticeVO {
 
 	public String getN_r_writer() { return n_r_writer; }
 	public void setN_r_writer(String n_r_writer) { this.n_r_writer = n_r_writer; }
+	
+	public String getN_important_yn() { return n_important_yn; } 
+	public void setN_important_yn(String n_important_yn) { this.n_important_yn = n_important_yn; }
 }

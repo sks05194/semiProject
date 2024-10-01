@@ -55,25 +55,32 @@
 
 		totalPages = (int) Math.ceil((double) totalRecords / recordsPerPage); // 전체 페이지 수 계산
 
+		
 		// 게시글 조회 (페이징 처리 포함)
 		String sql = "SELECT * FROM ( " +
-					 "  SELECT ROWNUM AS RN, N_NO, N_TITLE, N_VIEWS, N_R_DATE " +
-					 "  FROM ( " +
-					 "    SELECT N_NO, N_TITLE, N_VIEWS, N_R_DATE FROM NOTICE " +
-					 "    WHERE N_DELETE_YN = 'N' ";
-
+		             "  SELECT RN, N_NO, N_TITLE, N_VIEWS, N_R_DATE, N_IMPORTANT_YN " +
+		             "  FROM ( " +
+		             "    SELECT ROWNUM AS RN, N_NO, N_TITLE, N_VIEWS, N_R_DATE, N_IMPORTANT_YN " +
+		             "    FROM ( " +
+		             "      SELECT N_NO, N_TITLE, N_VIEWS, N_R_DATE,CASE WHEN N_IMPORTANT_YN = 'Y' THEN 1 ELSE 0 END AS N_IMPORTANT_YN " +
+		             "      FROM NOTICE " +
+		             "      WHERE N_DELETE_YN = 'N' ";
+		             
+		// 검색 조건 추가 (있을 경우)
 		if (keyword != null && !keyword.trim().isEmpty()) {
-			if ("n_content".equals(searchType)) {
-				sql += " AND N_CONTENT LIKE ? ";
-			} else {
-				sql += " AND N_TITLE LIKE ? ";
-			}
+		    if ("n_content".equals(searchType)) {
+		        sql += " AND N_CONTENT LIKE ? ";
+		    } else {
+		        sql += " AND N_TITLE LIKE ? ";
+		    }
 		}
-
-		sql += " ORDER BY N_NO DESC " +
-			   "  ) WHERE ROWNUM <= ? " + // 끝 게시글 번호 지정
-			   ") WHERE RN >= ?"; // 시작 게시글 번호 지정
-
+		
+		// 공지사항 상단 고정 + 번호순 정렬
+		sql += " ORDER BY N_IMPORTANT_YN DESC, N_NO DESC " +
+		       "      ) " + // 정렬 후
+		       "    ) WHERE ROWNUM <= ? " + // 끝 게시글 번호 지정
+		       "  ) WHERE RN >= ?"; // 시작 게시글 번호 지정
+					   
 		ps1 = con.prepareStatement(sql);
 
 		if (keyword != null && !keyword.trim().isEmpty()) {
@@ -95,6 +102,7 @@
 			notice.put("n_title", rs1.getString("N_TITLE"));
 			notice.put("n_views", rs1.getInt("N_VIEWS"));
 			notice.put("n_r_date", rs1.getDate("N_R_DATE"));
+			notice.put("n_important_yn", rs1.getString("N_IMPORTANT_YN"));
 
 			noticeList.add(notice); // 리스트에 공지사항 추가
 		}
@@ -113,7 +121,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="/BeansPaM/css/notice_list.css">
-   	<script src="/BeansPaM/js/fontawesome.js"></script>
+   	<script src="/BeansPaM/js/fontawsome.js"></script>
 	<script src="/BeansPaM/js/jquery.js"></script>
 	<title>공지사항</title>
 </head>
@@ -160,7 +168,12 @@
 							<td><%= notice.get("n_no") %></td>
 			
 							<!-- 제목 (긴 텍스트는 ...으로 표시) -->
-							<td class="title" style="text-align:left;"><%= notice.get("n_title") %></td>
+							<td class="title" style="text-align:left;">
+								<% if ("1".equals(notice.get("n_important_yn"))) { %>
+							        [❗중요]
+						  	 	<% } %>
+							    <%= notice.get("n_title") %>
+							</td>
 			
 							<!-- 작성자 -->
 							<td>관리자</td>

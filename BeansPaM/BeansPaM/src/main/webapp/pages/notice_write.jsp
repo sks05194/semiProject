@@ -9,11 +9,6 @@
     <script src="/BeansPaM/js/jquery.js"></script>
     <title>공지사항 작성</title>
     <script>
-	    function goDelete(n_no) {
-	        if (confirm("정말 삭제하시겠습니까?")) {
-	            location.href = "/BeansPaM/b/notice/delete?n_no=" + n_no;
-	        }
-	    }
     </script>
 </head>
 <body>
@@ -21,22 +16,24 @@
 	    <div class="container">
 	        <h1>공지사항 작성</h1>
 	
-	        <form id="noticeForm" class="form" action="./register" method="post">
-	            <div class="form-group">
-	                <label for="title">제목</label>
-	                <input type="text" id="title" name="title" placeholder="제목을 입력하세요" required>
-	            </div><br>
-	            <div class="form-group" style="position: relative;">
-	                <div class="content-header">
-	                    <label for="content">내용</label>
-	                </div>
-	                <textarea id="content" name="content" rows="10" placeholder="공지할 내용을 입력하세요" required></textarea>
-	            </div>
-	            <div class="form-group" style="display: flex; justify-content: space-between; align-items: center;">
-	                <button type="button" class="exit-button" onclick="window.history.back();">나가기</button>
-	                <button type="submit" class="submit-button">등록</button>
-	            </div>
-	        </form>
+			<form id="noticeForm" class="form" action="./register" method="post">
+			    <div class="form-group">
+			        <input type="checkbox" id="is_notice" name="is_notice">
+			        <label for="is_notice">공지로 설정</label>
+			    </div><br>
+			    <div class="form-group">
+			        <label for="title">제목</label>
+			        <input type="text" id="title" name="title" placeholder="제목을 입력하세요" required>
+			    </div><br>
+			    <div class="form-group">
+			        <label for="content">내용</label>
+			        <textarea id="content" name="content" rows="10" placeholder="공지할 내용을 입력하세요" required></textarea>
+			    </div><br>
+			    <div class="form-group" style="display: flex; justify-content: space-between; align-items: center;">
+			        <button type="button" class="exit-button" onclick="window.history.back();">나가기</button>
+			        <button type="submit" class="submit-button">등록</button>
+			    </div>
+			</form>
 	    </div>
 	</main>
     <script src="/BeansPaM/js/menu.js"></script>

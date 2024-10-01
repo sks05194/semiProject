@@ -28,6 +28,11 @@ public class NoticeWriteAction implements Action {
 		noticeVO = new NoticeVO();
 		noticeVO.setN_title(request.getParameter("title"));
 		noticeVO.setN_content(request.getParameter("content"));
+		noticeVO.setN_important_yn(request.getParameter("is_notice")); // 체크박스 값 저장
+		
+        // 체크박스 값 처리 ('Y' 또는 'N'으로 설정)
+        String isNotice = request.getParameter("is_notice") != null ? "Y" : "N";
+        noticeVO.setN_important_yn(isNotice);
 
 		// SQL 쿼리문을 반환 받을 SVC 객체 생성
 		NoticeService noticeService = new NoticeService();
