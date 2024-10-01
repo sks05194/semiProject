@@ -6,7 +6,6 @@
 
 .content {
 	width: 80%;
-	max-width: 1200px;
 	margin: auto;
 }
 
@@ -28,21 +27,20 @@
 
 .controls {
 	display: flex;
-	flex-direction: column;
+	justify-content: space-between;
 	align-items: stretch;
 	width: 100%;
 	margin: 0 auto;
 }
 
 .scheduler {
-	display: flex;
-	flex-wrap: wrap;
 	align-items: center;
+	justify-content: flex-start;
 }
 
 .scheduler label {
 	margin-right: 10px;
-	font-size: 18px;
+	font-size: 16px;
 	color: #333;
 }
 
@@ -51,11 +49,10 @@
 	margin: 0 5px;
 	border: 1px solid #ddd;
 	border-radius: 5px;
+	font-size: 14px;
 }
 
 .action-buttons {
-	gap: 10px;
-	display: flex;
 	justify-content: flex-end;
 }
 
@@ -68,7 +65,7 @@
 	border-radius: 5px;
 	cursor: pointer;
 	transition: background-color 0.3s;
-	font-size: 16px;
+	font-size: 14px;
 }
 
 .action-button:hover {
@@ -89,7 +86,6 @@ table th, table td {
 	padding: 12px;
 	text-align: center;
 	overflow-wrap: break-word;
-	font-size: 18px;
 }
 
 table th {
@@ -152,14 +148,33 @@ tbody tr:nth-child(n+1):nth-child(-n+50) td {
 }
 
 .tooltip {
-			display: none;
-			position: absolute;
-			background: #333;
-			color: #fff;
-			padding: 5px;
-			border-radius: 5px;
-			font-size: 0.8em;
-			z-index: 1000;
+	display: none;
+	position: absolute;
+	background: #333;
+	color: #fff;
+	padding: 5px;
+	border-radius: 5px;
+	font-size: 0.8em;
+	z-index: 1000;
+}
+
+.scroll-to-top {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    display: none; 
+    border: none; 
+    background: transparent; 
+    cursor: pointer;
+}
+
+.scroll-to-top img {
+    width: 40px; 
+    height: 40px; 
+}
+
+.scroll-to-top:hover img {
+    opacity: 0.8; 
 }
 
 @media (max-width: 400px) {

@@ -14,7 +14,9 @@
 
 <body>
 	<main>
-		<% MemberVO mvo=(MemberVO) request.getAttribute("member"); if (mvo !=null) { %>
+		<% MemberVO mvo=(MemberVO) request.getAttribute("member");
+
+		if (mvo !=null) { %>
 		<div class="container">
 			<!-- 이미지와 이름 -->
 			<div class="image-container">
@@ -176,16 +178,6 @@
 				editInfoModal.hide();
 				changePwdModal.hide();
 			});
-
-			// 모달 외부 클릭 시 닫기
-			$(window).click(function (event) {
-				if ($(event.target).is(editInfoModal)) {
-					editInfoModal.hide();
-				}
-				if ($(event.target).is(changePwdModal)) {
-					changePwdModal.hide();
-				}
-			});
 		});
 
 		// 유효성 검사 함수
@@ -227,6 +219,11 @@
 			// 현재 비밀번호 입력 확인
 			if (!oldPwd) {
 				alert('현재 비밀번호를 입력해주세요.');
+				return false;
+			}
+
+			if (oldPwd == newPwd) {
+				alert('현재 새 비밀번호를 다르게해주세요.');
 				return false;
 			}
 

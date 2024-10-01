@@ -279,7 +279,6 @@ public class MemberDAO {
 			ps.setString(5, vo.getM_email());
 
 			result = ps.executeUpdate();
-			System.out.println(result);
 			if (result > 0) {
 				commit();				
 			} else {

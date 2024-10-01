@@ -80,13 +80,19 @@ textarea#content {
 }
 
 .exit-button:hover {
-	background-color: rgb(207, 170, 156);;
+	background-color: rgb(207, 170, 156);
 }
 
 .submit-button:hover {
 	background-color: rgb(207, 170, 156);
 }
 
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* 내부 요소를 오른쪽으로 정렬 */
+    margin-bottom: 20px;
+}
 
 /* 반응형 미디어 쿼리 */
 @media (max-width: 768px) {

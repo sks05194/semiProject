@@ -23,9 +23,9 @@
 						<input type="date" id="end-date" name="end-date" title="검색할 종료 날짜를 선택하세요.">
 					</div>
 					<div class="action-buttons">
-						<button class="action-button" id="delete-row-btn" title="선택한 행을 삭제합니다.">삭제하기</button>
-						<button class="action-button" id="add-row-btn" title="새로운 행을 추가합니다.">작성하기</button>
+						<button class="action-button" id="add-row-btn" title="새로운 행을 추가합니다.">추가하기</button>
 						<button class="action-button" id="edit-row-btn" title="선택한 행을 수정합니다.">수정하기</button>
+						<button class="action-button" id="delete-row-btn" title="선택한 행을 삭제합니다.">삭제하기</button>
 						<button class="action-button" id="save-row-btn" title="변경 내용을 저장합니다.">저장하기</button>
 					</div>
 				</div> 
@@ -132,6 +132,7 @@
 			</div>
 			<div class="tooltip" id="tooltip"></div>
 		</section>
+		<button id="scrollToTop" class="scroll-to-top"><img src="/BeansPaM/img/up.png"/></button>
 	</main>
 	<script>
 		let currentMaxNo = 0; // 현재 최대 고유번호
@@ -328,14 +329,9 @@
 				}
 			});
 
-			// 날짜 검색 후 버튼 텍스트 변경
+			// "더보기" 버튼 숨기기
 			const loadMoreBtn = document.getElementById('load-more-btn');
-			loadMoreBtn.textContent = '돌아가기';
-			loadMoreBtn.onclick = function() {
-				rows.forEach(row => row.classList.remove('hidden')); // 모든 데이터 보여주기
-				loadMoreBtn.textContent = '더보기'; // 텍스트 원래대로 복구
-				loadMoreBtn.onclick = null; // 기존 클릭 이벤트 리셋
-			};
+			loadMoreBtn.style.display = 'none'; // 버튼을 숨깁니다.
 		}
 
 		// "더보기" 버튼 클릭 시 숨겨진 데이터 표시
@@ -357,6 +353,24 @@
 				this.style.display = 'none';
 			}
 		});
+		
+		// 스크롤 이벤트에 따라 버튼 보이기/숨기기
+		window.onscroll = function() {
+		    const button = document.getElementById("scrollToTop");
+		    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+		        button.style.display = "block";
+		    } else {
+		        button.style.display = "none";
+		    }
+		};
+
+		// 버튼 클릭 시 맨 위로 스크롤
+		document.getElementById("scrollToTop").onclick = function() {
+		    window.scrollTo({
+		        top: 0,
+		        behavior: "smooth" 
+		    });
+		};
 	</script>
 	<script src="/BeansPaM/js/menu.js"></script>
 </body>

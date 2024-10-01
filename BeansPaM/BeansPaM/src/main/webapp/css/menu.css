@@ -20,7 +20,7 @@ header {
 }
 
 table, table th, table td {
-	font-size: 18px!important;
+	font-size: 16px!important;
 }
 
 /* 유저 정보 스타일 */
@@ -41,7 +41,7 @@ table, table th, table td {
 	margin-right: 20px;
 	color: #333333;
 	transition: color 0.3s;
-	font-size: 18px;
+	font-size: 16px;
 }
 
 .user-info a:hover { color: #007bff; }
@@ -98,7 +98,7 @@ table, table th, table td {
 
 .main-menu a, .menu-title {
 	color: #333333;
-	font-size: 24px;
+	font-size: 18px;
 	font-weight: 600;
 	padding: 15px 10px;
 	transition: color 0.3s;
@@ -135,12 +135,16 @@ table, table th, table td {
 	}
 }
 
-@media (min-width: 800px) {
+@media (min-width: 768px) {
 	.main-menu>li:hover .sub-menu { display: block; }
 	.mobile-user-info { display: none; }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 768px) {
+    table thead th, table tbody td {
+        font-size: 13px !important;
+    }
+
 	.user-info {
 		display: none;
 	}

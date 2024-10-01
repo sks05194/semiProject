@@ -4,7 +4,7 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>사원 등록</title>
+	<title>관리자 메뉴 - 사원 등록</title>
 	<link rel="stylesheet" type="text/css" href="/BeansPaM/css/admin.css">
 	<script src="/BeansPaM/js/jquery.js"></script>
 </head>
@@ -13,7 +13,7 @@
 	<main>
 		<h1>사원 등록</h1>
 
-		<form action="regist_member" method="post" class="employee-form" onsubmit="return checkInput()">
+		<form action="regist_member" method="post" class="employee-form">
 			<div class="form-group">
 				<label for="m_name">이름</label>
 				<input type="text" id="m_name" name="m_name" required>
@@ -88,18 +88,20 @@
 		$('.employee-form').submit(function () {
 			event.preventDefault();
 
-			$.ajax({
-				type: 'POST',
-				url: 'regist_member',
-				data: $(this).serialize(),
-				success: function(response) {
-					alert('사원 정보가 정상적으로 등록되었습니다.');
-					window.location.href = "admin";
-				},
-				error: function (xhr, status, error) {
-					alert('사원 등록에 실패하였습니다.');
-				}
-			});
+			if (checkInput()) {
+				$.ajax({
+					type: 'POST',
+					url: 'regist_member',
+					data: $(this).serialize(),
+					success: function(response) {
+						alert('사원 정보가 정상적으로 등록되었습니다.');
+						window.location.href = "admin";
+					},
+					error: function (xhr, status, error) {
+						alert('사원 등록에 실패하였습니다.');
+					}
+				});
+			}
 		});
 	</script>
 	<script src="/BeansPaM/js/menu.js"></script>

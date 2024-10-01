@@ -62,39 +62,41 @@ public class NoticeDAO {
 
 	/* 공지사항 등록을 위한 메소드 */
 	public int noticeRegister(NoticeVO noticeVO) {
-		int registerCount = 0; //
+		int registerCount = 0;
 
 		PreparedStatement ps1 = null;
-		Statement st = null;
-		ResultSet rs1 = null;
 
-		String sql1 = "INSERT INTO NOTICE VALUES (";
-		sql1 += "seq_N_NO.NEXTVAL, ";
-		sql1 += "?, ";
-		sql1 += "?, ";
-		sql1 += "0, ";
-		sql1 += "'N'" + ", ";
-		sql1 += "SYSDATE, ";
-		sql1 += "SYSDATE, ";
-		sql1 += "'ADMIN'" + ", ";
-		sql1 += "'ADMIN'";
+		// 공지사항 등록 SQL문에 N_IMPORTANT_YN 추가
+		String sql1 = "INSERT INTO NOTICE (N_NO, N_TITLE, N_CONTENT, N_VIEWS, N_DELETE_YN, N_R_DATE, N_C_DATE, N_R_WRITER, N_C_WRITER, N_IMPORTANT_YN) VALUES (";
+		sql1 += "SEQ_N_NO.NEXTVAL, ";  // N_NO 시퀀스
+		sql1 += "?, ";  // N_TITLE
+		sql1 += "?, ";  // N_CONTENT
+		sql1 += "0, ";  // N_VIEWS 초기값
+		sql1 += "'N', ";  // N_DELETE_YN 초기값 'N'
+		sql1 += "SYSDATE, ";  // N_R_DATE
+		sql1 += "SYSDATE, ";  // N_C_DATE
+		sql1 += "'관리자', ";  // N_R_WRITER
+		sql1 += "'관리자', ";  // N_C_MODIFIER
+		sql1 += "?";  // N_IMPORTANT_YN (공지 여부) 초기값 'N'
 		sql1 += ")";
+
+		
 		try {
 			ps1 = getConnection().prepareStatement(sql1);
 			ps1.setString(1, noticeVO.getN_title());
 			ps1.setString(2, noticeVO.getN_content());
+			ps1.setString(3, noticeVO.getN_important_yn()); // 공지 여부 저장 ('Y' 또는 'N')
 
-			registerCount = ps1.executeUpdate(); // ps1.executeQuery();
+			registerCount = ps1.executeUpdate();
 
-			// registerCount가 1이면 공지사항 등록 성공해 DB에 값이 업데이트 셩공
-			if (registerCount == 1) { // 1: 공지사항 등록 성공
+			
+			// registerCount가 1이면 공지사항 등록 성공
+			if (registerCount == 1) {
 				commit();
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			close(st);
-			close(rs1);
 			close(ps1);
 		}
 		return registerCount;

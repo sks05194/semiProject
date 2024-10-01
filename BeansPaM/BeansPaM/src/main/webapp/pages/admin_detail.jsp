@@ -5,7 +5,7 @@
 <html lang="kr">
 <head>
 	<meta charset="UTF-8">
-	<title>사원 정보 열람</title>
+	<title>관리자 메뉴 - 사원 정보</title>
 	<link rel="stylesheet" type="text/css" href="/BeansPaM/css/admin.css">
 </head>
 <body>

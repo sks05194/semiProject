@@ -8,19 +8,13 @@ body {
 }
 
 .board {
-	width: 80%;
+	width: 75%;
 	margin: 20px auto;
 	background-color: rgb(255, 255, 255);
 	padding: 20px;
 	border-radius: 10px;
 }
 
-.board h2 {
-	color: rgb(41, 15, 5);
-	text-align: center;
-	margin-bottom: 20px;
-	font-size: 36pt;
-}
 
 table {
 	width: 100%;
@@ -159,7 +153,7 @@ table td:first-child {
 .pagination {
 	display: flex;
 	margin: 0 auto;
-	margin-bottom: 18px;
+	margin-bottom: 16px;
 	justify-content: center;
 	align-items: center;
 	margin-top: 20px;
@@ -184,8 +178,8 @@ table td:first-child {
 /* 현재 페이지 스타일 */
 .pagination span {
 	color: black;
-	background-color: #8B4513;
-	color: white;;
+	background-color: rgb(244, 228, 209);;
+	color: rgb(41, 15, 5);;
 	padding: 5px 10px;
 	margin: 0 5px;
 	border-radius: 5px;
@@ -222,18 +216,34 @@ table td.title {
 
 /* 반응형 미디어 쿼리 */
 @media (max-width: 768px) {
+	
+	.board h2 {
+		text-align: center;
+	}
+	
 	.actions-container {
 		width: 100%;
 		flex-direction: column;
 		align-items: flex-end;
 	}
-
-	table td.title {
-		max-width: 150px;
-		/* 모바일 화면에서는 제목의 최대 너비를 줄여서 적용 */
+	
+	.m_hide{
+		display: none;
 	}
+	
+    .search-container {
+        display: block;
+        flex-direction: column; /* 세로 정렬 */
 
-	/* table th:second-child, table td:second-child {
-		min-width: 50%;
-	} */
+        width: 100%; /* 부모 컨테이너가 차지할 수 있는 공간 전체를 사용 */
+    }
+
+    /* 검색 필드와 버튼의 너비를 100%로 설정 */
+    .search-container select,
+    .search-container input[type="search"],
+    .search-container input[type="submit"] {
+        width: 100%;
+        flex-direction: column; /* 세로 정렬 */
+        margin-bottom: 10px; /* 세로 간격 */
+    }
 }

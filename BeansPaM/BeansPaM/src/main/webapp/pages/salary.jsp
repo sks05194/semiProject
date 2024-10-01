@@ -35,7 +35,7 @@
                 startDate = sdf.parse(startDateParam);
                 endDate = sdf.parse(endDateParam);
             } catch (Exception e) {
-                e.printStackTrace();
+                e.getMessage();
             }
 
             if (salaryList != null && startDate != null && endDate != null) {
@@ -46,12 +46,15 @@
                     }
                 }
             }
-        } else {
+        }
+
+        // 날짜 필터링이 이루어지지 않았을 경우 전체 데이터 사용
+        if (filteredSalaryList.isEmpty()) {
             filteredSalaryList = salaryList;
         }
 
         // 페이지 당 항목 수 설정
-        int pageSize = 8;
+        int pageSize = 10;
         int totalRecords = filteredSalaryList != null ? filteredSalaryList.size() : 0;
         int totalPages = (int) Math.ceil((double) totalRecords / pageSize);
 
@@ -81,7 +84,6 @@
         </div>
         <table class="mTable">
             <tr class="mbclose">
-               
                 <th scope="col">지급일</th>
                 <th scope="col">급여액</th>
                 <th scope="col">공제액</th>
@@ -94,7 +96,6 @@
                     SalaryVO salary = filteredSalaryList.get(i);
             %>
             <tr>
-              
                 <td scope="row" data-label="지급일"><%=sdf.format(salary.getSal_date())%></td>
                 <!-- 지급일 -->
                 <td data-label="급여액"><%=new DecimalFormat("#,###").format(salary.getSal_salary())%>원</td>
@@ -116,17 +117,17 @@
         <div class="pagination">
             <!-- 이전 페이지 버튼 -->
             <% if (currentPage > 1) { %>
-            <a href="?page=<%=currentPage - 1%>&start-date=<%=startDateParam%>&end-date=<%=endDateParam%>">이전</a>
+            <a href="?page=<%=currentPage - 1%><%= startDateParam != null ? "&start-date=" + startDateParam + "&end-date=" + endDateParam : "" %>">이전</a>
             <% } %>
 
             <!-- 페이지 번호 링크 -->
             <% for (int i = 1; i <= totalPages; i++) { %>
-            <a href="?page=<%=i%>&start-date=<%=startDateParam%>&end-date=<%=endDateParam%>" <%=i == currentPage ? "class='active'" : ""%>><%=i%></a>
+            <a href="?page=<%=i%><%= startDateParam != null ? "&start-date=" + startDateParam + "&end-date=" + endDateParam : "" %>" <%=i == currentPage ? "class='active'" : ""%>><%=i%></a>
             <% } %>
 
             <!-- 다음 페이지 버튼 -->
             <% if (currentPage < totalPages) { %>
-            <a href="?page=<%=currentPage + 1%>&start-date=<%=startDateParam%>&end-date=<%=endDateParam%>">다음</a>
+            <a href="?page=<%=currentPage + 1%><%= startDateParam != null ? "&start-date=" + startDateParam + "&end-date=" + endDateParam : "" %>">다음</a>
             <% } %>
         </div>
     </main>
@@ -145,7 +146,6 @@
             document.getElementById('end-date').setAttribute('min', startDate);
         });
     </script>
-
 </body>
 
 </html>

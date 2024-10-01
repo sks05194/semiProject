@@ -93,7 +93,6 @@ tbody tr:last-child td {
 }
 
 td {
-	font-size: 14px;
 	padding: 10px;
 	text-align: center;
 	color: rgb(62, 30, 17);
@@ -177,8 +176,8 @@ button:hover {
 
 /* 현재 페이지의 버튼 색상을 wheat로 설정, 호버 기능 제거 */
 .pagination a.active {
-	background-color: #8B4513; /* 버튼 백그라운드 컬러 wheat -> #8B451 변경 */
-	color: white; /* rgb(41, 15, 5) -> white 변경 */
+	background-color: wheat; /* 버튼 백그라운드 컬러 wheat -> #8B451 변경 */
+	color: rgb(41, 15, 5); /* rgb(41, 15, 5) -> white 변경 */
 	font-weight: bold; /* 현재 페이지는 굵은 글씨 */
 	pointer-events: none; /* 현재 페이지는 클릭 비활성화 */
 }
@@ -190,7 +189,7 @@ button:hover {
 
 /* 나머지 페이지에 호버 시 연한 회색으로 변경 */
 .pagination a:hover {
-	background-color: wheat;
+	background-color: rgb(207, 170, 156); /************************************************/
 }
 
 /* 이전/다음 버튼 비활성화 스타일 */
@@ -222,3 +221,88 @@ button:hover {
 	font-weight: bold; /* 굵은 글씨 */
 	vertical-align: middle; /* 글자와 아이콘 수평 맞춤 */
 }
+
+@media (max-width: 768px) {
+	/* 기본 레이아웃 수정 */
+	main {
+		padding: 0 20px; /* 패딩을 줄여서 화면 크기에 맞춤 */
+	}
+
+	.board {
+		width: 100%; /* 가로 크기 100%로 설정 */
+		margin: 10px 0; /* 간격 조정 */
+		padding: 15px; /* 패딩을 줄여서 공간 확보 */
+	}
+
+	/* 제목과 검색창을 포함한 헤더 수정 */
+	.table-header {
+		display: block; /* 검색창과 제목을 수직으로 배치 */
+	}
+
+	.table-header h2 {
+		font-size: 28pt; /* 제목 크기 줄이기 */
+		text-align: center; /* 제목을 중앙 정렬 */
+		margin-bottom: 10px; /* 검색창과 간격 조정 */
+	}
+
+	.search-container {
+		width: 100%; /* 검색창 크기를 화면에 맞게 조정 */
+		display: block; /* 검색창 요소 수직으로 배치 */
+		text-align: center; /* 검색창을 중앙 정렬 */
+	}
+
+	.search-select, .search-input, .search-button {
+		width: 90%; /* 검색창과 입력 필드 너비를 넓힘 */
+		margin-bottom: 10px; /* 요소 간 간격 추가 */
+	}
+
+	/* 페이징 버튼과 작성하기 버튼의 배치 수정 */
+	.button-wrapper {
+		display: flex;
+		flex-direction: column; /* 버튼을 세로로 배치 */
+		align-items: center;
+		margin-top: 10px;
+	}
+
+	/* 작성하기 버튼을 더 넓게 설정 */
+	.button-container button {
+		width: 100%; /* 작성하기 버튼 너비를 100%로 설정 */
+		margin-top: 10px; /* 페이지네이션과의 간격 */
+	}
+
+	/* 테이블 스타일 수정: 글씨 크기 작게 */
+	table {
+		font-size: 11px !important; /* 테이블 내 폰트 크기 조정 */
+	}
+
+	thead tr th, tbody tr td {
+		padding: 8px; /* 셀 패딩을 줄여서 공간 확보 */
+		font-size: 11px; /* 게시글 폰트 크기를 11px로 조정 */
+	}
+
+	/* 작성일자 및 조회수 열 숨기기 */
+	thead tr th:nth-child(4),
+	tbody tr td:nth-child(4),
+	thead tr th:nth-child(5),
+	tbody tr td:nth-child(5) {
+		display: none; /* 작성일자 및 조회수 열 숨기기 */
+	}
+
+	/* 페이지네이션 수정: 여전히 가로로 정렬 */
+	.pagination {
+		display: flex;
+		justify-content: center; /* 페이지네이션을 가로로 중앙 정렬 */
+		flex-direction: row; /* 기본 가로 정렬 유지 */
+	}
+
+	.pagination a {
+		margin: 5px; /* 버튼 간 간격 조정 */
+	}
+
+	/* N 아이콘 크기 조정 */
+	.new-icon {
+		font-size: 8px; /* 아이콘 폰트 크기 줄이기 */
+		padding: 1px 3px; /* 아이콘 패딩 줄이기 */
+	}
+}
+
