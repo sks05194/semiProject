@@ -12,8 +12,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>workday</title>
 	<link rel="stylesheet" href="/BeansPaM/css/workday.css">
-	<!-- <script src="/BeansPaM/js/fontawesome.js"></script> -->
-	<!-- <script src="/BeansPaM/js/jquery.js"></script> -->
 </head>
 
 <body>
@@ -21,12 +19,12 @@
 	<main>
 		<h1>근무표</h1>
 
-		<table>
-			<tr>
-				<th>출근일자</th>
-				<th>출근시간</th>
-				<th>퇴근시간</th>
-				<th>특이사항</th>
+		<table class="mTable">
+			<tr class="mbclose">
+				<th	scope="col">출근일자</th>
+				<th scope="col">출근시간</th>
+				<th scope="col">퇴근시간</th>
+				<th scope="col">특이사항</th>
 			</tr>
 
 			<%
@@ -65,10 +63,10 @@
 						e.printStackTrace();
 					} %>
 					<tr>
-						<td><%= attendance.getA_workdate() %></td>
-						<td><%= checkinTime != null ? timeFormat2.format(checkinTime) : "" %></td>
-						<td><%= checkoutTime != null ? timeFormat2.format(checkoutTime) : "" %></td>
-						<td><%= attendance.getA_issue() != null ? attendance.getA_issue() : "" %></td>
+						<td scope="row" data-label="출근일자"><%= attendance.getA_workdate() %></td>
+						<td data-label="출근시간"><%= checkinTime != null ? timeFormat2.format(checkinTime) : "Null" %></td>
+						<td data-label="퇴근시간"><%= checkoutTime != null ? timeFormat2.format(checkoutTime) : "Null" %></td>
+						<td data-label="특이사항"><%= attendance.getA_issue() != null ? attendance.getA_issue() : "Null" %></td>
 					</tr>
 				<% }
 			} else { %>

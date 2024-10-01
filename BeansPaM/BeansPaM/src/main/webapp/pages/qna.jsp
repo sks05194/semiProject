@@ -91,49 +91,49 @@
 					baseURL = request.getContextPath() + "/b/qna?";
 				}
 			%>
-			<div class="pagination">
-				<% if (startPage != null && startPage > 1) { %>
-	   				 <!-- 이전 페이지 링크 -->
-	   				 <% if (searchType != null && keyword != null && !searchType.isEmpty() && !keyword.isEmpty()) { %>
-	  				  <a href="<%= baseURL %>&page=<%= startPage - 1 %>">&laquo; 이전</a>
-	  				 <% } else { %>
-	  				  <a href="<%= baseURL %>&page=<%= startPage - 1 %>">&laquo; 이전</a>
-	  				 <% } %>		  
-	  				 
-				<% } %>
-			
-				<% if (startPage != null && endPage != null) {
-					for (int i = startPage; i <= endPage; i++) {
-						if (i == currentPage) { %>
-							<!-- 현재 페이지는 active 클래스 추가 -->
-							<% if (searchType != null && keyword != null && !searchType.isEmpty() && !keyword.isEmpty()) { %>
-			  				  <a href="<%= baseURL %>&page=<%= i %>" class="active"><%= i %></a>
-			  				 <% } else { %>
-			  				  <a href="<%= baseURL %>page=<%= i %>" class="active"><%= i %></a>
-			  				 <% } %>	
-						<% } else { %>
-							<!-- 다른 페이지는 기본 링크 -->
-							<% if (searchType != null && keyword != null && !searchType.isEmpty() && !keyword.isEmpty()) { %>
-			  				 	<a href="<%= baseURL %>&page=<%= i %>"><%= i %></a>
-			  				 <% } else { %>
-			  				  	<a href="<%= baseURL %>page=<%= i %>"><%= i %></a>
-			  				 <% } %>	
-						<% }
-					}
-				} %>
-			
-				<% if (endPage != null && endPage < maxPage) { %>
-					<!-- 다음 페이지 링크 -->
-					<% if (searchType != null && keyword != null && !searchType.isEmpty() && !keyword.isEmpty()) { %>
-	  					 <a href="<%= baseURL %>&page=<%= endPage + 1 %>">다음 &raquo;</a>
-	  				 <% } else { %>
-	  					 <a href="<%= baseURL %>page=<%= endPage + 1 %>">다음 &raquo;</a>
-	  				 <% } %>	
-				<% } %>
-			</div>
 
 			<!-- 글쓰기 관련 버튼 -->
 			<div class="button-wrapper">
+				<div class="pagination">
+					<% if (startPage != null && startPage > 1) { %>
+		   				 <!-- 이전 페이지 링크 -->
+		   				 <% if (searchType != null && keyword != null && !searchType.isEmpty() && !keyword.isEmpty()) { %>
+		  				  <a href="<%= baseURL %>&page=<%= startPage - 1 %>">&laquo; 이전</a>
+		  				 <% } else { %>
+		  				  <a href="<%= baseURL %>&page=<%= startPage - 1 %>">&laquo; 이전</a>
+		  				 <% } %>		  
+		  				 
+					<% } %>
+				
+					<% if (startPage != null && endPage != null) {
+						for (int i = startPage; i <= endPage; i++) {
+							if (i == currentPage) { %>
+								<!-- 현재 페이지는 active 클래스 추가 -->
+								<% if (searchType != null && keyword != null && !searchType.isEmpty() && !keyword.isEmpty()) { %>
+				  				  <a href="<%= baseURL %>&page=<%= i %>" class="active"><%= i %></a>
+				  				 <% } else { %>
+				  				  <a href="<%= baseURL %>page=<%= i %>" class="active"><%= i %></a>
+				  				 <% } %>	
+							<% } else { %>
+								<!-- 다른 페이지는 기본 링크 -->
+								<% if (searchType != null && keyword != null && !searchType.isEmpty() && !keyword.isEmpty()) { %>
+				  				 	<a href="<%= baseURL %>&page=<%= i %>"><%= i %></a>
+				  				 <% } else { %>
+				  				  	<a href="<%= baseURL %>page=<%= i %>"><%= i %></a>
+				  				 <% } %>	
+							<% }
+						}
+					} %>
+				
+					<% if (endPage != null && endPage < maxPage) { %>
+						<!-- 다음 페이지 링크 -->
+						<% if (searchType != null && keyword != null && !searchType.isEmpty() && !keyword.isEmpty()) { %>
+		  					 <a href="<%= baseURL %>&page=<%= endPage + 1 %>">다음 &raquo;</a>
+		  				 <% } else { %>
+		  					 <a href="<%= baseURL %>page=<%= endPage + 1 %>">다음 &raquo;</a>
+		  				 <% } %>	
+					<% } %>
+				</div>
 				<div class="button-container">
 					<button onclick="location.href='<%=request.getContextPath()%>/pages/qna_write.jsp'" class="search-button">작성하기</button>
 				</div>

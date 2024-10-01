@@ -65,7 +65,7 @@ table {
 	width: 100%;
 	border-collapse: separate;
 	border-spacing: 0;
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 	border-radius: 1px;
 	overflow: hidden;
 }
@@ -160,10 +160,8 @@ button:hover {
 .pagination {
 	display: flex;
 	margin: 0 auto;
-	margin-bottom: 18px;
 	justify-content: center;
 	align-items: center;
-	margin-top: 20px;
 	font-size: 16px;
 }
 
