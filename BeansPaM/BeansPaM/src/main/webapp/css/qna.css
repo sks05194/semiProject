@@ -5,11 +5,11 @@
 }
 
 main {
-	padding: 20px 130px;
+	padding: 0px 130px;
 }
 
 .board {
-	width: 70%;
+	width: 80%;
 	margin: 20px auto;
 	background-color: white;
 	padding: 20px;
@@ -23,6 +23,7 @@ main {
 	justify-content: space-between;
 	align-items: center;
 	margin-bottom: 20px;
+	margin-top: 20px;
 }
 
 .board h2 {
@@ -178,8 +179,8 @@ button:hover {
 
 /* 현재 페이지의 버튼 색상을 wheat로 설정, 호버 기능 제거 */
 .pagination a.active {
-	background-color: wheat;
-	color: rgb(41, 15, 5);
+	background-color: #8B4513; /* 버튼 백그라운드 컬러 wheat -> #8B451 변경 */
+	color: white; /* rgb(41, 15, 5) -> white 변경 */
 	font-weight: bold; /* 현재 페이지는 굵은 글씨 */
 	pointer-events: none; /* 현재 페이지는 클릭 비활성화 */
 }
@@ -191,7 +192,7 @@ button:hover {
 
 /* 나머지 페이지에 호버 시 연한 회색으로 변경 */
 .pagination a:hover {
-	background-color: lightgray;
+	background-color: wheat;
 }
 
 /* 이전/다음 버튼 비활성화 스타일 */
@@ -209,7 +210,7 @@ button:hover {
 	display: flex;
 	justify-content: flex-end;
 	align-items: center;
-	margin-top: 20px;
+	margin-top: 0;	
 }
 
 /* N 아이콘 스타일 (빨간 글씨, 노란색 배경, 작은 폰트) */

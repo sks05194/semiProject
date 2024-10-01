@@ -52,7 +52,7 @@ input[type="text"], textarea {
 	padding: 10px;
 	border: 1px solid #ddd;
 	border-radius: 4px;
-	font-size: 16px;
+	font-size: 18px;
 }
 
 textarea {
@@ -61,7 +61,6 @@ textarea {
 	margin-bottom: 10px;
 	border: 1px solid #ddd;
 	border-radius: 4px;
-	font-size: 16px;
 	resize: none;
 	overflow: auto;
 }

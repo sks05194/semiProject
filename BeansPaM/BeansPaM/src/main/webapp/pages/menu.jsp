@@ -66,6 +66,15 @@
 			<% } else { %>
 				<li><a href="/BeansPaM/b/notice">Notice</a></li>
 			<% } %>
+
+			<li class="mobile-user-info">
+				<% if (userName == null) { %>
+					<a href="/BeansPaM/loginMenu.l">Login</a>
+				<% } else { %>
+					<a href="/BeansPaM/fms/mypage"><%= userName %>님</a>
+					<a href="/BeansPaM/logout.l">로그아웃</a>
+				<% } %>
+			</li>
 		</ul>
 	</div>
 </nav>

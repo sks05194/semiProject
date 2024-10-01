@@ -50,7 +50,7 @@ th, td {
 	border-left: none;
 	border-right: none;
 	padding: 10px;
-	text-align: center;
+ 	text-align: center;
 	color: rgb(41, 15, 5);
 }
 
@@ -60,8 +60,8 @@ th {
 
 table th:first-child,
 table td:first-child {
-	min-width: 50px;
-	padding-right: 50px;
+	min-width: 40px;
+	padding-right: 40px;
 }
 
 /* table tr:nth-child(1) { */
@@ -70,7 +70,7 @@ table td:first-child {
 
 .board {
 	position: relative;
-	width: 65%;
+	width: 70%;
 	margin: 20px auto;
 	background-color: rgb(255, 255, 255);
 	padding: 20px;
@@ -184,7 +184,8 @@ table td:first-child {
 /* 현재 페이지 스타일 */
 .pagination span {
 	color: black;
-	background-color: rgb(244, 228, 209);
+	background-color: #8B4513;
+	color: white;;
 	padding: 5px 10px;
 	margin: 0 5px;
 	border-radius: 5px;

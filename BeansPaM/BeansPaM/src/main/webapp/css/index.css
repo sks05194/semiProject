@@ -83,7 +83,6 @@ a:hover { opacity: 0.8; }
 #featured-products .product {
 	display: inline-block;
 	width: 30%;
-	height: 600px;
 	margin: 0 1.5%;
 	background-color: #fff;
 	border: 1px solid #ddd;
